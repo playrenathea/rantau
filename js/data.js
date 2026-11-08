@@ -55,5 +55,29 @@ export const npcs=[
 {id:"pemilik",name:"Pemilik Penginapan",location:"penginapan",description:"Pemilik yang mengenal banyak pendatang.",initial:{v:5,d:6,p:8},knowledge:{penginapan:4,kota:3,warung:2,pasar:2,perantara:2},topics:["penginapan","perantara"],openness:6}
 ];
 export const emojis=["😡","🤨","😎","🙁","😐","🙂","😟","😔","🥺","❤️","👍","👎","🙏","🫵","🤣","❓","❗","💤","🤫","🤔","💡"];
+// Player-facing meanings; shared by sent, received, and selectable emoji.
+export const emojiDescriptions={
+  "😡": "Kemarahan, amarah, permusuhan, agresivitas.",
+  "🤨": "Kecurigaan, keraguan, ketidakpercayaan.",
+  "😎": "Keyakinan diri, keberanian, keteguhan, kemandirian.",
+  "🙁": "Ketidaksukaan, ketidakpuasan, kekecewaan.",
+  "😐": "Ketidakberpihakan, ketidakpedulian, sikap datar.",
+  "🙂": "Keramahan, keakraban, kesukaan.",
+  "😟": "Kekhawatiran, kecemasan, ketakutan, kegelisahan.",
+  "😔": "Kesedihan, penyesalan, kehilangan, penderitaan.",
+  "🥺": "Permohonan, kekaguman, belas kasihan, kerendahan diri.",
+  "❤️": "Kecintaan, kesukaan mendalam, dukungan penuh.",
+  "👍": "Persetujuan, dukungan, pembenaran.",
+  "👎": "Penolakan, pertentangan, ketidaksetujuan.",
+  "🙏": "Penghormatan, penghargaan, pengakuan superioritas.",
+  "🫵": "Tekanan, intimidasi, tuntutan, dominasi.",
+  "🤣": "Kelucuan, humor, ejekan, penghinaan.",
+  "❓": "Pertanyaan, kebingungan, ketidaktahuan, rasa ingin tahu.",
+  "❗": "Penekanan, keseriusan, ketegasan, urgensi.",
+  "💤": "Kebosanan, kejenuhan, kelelahan, kehilangan minat.",
+  "🤫": "Kerahasiaan, kehati-hatian, penyembunyian informasi.",
+  "🤔": "Pertimbangan, kebingungan, perenungan, ketidakpastian.",
+  "💡": "Pemahaman, kesadaran baru, penemuan, inspirasi."
+};
 export const byId=id=>information.find(x=>x.id===id);
 export const relationId=(a,b)=>relations.find(x=>(x.a===a&&x.b===b)||(x.a===b&&x.b===a))?.id;
