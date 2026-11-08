@@ -115,3 +115,12 @@ test('Listen after previous NPC question does not teach Knowledge',()=>{
    previousPlayerMessages:[],npcTokens:[E('😐')],npcAction:'express',playerLevels:p,npcLevels:{militer:5},learned:new Set()});
  assert.deepEqual(gains,[]);
 });
+
+test('contextual recovery can restore V while increasing NPC D',()=>{
+ const sequence=[[E('👎')],[T('militer'),E('😡')],[E('🙏')],[T('pasar'),E('🙂')]];
+ const r=simulateInteraction(i=>sequence[i],{turns:4,initial});
+ assert.ok(r.log[0].v<initial.v);
+ assert.ok(r.state.v>initial.v);
+ assert.ok(r.state.d>initial.d);
+ assert.ok(r.state.p>0);
+});
