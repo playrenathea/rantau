@@ -91,10 +91,10 @@ function showFarewell(){
  if(!n)return;
  showModal('<h2>Akhiri percakapan?</h2><p>Pilih kesan terakhir yang ingin kamu tinggalkan pada '+esc(n.name)+'.</p>'+
  '<div class="farewell-choices">'+
- '<button data-farewell="🙂" aria-label="Berpisah dengan ramah">🙂<span>Ramah</span></button>'+
- '<button data-farewell="😐" aria-label="Berpisah biasa saja">😐<span>Biasa</span></button>'+
  '<button data-farewell="🙏" aria-label="Berpisah dengan hormat">🙏<span>Hormat</span></button>'+
  '<button data-farewell="👎" aria-label="Berpisah dengan buruk">👎<span>Buruk</span></button>'+
+ '<button data-farewell="🙂" aria-label="Berpisah dengan ramah">🙂<span>Ramah</span></button>'+
+ '<button data-farewell="😎" aria-label="Berpisah dengan percaya diri">😎<span>Confident</span></button>'+
  '</div><button class="secondary full" data-cancel-farewell>Batal</button>');
 }
 function finishConversation(emoji){
