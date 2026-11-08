@@ -140,3 +140,11 @@ main.chat-screen{padding:0;min-height:100dvh;display:flex;flex-direction:column}
 #view,#modal,#view *,#modal *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 #view img,#modal img{-webkit-user-drag:none;user-drag:none}
 #view input,#view textarea,#view select,#view [contenteditable],#modal input,#modal textarea,#modal select,#modal [contenteditable],[data-allow-copy]{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}
+
+/* Memory browsing & exploration progress */
+.memory-progress{font-size:11px;color:var(--muted);font-weight:400;letter-spacing:.01em}
+.location-action .memory-progress{font-size:11px}
+.memory-filters{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin:4px 0 24px;padding:2px 0 5px}
+.memory-filters::-webkit-scrollbar{display:none}
+.memory-filter{white-space:nowrap;flex:none;background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:8px 12px;font-size:12px;line-height:1.2}
+.memory-filter.active{background:var(--soft);border-color:var(--accent);color:var(--accent);font-weight:600}
