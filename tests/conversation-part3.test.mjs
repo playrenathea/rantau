@@ -74,3 +74,20 @@ test('243-state matrix remains valid and grounded',()=>{
  }
  assert.equal(count,243);
 });
+
+test('emoji-only Where refers to previous NPC topic and applies Location filter',()=>{
+ const data=structuredClone(world);
+ data.relationships.push({id:'militer__pasar',a:'militer',b:'pasar'});
+ data.npcKnowledge.militer__pasar=2;
+ const p=run([E('📍')],{data,npcTokens:[T('militer'),E('👎')]});
+ assert.equal(p.selection.action.action,'answer');
+ assert.deepEqual(p.tokens.filter(t=>t.kind==='info').map(t=>t.id),['militer','pasar']);
+});
+test('factual answer never claims an uncomposed Player Attitude Reaction',()=>{
+ const p=run([T('pasar'),E('⏳')]);
+ assert.notEqual(p.metadata.reaction,'player-attitude');
+});
+test('terminal Withdraw does not claim additional reaction',()=>{
+ const p=run([E('😡')],{state:{v:2,d:8,p:0}});
+ assert.equal(p.metadata.reaction,null);
+});
