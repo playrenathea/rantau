@@ -43,15 +43,16 @@ function explorer(){
  const parent=current.parent?loc(current.parent):null;
  const children=locations.filter(l=>l.parent===current.id&&l.access!=="secret");
  const people=npcs.filter(n=>n.location===current.id);
- const unlocked=information.filter(i=>state.knowledge[i.id]>0).length+relations.filter(r=>state.relations[r.id]>0).length;
- const total=information.length+relations.length;
+ const levels=[...information.map(i=>state.knowledge[i.id]||0),...relations.map(r=>state.relations[r.id]||0)];
+ const unlocked=levels.filter(level=>level>0).length;
+ const totalLevels=levels.reduce((sum,level)=>sum+level,0);
  return '<section class="location-banner">'+
  photo(current.id,"location-hero")+
  '<div class="location-banner-overlay"><h2 class="heading location-title" data-memory-hold="'+current.id+'">'+esc(current.name)+'</h2><p class="location-description">'+esc(current.description)+'</p></div></section>'+
  '<div class="location-content"><div class="location-actionbar">'+
  '<div class="action-group action-left"><button class="location-action map-action" data-open-map aria-label="Buka peta">'+mapIcon+' Map</button>'+
  (parent?'<button class="location-action parent-action" data-enter="'+parent.id+'" aria-label="Kembali ke '+esc(parent.name)+'"><span aria-hidden="true">‹</span> '+esc(parent.name)+'</button>':'')+'</div>'+
- '<div class="action-group action-right"><button class="location-action" data-tabgo="memory" aria-label="Buka memory, '+unlocked+' halaman terbuka, '+total+' halaman terdaftar">Memory <span class="memory-progress">'+unlocked+' <span aria-hidden="true">|</span> '+total+'</span></button>'+
+ '<div class="action-group action-right"><button class="location-action" data-tabgo="memory" aria-label="Buka memory, '+unlocked+' halaman terbuka, total '+totalLevels+' level">Memory <span class="memory-progress">'+unlocked+' <span aria-hidden="true">|</span> '+totalLevels+'</span></button>'+
  '<button class="quiet save-shortcut" id="saveMenu" aria-label="Save">⋯</button></div></div>'+
  '<div class="location-list">'+children.map(locationItem).join("")+people.map(npcItem).join("")+
  (!children.length&&!people.length?'<div class="empty">Tidak ada yang terlihat di sini.</div>':'')+'</div></div>';
@@ -104,15 +105,21 @@ function memory(){
    '" data-memory-filter="'+esc(key)+'" aria-pressed="'+(memoryFilter===key)+'">'+esc(label)+'</button>').join("")+'</div>';
  const shown=memoryFilter==="all"?known:known.filter(i=>i.type===memoryFilter);
  const showRel=memoryFilter==="all"||memoryFilter==="Relationships";
+ const stats=(info,rels=[])=>{
+  const levels=[...info.map(i=>state.knowledge[i.id]||0),...rels.map(r=>state.relations[r.id]||0)];
+  return levels.filter(level=>level>0).length+' | '+levels.reduce((total,level)=>total+level,0);
+ };
+ const filterLabel=filters.find(([key])=>key===memoryFilter)?.[1]||"All";
+ const sectionLabel=(label,info,rels=[])=>'<p class="section-label">'+esc(label)+' · '+stats(info,rels)+'</p>';
  const items=memoryFilter==="Relationships"?[]:shown.map(i=>'<div class="memory-entry"><button class="memory-item" data-memory="'+i.id+
   '"><div><strong>'+esc(i.name)+'</strong><div class="tag">'+esc(i.type)+'</div></div><span class="pill">Lv '+state.knowledge[i.id]+'</span></button>'+pinButton(i.id)+'</div>');
  const relItems=showRel?knownRel.map(r=>'<div class="memory-entry"><button class="memory-item" data-memory="'+r.id+'"><strong>'+
   esc(byId(r.a)?.name)+' × '+esc(byId(r.b)?.name)+'</strong><span class="pill">Lv '+state.relations[r.id]+'</span></button>'+pinButton(r.id)+'</div>'):[];
  return '<div class="memory-header"><h2 class="heading">Memory</h2><button class="map-close" data-close-memory aria-label="Tutup memory">✕</button></div>'+
   workingSection+filterBar+
-  (memoryFilter==="all"?'<p class="section-label">Information · '+known.length+'</p>':'')+
+  (memoryFilter==="all"?sectionLabel("Information",known):sectionLabel(filterLabel,shown,showRel?knownRel:[]))+
   items.join("")+
-  (memoryFilter==="all"?'<hr class="divider"><p class="section-label">Relationships · '+knownRel.length+'</p>':'')+
+  (memoryFilter==="all"?'<hr class="divider">'+sectionLabel("Relationships",[],knownRel):'')+
   relItems.join("")+
   (!items.length&&!relItems.length?'<p class="empty">Belum ada informasi untuk kategori ini.</p>':'');
 }
