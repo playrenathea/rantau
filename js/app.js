@@ -13,6 +13,8 @@ function setTab(tab){if(tab==="memory"&&state.tab!=="memory")previousTab=state.t
 function showModal(html){$("#modalContent").innerHTML=html;modal.showModal();}
 function memoryDetail(id){const item=byId(id)||relations.find(r=>r.id===id);if(!item)return;const level=state.knowledge[id]||state.relations[id]||0;if(!level){showModal('<h2>Belum dikenal</h2><p>Kamu belum memiliki informasi tentang hal ini.</p>');return;}const facts=item.facts.slice(0,Math.max(0,level-1));showModal('<div class="section-label">Memory · Level '+level+'</div><h2>'+esc(item.name||byId(item.a)?.name+" × "+byId(item.b)?.name)+'</h2>'+(facts.length?'<ol class="knowledge">'+facts.map(f=>'<li>'+esc(f)+'</li>').join("")+'</ol>':'<p>Kamu sadar akan keberadaannya, tetapi belum mengetahui lebih jauh.</p>'));}
 function bindHold(element,id){let timer,held=false;element.addEventListener("pointerdown",()=>{held=false;timer=setTimeout(()=>{held=true;memoryDetail(id)},550)});for(const ev of ["pointerup","pointerleave","pointercancel"])element.addEventListener(ev,()=>clearTimeout(timer));element.addEventListener("contextmenu",e=>{e.preventDefault();memoryDetail(id)});element.addEventListener("click",e=>{if(held){e.preventDefault();e.stopPropagation();held=false}},true);}
+const mapIcon="<svg class=\"ui-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3z\"/><path d=\"M9 3v15M15 6v15\"/></svg>";
+const lockIcon="<svg class=\"ui-icon lock-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"5\" y=\"10\" width=\"14\" height=\"11\" rx=\"2\"/><path d=\"M8 10V7a4 4 0 0 1 8 0v3\"/></svg>";
 function renderTree(parent){
  return locations.filter(l=>l.parent===parent&&l.access!=="secret").map(l=>{
   const open=state.expanded.includes(l.id);
@@ -21,7 +23,7 @@ function renderTree(parent){
   return '<div class="map-tree-row'+(state.location===l.id?' current':'')+(locked?' locked':'')+'">'+
    '<button class="tree-toggle" data-toggle="'+l.id+'" aria-label="'+(open?'Tutup':'Buka')+' cabang '+esc(l.name)+'" '+(!hasChildren?'disabled':'')+'>'+(hasChildren?(open?'⌄':'›'):'·')+'</button>'+
    '<button class="map-location" data-enter="'+l.id+'" '+(locked?'disabled':'')+'>'+esc(l.name)+'</button>'+
-   (locked?'<span class="map-lock">Terkunci</span>':'')+'</div>'+
+   (locked?'<span class="map-lock" title="Terkunci">'+lockIcon+'</span>':'')+'</div>'+
    (open&&hasChildren?'<div class="tree-indent">'+renderTree(l.id)+'</div>':'');
  }).join("");
 }
@@ -34,8 +36,8 @@ function locationItem(l){
  const locked=l.access==="limited";
  return '<div class="location-list-row'+(locked?' locked':'')+'">'+
  '<button class="place-tile" data-enter="'+l.id+'" '+(locked?'disabled':'')+' aria-label="Buka '+esc(l.name)+'">'+photo(l.id,"tile-photo")+'</button>'+
- '<button class="location-entry" data-enter="'+l.id+'" '+(locked?'disabled':'')+'><strong>'+esc(l.name)+'</strong><span>'+esc(l.description)+(locked?' · Terkunci':'')+'</span></button>'+
- '<span class="entry-chevron">'+(locked?'⌑':'›')+'</span></div>';
+ '<button class="location-entry" data-enter="'+l.id+'" '+(locked?'disabled':'')+'><strong>'+esc(l.name)+'</strong><span>'+esc(l.description)+'</span></button>'+
+ '<span class="entry-chevron">'+(locked?lockIcon:'›')+'</span></div>';
 }
 function npcItem(n){
  return '<div class="location-list-row"><button class="person-tile" data-npc="'+n.id+'" aria-label="Bicara dengan '+esc(n.name)+'">'+esc(n.name.charAt(0))+'</button>'+
@@ -52,10 +54,10 @@ function explorer(){
  photo(current.id,"location-hero")+
  '<div class="location-banner-overlay"><h2 class="heading location-title">'+esc(current.name)+'</h2><p class="location-description">'+esc(current.description)+'</p></div></section>'+
  '<div class="location-content"><div class="location-actionbar">'+
- '<button class="location-action" data-tabgo="memory" aria-label="Buka memory"><span aria-hidden="true">▤</span> Memory</button>'+
- '<button class="location-action" data-open-map aria-label="Buka peta"><span aria-hidden="true">⌖</span> Map</button>'+
- (parent?'<button class="location-action" data-enter="'+parent.id+'" aria-label="Kembali ke '+esc(parent.name)+'"><span aria-hidden="true">‹</span> '+esc(parent.name)+'</button>':'')+
- '<button class="quiet save-shortcut" id="saveMenu" aria-label="Save">⋯</button></div>'+
+ '<div class="action-group action-left"><button class="location-action map-action" data-open-map aria-label="Buka peta">'+mapIcon+' Map</button>'+
+ (parent?'<button class="location-action parent-action" data-enter="'+parent.id+'" aria-label="Kembali ke '+esc(parent.name)+'"><span aria-hidden="true">‹</span> '+esc(parent.name)+'</button>':'')+'</div>'+
+ '<div class="action-group action-right"><button class="location-action" data-tabgo="memory" aria-label="Buka memory">Memory</button>'+
+ '<button class="quiet save-shortcut" id="saveMenu" aria-label="Save">⋯</button></div></div>'+
  '<div class="location-list">'+children.map(locationItem).join("")+people.map(npcItem).join("")+
  (!children.length&&!people.length?'<div class="empty">Tidak ada yang terlihat di sini.</div>':'')+'</div></div>';
 }
