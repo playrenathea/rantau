@@ -84,3 +84,7 @@ main.location-screen{padding:0 0 56px}
 #modalContent{padding-top:7px}
 .dialog-close{position:absolute;right:12px;top:12px;width:30px;height:30px;display:grid;place-items:center;z-index:1}
 #modalContent h2{padding-right:35px}
+
+/* Farewell is emoji-only: no visible labels or explanatory copy. */
+.farewell-choices{margin:16px 0 18px}
+.farewell-choices button{font-size:32px;min-height:70px}
