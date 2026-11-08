@@ -2,7 +2,7 @@ import {locations,information,relations,npcs,emojis,byId} from "../data.js";
 
 // Presentation only. A new view instance receives a snapshot of the current UI state.
 // Gameplay, persistence, navigation and event handling remain in app.js.
-export function createViews({state,draft,picker,pickerOpen}){
+export function createViews({state,draft,picker,pickerOpen,memoryFilter="all"}){
  const loc=id=>locations.find(x=>x.id===id);
  const npc=id=>npcs.find(x=>x.id===id);
  const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -43,13 +43,15 @@ function explorer(){
  const parent=current.parent?loc(current.parent):null;
  const children=locations.filter(l=>l.parent===current.id&&l.access!=="secret");
  const people=npcs.filter(n=>n.location===current.id);
+ const unlocked=information.filter(i=>state.knowledge[i.id]>0).length+relations.filter(r=>state.relations[r.id]>0).length;
+ const total=information.length+relations.length;
  return '<section class="location-banner">'+
  photo(current.id,"location-hero")+
  '<div class="location-banner-overlay"><h2 class="heading location-title" data-memory-hold="'+current.id+'">'+esc(current.name)+'</h2><p class="location-description">'+esc(current.description)+'</p></div></section>'+
  '<div class="location-content"><div class="location-actionbar">'+
  '<div class="action-group action-left"><button class="location-action map-action" data-open-map aria-label="Buka peta">'+mapIcon+' Map</button>'+
  (parent?'<button class="location-action parent-action" data-enter="'+parent.id+'" aria-label="Kembali ke '+esc(parent.name)+'"><span aria-hidden="true">‹</span> '+esc(parent.name)+'</button>':'')+'</div>'+
- '<div class="action-group action-right"><button class="location-action" data-tabgo="memory" aria-label="Buka memory">Memory</button>'+
+ '<div class="action-group action-right"><button class="location-action" data-tabgo="memory" aria-label="Buka memory">Memory <span class="memory-progress">'+unlocked+'/'+total+'</span></button>'+
  '<button class="quiet save-shortcut" id="saveMenu" aria-label="Save">⋯</button></div></div>'+
  '<div class="location-list">'+children.map(locationItem).join("")+people.map(npcItem).join("")+
  (!children.length&&!people.length?'<div class="empty">Tidak ada yang terlihat di sini.</div>':'')+'</div></div>';
@@ -81,7 +83,28 @@ function chat(){
  '</div>')+
  '</div>';
 }
-function memory(){const known=information.filter(i=>state.knowledge[i.id]>0);const knownRel=relations.filter(r=>state.relations[r.id]>0);return '<div class="memory-header"><h2 class="heading">Memory</h2><button class="map-close" data-close-memory aria-label="Tutup memory">✕</button></div><p class="section-label">Information · '+known.length+'</p>'+known.map(i=>'<button class="memory-item" data-memory="'+i.id+'"><div><strong>'+esc(i.name)+'</strong><div class="tag">'+esc(i.type)+'</div></div><span class="pill">Lv '+state.knowledge[i.id]+'</span></button>').join("")+'<hr class="divider"><p class="section-label">Relationships · '+knownRel.length+'</p>'+(knownRel.map(r=>'<button class="memory-item" data-memory="'+r.id+'"><strong>'+esc(byId(r.a)?.name)+' × '+esc(byId(r.b)?.name)+'</strong><span class="pill">Lv '+state.relations[r.id]+'</span></button>').join("")||'<p class="empty">Belum ada informasi relasi yang terbuka.</p>');}
+function memory(){
+ const known=information.filter(i=>state.knowledge[i.id]>0);
+ const knownRel=relations.filter(r=>state.relations[r.id]>0);
+ const types=[...new Set(information.map(i=>i.type))];
+ const filters=[["all","All"],...types.map(t=>[t,t]),["Relationships","Relationships"]];
+ const filterBar='<div class="memory-filters" role="group" aria-label="Filter memory">'+
+  filters.map(([key,label])=>'<button class="memory-filter'+(memoryFilter===key?' active':'')+
+   '" data-memory-filter="'+esc(key)+'" aria-pressed="'+(memoryFilter===key)+'">'+esc(label)+'</button>').join("")+'</div>';
+ const shown=memoryFilter==="all"?known:known.filter(i=>i.type===memoryFilter);
+ const showRel=memoryFilter==="all"||memoryFilter==="Relationships";
+ const items=memoryFilter==="Relationships"?[]:shown.map(i=>'<button class="memory-item" data-memory="'+i.id+
+  '"><div><strong>'+esc(i.name)+'</strong><div class="tag">'+esc(i.type)+'</div></div><span class="pill">Lv '+state.knowledge[i.id]+'</span></button>');
+ const relItems=showRel?knownRel.map(r=>'<button class="memory-item" data-memory="'+r.id+'"><strong>'+
+  esc(byId(r.a)?.name)+' × '+esc(byId(r.b)?.name)+'</strong><span class="pill">Lv '+state.relations[r.id]+'</span></button>'):[];
+ return '<div class="memory-header"><h2 class="heading">Memory</h2><button class="map-close" data-close-memory aria-label="Tutup memory">✕</button></div>'+
+  filterBar+
+  (memoryFilter==="all"?'<p class="section-label">Information · '+known.length+'</p>':'')+
+  items.join("")+
+  (memoryFilter==="all"?'<hr class="divider"><p class="section-label">Relationships · '+knownRel.length+'</p>':'')+
+  relItems.join("")+
+  (!items.length&&!relItems.length?'<p class="empty">Belum ada informasi untuk kategori ini.</p>':'');
+}
 
  return {explorer,chat,memory};
 }
