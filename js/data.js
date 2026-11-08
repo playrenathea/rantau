@@ -69,7 +69,7 @@ export const emojiDescriptions={
   "❤️": "Kecintaan, kesukaan mendalam, dukungan penuh.",
   "👍": "Persetujuan, dukungan, pembenaran.",
   "👎": "Penolakan, pertentangan, ketidaksetujuan.",
-  "🙏": "Penghormatan, penghargaan, pengakuan superioritas.",
+  "🙏": "Penghormatan, penghargaan, permohonan maaf, kerendahan diri.",
   "🫵": "Tekanan, intimidasi, tuntutan, dominasi.",
   "🤣": "Kelucuan, humor, ejekan, penghinaan.",
   "❓": "Pertanyaan, kebingungan, ketidaktahuan, rasa ingin tahu.",
