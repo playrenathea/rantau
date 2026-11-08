@@ -1,6 +1,5 @@
 /** Action / Reaction planning. Pure gameplay decisions; no psychological simulation. */
 import {parseMessage} from './parser.js';
-import {EMOJI_PROFILES} from './emoji-profiles.js';
 import {effectiveOpenness} from './emoji-eval.js';
 
 export const RESPONSE_CONFIG={
@@ -13,7 +12,6 @@ export const RESPONSE_CONFIG={
 const topic=(id)=>({kind:'info',id});
 const emoji=(value)=>({kind:'emoji',value});
 const clamp01=x=>Math.max(0,Math.min(1,x));
-const cap=x=>Math.max(0,Math.min(10,x));
 const pageType=(id,world)=>world.pages?.[id]?.type || world.types?.[id] || null;
 const isPersonType=type=>type==='Individual'||type==='Group';
 const matchesFilter=(type,filter)=>!filter || (filter==='IndividualOrGroup' ? isPersonType(type) : filter===type);
@@ -31,7 +29,17 @@ const effectiveState=({impact,npcState})=>impact?.nextState||npcState||{v:5,d:5,
 /** Every candidate has a real topic or reason. Never fabricate an answer. */
 export function generateActionCandidates({features,impact,world={},npcState,history=[],config=RESPONSE_CONFIG}){
   const state=effectiveState({impact,npcState});
-  const asks=impact?.emoji?.asks||[];
+  const asks=[...(impact?.emoji?.asks||[])];
+  // Emoji-only questions refer to the last Topic mentioned by the preceding NPC.
+  // This does not alter Part 1 cross-message Relationship rules.
+  if(features.parsed.kind==='EMOJI_ONLY' && features.previousNpc?.topics?.length){
+    const previousTopic=features.previousNpc.topics.at(-1).id;
+    const filters={'❓':null,'📍':'Location','⏳':'Time','👥':'IndividualOrGroup'};
+    for(const group of features.parsed.emojiGroups)for(const value of group.emojis){
+      if(!Object.hasOwn(filters,value))continue;
+      asks.push({topicId:previousTopic,kind:filters[value]?'filter':'basic',type:filters[value]});
+    }
+  }
   const requested=[...new Map(asks.map(a=>[a.topicId+'|'+(a.type||'basic'),a])).values()];
   const pages=Object.entries(features.counts).sort((a,b)=>b[1]-a[1]).map(([id])=>id);
   const topicIds=features.parsed.topics.map(x=>x.id);
