@@ -173,5 +173,15 @@ function send(){if(!state.activeNpc)return;const n=npc(state.activeNpc),rec=stat
 $("#closeModal").onclick=()=>modal.close();
 function openSaveMenu(){showModal('<h2>Save</h2><div class="actions"><button class="primary" id="exportButton">Export JSON</button><button class="secondary" id="importButton">Import</button></div><p><button class="secondary full" id="resetButton">Reset</button></p>');}
 modal.addEventListener("click",e=>{const choice=e.target.closest("[data-farewell]");if(choice){finishConversation(choice.dataset.farewell);return;}if(e.target.closest("[data-cancel-farewell]")){modal.close();return;}const id=e.target.id;if(id==="exportButton"){downloadSave(state);modal.close();}if(id==="importButton"){$("#importSave").click();modal.close();}if(id==="resetButton"&&confirm("Hapus semua progres lokal Rantau pada browser ini?")){state=fresh();draft=[];save();modal.close();render();}});
+// Prevent accidental text selection/copy menus during press-and-hold gameplay.
+// Not a security boundary: public HTML/JS assets remain inspectable.
+function protectGameSurface(event){
+ if(!event.target.closest("#view, #modal"))return;
+ if(event.target.closest("input, textarea, select, [contenteditable], [data-allow-copy]"))return;
+ event.preventDefault();
+}
+for(const type of ["contextmenu","copy","cut","dragstart","selectstart"]){
+ document.addEventListener(type,protectGameSurface);
+}
 $("#importSave").addEventListener("change",async e=>{const file=e.target.files[0];if(!file)return;try{state=parseSave(await file.text());draft=[];save();render();alert("Save berhasil diimpor.");}catch(err){alert(err.message);}e.target.value="";});
 render();
