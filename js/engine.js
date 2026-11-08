@@ -12,6 +12,17 @@ export function evaluate(tokens,lastId,playerKnowledge,npcKnowledge){
  return {topics:unique,unknown,higher,lower,total:unique.length};
 }
 export function npcReply(npc,record,tokens,playerKnowledge){
+ // Empty message is an explicit Listen action. Let the NPC lead without treating it as repetition.
+ if(tokens.length===0){
+  const latest=[...record.history].reverse().find(m=>m.from==="npc"&&m.tokens.some(t=>t.kind==="info"));
+  const previous=latest?.tokens.find(t=>t.kind==="info")?.id;
+  const candidates=[...new Set([...npc.topics,...Object.keys(npc.knowledge)])].filter(id=>npc.knowledge[id]>0);
+  const topic=candidates.find(id=>id!==previous)||candidates[0];
+  record.p=clamp(record.p-0.35);
+  const response=topic?[{kind:"info",id:topic}]:[{kind:"emoji",value:"😐"}];
+  if(record.p<=0)response.push({kind:"emoji",value:"💤"});
+  return {response,exited:record.p<=0,debug:{listening:true,remaining:record.p}};
+ }
  const infoIds=tokens.filter(t=>t.kind==="info").map(t=>t.id);
  const lastNpcInfo=[...record.history].reverse().find(m=>m.from==="npc"&&m.tokens.some(t=>t.kind==="info"))?.tokens.filter(t=>t.kind==="info").at(-1)?.id;
  const result=evaluate(tokens,lastNpcInfo,playerKnowledge,npc.knowledge);
