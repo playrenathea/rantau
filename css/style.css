@@ -129,3 +129,9 @@ main.chat-screen{padding:0;min-height:100dvh;display:flex;flex-direction:column}
 .emoji-detail-symbol{font-size:44px;line-height:1.25;text-align:center;margin:8px 0 14px}
 .emoji-detail-description{font-size:14px;line-height:1.65;text-align:center;margin:0 4px 7px;color:var(--ink)}
 [data-emoji-hold]{-webkit-touch-callout:none;touch-action:pan-y;user-select:none}
+
+/* Inspect farewell emoji without ending the conversation or closing the chooser. */
+#modal{position:relative}
+.farewell-emoji-overlay{position:absolute;inset:0;z-index:4;border-radius:inherit;background:var(--paper);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:0;padding:26px 20px;min-height:100%}
+.farewell-emoji-back{position:absolute;top:12px;right:12px;font-size:13px;width:28px;height:28px}
+.farewell-choices [data-emoji-hold]{-webkit-touch-callout:none;touch-action:pan-y;user-select:none}
