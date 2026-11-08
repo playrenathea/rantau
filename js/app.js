@@ -87,14 +87,12 @@ function render(){
 }
 document.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const d=b.dataset;if(d.tab){setTab(d.tab);return;}if(b.hasAttribute("data-memory-back")||b.hasAttribute("data-close-memory")){setTab(previousTab);return;}if(b.hasAttribute("data-close-chat")){showFarewell();return;}if(b.hasAttribute("data-open-map")){state.mapOpen=true;render();return;}if(b.hasAttribute("data-close-map")){state.mapOpen=false;render();return;}if(d.tabgo){setTab(d.tabgo);return;}if(d.toggle){state.expanded=state.expanded.includes(d.toggle)?state.expanded.filter(x=>x!==d.toggle):[...state.expanded,d.toggle];save();render();return;}if(d.enter){const l=loc(d.enter);if(l?.access==="limited")return;state.location=l.id;state.mapOpen=false;save();render();return;}if(d.npc){const rec=state.npcStates[d.npc];if(rec.sessionClosed){rec.history=[];rec.used=[];rec.p=npc(d.npc).initial.p;rec.exited=false;rec.sessionClosed=false;save();}state.activeNpc=d.npc;draft=[];setTab("chat");return;}if(d.memoryNpc){const n=npc(d.memoryNpc);showModal('<h2>'+esc(n.name)+'</h2><p>'+esc(n.description)+'</p><p>Halaman informasi individu belum tersedia dalam sandbox.</p>');return;}if(d.memory){memoryDetail(d.memory);return;}if(d.picker){picker=d.picker;render();return;}if(d.addInfo){draft.push({kind:"info",id:d.addInfo});render();return;}if(d.addEmoji){draft.push({kind:"emoji",value:d.addEmoji});render();return;}if(d.remove!==undefined){draft.splice(Number(d.remove),1);render();return;}if(b.id==="saveMenu"){openSaveMenu();return;}if(b.id==="clearDraft"){draft=[];render();return;}if(b.id==="send"){send();return;}});
 function showFarewell(){
- const n=npc(state.activeNpc);
- if(!n)return;
- showModal('<h2>Akhiri percakapan?</h2><p>Pilih kesan terakhir yang ingin kamu tinggalkan pada '+esc(n.name)+'.</p>'+
- '<div class="farewell-choices">'+
- '<button data-farewell="🙏" aria-label="Berpisah dengan hormat">🙏<span>Hormat</span></button>'+
- '<button data-farewell="👎" aria-label="Berpisah dengan buruk">👎<span>Buruk</span></button>'+
- '<button data-farewell="🙂" aria-label="Berpisah dengan ramah">🙂<span>Ramah</span></button>'+
- '<button data-farewell="😎" aria-label="Berpisah dengan percaya diri">😎<span>Confident</span></button>'+
+ if(!npc(state.activeNpc))return;
+ showModal('<div class="farewell-choices" role="group" aria-label="Pilih kesan terakhir">'+
+ '<button data-farewell="🙏" aria-label="Hormat">🙏</button>'+
+ '<button data-farewell="👎" aria-label="Buruk">👎</button>'+
+ '<button data-farewell="🙂" aria-label="Ramah">🙂</button>'+
+ '<button data-farewell="😎" aria-label="Confident">😎</button>'+
  '</div><button class="secondary full" data-cancel-farewell>Batal</button>');
 }
 function finishConversation(emoji){
