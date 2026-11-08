@@ -45,7 +45,10 @@ export function generateActionCandidates({features,impact,world={},npcState,hist
   const topicIds=features.parsed.topics.map(x=>x.id);
   const current=topicIds[0]||pages[0]||null;
   const pending=requested.length>0;
-  const recentActions=history.filter(h=>h.from==='npc'&&h.action).slice(-3).map(x=>x.action);
+  const npcMessages=history.filter(h=>h.from==='npc');
+  const recentActions=npcMessages.slice(-3).map(x=>x.action);
+  const disclosed=new Set(npcMessages.flatMap(h=>(h.tokens||[]).filter(t=>t.kind==='info').map(t=>t.id)));
+  const undisclosed=id=>!disclosed.has(id);
   const novelty=action=>recentActions.filter(x=>x===action).length*config.repetitionOfNpcAction;
   const op=effectiveOpenness(world.openness??5,impact?.emoji?.modifiers||[])/10;
   const patience=clamp01(1-state.p/10);
@@ -65,9 +68,19 @@ export function generateActionCandidates({features,impact,world={},npcState,hist
       add('answer',target,config.base.answer+config.questionUrgency+config.topicRelevance+config.openness*op,
         'requested-information',{answer:chosen,questionType:req.kind});
     } else {
-      // A failed question is still recognized, but cannot magically yield information.
-      add('express',target,config.base.express+config.questionUrgency+0.18,'cannot-answer',{forcedReaction:'confused'});
-      add('ask',target,config.base.ask+config.questionUrgency*0.65,'clarify-unanswerable',{questionType:'basic'});
+      const blocked=new Set(world.blocked||[]);
+      const withheld=blocked.has(target) && known(target,world) ||
+        (req.kind==='filter' && (world.relationships||[]).some(r=>
+          (r.a===target||r.b===target) && known(r.id,world) &&
+          known(r.a===target?r.b:r.a,world) &&
+          matchesFilter(pageType(r.a===target?r.b:r.a,world),req.type) &&
+          (blocked.has(r.id)||blocked.has(r.a===target?r.b:r.a))));
+      if(withheld) add('withdraw',target,config.base.withdraw+config.questionUrgency+0.5,'withheld-information',{priority:2});
+      else {
+        // Unknown information differs from information deliberately withheld.
+        add('express',target,config.base.express+config.questionUrgency+0.18,'cannot-answer',{forcedReaction:'confused'});
+        add('ask',target,config.base.ask+config.questionUrgency*0.65,'clarify-unanswerable',{questionType:'basic'});
+      }
     }
   }
   for(const id of pages){
@@ -77,11 +90,11 @@ export function generateActionCandidates({features,impact,world={},npcState,hist
     if(interest==='❓' && playerLead>=2)add('ask',id,config.base.ask+config.interestAsk+config.topicRelevance*weight+config.knowledgeExciting*excited,'npc-question-interest',{questionType:'basic'});
     if(interest==='❗'&&contentKnown(id,world))add('express',id,config.base.express+config.interestDiscuss+config.topicRelevance*weight,'npc-discussion-interest');
     if(world.topicAttitudes?.[id])add('express',id,config.base.express+config.topicRelevance*weight+config.disagreeExpress*disagree,'topic-attitude');
-    if(contentKnown(id,world) && !pending)add('inform',id,config.base.inform+config.topicRelevance*weight+config.openness*op,'relevant-information');
+    if(contentKnown(id,world) && !pending && undisclosed(id))add('inform',id,config.base.inform+config.topicRelevance*weight+config.openness*op,'relevant-information');
   }
   // Player attitude is a default candidate, particularly relevant for emoji-only input.
   add('express','player',config.base.express+config.defaultPlayerAttitude+(features.parsed.kind==='EMOJI_ONLY'?0.65:0),'player-attitude');
-  const alternative=freshTarget(world,topicIds);
+  const alternative=freshTarget(world,[...topicIds,...disclosed]);
   if(alternative){
     add('redirect',alternative,config.base.redirect+config.boredRedirect*bored+config.lowPatience*patience*0.25-(pending?config.questionUrgency*0.8:0),'new-topic');
     if(!pending)add('inform',alternative,config.base.inform+config.openness*op+0.12,'npc-initiative');
