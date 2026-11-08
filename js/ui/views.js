@@ -51,7 +51,7 @@ function explorer(){
  '<div class="location-content"><div class="location-actionbar">'+
  '<div class="action-group action-left"><button class="location-action map-action" data-open-map aria-label="Buka peta">'+mapIcon+' Map</button>'+
  (parent?'<button class="location-action parent-action" data-enter="'+parent.id+'" aria-label="Kembali ke '+esc(parent.name)+'"><span aria-hidden="true">‹</span> '+esc(parent.name)+'</button>':'')+'</div>'+
- '<div class="action-group action-right"><button class="location-action" data-tabgo="memory" aria-label="Buka memory">Memory <span class="memory-progress">'+unlocked+'/'+total+'</span></button>'+
+ '<div class="action-group action-right"><button class="location-action" data-tabgo="memory" aria-label="Buka memory, '+unlocked+' halaman terbuka, '+total+' halaman terdaftar">Memory <span class="memory-progress">'+unlocked+' <span aria-hidden="true">|</span> '+total+'</span></button>'+
  '<button class="quiet save-shortcut" id="saveMenu" aria-label="Save">⋯</button></div></div>'+
  '<div class="location-list">'+children.map(locationItem).join("")+people.map(npcItem).join("")+
  (!children.length&&!people.length?'<div class="empty">Tidak ada yang terlihat di sini.</div>':'')+'</div></div>';
@@ -87,7 +87,7 @@ function memory(){
  const known=information.filter(i=>state.knowledge[i.id]>0);
  const knownRel=relations.filter(r=>state.relations[r.id]>0);
  const types=[...new Set(information.map(i=>i.type))];
- const filters=[["all","All"],...types.map(t=>[t,t]),["Relationships","Relationships"]];
+ const filters=[["all","All"],...types.map(t=>[t,t]),["Individual","Individual"],["Group","Group"],["Relationships","Relationships"]];
  const filterBar='<div class="memory-filters" role="group" aria-label="Filter memory">'+
   filters.map(([key,label])=>'<button class="memory-filter'+(memoryFilter===key?' active':'')+
    '" data-memory-filter="'+esc(key)+'" aria-pressed="'+(memoryFilter===key)+'">'+esc(label)+'</button>').join("")+'</div>';
