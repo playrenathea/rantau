@@ -54,7 +54,7 @@ function explorer(){
  '<div class="location-list">'+children.map(locationItem).join("")+people.map(npcItem).join("")+
  (!children.length&&!people.length?'<div class="empty">Tidak ada yang terlihat di sini.</div>':'')+'</div></div>';
 }
-function tokenHtml(t,removable=false,i=0){return '<span class="chip '+(t.kind==="emoji"?"emoji":"")+'" '+(removable?'data-remove="'+i+'"':t.kind==="info"?'data-memory-hold="'+t.id+'"':"")+'>'+esc(t.kind==="emoji"?t.value:(byId(t.id)?.name||t.id))+(removable?' <span class="x">×</span>':"")+'</span>';}
+function tokenHtml(t,removable=false,i=0){return '<span class="chip '+(t.kind==="emoji"?"emoji":"")+'" '+(removable?'data-remove="'+i+'" '+(t.kind==="emoji"?'data-emoji-hold="'+esc(t.value)+'"':'') :t.kind==="info"?'data-memory-hold="'+t.id+'"':'data-emoji-hold="'+esc(t.value)+'"')+'>'+esc(t.kind==="emoji"?t.value:(byId(t.id)?.name||t.id))+(removable?' <span class="x">×</span>':"")+'</span>';}
 function chat(){
  const n=npc(state.activeNpc);
  if(!n)return '<div class="chat-header"><span>Percakapan</span><button class="map-close" data-close-chat aria-label="Akhiri percakapan">✕</button></div>';
@@ -67,7 +67,7 @@ function chat(){
  }).join("");
  const options=picker==="info"
   ?information.filter(i=>state.knowledge[i.id]>0).map(i=>'<button data-add-info="'+i.id+'" data-memory-hold="'+i.id+'">'+esc(i.name)+'</button>').join("")
-  :emojis.map(e=>'<button class="emoji-opt" data-add-emoji="'+e+'">'+e+'</button>').join("");
+  :emojis.map(e=>'<button class="emoji-opt" data-add-emoji="'+e+'" data-emoji-hold="'+e+'">'+e+'</button>').join("");
  return '<div class="chat-layout">'+
  '<div class="chat-header"><div class="chat-person"><div class="chat-avatar">'+esc(n.name.charAt(0))+'</div><div class="chat-person-details"><div class="chat-person-name" data-memory-hold="npc:'+n.id+'">'+esc(n.name)+'</div><div class="chat-person-description">'+esc(n.description)+'</div></div></div>'+
  '<button class="map-close chat-close" data-close-chat aria-label="Akhiri percakapan">✕</button></div>'+
