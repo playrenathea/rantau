@@ -121,8 +121,9 @@ export function rankResponse({actions,reactions,config=RESPONSE_CONFIG}){
  const ordered=[...actions].sort((a,b)=>(b.priority||0)-(a.priority||0)||b.score-a.score||a.action.localeCompare(b.action)||String(a.target).localeCompare(String(b.target)));
  const action=ordered[0];
  const allowed={answer:['topic-attitude','disagree','exciting','boring','player-attitude'],ask:['exciting','confused','topic-attitude','player-attitude'],inform:['topic-attitude','exciting','player-attitude'],express:['topic-attitude','disagree','confused','exciting','boring','player-attitude'],redirect:['boring','topic-attitude','player-attitude'],withdraw:['boring','disagree','player-attitude']};
- const compatible=reactions.filter(r=>allowed[action.action]?.includes(r.kind) && (r.target===action.target || r.target==='player') &&
-  !(action.action==='answer' && r.kind==='boring' && r.reason!=='repetition'));
+ const compatible=reactions.filter(r=>allowed[action.action]?.includes(r.kind) && action.action!=='withdraw' &&
+   (r.target===action.target || (action.target!=='player' && action.action==='redirect' && r.target==='player' && r.kind==='boring')) &&
+   !(action.action==='answer' && r.kind==='boring' && r.reason!=='repetition'));
  const contextBonus=r=>action.reason==='npc-discussion-interest' && r.kind==='topic-attitude'?0.9:
    action.reason==='npc-question-interest' && r.kind==='exciting'?0.75:
    action.reason==='requested-information' && r.kind==='topic-attitude'?0.30:
@@ -178,6 +179,7 @@ export function composeNpcMessage(selection,{world={},impact=null}={}){
      else output.push(emoji(reactEmoji));
    }
    else if(action.action==='express' && id==='player')output.push(emoji(reactEmoji));
+   else if(action.action==='redirect' && reaction.kind==='boring' && reaction.target==='player')output.unshift(emoji(reactEmoji));
  }
  if(!output.length)output.push(emoji(expressAttitude(impact?.nextState)));
  const parsed=parseMessage(output);
