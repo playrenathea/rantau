@@ -46,12 +46,12 @@ export function npcReply(npc,record,tokens,playerKnowledge){
 /** Prototype final impression: persistent relationship changes after a farewell. */
 export function farewellEffect(record,emoji){
  const outcomes={
-  "🙂":{v:0.6,d:0,reply:"🙂"},
-  "😐":{v:0,d:0,reply:"😐"},
   "🙏":{v:0.7,d:0.7,reply:"🙂"},
-  "👎":{v:-1,d:0.3,reply:"🤨"}
+  "👎":{v:-1,d:-0.7,reply:"🤨"},
+  "🙂":{v:0.6,d:0,reply:"🙂"},
+  "😎":{v:0,d:-0.7,reply:"😎"}
  };
- const choice=outcomes[emoji]||outcomes["😐"];
+ const choice=outcomes[emoji]||{v:0,d:0,reply:"😐"};
  record.v=clamp(record.v+choice.v);
  record.d=clamp(record.d+choice.d);
  return choice.reply;
