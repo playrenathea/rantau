@@ -48,17 +48,22 @@ function explorer(){
  const parent=current.parent?loc(current.parent):null;
  const children=locations.filter(l=>l.parent===current.id&&l.access!=="secret");
  const people=npcs.filter(n=>n.location===current.id);
- return '<div class="explorer-header location-tools"><div class="location-actions"><button class="map-open" data-open-map aria-label="Buka peta">⌖ <span>Map</span></button><button class="map-open" data-tabgo="memory" aria-label="Buka memory">▤ <span>Memory</span></button></div><button class="quiet save-shortcut" id="saveMenu" aria-label="Save">⋯</button></div>'+
- (parent?'<button class="parent-back" data-enter="'+parent.id+'">‹ '+esc(parent.name)+'</button>':'')+
- '<h2 class="heading location-title">'+esc(current.name)+'</h2><p class="lede location-description">'+esc(current.description)+'</p>'+
+ return '<section class="location-banner">'+
  photo(current.id,"location-hero")+
+ '<div class="location-banner-overlay"><h2 class="heading location-title">'+esc(current.name)+'</h2><p class="location-description">'+esc(current.description)+'</p></div></section>'+
+ '<div class="location-content"><div class="location-actionbar">'+
+ '<button class="location-action" data-tabgo="memory" aria-label="Buka memory"><span aria-hidden="true">▤</span> Memory</button>'+
+ '<button class="location-action" data-open-map aria-label="Buka peta"><span aria-hidden="true">⌖</span> Map</button>'+
+ (parent?'<button class="location-action" data-enter="'+parent.id+'" aria-label="Kembali ke '+esc(parent.name)+'"><span aria-hidden="true">‹</span> '+esc(parent.name)+'</button>':'')+
+ '<button class="quiet save-shortcut" id="saveMenu" aria-label="Save">⋯</button></div>'+
  '<div class="location-list">'+children.map(locationItem).join("")+people.map(npcItem).join("")+
- (!children.length&&!people.length?'<div class="empty">Tidak ada yang terlihat di sini.</div>':'')+'</div>';
+ (!children.length&&!people.length?'<div class="empty">Tidak ada yang terlihat di sini.</div>':'')+'</div></div>';
 }
 function tokenHtml(t,removable=false,i=0){return '<span class="chip '+(t.kind==="emoji"?"emoji":"")+'" '+(removable?'data-remove="'+i+'"':"")+'>'+esc(t.kind==="emoji"?t.value:(byId(t.id)?.name||t.id))+(removable?' <span class="x">×</span>':"")+'</span>';}
 function chat(){const n=npc(state.activeNpc);if(!n)return '<button class="back" data-tabgo="explorer">← Kembali</button><h2 class="heading">Percakapan</h2>';const rec=state.npcStates[n.id];return '<div class="toolbar"><button class="back" data-tabgo="explorer">← Explorer</button></div><h2 class="heading" style="margin-top:19px">'+esc(n.name)+'</h2><p class="lede">'+esc(n.description)+'</p><div class="conversation">'+(rec.history.length?rec.history.map(m=>'<div class="message '+(m.from==="player"?"player":"")+'"><div class="sender">'+(m.from==="player"?"Kamu":esc(n.name))+'</div><div class="bubble">'+m.tokens.map(t=>tokenHtml(t)).join("")+'</div></div>').join(""):'<div class="empty">Percakapan dimulai. Susun pesan dari informasi dan emoji.</div>')+'</div>'+(rec.exited?'<div class="empty">'+esc(n.name)+' sudah mengakhiri percakapan. Kembali lagi lain waktu (fitur reset sesi akan dikembangkan).</div>':'<div class="composer"><div class="section-label">Susun pesan</div><div class="draft">'+(draft.length?draft.map((t,i)=>tokenHtml(t,true,i)).join(""):'<span class="hint">Ketuk token untuk menambahkan. Ketuk token tersusun untuk menghapus.</span>')+'</div><div class="actions"><button class="secondary" id="clearDraft">Hapus</button><button class="primary" id="send" '+(!draft.length?"disabled":"")+'>Kirim pesan →</button></div><hr class="divider"><div class="actions"><button class="'+(picker==="info"?"primary":"secondary")+'" data-picker="info">Information</button><button class="'+(picker==="emoji"?"primary":"secondary")+'" data-picker="emoji">Emoji</button></div><div class="picker">'+(picker==="info"?information.filter(i=>state.knowledge[i.id]>0).map(i=>'<button data-add-info="'+i.id+'">'+esc(i.name)+'</button>').join(""):emojis.map(e=>'<button class="emoji-opt" data-add-emoji="'+e+'">'+e+'</button>').join(""))+'</div></div>');}
 function memory(){const known=information.filter(i=>state.knowledge[i.id]>0);const knownRel=relations.filter(r=>state.relations[r.id]>0);return '<button class="back memory-back" data-memory-back>← Kembali</button><h2 class="heading">Memory</h2><p class="section-label">Information · '+known.length+'</p>'+known.map(i=>'<button class="memory-item" data-memory="'+i.id+'"><div><strong>'+esc(i.name)+'</strong><div class="tag">'+esc(i.type)+'</div></div><span class="pill">Lv '+state.knowledge[i.id]+'</span></button>').join("")+'<hr class="divider"><p class="section-label">Relationships · '+knownRel.length+'</p>'+(knownRel.map(r=>'<button class="memory-item" data-memory="'+r.id+'"><strong>'+esc(byId(r.a)?.name)+' × '+esc(byId(r.b)?.name)+'</strong><span class="pill">Lv '+state.relations[r.id]+'</span></button>').join("")||'<p class="empty">Belum ada informasi relasi yang terbuka.</p>');}
 function render(){
+ view.classList.toggle("location-screen",state.tab==="explorer"&&!state.mapOpen);
  view.innerHTML=state.tab==="chat"?chat():state.tab==="memory"?memory():explorer();
  view.querySelectorAll("[data-enter]").forEach(el=>{
   if(byId(el.dataset.enter))bindHold(el,el.dataset.enter);
