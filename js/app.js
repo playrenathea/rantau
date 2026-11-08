@@ -35,13 +35,13 @@ function emojiDetail(emoji){
  if(!description)return;
  showModal('<div class="emoji-detail-symbol">'+esc(emoji)+'</div><p class="emoji-detail-description">'+esc(description)+'</p>');
 }
-function bindEmojiHold(element,emoji){
+function bindEmojiHold(element,emoji,onHold=emojiDetail){
  let timer,held=false;
  element.addEventListener("pointerdown",e=>{
   if(e.button!==0&&e.pointerType!=="touch")return;
   held=false;
   clearTimeout(timer);
-  timer=setTimeout(()=>{held=true;emojiDetail(emoji)},550);
+  timer=setTimeout(()=>{held=true;onHold(emoji)},550);
  });
  for(const event of ["pointerup","pointerleave","pointercancel"]){
   element.addEventListener(event,()=>clearTimeout(timer));
@@ -49,7 +49,7 @@ function bindEmojiHold(element,emoji){
  element.addEventListener("contextmenu",e=>{
   e.preventDefault();
   clearTimeout(timer);
-  if(!held){held=true;emojiDetail(emoji);}
+  if(!held){held=true;onHold(emoji);}
  });
  element.addEventListener("click",e=>{
   if(!held)return;
@@ -129,14 +129,28 @@ function handleClick(event){
  if(button.id==="send"){send();return;}
 }
 document.addEventListener("click",handleClick);
+function showFarewellEmojiDetail(emoji){
+ const description=emojiDescriptions[emoji];
+ if(!description||!modal.open)return;
+ modal.querySelector(".farewell-emoji-overlay")?.remove();
+ const overlay=document.createElement("div");
+ overlay.className="farewell-emoji-overlay";
+ overlay.innerHTML='<button type="button" class="map-close farewell-emoji-back" aria-label="Kembali ke pilihan akhir percakapan">✕</button>'+
+  '<div class="emoji-detail-symbol">'+esc(emoji)+'</div>'+
+  '<p class="emoji-detail-description">'+esc(description)+'</p>';
+ modal.appendChild(overlay);
+ overlay.querySelector(".farewell-emoji-back").addEventListener("click",()=>overlay.remove());
+}
 function showFarewell(){
  if(!npc(state.activeNpc))return;
  showModal('<h2>Akhiri percakapan?</h2><div class="farewell-choices" role="group" aria-label="Pilih kesan terakhir">'+
- '<button data-farewell="🙏" aria-label="Hormat">🙏</button>'+
- '<button data-farewell="👎" aria-label="Buruk">👎</button>'+
- '<button data-farewell="🙂" aria-label="Ramah">🙂</button>'+
- '<button data-farewell="😎" aria-label="Confident">😎</button>'+
+ '<button data-farewell="🙏" data-emoji-hold="🙏" aria-label="Hormat">🙏</button>'+
+ '<button data-farewell="👎" data-emoji-hold="👎" aria-label="Buruk">👎</button>'+
+ '<button data-farewell="🙂" data-emoji-hold="🙂" aria-label="Ramah">🙂</button>'+
+ '<button data-farewell="😎" data-emoji-hold="😎" aria-label="Confident">😎</button>'+
  '</div><button class="secondary full" data-cancel-farewell>Batal</button>');
+ modal.querySelectorAll(".farewell-choices [data-emoji-hold]").forEach(el=>
+  bindEmojiHold(el,el.dataset.emojiHold,showFarewellEmojiDetail));
 }
 function finishConversation(emoji){
  const n=npc(state.activeNpc);
