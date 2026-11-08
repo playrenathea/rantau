@@ -57,3 +57,28 @@ User talks to NPC
 4. Connect action completion to the location generator and UI renderer.
 5. Migrate existing saves safely; never silently reset old progress.
 6. Test location entry, farewell, empty Listen, first impression, 10-action eviction, and save/import/export.
+
+## Knowledge and question scaffolding (not wired)
+
+- `knowledge.js`: pure Memory Page branch operations. Example page: `{branches:[{id:"A",level:4}],pruned:[]}`. `visibleLevel(page)` is the maximum retained branch level, not a separately saved number. A page with 2+ live branches cannot advance. `selectBranch` prunes the others and calculates regression **only when the player chooses**; a discovery does not regress knowledge. Pruned branches never return as new options. A later encounter with a pruned branch is classified as contradiction.
+- `learning.js`: Knowledge NPC and player are compared via their **highest visible levels**, with NPC needing a lead of at least 2. Learning needs at least one trigger: earlier relevant question, repeated topic, or an adjacent Listen. Listen applies only to the immediately preceding and following **NPC message**, not the whole chat. Each Memory Page may gain at most +1 per interaction; **no first-impression exception for Knowledge**.
+- `questions.js`: `Where` -> Location, `When` -> Time, `Who` -> Individual, searching symmetric pairs in ordinary relationships; the operator doesn't invent knowledge or automatically grant a correct answer.
+
+### Agreed semantics and visual distinction
+
+- **Blue**: no contradiction; qualifying information can advance the current branch if the Memory Page is not branched.
+- **Orange**: contradictory information; on qualifying exposure, a truly new, unpruned alternative can be discovered. Finding it does not immediately lower Knowledge, and the player resolves it later inside the Memory Page. While unresolved, all branches remain valid as player understandings and the visible level is their maximum; ordinary advancement is blocked.
+- On resolution, every discarded branch and knowledge dependent on it is removed. Regression is based on the retained branch's level and can be zero.
+- The Knowledge gate (NPC level - player visible level >= 2) also applies to branch discovery. Question/repetition/adjacent Listen triggers apply to both.
+- Question operators and the Individual information type are contracts only. The sample world data does not yet model NPCs as `Individual` information entries.
+
+### Still open rather than guessed
+
+- The representation of facts/dependencies inside a branch and how their pruning propagates.
+- How exact prior questions/repetitions are detected and scoped in chat.
+- Whether additional unresolved branches can be discovered while a page is already branched.
+- How a particular NPC response is classified as contradictory, aligned, false, or unknown, and how source knowledge supports that.
+- Actual conversion from temporary conversational state into permanent Knowledge outcomes.
+- Data migration and UI integration. The current prototype's chat and knowledge displays continue unchanged.
+
+Next design focus: **natural, intuitive core Chat experience**: turn-taking, response patterns, affordances for asking/repeating/listening, feedback on learning, NPC conversational initiative, and how the composer/picker behaves. Prototype and compare sample exchanges before locking any additional math.
