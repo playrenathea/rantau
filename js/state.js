@@ -1,0 +1,7 @@
+import {npcs} from "./data.js";
+const KEY="rantau.save.v1";
+export const fresh=()=>({schemaVersion:1,location:"pasar",tab:"explorer",expanded:["kota","niaga"],knowledge:{kota:2,pasar:2,warung:1,penginapan:1,militer:1,saudagar:1,malam:1},relations:{},npcStates:Object.fromEntries(npcs.map(n=>[n.id,{...n.initial,history:[],used:[],exited:false}])),activeNpc:null});
+export function load(){try{const raw=localStorage.getItem(KEY);if(!raw)return fresh();const s=JSON.parse(raw);if(s.schemaVersion!==1)throw Error("Versi save tidak cocok");const base=fresh();return {...base,...s,knowledge:{...base.knowledge,...s.knowledge},npcStates:{...base.npcStates,...s.npcStates}};}catch(e){console.warn("Save invalid, starting fresh",e);return fresh();}}
+export function persist(s){try{localStorage.setItem(KEY,JSON.stringify({...s,tab:undefined}));}catch(e){console.warn("Save gagal disimpan",e);}}
+export function downloadSave(s){const blob=new Blob([JSON.stringify(s,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="rantau-save-v1.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+export function parseSave(text){const data=JSON.parse(text);if(data?.schemaVersion!==1||!data.knowledge||!data.npcStates||typeof data.location!=="string")throw Error("File save tidak valid atau versinya tidak didukung");return {...fresh(),...data};}
