@@ -11,8 +11,24 @@ const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&
 const save=()=>persist(state);
 function setTab(tab){if(tab==="memory"&&state.tab!=="memory")previousTab=state.tab;state.tab=tab;state.mapOpen=false;render();}
 function showModal(html){$("#modalContent").innerHTML=html;modal.showModal();}
-function memoryDetail(id){const item=byId(id)||relations.find(r=>r.id===id);if(!item)return;const level=state.knowledge[id]||state.relations[id]||0;if(!level){showModal('<h2>Belum dikenal</h2><p>Kamu belum memiliki informasi tentang hal ini.</p>');return;}const facts=item.facts.slice(0,Math.max(0,level-1));showModal('<div class="section-label">Memory · Level '+level+'</div><h2>'+esc(item.name||byId(item.a)?.name+" × "+byId(item.b)?.name)+'</h2>'+(facts.length?'<ol class="knowledge">'+facts.map(f=>'<li>'+esc(f)+'</li>').join("")+'</ol>':'<p>Kamu sadar akan keberadaannya, tetapi belum mengetahui lebih jauh.</p>'));}
-function bindHold(element,id){let timer,held=false;element.addEventListener("pointerdown",()=>{held=false;timer=setTimeout(()=>{held=true;memoryDetail(id)},550)});for(const ev of ["pointerup","pointerleave","pointercancel"])element.addEventListener(ev,()=>clearTimeout(timer));element.addEventListener("contextmenu",e=>{e.preventDefault();memoryDetail(id)});element.addEventListener("click",e=>{if(held){e.preventDefault();e.stopPropagation();held=false}},true);}
+function memoryDetail(id){
+ const person=id.startsWith("npc:")?npc(id.slice(4)):null;
+ if(person){showModal('<div class="section-label">Memory · Individu</div><h2>'+esc(person.name)+'</h2><p>'+esc(person.description)+'</p>');return;}
+ const item=byId(id)||relations.find(r=>r.id===id),place=loc(id);
+ const level=state.knowledge[id]||state.relations[id]||0;
+ if(!level&&!place)return;
+ const facts=item?.facts?.slice(0,Math.max(0,level-1))||[];
+ const name=item?(item.name||byId(item.a)?.name+" × "+byId(item.b)?.name):place?.name||id;
+ showModal('<div class="section-label">Memory'+(level?' · Level '+level:' · Lokasi')+'</div><h2>'+esc(name)+'</h2>'+
+ (facts.length?'<ol class="knowledge">'+facts.map(f=>'<li>'+esc(f)+'</li>').join("")+'</ol>':'<p>'+esc(place?.description||'Kamu tahu keberadaannya, tetapi belum tahu lebih jauh.')+'</p>'));
+}
+function bindHold(element,id){
+ let timer,held=false;
+ element.addEventListener("pointerdown",()=>{held=false;clearTimeout(timer);timer=setTimeout(()=>{held=true;memoryDetail(id)},550)});
+ for(const event of ["pointerup","pointerleave","pointercancel"])element.addEventListener(event,()=>clearTimeout(timer));
+ element.addEventListener("contextmenu",e=>{e.preventDefault();clearTimeout(timer);held=true;memoryDetail(id)});
+ element.addEventListener("click",e=>{if(held){e.preventDefault();e.stopImmediatePropagation();held=false}},true);
+}
 const mapIcon="<svg class=\"ui-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3z\"/><path d=\"M9 3v15M15 6v15\"/></svg>";
 const lockIcon="<svg class=\"ui-icon lock-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"5\" y=\"10\" width=\"14\" height=\"11\" rx=\"2\"/><path d=\"M8 10V7a4 4 0 0 1 8 0v3\"/></svg>";
 function renderTree(parent){
@@ -22,7 +38,7 @@ function renderTree(parent){
   const locked=l.access==="limited";
   return '<div class="map-tree-row'+(state.location===l.id?' current':'')+(locked?' locked':'')+'">'+
    '<button class="tree-toggle" data-toggle="'+l.id+'" aria-label="'+(open?'Tutup':'Buka')+' cabang '+esc(l.name)+'" '+(!hasChildren?'disabled':'')+'>'+(hasChildren?(open?'⌄':'›'):'·')+'</button>'+
-   '<button class="map-location" data-enter="'+l.id+'" '+(locked?'disabled':'')+'>'+esc(l.name)+'</button>'+
+   '<button class="map-location" data-memory-hold="'+l.id+'" data-enter="'+l.id+'" '+(locked?'disabled':'')+'>'+esc(l.name)+'</button>'+
    (locked?'<span class="map-lock" title="Terkunci">'+lockIcon+'</span>':'')+'</div>'+
    (open&&hasChildren?'<div class="tree-indent">'+renderTree(l.id)+'</div>':'');
  }).join("");
@@ -36,12 +52,12 @@ function locationItem(l){
  const locked=l.access==="limited";
  return '<div class="location-list-row'+(locked?' locked':'')+'">'+
  '<button class="place-tile" data-enter="'+l.id+'" '+(locked?'disabled':'')+' aria-label="Buka '+esc(l.name)+'">'+photo(l.id,"tile-photo")+'</button>'+
- '<button class="location-entry" data-enter="'+l.id+'" '+(locked?'disabled':'')+'><strong>'+esc(l.name)+'</strong><span>'+esc(l.description)+'</span></button>'+
+ '<button class="location-entry" data-memory-hold="'+l.id+'" data-enter="'+l.id+'" '+(locked?'disabled':'')+'><strong>'+esc(l.name)+'</strong><span>'+esc(l.description)+'</span></button>'+
  '<span class="entry-chevron">'+(locked?lockIcon:'›')+'</span></div>';
 }
 function npcItem(n){
  return '<div class="location-list-row"><button class="person-tile" data-npc="'+n.id+'" aria-label="Bicara dengan '+esc(n.name)+'">'+esc(n.name.charAt(0))+'</button>'+
- '<button class="location-entry" data-npc="'+n.id+'"><strong>'+esc(n.name)+'</strong><span>'+esc(n.description)+'</span></button><span class="entry-chevron">›</span></div>';
+ '<button class="location-entry" data-memory-hold="npc:'+n.id+'" data-npc="'+n.id+'"><strong>'+esc(n.name)+'</strong><span>'+esc(n.description)+'</span></button><span class="entry-chevron">›</span></div>';
 }
 function explorer(){
  const current=loc(state.location)||loc("kota");
@@ -52,7 +68,7 @@ function explorer(){
  const people=npcs.filter(n=>n.location===current.id);
  return '<section class="location-banner">'+
  photo(current.id,"location-hero")+
- '<div class="location-banner-overlay"><h2 class="heading location-title">'+esc(current.name)+'</h2><p class="location-description">'+esc(current.description)+'</p></div></section>'+
+ '<div class="location-banner-overlay"><h2 class="heading location-title" data-memory-hold="'+current.id+'">'+esc(current.name)+'</h2><p class="location-description">'+esc(current.description)+'</p></div></section>'+
  '<div class="location-content"><div class="location-actionbar">'+
  '<div class="action-group action-left"><button class="location-action map-action" data-open-map aria-label="Buka peta">'+mapIcon+' Map</button>'+
  (parent?'<button class="location-action parent-action" data-enter="'+parent.id+'" aria-label="Kembali ke '+esc(parent.name)+'"><span aria-hidden="true">‹</span> '+esc(parent.name)+'</button>':'')+'</div>'+
@@ -61,7 +77,7 @@ function explorer(){
  '<div class="location-list">'+children.map(locationItem).join("")+people.map(npcItem).join("")+
  (!children.length&&!people.length?'<div class="empty">Tidak ada yang terlihat di sini.</div>':'')+'</div></div>';
 }
-function tokenHtml(t,removable=false,i=0){return '<span class="chip '+(t.kind==="emoji"?"emoji":"")+'" '+(removable?'data-remove="'+i+'"':"")+'>'+esc(t.kind==="emoji"?t.value:(byId(t.id)?.name||t.id))+(removable?' <span class="x">×</span>':"")+'</span>';}
+function tokenHtml(t,removable=false,i=0){return '<span class="chip '+(t.kind==="emoji"?"emoji":"")+'" '+(removable?'data-remove="'+i+'"':t.kind==="info"?'data-memory-hold="'+t.id+'"':"")+'>'+esc(t.kind==="emoji"?t.value:(byId(t.id)?.name||t.id))+(removable?' <span class="x">×</span>':"")+'</span>';}
 function chat(){
  const n=npc(state.activeNpc);
  if(!n)return '<div class="chat-header"><span>Percakapan</span><button class="map-close" data-close-chat aria-label="Akhiri percakapan">✕</button></div>';
@@ -73,18 +89,18 @@ function chat(){
    '</div></div>';
  }).join("");
  const options=picker==="info"
-  ?information.filter(i=>state.knowledge[i.id]>0).map(i=>'<button data-add-info="'+i.id+'">'+esc(i.name)+'</button>').join("")
+  ?information.filter(i=>state.knowledge[i.id]>0).map(i=>'<button data-add-info="'+i.id+'" data-memory-hold="'+i.id+'">'+esc(i.name)+'</button>').join("")
   :emojis.map(e=>'<button class="emoji-opt" data-add-emoji="'+e+'">'+e+'</button>').join("");
  return '<div class="chat-layout">'+
- '<div class="chat-header"><div class="chat-person"><div class="chat-avatar">'+esc(n.name.charAt(0))+'</div><div class="chat-person-name">'+esc(n.name)+'</div></div>'+
+ '<div class="chat-header"><div class="chat-person"><div class="chat-avatar">'+esc(n.name.charAt(0))+'</div><div class="chat-person-details"><div class="chat-person-name" data-memory-hold="npc:'+n.id+'">'+esc(n.name)+'</div><div class="chat-person-description">'+esc(n.description)+'</div></div></div>'+
  '<button class="map-close chat-close" data-close-chat aria-label="Akhiri percakapan">✕</button></div>'+
  '<div class="chat-messages">'+(messages||'<div class="chat-blank"></div>')+'</div>'+
  (rec.exited?'<div class="chat-ended">Percakapan telah berakhir.</div>':
  '<div class="chat-bottom">'+
- (pickerOpen?'<div class="chat-picker"><div class="chat-picker-tabs"><button class="'+(picker==="info"?"active":"")+'" data-picker="info">Topic</button><button class="'+(picker==="emoji"?"active":"")+'" data-picker="emoji">Emoji</button></div><div class="chat-picker-options">'+options+'</div></div>':'')+
  '<div class="chat-composer"><button class="chat-draft" data-toggle-picker aria-label="Pilih topic dan emoji" aria-expanded="'+pickerOpen+'">'+
  (draft.length?'<span class="chat-draft-tokens">'+draft.map((t,i)=>tokenHtml(t,true,i)).join("")+'</span>':'<span class="chat-placeholder"></span>')+
  '</button><button class="chat-send" id="send" aria-label="'+(draft.length?"Kirim pesan":"Dengarkan")+'">➤</button></div>'+
+ (pickerOpen?'<div class="chat-picker"><div class="chat-picker-tabs"><button class="'+(picker==="info"?"active":"")+'" data-picker="info">Topic</button><button class="'+(picker==="emoji"?"active":"")+'" data-picker="emoji">Emoji</button></div><div class="chat-picker-options">'+options+'</div></div>':'')+
  '</div>')+
  '</div>';
 }
@@ -93,22 +109,9 @@ function render(){
  view.classList.toggle("location-screen",state.tab==="explorer"&&!state.mapOpen);
  view.classList.toggle("chat-screen",state.tab==="chat");
  view.innerHTML=state.tab==="chat"?chat():state.tab==="memory"?memory():explorer();
- view.querySelectorAll("[data-enter]").forEach(el=>{
-  if(byId(el.dataset.enter))bindHold(el,el.dataset.enter);
- });
- view.querySelectorAll("[data-npc]").forEach(el=>{
-  let timer,held=false;
-  el.addEventListener("pointerdown",()=>{
-   held=false;
-   timer=setTimeout(()=>{
-    held=true;
-    showModal("<h2>"+esc(npc(el.dataset.npc).name)+"</h2><p>Memory NPC belum terbuka pada versi awal.</p>");
-   },600);
-  });
-  ["pointerup","pointerleave","pointercancel"].forEach(ev=>el.addEventListener(ev,()=>clearTimeout(timer)));
-  el.addEventListener("click",ev=>{
-   if(held){ev.stopPropagation();ev.preventDefault();held=false;}
-  },true);
+ view.querySelectorAll("[data-memory-hold]").forEach(el=>{
+  const id=el.dataset.memoryHold;
+  if(id.startsWith("npc:")||state.knowledge[id]>0||state.relations[id]>0||loc(id))bindHold(el,id);
  });
 }
 document.addEventListener("click",e=>{const removed=e.target.closest("[data-remove]");if(removed&&removed.closest(".chat-draft")){draft.splice(Number(removed.dataset.remove),1);pickerOpen=true;render();return;}const b=e.target.closest("button");if(!b)return;const d=b.dataset;if(d.tab){setTab(d.tab);return;}if(b.hasAttribute("data-memory-back")||b.hasAttribute("data-close-memory")){setTab(previousTab);return;}if(b.hasAttribute("data-close-chat")){showFarewell();return;}if(b.hasAttribute("data-open-map")){state.mapOpen=true;render();return;}if(b.hasAttribute("data-close-map")){state.mapOpen=false;render();return;}if(d.tabgo){setTab(d.tabgo);return;}if(d.toggle){state.expanded=state.expanded.includes(d.toggle)?state.expanded.filter(x=>x!==d.toggle):[...state.expanded,d.toggle];save();render();return;}if(d.enter){const l=loc(d.enter);if(l?.access==="limited")return;state.location=l.id;state.mapOpen=false;save();render();return;}if(d.npc){pickerOpen=false;const rec=state.npcStates[d.npc];if(rec.sessionClosed){rec.history=[];rec.used=[];rec.p=npc(d.npc).initial.p;rec.exited=false;rec.sessionClosed=false;save();}state.activeNpc=d.npc;draft=[];setTab("chat");return;}if(d.memoryNpc){const n=npc(d.memoryNpc);showModal('<h2>'+esc(n.name)+'</h2><p>'+esc(n.description)+'</p><p>Halaman informasi individu belum tersedia dalam sandbox.</p>');return;}if(d.memory){memoryDetail(d.memory);return;}if(b.hasAttribute("data-toggle-picker")){pickerOpen=!pickerOpen;render();return;}if(d.picker){picker=d.picker;pickerOpen=true;render();return;}if(d.addInfo){draft.push({kind:"info",id:d.addInfo});render();return;}if(d.addEmoji){draft.push({kind:"emoji",value:d.addEmoji});render();return;}if(d.remove!==undefined){draft.splice(Number(d.remove),1);render();return;}if(b.id==="saveMenu"){openSaveMenu();return;}if(b.id==="clearDraft"){draft=[];render();return;}if(b.id==="send"){send();return;}});
