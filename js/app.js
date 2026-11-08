@@ -135,8 +135,8 @@ function handleClick(event){
  if(d.memoryFilter!==undefined){memoryFilter=d.memoryFilter;render();return;}
  if(button.hasAttribute("data-toggle-picker")){pickerOpen=!pickerOpen;render();return;}
  if(d.picker){picker=d.picker;pickerOpen=true;render();return;}
- if(d.addInfo){draft.push({kind:"info",id:d.addInfo});render();return;}
- if(d.addEmoji){draft.push({kind:"emoji",value:d.addEmoji});render();return;}
+ if(d.addInfo){if(!draft.some(t=>t.kind==="info"&&t.id===d.addInfo)){draft.push({kind:"info",id:d.addInfo});render();}return;}
+ if(d.addEmoji){if(!draft.some(t=>t.kind==="emoji"&&t.value===d.addEmoji)){draft.push({kind:"emoji",value:d.addEmoji});render();}return;}
  if(d.remove!==undefined){draft.splice(Number(d.remove),1);render();return;}
  if(button.id==="saveMenu"){openSaveMenu();return;}
  if(button.id==="clearDraft"){draft=[];render();return;}
