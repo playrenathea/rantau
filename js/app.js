@@ -2,7 +2,7 @@ import {locations,relations,npcs,byId,emojiDescriptions} from "./data.js";
 import {createViews} from "./ui/views.js";
 import {npcReply,farewellEffect} from "./engine.js";
 import {fresh,load,persist,downloadSave,parseSave} from "./state.js";
-let state=load(),draft=[],picker="info",pickerOpen=false,previousTab="explorer";
+let state=load(),draft=[],picker="info",pickerOpen=false,memoryFilter="all",previousTab="explorer";
 state.mapOpen=false;
 const $=s=>document.querySelector(s);
 const view=$("#view"),modal=$("#modal");
@@ -61,7 +61,7 @@ function bindEmojiHold(element,emoji,onHold=emojiDetail){
 function render(){
  view.classList.toggle("location-screen",state.tab==="explorer"&&!state.mapOpen);
  view.classList.toggle("chat-screen",state.tab==="chat");
- const views=createViews({state,draft,picker,pickerOpen});
+ const views=createViews({state,draft,picker,pickerOpen,memoryFilter});
  view.innerHTML=state.tab==="chat"?views.chat():state.tab==="memory"?views.memory():views.explorer();
  view.querySelectorAll("[data-emoji-hold]").forEach(el=>bindEmojiHold(el,el.dataset.emojiHold));
  view.querySelectorAll("[data-memory-hold]").forEach(el=>{
@@ -119,6 +119,7 @@ function handleClick(event){
   return;
  }
  if(d.memory){memoryDetail(d.memory);return;}
+ if(d.memoryFilter!==undefined){memoryFilter=d.memoryFilter;render();return;}
  if(button.hasAttribute("data-toggle-picker")){pickerOpen=!pickerOpen;render();return;}
  if(d.picker){picker=d.picker;pickerOpen=true;render();return;}
  if(d.addInfo){draft.push({kind:"info",id:d.addInfo});render();return;}
