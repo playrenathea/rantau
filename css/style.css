@@ -57,3 +57,15 @@ main.location-screen{padding:0 0 56px}
 .location-action span{font-size:18px;font-weight:400}
 .location-actionbar .save-shortcut{margin-left:auto;font-size:22px;padding:0 3px}
 @media(max-width:360px){.location-actionbar{gap:11px}.location-content{padding:0 17px}.location-banner-overlay{padding-left:18px;padding-right:18px}}
+
+/* Location toolbar: directional actions left, utilities right */
+.location-actionbar{justify-content:space-between;gap:12px}
+.action-group{display:flex;align-items:center;min-width:0;gap:18px}
+.action-right{margin-left:auto;gap:15px;flex-shrink:0}
+.action-left{gap:16px}
+.location-actionbar .save-shortcut{margin-left:0;min-width:26px}
+.ui-icon{display:block;width:18px;height:18px;flex:none}
+.location-action.map-action{gap:6px}
+.map-lock{display:flex;align-items:center;justify-content:center;margin-left:auto;padding:0 5px;color:var(--muted)}
+.entry-chevron .lock-icon{width:17px;height:17px}
+@media(max-width:420px){.action-group{gap:11px}.action-left{gap:11px}.action-right{gap:10px}.location-action{font-size:12px}.location-actionbar{gap:8px}}
