@@ -2,7 +2,7 @@ import {locations,relations,npcs,byId} from "./data.js";
 import {createViews} from "./ui/views.js";
 import {npcReply,farewellEffect} from "./engine.js";
 import {fresh,load,persist,downloadSave,parseSave} from "./state.js";
-let state=load(),draft=[],picker="info",pickerOpen=false,openMemory=null,previousTab="explorer";
+let state=load(),draft=[],picker="info",pickerOpen=false,previousTab="explorer";
 state.mapOpen=false;
 const $=s=>document.querySelector(s);
 const view=$("#view"),modal=$("#modal");
@@ -40,7 +40,66 @@ function render(){
   if(id.startsWith("npc:")||state.knowledge[id]>0||state.relations[id]>0||loc(id))bindHold(el,id);
  });
 }
-document.addEventListener("click",e=>{const removed=e.target.closest("[data-remove]");if(removed&&removed.closest(".chat-draft")){draft.splice(Number(removed.dataset.remove),1);pickerOpen=true;render();return;}const b=e.target.closest("button");if(!b)return;const d=b.dataset;if(d.tab){setTab(d.tab);return;}if(b.hasAttribute("data-memory-back")||b.hasAttribute("data-close-memory")){setTab(previousTab);return;}if(b.hasAttribute("data-close-chat")){showFarewell();return;}if(b.hasAttribute("data-open-map")){state.mapOpen=true;render();return;}if(b.hasAttribute("data-close-map")){state.mapOpen=false;render();return;}if(d.tabgo){setTab(d.tabgo);return;}if(d.toggle){state.expanded=state.expanded.includes(d.toggle)?state.expanded.filter(x=>x!==d.toggle):[...state.expanded,d.toggle];save();render();return;}if(d.enter){const l=loc(d.enter);if(l?.access==="limited")return;state.location=l.id;state.mapOpen=false;save();render();return;}if(d.npc){pickerOpen=false;const rec=state.npcStates[d.npc];if(rec.sessionClosed){rec.history=[];rec.used=[];rec.p=npc(d.npc).initial.p;rec.exited=false;rec.sessionClosed=false;save();}state.activeNpc=d.npc;draft=[];setTab("chat");return;}if(d.memoryNpc){const n=npc(d.memoryNpc);showModal('<h2>'+esc(n.name)+'</h2><p>'+esc(n.description)+'</p><p>Halaman informasi individu belum tersedia dalam sandbox.</p>');return;}if(d.memory){memoryDetail(d.memory);return;}if(b.hasAttribute("data-toggle-picker")){pickerOpen=!pickerOpen;render();return;}if(d.picker){picker=d.picker;pickerOpen=true;render();return;}if(d.addInfo){draft.push({kind:"info",id:d.addInfo});render();return;}if(d.addEmoji){draft.push({kind:"emoji",value:d.addEmoji});render();return;}if(d.remove!==undefined){draft.splice(Number(d.remove),1);render();return;}if(b.id==="saveMenu"){openSaveMenu();return;}if(b.id==="clearDraft"){draft=[];render();return;}if(b.id==="send"){send();return;}});
+function handleClick(event){
+ const removed=event.target.closest("[data-remove]");
+ if(removed&&removed.closest(".chat-draft")){
+  draft.splice(Number(removed.dataset.remove),1);
+  pickerOpen=true;
+  render();
+  return;
+ }
+ const button=event.target.closest("button");
+ if(!button)return;
+ const d=button.dataset;
+ if(d.tab){setTab(d.tab);return;}
+ if(button.hasAttribute("data-memory-back")||button.hasAttribute("data-close-memory")){setTab(previousTab);return;}
+ if(button.hasAttribute("data-close-chat")){showFarewell();return;}
+ if(button.hasAttribute("data-open-map")){state.mapOpen=true;render();return;}
+ if(button.hasAttribute("data-close-map")){state.mapOpen=false;render();return;}
+ if(d.tabgo){setTab(d.tabgo);return;}
+ if(d.toggle){
+  state.expanded=state.expanded.includes(d.toggle)
+   ?state.expanded.filter(id=>id!==d.toggle)
+   :[...state.expanded,d.toggle];
+  save();render();return;
+ }
+ if(d.enter){
+  const location=loc(d.enter);
+  if(location?.access==="limited")return;
+  state.location=location.id;
+  state.mapOpen=false;
+  save();render();return;
+ }
+ if(d.npc){
+  pickerOpen=false;
+  const record=state.npcStates[d.npc];
+  if(record.sessionClosed){
+   record.history=[];record.used=[];
+   record.p=npc(d.npc).initial.p;
+   record.exited=false;record.sessionClosed=false;
+   save();
+  }
+  state.activeNpc=d.npc;
+  draft=[];
+  setTab("chat");
+  return;
+ }
+ if(d.memoryNpc){
+  const person=npc(d.memoryNpc);
+  showModal('<h2>'+esc(person.name)+'</h2><p>'+esc(person.description)+'</p><p>Halaman informasi individu belum tersedia dalam sandbox.</p>');
+  return;
+ }
+ if(d.memory){memoryDetail(d.memory);return;}
+ if(button.hasAttribute("data-toggle-picker")){pickerOpen=!pickerOpen;render();return;}
+ if(d.picker){picker=d.picker;pickerOpen=true;render();return;}
+ if(d.addInfo){draft.push({kind:"info",id:d.addInfo});render();return;}
+ if(d.addEmoji){draft.push({kind:"emoji",value:d.addEmoji});render();return;}
+ if(d.remove!==undefined){draft.splice(Number(d.remove),1);render();return;}
+ if(button.id==="saveMenu"){openSaveMenu();return;}
+ if(button.id==="clearDraft"){draft=[];render();return;}
+ if(button.id==="send"){send();return;}
+}
+document.addEventListener("click",handleClick);
 function showFarewell(){
  if(!npc(state.activeNpc))return;
  showModal('<h2>Akhiri percakapan?</h2><div class="farewell-choices" role="group" aria-label="Pilih kesan terakhir">'+
