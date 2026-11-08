@@ -102,3 +102,16 @@ test('known but withheld information is refused, not mislabeled ignorance',()=>{
  assert.equal(r.log[0].action,'withdraw');
  assert.equal(r.log[0].output,'🤫');
 });
+
+test('NPC asking a question does not teach the mentioned Topic',()=>{
+ const p={militer:1};
+ const gains=resolveTestLearning({playerTokens:[T('militer'),E('❓')],previousNpcTokens:[],previousPlayerMessages:[],
+   npcTokens:[T('militer'),E('❓')],npcAction:'ask',playerLevels:p,npcLevels:{militer:5},learned:new Set()});
+ assert.deepEqual(gains,[]);
+});
+test('Listen after previous NPC question does not teach Knowledge',()=>{
+ const p={militer:1};
+ const gains=resolveTestLearning({playerTokens:[],previousNpcTokens:[T('militer'),E('❓')],previousNpcAction:'ask',
+   previousPlayerMessages:[],npcTokens:[E('😐')],npcAction:'express',playerLevels:p,npcLevels:{militer:5},learned:new Set()});
+ assert.deepEqual(gains,[]);
+});
