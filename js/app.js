@@ -1,4 +1,4 @@
-import {locations,relations,npcs,byId} from "./data.js";
+import {locations,relations,npcs,byId,emojiDescriptions} from "./data.js";
 import {createViews} from "./ui/views.js";
 import {npcReply,farewellEffect} from "./engine.js";
 import {fresh,load,persist,downloadSave,parseSave} from "./state.js";
@@ -30,11 +30,40 @@ function bindHold(element,id){
  element.addEventListener("contextmenu",e=>{e.preventDefault();clearTimeout(timer);held=true;memoryDetail(id)});
  element.addEventListener("click",e=>{if(held){e.preventDefault();e.stopImmediatePropagation();held=false}},true);
 }
+function emojiDetail(emoji){
+ const description=emojiDescriptions[emoji];
+ if(!description)return;
+ showModal('<div class="emoji-detail-symbol">'+esc(emoji)+'</div><p class="emoji-detail-description">'+esc(description)+'</p>');
+}
+function bindEmojiHold(element,emoji){
+ let timer,held=false;
+ element.addEventListener("pointerdown",e=>{
+  if(e.button!==0&&e.pointerType!=="touch")return;
+  held=false;
+  clearTimeout(timer);
+  timer=setTimeout(()=>{held=true;emojiDetail(emoji)},550);
+ });
+ for(const event of ["pointerup","pointerleave","pointercancel"]){
+  element.addEventListener(event,()=>clearTimeout(timer));
+ }
+ element.addEventListener("contextmenu",e=>{
+  e.preventDefault();
+  clearTimeout(timer);
+  if(!held){held=true;emojiDetail(emoji);}
+ });
+ element.addEventListener("click",e=>{
+  if(!held)return;
+  e.preventDefault();
+  e.stopImmediatePropagation();
+  held=false;
+ },true);
+}
 function render(){
  view.classList.toggle("location-screen",state.tab==="explorer"&&!state.mapOpen);
  view.classList.toggle("chat-screen",state.tab==="chat");
  const views=createViews({state,draft,picker,pickerOpen});
  view.innerHTML=state.tab==="chat"?views.chat():state.tab==="memory"?views.memory():views.explorer();
+ view.querySelectorAll("[data-emoji-hold]").forEach(el=>bindEmojiHold(el,el.dataset.emojiHold));
  view.querySelectorAll("[data-memory-hold]").forEach(el=>{
   const id=el.dataset.memoryHold;
   if(id.startsWith("npc:")||state.knowledge[id]>0||state.relations[id]>0||loc(id))bindHold(el,id);
