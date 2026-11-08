@@ -68,9 +68,11 @@ function chat(){
    (listening?'<span class="listen-mark" aria-label="Mendengarkan">◌</span>':m.tokens.map(t=>tokenHtml(t)).join(""))+
    '</div></div>';
  }).join("");
+ const usedTopics=new Set(draft.filter(t=>t.kind==="info").map(t=>t.id));
+ const usedEmojis=new Set(draft.filter(t=>t.kind==="emoji").map(t=>t.value));
  const options=picker==="info"
-  ?information.filter(i=>state.knowledge[i.id]>0).map(i=>'<button data-add-info="'+i.id+'" data-memory-hold="'+i.id+'">'+esc(i.name)+'</button>').join("")
-  :emojis.map(e=>'<button class="emoji-opt" data-add-emoji="'+e+'" data-emoji-hold="'+e+'">'+e+'</button>').join("");
+  ?information.filter(i=>state.knowledge[i.id]>0).map(i=>'<button data-add-info="'+i.id+'" data-memory-hold="'+i.id+'"'+(usedTopics.has(i.id)?' disabled aria-label="'+esc(i.name)+' sudah dipilih"':'')+'>'+esc(i.name)+'</button>').join("")
+  :emojis.map(e=>'<button class="emoji-opt" data-add-emoji="'+e+'" data-emoji-hold="'+e+'"'+(usedEmojis.has(e)?' disabled aria-label="'+e+' sudah dipilih"':'')+'>'+e+'</button>').join("");
  return '<div class="chat-layout">'+
  '<div class="chat-header"><div class="chat-person"><div class="chat-avatar">'+esc(n.name.charAt(0))+'</div><div class="chat-person-details"><div class="chat-person-name" data-memory-hold="npc:'+n.id+'">'+esc(n.name)+'</div><div class="chat-person-description">'+esc(n.description)+'</div></div></div>'+
  '<button class="map-close chat-close" data-close-chat aria-label="Akhiri percakapan">✕</button></div>'+
