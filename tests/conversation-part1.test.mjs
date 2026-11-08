@@ -58,10 +58,10 @@ const featureCases=[
  ['unknown relation not created',[T('militer'),T('saudagar')],null,{militer:1,saudagar:1}],
  ['NPC to player boundary',[T('pasar')],[E('😡'),T('militer')],{pasar:1,militer__pasar:1}],
  ['NPC trailing emoji blocks boundary',[T('pasar')],[T('militer'),E('👎')],{pasar:1}],
- ['player leading emoji blocks boundary',[E('🙂'),T('pasar')],[T('militer')],{pasar:1}],
+ ['player leading emoji keeps boundary',[E('🙂'),T('pasar')],[T('militer')],{pasar:1,militer__pasar:1}],
  ['same-topic boundary counts twice',[T('pasar')],[T('militer'),T('pasar')],{pasar:2}],
  ['NPC emoji blocks same-topic continuation',[T('pasar')],[T('pasar'),E('🙂')],{pasar:1}],
- ['player emoji blocks same-topic continuation',[E('🙂'),T('pasar')],[T('pasar')],{pasar:1}],
+ ['player emoji keeps same-topic continuation',[E('🙂'),T('pasar')],[T('pasar')],{pasar:2}],
  ['NPC emoji-only previous',[T('pasar')],[E('🙂')],{pasar:1}],
  ['NPC empty previous',[T('pasar')],[],{pasar:1}],
  ['listen no count',[],[T('militer')],{}],
@@ -90,7 +90,7 @@ test('simulation: three strict-boundary NPC/player exchanges',()=>{
  const turns=[
   {npc:[T('militer')],player:[T('militer'),T('pasar')],counts:{militer:2,pasar:1,militer__pasar:1}},
   {npc:[T('militer'),E('👎')],player:[T('militer'),E('🤨'),T('pasar')],counts:{militer:1,pasar:1}},
-  {npc:[T('pasar')],player:[E('🙂'),T('pasar')],counts:{pasar:1}}
+  {npc:[T('pasar')],player:[E('🙂'),T('pasar')],counts:{pasar:2}}
  ];
  const history=[];
  for(const turn of turns){assert.deepEqual(features(turn.player,turn.npc,history).counts,turn.counts);history.push(N(turn.npc),P(turn.player));}
