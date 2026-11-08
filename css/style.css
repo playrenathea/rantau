@@ -167,3 +167,6 @@ main.chat-screen{padding:0;min-height:100dvh;display:flex;flex-direction:column}
 .memory-entry{display:flex;align-items:center;gap:2px;border-bottom:1px solid var(--line)}
 .memory-entry .memory-item{flex:1;min-width:0;border-bottom:0}
 .memory-entry .memory-pin{margin-right:1px}
+
+/* Keep used tokens visible while preventing duplicate tokens in a draft. */
+.chat-picker-options button:disabled{opacity:.32;cursor:default;filter:grayscale(.5)}
