@@ -34,10 +34,10 @@ function qualifyingQuestion(tokens,id){
    tokens.some(t=>t.kind==='info'&&t.id===id);
 }
 /** Test-only simplified learning gate; contradiction branches are out of scope. */
-export function resolveTestLearning({playerTokens,previousNpcTokens,previousPlayerMessages,npcTokens,playerLevels,npcLevels,learned}){
+export function resolveTestLearning({playerTokens,previousNpcTokens,previousPlayerMessages,npcTokens,playerLevels,npcLevels,learned,npcAction='inform',previousNpcAction='inform'}){
  const gain=[];
- const emitted=new Set(npcTokens.filter(t=>t.kind==='info').map(t=>t.id));
- const previousNpc=new Set((previousNpcTokens||[]).filter(t=>t.kind==='info').map(t=>t.id));
+ const emitted=new Set(['answer','inform'].includes(npcAction)?npcTokens.filter(t=>t.kind==='info').map(t=>t.id):[]);
+ const previousNpc=new Set(['answer','inform'].includes(previousNpcAction)?(previousNpcTokens||[]).filter(t=>t.kind==='info').map(t=>t.id):[]);
  const candidates=new Set([...emitted,...(playerTokens.length===0?[...previousNpc]:[])]);
  for(const id of candidates){
   if(!qualifiedLearning(id,playerLevels,npcLevels,learned))continue;
@@ -72,7 +72,8 @@ export function simulateInteraction(policy,{turns=10,world=SAMPLE_WORLD,initial=
   const out=planNpcResponse({features,impact,world:{...world,playerKnowledge:playerLevels},npcState:state,history,config:responseConfig});
   const previousPlayerMessages=history.filter(x=>x.from==='player').map(x=>x.tokens);
   const gains=resolveTestLearning({playerTokens:tokens,previousNpcTokens:lastNpc,
-    previousPlayerMessages,npcTokens:out.tokens,playerLevels,npcLevels:world.npcKnowledge,learned});
+    previousPlayerMessages,npcTokens:out.tokens,playerLevels,npcLevels:world.npcKnowledge,learned,
+    npcAction:out.metadata.action,previousNpcAction:lastNpcMetadata?.action||'inform'});
   state=impact.nextState;
   log.push({turn:i+1,input:tokens.map(t=>t.id||t.value).join(' ')||'(Listen)',
     output:out.tokens.map(t=>t.id||t.value).join(' '),
