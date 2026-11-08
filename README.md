@@ -10,13 +10,14 @@ The code uses ES Modules. Serve the folder via HTTP, not by double-clicking `ind
 python3 -m http.server 8000
 ```
 
-Open `http://localhost:8000` in a browser. For phone testing, use a static HTTPS deployment such as GitHub Pages (not yet enabled).
+Open `http://localhost:8000` in a browser. For phone testing, use the GitHub Pages site at `https://playrenathea.github.io/rantau/` when published.
 
 ## Files
 
 - `index.html`: application entry point
 - `css/style.css`: UI styling
-- `js/app.js`: page rendering, navigation, token composer
+- `js/app.js`: application controller, navigation, event handling, modal actions and session flow
+- `js/ui/views.js`: pure HTML renderers for Explorer, Chat and Memory (receives current UI state)
 - `js/data.js`: **temporary** world, NPC, information, and relationship content
 - `js/engine.js`: **placeholder** grammar evaluation and NPC response logic
 - `js/state.js`: local browser save and JSON import/export
@@ -30,3 +31,7 @@ This is a prototype, **not** the finished NPC engine. Branching beliefs, accurat
 ## Save separation
 
 Content is source-controlled in GitHub. Player progress is stored in this browser's `localStorage` under `rantau.save.v1`, with manual JSON export/import. Future account entitlements are intentionally outside the local save model.
+
+## Refactor policy
+
+Keep the current UX and save format stable while iterating. UI rendering belongs in `js/ui/views.js`; input/navigation and side effects belong in `js/app.js`; NPC behavior belongs in `js/engine.js`; save logic belongs in `js/state.js`. The CSS retains some legacy prototype rules and is intentionally left visually unchanged until there are browser-level regression tests.
