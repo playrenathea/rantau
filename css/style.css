@@ -23,3 +23,22 @@
 .map-lock{font-size:10px;color:var(--muted)}
 .map-tree .tree-toggle{flex:none;width:30px;font-size:19px}
 .map-tree .tree-indent{margin-left:17px;padding-left:12px;border-left:1px solid var(--line)}
+
+/* Minimal content-first layout */
+.shell{padding-bottom:0}
+main{padding:22px 23px 58px}
+.location-tools{margin-bottom:24px}
+.location-actions{display:flex;gap:8px}
+.location-tools .map-open{border:0;background:transparent;padding:8px 9px 8px 0;font-size:13px;color:var(--accent)}
+.location-tools .map-open+ .map-open{padding-left:12px}
+.save-shortcut{margin-left:auto;font-size:22px}
+.location-title{font-size:34px;margin-bottom:5px}
+.location-description{margin-bottom:17px}
+.location-hero{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:#e9ece6;border-radius:5px;margin:0 0 22px;filter:saturate(.78)}
+.location-list{border-top:1px solid var(--line)}
+.place-tile{overflow:hidden;background:#e9ece6;border-radius:7px;padding:0}
+.place-tile .tile-photo{height:100%;width:100%;display:block;object-fit:cover;filter:saturate(.75)}
+.location-list-row{min-height:78px}
+.location-entry span{line-height:1.45}
+.memory-back{margin:2px 0 22px}
+.conversation{min-height:160px}
