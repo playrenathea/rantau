@@ -25,6 +25,9 @@ Open `http://localhost:8000` in a browser. For phone testing, use the GitHub Pag
 - `js/game/location.js`: location generator interface and static fallback
 - `js/game/interaction.js`: temporary session and bounded outcome interface
 - `js/game/action-flow.js`: one-action/one-location-regeneration coordinator
+- `js/game/knowledge.js`: Memory Page branch choices, pruning and regression
+- `js/game/learning.js`: Knowledge eligibility, Listen adjacency and +1 cap
+- `js/game/questions.js`: Where/When/Who filtering on ordinary information relationships
 
 ## Current scope
 
