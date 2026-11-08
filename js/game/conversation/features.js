@@ -23,9 +23,9 @@ export function extractFeatures({playerTokens, previousNpcTokens = null, playerH
     if (a.kind === 'topic' && b.kind === 'topic') add(relationId(a.id,b.id),'internal-adjacency',a.id,b.id);
   }
   // Cross-message adjacency exists only when the ACTUAL last NPC token and
-  // ACTUAL first Player token are topics. Emoji groups are hard boundaries.
-  if (prevNpc?.lastTopicId && parsed.firstTopicId) {
-    const a=prevNpc.lastTopicId, b=parsed.firstTopicId;
+  // first mentioned Player Topic is available. Player-leading emojis do not break it.
+  if (prevNpc?.lastTopicId && parsed.topics[0]?.id) {
+    const a=prevNpc.lastTopicId, b=parsed.topics[0].id;
     if (a === b) add(b,'boundary-continuation',a,b);
     else add(relationId(a,b),'boundary-relation',a,b);
   }
