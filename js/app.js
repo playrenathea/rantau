@@ -1,7 +1,7 @@
 import {locations,information,relations,npcs,emojis,byId,relationId} from "./data.js";
 import {npcReply,farewellEffect} from "./engine.js";
 import {fresh,load,persist,downloadSave,parseSave} from "./state.js";
-let state=load(),draft=[],picker="info",openMemory=null,previousTab="explorer";
+let state=load(),draft=[],picker="info",pickerOpen=false,openMemory=null,previousTab="explorer";
 state.mapOpen=false;
 const $=s=>document.querySelector(s);
 const view=$("#view"),modal=$("#modal");
@@ -62,10 +62,36 @@ function explorer(){
  (!children.length&&!people.length?'<div class="empty">Tidak ada yang terlihat di sini.</div>':'')+'</div></div>';
 }
 function tokenHtml(t,removable=false,i=0){return '<span class="chip '+(t.kind==="emoji"?"emoji":"")+'" '+(removable?'data-remove="'+i+'"':"")+'>'+esc(t.kind==="emoji"?t.value:(byId(t.id)?.name||t.id))+(removable?' <span class="x">×</span>':"")+'</span>';}
-function chat(){const n=npc(state.activeNpc);if(!n)return '<h2 class="heading">Percakapan</h2>';const rec=state.npcStates[n.id];return '<div class="chat-header"><span class="section-label">Percakapan</span><button class="map-close" data-close-chat aria-label="Akhiri percakapan">✕</button></div><h2 class="heading" style="margin-top:19px">'+esc(n.name)+'</h2><p class="lede">'+esc(n.description)+'</p><div class="conversation">'+(rec.history.length?rec.history.map(m=>'<div class="message '+(m.from==="player"?"player":"")+'"><div class="sender">'+(m.from==="player"?"Kamu":esc(n.name))+'</div><div class="bubble">'+m.tokens.map(t=>tokenHtml(t)).join("")+'</div></div>').join(""):'<div class="empty">Percakapan dimulai. Susun pesan dari informasi dan emoji.</div>')+'</div>'+(rec.exited?'<div class="empty">'+esc(n.name)+' sudah mengakhiri percakapan. Kembali lagi lain waktu (fitur reset sesi akan dikembangkan).</div>':'<div class="composer"><div class="section-label">Susun pesan</div><div class="draft">'+(draft.length?draft.map((t,i)=>tokenHtml(t,true,i)).join(""):'<span class="hint">Ketuk token untuk menambahkan. Ketuk token tersusun untuk menghapus.</span>')+'</div><div class="actions"><button class="secondary" id="clearDraft">Hapus</button><button class="primary" id="send" '+(!draft.length?"disabled":"")+'>Kirim pesan →</button></div><hr class="divider"><div class="actions"><button class="'+(picker==="info"?"primary":"secondary")+'" data-picker="info">Information</button><button class="'+(picker==="emoji"?"primary":"secondary")+'" data-picker="emoji">Emoji</button></div><div class="picker">'+(picker==="info"?information.filter(i=>state.knowledge[i.id]>0).map(i=>'<button data-add-info="'+i.id+'">'+esc(i.name)+'</button>').join(""):emojis.map(e=>'<button class="emoji-opt" data-add-emoji="'+e+'">'+e+'</button>').join(""))+'</div></div>');}
+function chat(){
+ const n=npc(state.activeNpc);
+ if(!n)return '<div class="chat-header"><span>Percakapan</span><button class="map-close" data-close-chat aria-label="Akhiri percakapan">✕</button></div>';
+ const rec=state.npcStates[n.id];
+ const messages=rec.history.map(m=>{
+  const listening=m.from==="player"&&!m.tokens.length;
+  return '<div class="message '+(m.from==="player"?"player":"")+'"><div class="bubble">'+
+   (listening?'<span class="listen-mark" aria-label="Mendengarkan">◌</span>':m.tokens.map(t=>tokenHtml(t)).join(""))+
+   '</div></div>';
+ }).join("");
+ const options=picker==="info"
+  ?information.filter(i=>state.knowledge[i.id]>0).map(i=>'<button data-add-info="'+i.id+'">'+esc(i.name)+'</button>').join("")
+  :emojis.map(e=>'<button class="emoji-opt" data-add-emoji="'+e+'">'+e+'</button>').join("");
+ return '<div class="chat-layout">'+
+ '<div class="chat-header"><div class="chat-person"><div class="chat-avatar">'+esc(n.name.charAt(0))+'</div><div class="chat-person-name">'+esc(n.name)+'</div></div>'+
+ '<button class="map-close chat-close" data-close-chat aria-label="Akhiri percakapan">✕</button></div>'+
+ '<div class="chat-messages">'+(messages||'<div class="chat-blank"></div>')+'</div>'+
+ (rec.exited?'<div class="chat-ended">Percakapan telah berakhir.</div>':
+ '<div class="chat-bottom">'+
+ (pickerOpen?'<div class="chat-picker"><div class="chat-picker-tabs"><button class="'+(picker==="info"?"active":"")+'" data-picker="info">Topic</button><button class="'+(picker==="emoji"?"active":"")+'" data-picker="emoji">Emoji</button></div><div class="chat-picker-options">'+options+'</div></div>':'')+
+ '<div class="chat-composer"><button class="chat-draft" data-toggle-picker aria-label="Pilih topic dan emoji" aria-expanded="'+pickerOpen+'">'+
+ (draft.length?'<span class="chat-draft-tokens">'+draft.map((t,i)=>tokenHtml(t,true,i)).join("")+'</span>':'<span class="chat-placeholder"></span>')+
+ '</button><button class="chat-send" id="send" aria-label="'+(draft.length?"Kirim pesan":"Dengarkan")+'">➤</button></div>'+
+ '</div>')+
+ '</div>';
+}
 function memory(){const known=information.filter(i=>state.knowledge[i.id]>0);const knownRel=relations.filter(r=>state.relations[r.id]>0);return '<div class="memory-header"><h2 class="heading">Memory</h2><button class="map-close" data-close-memory aria-label="Tutup memory">✕</button></div><p class="section-label">Information · '+known.length+'</p>'+known.map(i=>'<button class="memory-item" data-memory="'+i.id+'"><div><strong>'+esc(i.name)+'</strong><div class="tag">'+esc(i.type)+'</div></div><span class="pill">Lv '+state.knowledge[i.id]+'</span></button>').join("")+'<hr class="divider"><p class="section-label">Relationships · '+knownRel.length+'</p>'+(knownRel.map(r=>'<button class="memory-item" data-memory="'+r.id+'"><strong>'+esc(byId(r.a)?.name)+' × '+esc(byId(r.b)?.name)+'</strong><span class="pill">Lv '+state.relations[r.id]+'</span></button>').join("")||'<p class="empty">Belum ada informasi relasi yang terbuka.</p>');}
 function render(){
  view.classList.toggle("location-screen",state.tab==="explorer"&&!state.mapOpen);
+ view.classList.toggle("chat-screen",state.tab==="chat");
  view.innerHTML=state.tab==="chat"?chat():state.tab==="memory"?memory():explorer();
  view.querySelectorAll("[data-enter]").forEach(el=>{
   if(byId(el.dataset.enter))bindHold(el,el.dataset.enter);
@@ -85,7 +111,7 @@ function render(){
   },true);
  });
 }
-document.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const d=b.dataset;if(d.tab){setTab(d.tab);return;}if(b.hasAttribute("data-memory-back")||b.hasAttribute("data-close-memory")){setTab(previousTab);return;}if(b.hasAttribute("data-close-chat")){showFarewell();return;}if(b.hasAttribute("data-open-map")){state.mapOpen=true;render();return;}if(b.hasAttribute("data-close-map")){state.mapOpen=false;render();return;}if(d.tabgo){setTab(d.tabgo);return;}if(d.toggle){state.expanded=state.expanded.includes(d.toggle)?state.expanded.filter(x=>x!==d.toggle):[...state.expanded,d.toggle];save();render();return;}if(d.enter){const l=loc(d.enter);if(l?.access==="limited")return;state.location=l.id;state.mapOpen=false;save();render();return;}if(d.npc){const rec=state.npcStates[d.npc];if(rec.sessionClosed){rec.history=[];rec.used=[];rec.p=npc(d.npc).initial.p;rec.exited=false;rec.sessionClosed=false;save();}state.activeNpc=d.npc;draft=[];setTab("chat");return;}if(d.memoryNpc){const n=npc(d.memoryNpc);showModal('<h2>'+esc(n.name)+'</h2><p>'+esc(n.description)+'</p><p>Halaman informasi individu belum tersedia dalam sandbox.</p>');return;}if(d.memory){memoryDetail(d.memory);return;}if(d.picker){picker=d.picker;render();return;}if(d.addInfo){draft.push({kind:"info",id:d.addInfo});render();return;}if(d.addEmoji){draft.push({kind:"emoji",value:d.addEmoji});render();return;}if(d.remove!==undefined){draft.splice(Number(d.remove),1);render();return;}if(b.id==="saveMenu"){openSaveMenu();return;}if(b.id==="clearDraft"){draft=[];render();return;}if(b.id==="send"){send();return;}});
+document.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const d=b.dataset;if(d.tab){setTab(d.tab);return;}if(b.hasAttribute("data-memory-back")||b.hasAttribute("data-close-memory")){setTab(previousTab);return;}if(b.hasAttribute("data-close-chat")){showFarewell();return;}if(b.hasAttribute("data-open-map")){state.mapOpen=true;render();return;}if(b.hasAttribute("data-close-map")){state.mapOpen=false;render();return;}if(d.tabgo){setTab(d.tabgo);return;}if(d.toggle){state.expanded=state.expanded.includes(d.toggle)?state.expanded.filter(x=>x!==d.toggle):[...state.expanded,d.toggle];save();render();return;}if(d.enter){const l=loc(d.enter);if(l?.access==="limited")return;state.location=l.id;state.mapOpen=false;save();render();return;}if(d.npc){pickerOpen=false;const rec=state.npcStates[d.npc];if(rec.sessionClosed){rec.history=[];rec.used=[];rec.p=npc(d.npc).initial.p;rec.exited=false;rec.sessionClosed=false;save();}state.activeNpc=d.npc;draft=[];setTab("chat");return;}if(d.memoryNpc){const n=npc(d.memoryNpc);showModal('<h2>'+esc(n.name)+'</h2><p>'+esc(n.description)+'</p><p>Halaman informasi individu belum tersedia dalam sandbox.</p>');return;}if(d.memory){memoryDetail(d.memory);return;}if(b.hasAttribute("data-toggle-picker")){pickerOpen=!pickerOpen;render();return;}if(d.picker){picker=d.picker;pickerOpen=true;render();return;}if(d.addInfo){draft.push({kind:"info",id:d.addInfo});render();return;}if(d.addEmoji){draft.push({kind:"emoji",value:d.addEmoji});render();return;}if(d.remove!==undefined){draft.splice(Number(d.remove),1);render();return;}if(b.id==="saveMenu"){openSaveMenu();return;}if(b.id==="clearDraft"){draft=[];render();return;}if(b.id==="send"){send();return;}});
 function showFarewell(){
  if(!npc(state.activeNpc))return;
  showModal('<h2>Akhiri percakapan?</h2><div class="farewell-choices" role="group" aria-label="Pilih kesan terakhir">'+
@@ -106,13 +132,13 @@ function finishConversation(emoji){
  rec.sessions=Array.isArray(rec.sessions)?rec.sessions:[];
  rec.sessions.push({history:rec.history.map(m=>({from:m.from,tokens:m.tokens.map(t=>({...t}))})),lastImpression:emoji});
  rec.sessionClosed=true;
- draft=[];
+ draft=[];pickerOpen=false;
  state.activeNpc=null;
  save();
  modal.close();
  setTab("explorer");
 }
-function send(){if(!draft.length||!state.activeNpc)return;const n=npc(state.activeNpc),rec=state.npcStates[n.id];if(rec.exited)return;rec.history.push({from:"player",tokens:draft.map(t=>({...t}))});const out=npcReply(n,rec,draft,state.knowledge);rec.history.push({from:"npc",tokens:out.response});rec.exited=out.exited;draft=[];save();render();view.querySelector(".conversation")?.lastElementChild?.scrollIntoView({behavior:"smooth",block:"nearest"});}
+function send(){if(!state.activeNpc)return;const n=npc(state.activeNpc),rec=state.npcStates[n.id];if(rec.exited)return;rec.history.push({from:"player",tokens:draft.map(t=>({...t}))});const out=npcReply(n,rec,draft,state.knowledge);rec.history.push({from:"npc",tokens:out.response});rec.exited=out.exited;draft=[];pickerOpen=false;save();render();const messages=view.querySelector(".chat-messages");if(messages)messages.scrollTop=messages.scrollHeight;}
 $("#closeModal").onclick=()=>modal.close();
 function openSaveMenu(){showModal('<h2>Save</h2><div class="actions"><button class="primary" id="exportButton">Export JSON</button><button class="secondary" id="importButton">Import</button></div><p><button class="secondary full" id="resetButton">Reset</button></p>');}
 modal.addEventListener("click",e=>{const choice=e.target.closest("[data-farewell]");if(choice){finishConversation(choice.dataset.farewell);return;}if(e.target.closest("[data-cancel-farewell]")){modal.close();return;}const id=e.target.id;if(id==="exportButton"){downloadSave(state);modal.close();}if(id==="importButton"){$("#importSave").click();modal.close();}if(id==="resetButton"&&confirm("Hapus semua progres lokal Rantau pada browser ini?")){state=fresh();draft=[];save();modal.close();render();}});
