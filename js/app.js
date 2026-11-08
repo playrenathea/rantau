@@ -118,6 +118,19 @@ function handleClick(event){
   showModal('<h2>'+esc(person.name)+'</h2><p>'+esc(person.description)+'</p><p>Halaman informasi individu belum tersedia dalam sandbox.</p>');
   return;
  }
+ if(d.pinMemory){
+  const id=d.pinMemory;
+  const allowed=(state.knowledge[id]||0)>0||(state.relations[id]||0)>0;
+  if(!allowed)return;
+  const current=Array.isArray(state.workingMemory)?state.workingMemory:[];
+  if(current.includes(id))state.workingMemory=current.filter(x=>x!==id);
+  else if(current.length<7)state.workingMemory=[...current,id];
+  else return;
+  const scroll=window.scrollY;
+  save();render();
+  window.scrollTo(0,scroll);
+  return;
+ }
  if(d.memory){memoryDetail(d.memory);return;}
  if(d.memoryFilter!==undefined){memoryFilter=d.memoryFilter;render();return;}
  if(button.hasAttribute("data-toggle-picker")){pickerOpen=!pickerOpen;render();return;}
