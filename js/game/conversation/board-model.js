@@ -183,6 +183,13 @@ export function resolveBeat(session,playerTokens,config=MODEL_CONFIG){
    pushCandidate(null,candidates,[emoji(session.state.v>=5?'🙂':'😐')],
     0.42,{mode:'react'});
  }
+ // If every explicit Player Topic is unknown to this NPC, do not redirect
+ // into a confident unrelated Topic. Emoji-only confusion is sufficient.
+ if(features.parsed.topics.length && !Object.keys(features.counts).some(id=>session.memory[id])){
+  candidates.clear();
+  pushCandidate(null,candidates,[emoji('❓')],config.confusionWeight+1,{mode:'react'});
+  pushCandidate(null,candidates,[],0.03,{mode:'silence'});
+ }
  const ranked=[...candidates.values()].map(c=>{
   // A relationship receives a warm-up from either endpoint and from its own Count.
   const ids=c.pageId?(pages[c.pageId].type==='Relationship'?[pages[c.pageId].a,pages[c.pageId].b]:[c.pageId]):[];
