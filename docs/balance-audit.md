@@ -164,12 +164,11 @@ comparison marks even its adaptive sessions as exhausted.
 
 | NPC | Abusive insult | Emoji stacking (6) | Neutral rotating Topics | Relevant/engaging rotation |
 | --- | ---: | ---: | ---: | ---: |
-| Harun | 3 beats | 1 beat | 8 beats | Longer than neutral |
-| Jali | 2 beats | 1 beat | About 4 beats | About 6 beats |
-| Ratih | 3 beats | 1 beat | About 7 beats | Longer than neutral |
+| Harun | 3 beats | 1 beat | 8 beats | 12 beats |
+| Jali | 2 beats | 1 beat | About 4 beats | About 5 beats |
+| Ratih | 3 beats | 1 beat | About 7 beats | About 9 beats |
 
 These are deterministic probes, not strict conversation-length rules. In
-particular Jali is intentionally impatient. The social-response regression
-checks cover personal reaction, early exit, repeated aligned flattery,
-stacking and viable ASK. Unfinished Knowledge branch/contra mechanics are
+particular Jali is intentionally impatient. The social-response regression checks cover personal reaction, early exit,
+repeated aligned flattery, stacking and viable ASK. Unfinished Knowledge branch/contra mechanics are
 intentionally unchanged.
