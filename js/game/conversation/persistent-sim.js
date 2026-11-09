@@ -104,25 +104,27 @@ export function finish(world){
  };
  persisted.v=clamp(starting.v+delta.v);
  persisted.d=clamp(starting.d+delta.d);
- const learnedByPlayer=[],learnedByNpc=[],discovered=[];
+ const learnedByPlayer=[],learnedByNpc=[],discoveredByPlayer=[],discoveredByNpc=[];
  for(const [id,row] of Object.entries(session.memory)){
   if(row.pendingPlayerGain && row.npcLevel-row.playerLevel>=2){
    // We never lower any Knowledge Level, even when simultaneous discoveries overlap.
    world.player.knowledge[id]=(world.player.knowledge[id]??0)+1;
    learnedByPlayer.push(id);
-   acquireAwareness(world.player.knowledge,id,discovered);
+   acquireAwareness(world.player.knowledge,id,discoveredByPlayer);
   }
   if(row.pendingNpcGain && row.playerLevel-row.npcLevel>=2){
    persisted.knowledge[id]=(persisted.knowledge[id]??0)+1;
    learnedByNpc.push(id);
-   acquireAwareness(persisted.knowledge,id,discovered);
+   acquireAwareness(persisted.knowledge,id,discoveredByNpc);
   }
  }
  persisted.interactions++;
  const report={
   npcId,firstImpression,beats:session.history.filter(m=>m.from==='player').length,
   starting,ending:{v:persisted.v,d:persisted.d},delta,
-  learnedByPlayer,learnedByNpc,discoveredBasics:[...new Set(discovered)],
+  learnedByPlayer,learnedByNpc,
+  discoveredByPlayer:[...new Set(discoveredByPlayer)],
+  discoveredByNpc:[...new Set(discoveredByNpc)],
   transcript:copy(session.history)
  };
  world.records.push(report);
