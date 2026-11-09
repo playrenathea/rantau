@@ -55,7 +55,8 @@ const matchesType=(type,filter)=>!filter||
  (filter==='IndividualOrGroup'?['Individual','Group'].includes(type):type===filter);
 const interestQuestion=e=>e&&['❓','📍','⏳','👥'].includes(e.emoji);
 function askedPages(parsed,emojiInfo,previousNpcTokens){
- const asks=emojiInfo.asks.map(a=>({id:a.topicId,filter:a.type||null}));
+ const asks=emojiInfo.asks.filter(a=>a.kind!=='suppress')
+  .map(a=>({id:a.topicId,filter:a.type||null}));
  if(parsed.kind==='EMOJI_ONLY'&&previousNpcTokens){
   const prev=[...previousNpcTokens].reverse().find(t=>t.kind==='info')?.id;
   for(const t of parsed.emojiGroups.flatMap(g=>g.emojis)){
@@ -236,16 +237,30 @@ export function resolveBeat(session,playerTokens,config=MODEL_CONFIG,{reactionOn
  // Mark knowledge only for an actual information-bearing output, never an NPC question.
  if(session.state.p>0&&choice.pageId&&choice.mode==='inform'){
   const p=session.memory[choice.pageId];
-  const repeated=playerHistory.some(h=>h.tokens.some(t=>t.kind==='info'&&t.id===choice.pageId));
+  const repeated=features.repetition.occurrence>1&&(features.counts[choice.pageId]||0)>0;
+  const learningLikeListen=emojiInfo.learningTriggers.some(t=>
+   t.topicId===choice.pageId||(pages[choice.pageId].type==='Relationship'&&
+   [pages[choice.pageId].a,pages[choice.pageId].b].includes(t.topicId)));
   if(p.npcLevel-p.playerLevel>=2&&(asks.some(a=>linked(choice.pageId,a.id,a.filter))||
-   features.parsed.kind==='LISTEN'||repeated))p.pendingPlayerGain=1;
+   features.parsed.kind==='LISTEN'||learningLikeListen||repeated))p.pendingPlayerGain=1;
  }
- // NPC learns from a player who knows more, only when its question interest is active
- // and the specific Page was actually discussed. This is a preliminary trigger.
+ // NPC learning requires actual Player content and an existing exchange trigger:
+ // a matching question the NPC just asked, or the Player's 💡 marker.
+ const previousQuestion=previousNpcTokens?.some(t=>t.kind==='emoji'&&
+  ['❓','📍','⏳','👥'].includes(t.value));
  for(const [id,count] of Object.entries(features.counts)){
-  const p=session.memory[id];
-  if(count&&p&&p.playerLevel-p.npcLevel>=2&&interestQuestion(p.interest))
-   p.pendingNpcGain=1;
+  const p=session.memory[id],def=pages[id];
+  if(!count||!p||p.playerLevel-p.npcLevel<2)continue;
+  const spoken=features.parsed.topics.map(t=>t.id);
+  const explicit=def.type==='Relationship'
+   ?spoken.includes(id)||(spoken.includes(def.a)&&spoken.includes(def.b))
+   :spoken.includes(id);
+  if(!explicit)continue;
+  const answersPrevious=previousQuestion&&responseKey(previousNpcTokens.filter(t=>t.kind==='info'))===
+   responseKey(pageTokens(id));
+  const explains=emojiInfo.learningTriggers.some(t=>t.topicId===id||
+   (def.type==='Relationship'&&[def.a,def.b].includes(t.topicId)));
+  if(answersPrevious||explains)p.pendingNpcGain=1;
  }
  session.history.push({from:'player',tokens:playerTokens.map(t=>({...t}))});
  session.history.push({from:'npc',tokens:output.map(t=>({...t}))});
