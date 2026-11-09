@@ -47,12 +47,13 @@ export function runComparison({
    for(let k=0;k<sessions;k++){
     begin(world,npcId);
     for(let j=0;j<beatsPerSession;j++){
-     if(world.active.session.state.p<=0){exhausted++;break;}
+     if(world.active.session.state.p<=0)break;
      const msg=scenarios[npcId][policy](k*beatsPerSession+j);
      const r=beat(world,msg,config);
      turns++;
      if(k===0)transcripts.push({player:msg,npc:r.tokens,patience:+r.state.p.toFixed(3)});
     }
+    if(world.active.session.state.p<=0)exhausted++;
     finish(world);
    }
    const gained=Object.entries(world.player.knowledge).filter(([id,k])=>k>(initial[id]??0))
