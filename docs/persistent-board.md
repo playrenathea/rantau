@@ -72,3 +72,34 @@ world access.
 `tests/persistent-sim.test.mjs` covers commit, resume, reset, location,
 first impression, per-Page caps, NPC learning, and Relationship closure.
 Run `npm test` in Node. No production UI/UX or game-save migration.
+
+## Reproducible multi-session balance comparison
+
+Run `node simulations/persistent-comparison.mjs` for the 3 NPCs × 3 Player
+policies (repeating a single input, repeated Listen, and a scenario-adaptive
+rotation), **four encounters with up to six beats each**. Each policy starts
+from an independent *informed midgame* fixture, never from another policy's
+modified world. The policy is a scripted test input, not a new game action.
+
+It prints JSON with session counts, total beats, V/D after repeated
+encounters, Player/NPC Page gains, Patience exhaustion count, and the first
+encounter transcript. Use it to spot where a rule or parameter has unusual
+effects. It is a diagnostic comparison, **not** a proof of general balance.
+
+Observed baseline (4 sessions × up to 6 beats, after the persistence layer
+was implemented; counts include basic Page discovery from Relationships):
+
+| NPC | Policy | Player Pages improved | NPC Pages improved | Final V | Final D |
+| --- | --- | ---: | ---: | ---: | ---: |
+| Harun | Spam | 3 | 0 | 0 | 10 |
+| Harun | Listen | 4 | 0 | 0 | 10 |
+| Harun | Adaptive | 3 | 0 | 2.812 | 7.347 |
+| Jali | Spam | 1 | 0 | 1.426 | 10 |
+| Jali | Listen | 2 | 0 | 1.833 | 10 |
+| Jali | Adaptive | 4 | 0 | 5.676 | 9.05 |
+| Ratih | Spam | 0 | 1 | 0 | 6.888 |
+| Ratih | Listen | 0 | 0 | 0 | 7.018 |
+| Ratih | Adaptive | 2 | 1 | 5.306 | 3.947 |
+
+The test is repeatable; changing `MODEL_CONFIG` versus a particular
+NPC's Memory Page data produces different effects with the same scripts.
