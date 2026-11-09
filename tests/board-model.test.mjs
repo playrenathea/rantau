@@ -59,6 +59,8 @@ test('Jali location question can mark a pending Player knowledge gain',()=>{
 test('higher Player Knowledge on Ratih interested page can mark NPC learning',()=>{
  const player={...playerStart,dimas:5,kawasan_industri:4,dimas__kawasan_industri:4};
  const session=createSession('ratih',player);
+ const bare=resolveBeat(session,[T('dimas'),T('kawasan_industri')]);
+ assert.equal(bare.pending.dimas__kawasan_industri,undefined);
  const r=resolveBeat(session,[T('dimas'),T('kawasan_industri')]);
  assert.equal(r.pending.dimas__kawasan_industri?.npc,1);
  assert.equal(session.memory.dimas__kawasan_industri.npcLevel,1);
