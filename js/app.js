@@ -86,7 +86,7 @@ function handleClick(event){
  if(d.tab){setTab(d.tab);return;}
  if(button.hasAttribute("data-memory-back")||button.hasAttribute("data-close-memory")){setTab(previousTab);return;}
  if(button.hasAttribute("data-close-chat")){showFarewell();return;}
- if(button.hasAttribute("data-open-map")){state.mapOpen=true;render();return;}
+ if(button.hasAttribute("data-open-map")){state.mapOpen=true;if(state.location==="pasar_induk"&&!state.expanded.includes("terminal"))state.expanded=[...state.expanded,"terminal"];render();return;}
  if(button.hasAttribute("data-close-map")){state.mapOpen=false;render();return;}
  if(d.tabgo){setTab(d.tabgo);return;}
  if(d.toggle){
