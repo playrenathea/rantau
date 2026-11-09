@@ -167,9 +167,7 @@ function showFarewell(){
 function finishConversation(endingEmoji){
  if(!state.world.active)return;
  try{
-  if(state.world.active.session.state.p>0)
-   beat(state.world,[{kind:"emoji",value:endingEmoji}]);
-  finish(state.world);
+  finish(state.world,{farewellEmoji:endingEmoji});
  }catch(err){alert(err.message);return;}
  draft=[];pickerOpen=false;state.mapOpen=false;previousTab="explorer";
  save();modal.close();setTab("explorer");
