@@ -89,6 +89,21 @@ test('interaction cap prevents earning multiple levels on one Page',()=>{
  assert.equal(new Set(report.learnedByPlayer).size,report.learnedByPlayer.length);
  for(const id of report.learnedByPlayer)assert.equal(world.player.knowledge[id],1);
 });
+test('farewell uses Reaction only and cannot create invisible NPC Knowledge',()=>{
+ const a=createWorld(),b=createWorld();
+ begin(a,'jali');begin(b,'jali');
+ beat(a,[]);beat(b,[]);
+ const before=Object.fromEntries(Object.entries(b.active.session.memory).map(([id,p])=>
+  [id,[p.pendingPlayerGain,p.pendingNpcGain]]));
+ const plain=finish(a);
+ const farewell=finish(b,{farewellEmoji:'🙏'});
+ assert.deepEqual(farewell.learnedByPlayer,plain.learnedByPlayer);
+ assert.deepEqual(farewell.learnedByNpc,plain.learnedByNpc);
+ assert.equal(farewell.transcript.at(-1).from,'player');
+ assert.deepEqual(farewell.transcript.at(-1).tokens,[E('🙏')]);
+ assert.equal(farewell.transcript.length,plain.transcript.length+1);
+ assert.ok(farewell.ending.v!==plain.ending.v||farewell.ending.d!==plain.ending.d);
+});
 test('save round-trip includes an active interaction and resumes it',()=>{
  const world=createWorld();
  begin(world,'harun');beat(world,[T('saman'),E('❓')]);
