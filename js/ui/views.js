@@ -71,6 +71,19 @@ const pageName=id=>{
  return byId(id)?.name||(rel?(byId(rel.a)?.name||rel.a)+' × '+(byId(rel.b)?.name||rel.b):id);
 };
 function tokenHtml(t,removable=false,i=0){return '<span class="chip '+(t.kind==="emoji"?"emoji":"")+'" '+(removable?'data-remove="'+i+'" '+(t.kind==="emoji"?'data-emoji-hold="'+esc(t.value)+'"':'') :t.kind==="info"?'data-memory-hold="'+t.id+'"':'data-emoji-hold="'+esc(t.value)+'"')+'>'+esc(t.kind==="emoji"?t.value:pageName(t.id))+(removable?' <span class="x">×</span>':"")+'</span>';}
+// A connector only separates immediately adjacent topics; emojis interrupt adjacency.
+function chatTokens(tokens){
+ return tokens.map((t,i)=>{
+  const previous=tokens[i-1];
+  let connector='';
+  if(i>0&&previous.kind==="info"&&t.kind==="info"){
+   const relation=relations.find(r=>(r.a===previous.id&&r.b===t.id)||(r.b===previous.id&&r.a===t.id));
+   const known=relation&&(state.relations[relation.id]||0)>0;
+   connector='<button type="button" class="chat-topic-connector'+(known?' is-known':'')+'" data-topic-pair="'+esc(previous.id)+'|'+esc(t.id)+'" aria-label="Lihat hubungan '+esc(pageName(previous.id))+' dan '+esc(pageName(t.id))+'">·</button>';
+  }
+  return connector+tokenHtml(t);
+ }).join("");
+}
 function chat(){
  const n=npc(state.activeNpc);
  if(!n)return '<div class="chat-header"><span>Percakapan</span><button class="map-close" data-close-chat aria-label="Akhiri percakapan">✕</button></div>';
@@ -78,7 +91,7 @@ function chat(){
  const messages=rec.history.map(m=>{
   const listening=m.from==="player"&&!m.tokens.length;
   return '<div class="message '+(m.from==="player"?"player":"")+'"><div class="bubble">'+
-   (listening?'<span class="listen-mark" aria-label="Mendengarkan">◌</span>':m.tokens.map(t=>tokenHtml(t)).join(""))+
+   (listening?'<span class="listen-mark" aria-label="Mendengarkan">◌</span>':chatTokens(m.tokens))+
    '</div></div>';
  }).join("");
  const usedTopics=new Set(draft.filter(t=>t.kind==="info").map(t=>t.id));
@@ -87,7 +100,7 @@ function chat(){
   ?[...information.filter(i=>state.knowledge[i.id]>0),...relations.filter(r=>state.relations[r.id]>0).map(r=>({id:r.id,name:(byId(r.a)?.name||r.a)+" × "+(byId(r.b)?.name||r.b)}))].map(i=>'<button data-add-info="'+i.id+'" data-memory-hold="'+i.id+'"'+(usedTopics.has(i.id)?' disabled aria-label="'+esc(i.name)+' sudah dipilih"':'')+'>'+esc(i.name)+'</button>').join("")
   :emojis.map(e=>'<button class="emoji-opt" data-add-emoji="'+e+'" data-emoji-hold="'+e+'"'+(usedEmojis.has(e)?' disabled aria-label="'+e+' sudah dipilih"':'')+'>'+e+'</button>').join("");
  return '<div class="chat-layout">'+
- '<div class="chat-header"><div class="chat-person"><div class="chat-avatar">'+esc(n.name.charAt(0))+'</div><div class="chat-person-details"><div class="chat-person-name" data-memory-hold="npc:'+n.id+'">'+esc(n.name)+'</div><div class="chat-person-description">'+esc(n.description)+'</div></div></div>'+
+ '<div class="chat-header"><div class="chat-person"><div class="chat-avatar" aria-label="Attitude NPC terhadap Player">'+(rec.v>=7?'🙂':rec.v>=4?'😐':'🙁')+'</div><div class="chat-person-details"><div class="chat-person-name" data-memory-hold="npc:'+n.id+'">'+esc(n.name)+'</div><div class="chat-person-description">'+esc(n.description)+'</div></div></div>'+
  '<button class="map-close chat-close" data-close-chat aria-label="Akhiri percakapan">✕</button></div>'+
  '<div class="chat-messages">'+(messages||'<div class="chat-blank"></div>')+'</div>'+
  (rec.exited?'<div class="chat-ended">Percakapan telah berakhir.</div>':
