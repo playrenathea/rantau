@@ -1,7 +1,8 @@
 # Persistent multi-interaction playtest
 
-This experimental sandbox is independent of `js/app.js`, the current browser UI,
-`rantau.save.v1`, and the original `js/engine.js`.
+The persistent simulator is now used by the browser MVP through `js/app.js` and
+`js/playtest-state.js`. It is still separate from legacy `rantau.save.v1` and
+legacy `js/engine.js`; browser playtest saves use `rantau.playtest.v1`.
 
 The Player persists **Knowledge and location**. Each NPC persists its own **V/D relationship
 toward the Player** and **Knowledge per Memory Page**. Patience resets from the NPC fixture
@@ -70,15 +71,18 @@ world access.
 ### Tests
 
 `tests/persistent-sim.test.mjs` covers commit, resume, reset, location,
-first impression, per-Page caps, NPC learning, and Relationship closure.
-Run `npm test` in Node. No production UI/UX or game-save migration.
+first impression, per-Page caps, NPC learning, Relationship closure, and
+reaction-only farewell. `tests/playtest-ui.test.mjs` checks the browser
+checkpoint's UI state projection and JSON round trip. The existing
+Explorer/Chat/Memory presentation is preserved, and no legacy save migration
+is performed. Run `npm test` in Node.
 
 ## Reproducible multi-session balance comparison
 
 Run `node simulations/persistent-comparison.mjs` for the 3 NPCs × 3 Player
 policies (repeating a single input, repeated Listen, and a scenario-adaptive
 rotation), **four encounters with up to six beats each**. Each policy starts
-from an independent *informed midgame* fixture, never from another policy's
+from the same independent **browser MVP test checkpoint**, never from another policy's
 modified world. The policy is a scripted test input, not a new game action.
 
 It prints JSON with session counts, total beats, V/D after repeated
@@ -86,20 +90,25 @@ encounters, Player/NPC Page gains, Patience exhaustion count, and the first
 encounter transcript. Use it to spot where a rule or parameter has unusual
 effects. It is a diagnostic comparison, **not** a proof of general balance.
 
-Observed baseline (4 sessions × up to 6 beats, after the persistence layer
-was implemented; counts include basic Page discovery from Relationships):
+Observed baseline after the signed Topic Attitude correction and shared
+checkpoint (4 sessions × up to 6 beats; gains include basic Page discovery):
 
 | NPC | Policy | Player Pages improved | NPC Pages improved | Final V | Final D |
 | --- | --- | ---: | ---: | ---: | ---: |
 | Harun | Spam | 3 | 0 | 0 | 10 |
 | Harun | Listen | 4 | 0 | 0 | 10 |
-| Harun | Adaptive | 3 | 0 | 2.812 | 7.347 |
+| Harun | Adaptive | 3 | 0 | 7.969 | 6.507 |
 | Jali | Spam | 1 | 0 | 1.426 | 10 |
-| Jali | Listen | 2 | 0 | 1.833 | 10 |
-| Jali | Adaptive | 4 | 0 | 5.676 | 9.05 |
+| Jali | Listen | 4 | 0 | 1.833 | 10 |
+| Jali | Adaptive | 6 | 0 | 5.676 | 8.570 |
 | Ratih | Spam | 0 | 1 | 0 | 6.888 |
 | Ratih | Listen | 0 | 0 | 0 | 7.018 |
-| Ratih | Adaptive | 2 | 1 | 5.306 | 3.947 |
+| Ratih | Adaptive | 4 | 1 | 7.546 | 3.347 |
+
+See `docs/balance-audit.md` for the calculation audit and parameter
+sensitivity tests. Browser Reset restores the test checkpoint; the
+standalone CLI's plain `reset` still represents the story's newcomer
+fixture, while `reset --preset informed` uses the browser checkpoint.
 
 The test is repeatable; changing `MODEL_CONFIG` versus a particular
 NPC's Memory Page data produces different effects with the same scripts.
