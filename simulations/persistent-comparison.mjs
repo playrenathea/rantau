@@ -5,16 +5,12 @@
  */
 import {fileURLToPath} from 'node:url';
 import {resolve} from 'node:path';
-import {npcs,playerStart} from '../js/game/content/playtest-npcs.js';
+import {npcs,testCheckpointKnowledge} from '../js/game/content/playtest-npcs.js';
 import {createWorld,begin,beat,finish} from '../js/game/conversation/persistent-sim.js';
 import {MODEL_CONFIG} from '../js/game/conversation/board-model.js';
 const T=id=>({kind:'info',id});
 const E=value=>({kind:'emoji',value});
-export const informedStart={
- ...playerStart,pasar_induk:1,kawasan_industri:3,pelabuhan:1,
- dimas:3,dimas__kawasan_industri:3,
- ratih:1,pesan_jali:1,ratih__pesan_jali:1
-};
+export const informedStart={...testCheckpointKnowledge};
 const scenarios={
  harun:{
   spam:()=>[T('saman'),E('❓')],
@@ -24,14 +20,14 @@ const scenarios={
  jali:{
   spam:()=>[T('terminal'),E('❓')],
   listen:()=>[],
-  adaptive:i=>[ [T('pelabuhan'),E('❓')],[T('kawasan_industri'),E('❓')],
-   [T('ratih'),E('👥')],[T('terminal'),E('❓')] ][i%4]
+  adaptive:i=>[ [T('terminal'),E('❓')],[T('kawasan_industri'),E('❓')],
+   [T('pasar_induk'),E('👥')],[T('dimas'),E('❓')] ][i%4]
  },
  ratih:{
   spam:()=>[T('dimas'),T('kawasan_industri')],
   listen:()=>[],
   adaptive:i=>[ [T('dimas'),T('kawasan_industri')],[T('dimas'),E('❓')],
-   [T('ratih'),E('🙂')] ][i%3]
+   [T('pasar_induk'),E('🙂')] ][i%3]
  }
 };
 export function runComparison({
