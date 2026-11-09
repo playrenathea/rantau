@@ -94,7 +94,7 @@ function memory(){
  const known=information.filter(i=>state.knowledge[i.id]>0);
  const knownRel=relations.filter(r=>state.relations[r.id]>0);
  const types=[...new Set(information.map(i=>i.type))];
- const filters=[["all","All"],...types.map(t=>[t,t]),["Individual","Individual"],["Group","Group"],["Relationships","Relationships"]];
+ const filters=[["all","All"],...types.map(t=>[t,t]),["Relationships","Relationships"]];
  const pinnedIds=Array.isArray(state.workingMemory)?state.workingMemory:[];
  const pinIcon='<svg class="pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 3 5 5-4 1-3 3v5l-2 2-4-4-5 5 5-5-4-4 2-2h5l3-3z"/></svg>';
  const page=id=>{
