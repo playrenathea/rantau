@@ -75,6 +75,8 @@ test('Ratih can receive Knowledge from informed checkpoint on visit',()=>{
  const s=fresh();
  setPlayerLocation(s.world,'pasar_induk');
  begin(s.world,'ratih');
+ const first=beat(s.world,[]);
+ assert.ok(first.tokens.some(t=>t.value==='📍'));
  const res=beat(s.world,[T('dimas'),T('kawasan_industri')]);
  assert.equal(res.pending.dimas__kawasan_industri.npc,1);
  finish(s.world);
