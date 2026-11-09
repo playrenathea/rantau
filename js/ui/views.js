@@ -8,16 +8,26 @@ export function createViews({state,draft,picker,pickerOpen,memoryFilter="all"}){
  const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const mapIcon="<svg class=\"ui-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3z\"/><path d=\"M9 3v15M15 6v15\"/></svg>";
 const lockIcon="<svg class=\"ui-icon lock-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"5\" y=\"10\" width=\"14\" height=\"11\" rx=\"2\"/><path d=\"M8 10V7a4 4 0 0 1 8 0v3\"/></svg>";
+// Map uses established navigable routes. Terminal → Pasar Induk is a playtest
+// map branch, not a claim that Pasar Induk's world-data parent is Terminal.
+function mapParent(l){
+ return l.id==="pasar_induk"&&state.knowledge.terminal>0?"terminal":l.parent;
+}
+function mapChildren(parent){
+ return locations.filter(l=>mapParent(l)===parent&&l.access!=="secret"&&state.knowledge[l.id]>0);
+}
 function renderTree(parent){
- return locations.filter(l=>l.parent===parent&&l.access!=="secret"&&state.knowledge[l.id]>0).map(l=>{
-  const open=state.expanded.includes(l.id);
-  const hasChildren=locations.some(x=>x.parent===l.id&&x.access!=="secret");
+ return mapChildren(parent).map(l=>{
+  const children=mapChildren(l.id);
+  const hasChildren=children.length>0;
+  const open=hasChildren&&state.expanded.includes(l.id);
   const locked=l.access==="limited";
   return '<div class="map-tree-row'+(state.location===l.id?' current':'')+(locked?' locked':'')+'">'+
-   '<button class="tree-toggle" data-toggle="'+l.id+'" aria-label="'+(open?'Tutup':'Buka')+' cabang '+esc(l.name)+'" '+(!hasChildren?'disabled':'')+'>'+(hasChildren?(open?'⌄':'›'):'·')+'</button>'+
+   '<button class="tree-toggle" data-toggle="'+l.id+'" aria-expanded="'+open+'" aria-label="'+(open?'Tutup':'Buka')+' cabang '+esc(l.name)+'" '+(!hasChildren?'disabled':'')+'>'+(hasChildren?(open?'⌄':'›'):'')+'</button>'+
    '<button class="map-location" data-memory-hold="'+l.id+'" data-enter="'+l.id+'" '+(locked?'disabled':'')+'>'+esc(l.name)+'</button>'+
+   (state.location===l.id?'<span class="map-current-label">Di sini</span>':'')+
    (locked?'<span class="map-lock" title="Terkunci">'+lockIcon+'</span>':'')+'</div>'+
-   (open&&hasChildren?'<div class="tree-indent">'+renderTree(l.id)+'</div>':'');
+   (open?'<div class="tree-indent">'+renderTree(l.id)+'</div>':'');
  }).join("");
 }
 function locationItem(l){
