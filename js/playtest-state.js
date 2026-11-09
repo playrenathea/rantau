@@ -2,12 +2,10 @@
  * Browser-only MVP playtest checkpoint, independent of legacy rantau.save.v1.
  * The world JSON remains authoritative; Explorer/Chat/Memory read a projection.
  */
-import {pages,npcs,playerStart} from './game/content/playtest-npcs.js';
+import {pages,npcs,testCheckpointKnowledge} from './game/content/playtest-npcs.js';
 import {createWorld,restoreWorld,resetWorld,serializeWorld} from './game/conversation/persistent-sim.js';
 const KEY='rantau.playtest.v1';
-export const TEST_CHECKPOINT={
- ...playerStart,pasar_induk:1,kawasan_industri:3,dimas:3,dimas__kawasan_industri:3
-};
+export const TEST_CHECKPOINT=testCheckpointKnowledge;
 const clone=x=>JSON.parse(JSON.stringify(x));
 const pins=(ids,world)=>[...new Set((Array.isArray(ids)?ids:[])
  .filter(id=>typeof id==='string'&&world.player.knowledge[id]>0&&pages[id]))].slice(0,7);
