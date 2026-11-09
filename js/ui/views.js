@@ -1,4 +1,4 @@
-import {locations,information,relations,npcs,emojis,byId} from "../data.js";
+import {locations,information,relations,npcs,emojis,byId} from "../playtest-data.js";
 
 // Presentation only. A new view instance receives a snapshot of the current UI state.
 // Gameplay, persistence, navigation and event handling remain in app.js.
@@ -9,7 +9,7 @@ export function createViews({state,draft,picker,pickerOpen,memoryFilter="all"}){
 const mapIcon="<svg class=\"ui-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3z\"/><path d=\"M9 3v15M15 6v15\"/></svg>";
 const lockIcon="<svg class=\"ui-icon lock-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"5\" y=\"10\" width=\"14\" height=\"11\" rx=\"2\"/><path d=\"M8 10V7a4 4 0 0 1 8 0v3\"/></svg>";
 function renderTree(parent){
- return locations.filter(l=>l.parent===parent&&l.access!=="secret").map(l=>{
+ return locations.filter(l=>l.parent===parent&&l.access!=="secret"&&state.knowledge[l.id]>0).map(l=>{
   const open=state.expanded.includes(l.id);
   const hasChildren=locations.some(x=>x.parent===l.id&&x.access!=="secret");
   const locked=l.access==="limited";
@@ -37,11 +37,11 @@ function npcItem(n){
  '<button class="location-entry" data-memory-hold="npc:'+n.id+'" data-npc="'+n.id+'"><strong>'+esc(n.name)+'</strong><span>'+esc(n.description)+'</span></button><span class="entry-chevron">›</span></div>';
 }
 function explorer(){
- const current=loc(state.location)||loc("kota");
+ const current=loc(state.location)||loc("terminal");
  if(state.mapOpen)return '<div class="explorer-header"><span class="section-label">Peta / Kota</span><button class="map-close" data-close-map aria-label="Tutup peta">✕</button></div>'+
  '<h2 class="heading">Peta Kota</h2><div class="map-tree">'+renderTree(null)+'</div>';
  const parent=current.parent?loc(current.parent):null;
- const children=locations.filter(l=>l.parent===current.id&&l.access!=="secret");
+ const children=locations.filter(l=>l.parent===current.id&&l.access!=="secret"&&state.knowledge[l.id]>0);
  const people=npcs.filter(n=>n.location===current.id);
  const levels=[...information.map(i=>state.knowledge[i.id]||0),...relations.map(r=>state.relations[r.id]||0)];
  const unlocked=levels.filter(level=>level>0).length;
@@ -71,7 +71,7 @@ function chat(){
  const usedTopics=new Set(draft.filter(t=>t.kind==="info").map(t=>t.id));
  const usedEmojis=new Set(draft.filter(t=>t.kind==="emoji").map(t=>t.value));
  const options=picker==="info"
-  ?information.filter(i=>state.knowledge[i.id]>0).map(i=>'<button data-add-info="'+i.id+'" data-memory-hold="'+i.id+'"'+(usedTopics.has(i.id)?' disabled aria-label="'+esc(i.name)+' sudah dipilih"':'')+'>'+esc(i.name)+'</button>').join("")
+  ?[...information.filter(i=>state.knowledge[i.id]>0),...relations.filter(r=>state.relations[r.id]>0).map(r=>({id:r.id,name:(byId(r.a)?.name||r.a)+" × "+(byId(r.b)?.name||r.b)}))].map(i=>'<button data-add-info="'+i.id+'" data-memory-hold="'+i.id+'"'+(usedTopics.has(i.id)?' disabled aria-label="'+esc(i.name)+' sudah dipilih"':'')+'>'+esc(i.name)+'</button>').join("")
   :emojis.map(e=>'<button class="emoji-opt" data-add-emoji="'+e+'" data-emoji-hold="'+e+'"'+(usedEmojis.has(e)?' disabled aria-label="'+e+' sudah dipilih"':'')+'>'+e+'</button>').join("");
  return '<div class="chat-layout">'+
  '<div class="chat-header"><div class="chat-person"><div class="chat-avatar">'+esc(n.name.charAt(0))+'</div><div class="chat-person-details"><div class="chat-person-name" data-memory-hold="npc:'+n.id+'">'+esc(n.name)+'</div><div class="chat-person-description">'+esc(n.description)+'</div></div></div>'+
