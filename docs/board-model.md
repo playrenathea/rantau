@@ -15,7 +15,7 @@
 
 1. Extract feature Counts / Relationship adjacency / Player Repeat Key.
 2. Evaluate existing Emoji profile events: NPC-directed effects, conditionals, topic Alignment, Mimicry, ASK, and modifiers.
-3. Calculate working V/D/P and per-beat engagement and annoyance.
+3. Calculate V/D from the same evidence, including Repeat and whole-message Stacking; use final ΔV to update Patience and prioritize interpersonal expressions.
 4. Form actual message candidates from known NPC Memory Pages, optional attitudes and interests; a Relationship is rendered as its two known endpoint Topics.
 5. Score candidates using Page disclosure, Knowledge, ASK evidence, Warm Up of Player-mentioned Topics, and recency-weighted Cool Down of the precise NPC output combination.
 6. Select the highest-scoring candidate. Fully unknown explicit Player Topics have an emoji-only Confused response; exhausted Patience terminates with 💤.
@@ -29,9 +29,9 @@ No classifying Player strategies; no Answer/Ask/Inform/Redirect/Withdraw action 
 
 `ΔD = saturate(emoji D+) + saturate(emoji D−) + knowledgeGap + repeat`
 
-`patienceCost = max(0, beatCost + repeatAnnoyance + stackBackfire − engagement)`
+`patienceCost = max(0, beatCost − engagement) + socialCost × max(0, −ΔV)`
 
-Each beat uses current V/D. Patience never rises from this formula; highly engaging beats can have zero cost. Stacking is counted over the **entire message**, not merely a contiguous Emoji group. Repetition pressure is the sum of geometrically decayed previous instances sharing the existing four-class Player Repeat Key.
+Each beat uses current V/D. Repeat's decayed pressure is applied to ΔV **once**, before the same ΔV is used by both P and interpersonal Response; stacking has the same property. This prevents flattering spam from escaping repetition cost and avoids counting negative evidence in multiple patience subformulas. Patience never rises from this formula; highly engaging beats can have zero cost. Stacking is counted over the **entire message**, not merely a contiguous Emoji group. Repetition pressure is the sum of geometrically decayed previous instances sharing the existing four-class Player Repeat Key.
 
 ### Response formula, schematic
 
@@ -40,9 +40,10 @@ Each beat uses current V/D. Patience never rises from this formula; highly engag
 - **Warm Up** applies to all message candidates containing a Player-mentioned Topic; relationship candidates can benefit from their endpoint Topics and Relationship Count.
 - **Cool Down** uses recency-weighted exact output signatures. A Topic-only response, Topic+❓, Topic+👎, Emoji-only reaction and silence have distinguishable signatures. Both Player Repeat and NPC Cool Down share the *same exponential recency principle*, but have different keys and consequences.
 - **Typed ASK** uses existing 📍/⏳/👥 filters and known relationship endpoints. It cannot fabricate unknown Topics.
-- **Boring** is weak evidence when NPC Knowledge exceeds Player by at least two levels; ASK, Interest and positive Alignment remove that candidate. It is never an automatic result of low Player Knowledge.
-- **Interest** is sparse; baseline priority competes with Warm Up and Cool Down. An Interest question does not teach Knowledge.
+- **Gap is not an automatic Emoji.** Removed the gap-derived 💤/💡 response shortcuts, which could misrepresent who was actually learning or bored.
+- **Interest** is sparse and boosts its explicit Emoji candidate, not both Topic-only and Topic+Emoji versions of the same Page. An Interest question does not teach Knowledge.
 - **Openness** remains Page-specific. Its response contribution uses existing V/D state; it is not a new stored attribute.
+- **Interpersonal candidates** (positive/negative Emoji-only and Silence) use final ΔV as their relevance evidence and compete with Topics under exactly the same Base + Warm Up − Cool Down ranking. High D uses 😡, low D uses 😟 for the negative expression; no additional Mood or Action state.
 
 ## Learning and unresolved scope
 
@@ -75,5 +76,24 @@ inverted Alignment and is tested in
 `tests/balance-calibration.test.mjs`. The calculation otherwise
 continues to use the same Emoji profile effects.
 
-See `docs/balance-audit.md` for the after-fix 3 NPC × 3 policy baseline,
+See `docs/balance-audit.md` for the latest 3 NPC × 3 policy baseline,
 parameter sensitivity results, and resettable browser checkpoint.
+
+## Simplification pass — social consequence (2026-11-09)
+
+One numerical output, **final ΔV**, now serves three purposes: update working V,
+accelerate P exhaustion when negative, and strengthen already-supported
+interpersonal Emoji/Silence candidates. No new state, route, scripted response,
+or per-NPC exception was added. The earlier P formula with separate Repeat
+Annoyance and Stacking cost is gone. Default beat cost is provisionally 0.95;
+Repeat contributes 0.42 to the existing V penalty, and Stacking backfire is
+0.27. Social-to-P and social-to-response strengths are provisional 3.2 and 7.5.
+
+The universal NPC response score remains `Base + Warm Up − Cool Down`.
+Existing candidate duplication and gap-derived Emoji shortcuts were removed.
+After P is exhausted, farewell is inert. See `tests/social-response.test.mjs`
+for abuse, aligned spam, Emoji stacking, normal/engaging duration and
+topic continuity regression coverage.
+
+**Still provisional:** Knowledge transfer and branch/contra resolution are
+separate unfinished work. This pass intentionally does not invent rules for them.
