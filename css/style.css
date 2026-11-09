@@ -455,3 +455,67 @@ dialog p{color:var(--muted)}
  .chat-messages .chip{font-size:16px}
  .chat-messages .chip.emoji{font-size:18px}
 }
+
+/* Compact editorial chat — calibrated type, punctuation-like links, quieter farewell. */
+.chat-header{min-height:64px;padding:10px 18px}
+.chat-avatar{width:38px;height:38px;font-size:22px}
+.chat-person{gap:10px}
+.chat-person-name{font-size:17px}
+.chat-person-description{font-size:11px}
+.chat-messages{padding:25px 19px 27px;gap:18px}
+.chat-messages .bubble{
+ font-size:15px;line-height:1.5;
+ gap:2px 3px;max-width:91%;
+}
+.chat-messages .chip{font-size:15px;line-height:1.5}
+.chat-messages .chip.emoji{font-size:17px;line-height:1.35}
+.chat-messages .message.player .bubble{
+ padding:9px 12px;border-radius:14px;
+}
+.chat-messages .message:not(.player) .bubble{padding:1px 0}
+.chat-topic-connector{
+ position:relative;flex:none;min-width:0;width:10px;height:20px;
+ padding:0;margin:0;border:0;border-radius:0;
+ font-size:12px;line-height:1;align-self:baseline;
+ background:transparent;
+}
+.chat-topic-connector::before{
+ content:"";position:absolute;left:-9px;right:-9px;
+ top:-10px;bottom:-10px;
+}
+.chat-topic-connector:focus-visible{outline-offset:2px}
+.chat-messages .listen-mark{font-size:17px}
+#modal:has(.farewell-choices){
+ padding:22px 19px 17px;
+ max-width:min(92vw,380px);
+}
+#modal:has(.farewell-choices) h2{
+ font-family:var(--font-content);font-size:20px;
+ font-weight:400;line-height:1.25;
+ padding-right:28px;margin:0 0 15px;
+}
+#modal .farewell-choices{
+ gap:7px;margin:0 0 13px;
+}
+#modal .farewell-choices button{
+ font-size:23px;min-height:48px;height:48px;
+ padding:4px;border:0;border-radius:7px;
+ background:var(--soft);
+}
+#modal .farewell-choices button:focus-visible,
+#modal .farewell-choices button:hover{
+ background:#E6DFD4;outline-color:var(--accent);
+}
+#modal:has(.farewell-choices) [data-cancel-farewell]{
+ display:block;width:auto;min-height:36px;
+ padding:6px 14px;margin:0 auto;
+ border:0;background:transparent;color:var(--accent);
+ font-family:var(--font-ui);font-size:13px;
+}
+@media(max-width:420px){
+ .chat-header{padding:10px 17px}
+ .chat-messages{padding:23px 17px 27px;gap:18px}
+ .chat-messages .bubble{font-size:15px;max-width:94%}
+ .chat-messages .chip{font-size:15px}
+ .chat-messages .chip.emoji{font-size:17px}
+}
