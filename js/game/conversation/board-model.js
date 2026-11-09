@@ -15,7 +15,7 @@ export const MODEL_CONFIG={
  mimicryScale:0.16,gapDominance:0.06,contraValence:0.2,
  warmUp:0.78,coolDown:1.8,opennessWeight:1.0,
  knowledgeWeight:0.07,interestWeight:0.32,askWeight:1.8,
- attitudeWeight:0.45,confusionWeight:1.0,boringWeight:0.35
+ attitudeWeight:0.45,confusionWeight:1.0
 };
 const clamp=x=>Math.max(0,Math.min(10,x));
 const topic=id=>({kind:'info',id});
@@ -50,7 +50,6 @@ function attitudeEmoji(a){
  if(a.d<0)return '😔';
  return null;
 }
-const wantsAnswer=emojiInfo=>emojiInfo.asks.length>0;
 const filterType={'📍':'Location','⏳':'Time','👥':'IndividualOrGroup'};
 const matchesType=(type,filter)=>!filter||
  (filter==='IndividualOrGroup'?['Individual','Group'].includes(type):type===filter);
@@ -150,9 +149,8 @@ export function resolveBeat(session,playerTokens,config=MODEL_CONFIG,{reactionOn
  // expression selection, even when the repeated message is flattering.
  deltaV-=(0.17+config.repeatCost)*pressure+config.stackBackfire*penalty**2;
  deltaD+=0.11*pressure;
- // One shared interpersonal result drives both willingness to stay and
- // expression relevance. Repeat/stacking already affected deltaV above:
- // charging them again here would count the same evidence twice.
+ // Repeat and stacking are already folded into deltaV. Do not
+ // charge them again separately in the Patience calculation.
  // One final valence reaction drives BOTH Patience and response relevance.
  const negativeReaction=Math.max(0,-deltaV);
  const patienceCost=Math.max(0,config.beatCost-engagement)+
