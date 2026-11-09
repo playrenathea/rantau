@@ -114,7 +114,7 @@ function memory(){
  };
  const pinButton=id=>'<button class="memory-pin'+(pinnedIds.includes(id)?' is-pinned':'')+'" data-pin-memory="'+esc(id)+'" aria-label="'+(pinnedIds.includes(id)?'Lepas pin ':'Pin ')+esc(page(id)?.name||id)+'" aria-pressed="'+pinnedIds.includes(id)+'" title="'+(pinnedIds.includes(id)?'Unpin':'Pin')+'">'+pinIcon+'</button>';
  const pinned=pinnedIds.map(page).filter(p=>p&&p.level>0);
- const workingSection='<section class="working-memory" aria-label="Working Memory"><div class="working-memory-head"><h3>Working Memory</h3><span class="working-memory-count">'+pinned.length+' / 7</span></div>'+ (pinned.length?'<div class="working-memory-list">'+pinned.map(p=>'<div class="working-memory-row"><button class="working-memory-name" data-memory="'+esc(p.id)+'">'+esc(p.name)+'</button><span class="working-memory-type">'+esc(p.type)+'</span>'+pinButton(p.id)+'</div>').join("")+'</div>':'<p class="working-memory-empty">Pin informasi dari daftar Memory di bawah.</p>')+'</section>';
+ const workingSection='<section class="working-memory" aria-label="Working Memory"><div class="working-memory-head"><h3>Working Memory</h3><span class="working-memory-count">'+pinned.length+' / 7</span></div>'+ (pinned.length?'<div class="working-memory-list">'+pinned.map(p=>'<div class="working-memory-row"><button class="working-memory-name" data-memory="'+esc(p.id)+'">'+esc(p.name)+'</button>'+pinButton(p.id)+'</div>').join("")+'</div>':'<p class="working-memory-empty">Pin informasi dari daftar Memory di bawah.</p>')+'</section>';
  const filterBar='<div class="memory-filters" role="group" aria-label="Filter memory">'+
   filters.map(([key,label])=>'<button class="memory-filter'+(memoryFilter===key?' active':'')+
    '" data-memory-filter="'+esc(key)+'" aria-pressed="'+(memoryFilter===key)+'">'+esc(label)+'</button>').join("")+'</div>';
@@ -127,9 +127,9 @@ function memory(){
  const filterLabel=filters.find(([key])=>key===memoryFilter)?.[1]||"All";
  const sectionLabel=(label,info,rels=[])=>'<p class="section-label">'+esc(label)+' · '+stats(info,rels)+'</p>';
  const items=memoryFilter==="Relationships"?[]:shown.map(i=>'<div class="memory-entry"><button class="memory-item" data-memory="'+i.id+
-  '"><div><strong>'+esc(i.name)+'</strong><div class="tag">'+esc(i.type)+'</div></div><span class="pill">Lv '+state.knowledge[i.id]+'</span></button>'+pinButton(i.id)+'</div>');
- const relItems=showRel?knownRel.map(r=>'<div class="memory-entry"><button class="memory-item" data-memory="'+r.id+'"><strong>'+
-  esc(byId(r.a)?.name)+' × '+esc(byId(r.b)?.name)+'</strong><span class="pill">Lv '+state.relations[r.id]+'</span></button>'+pinButton(r.id)+'</div>'):[];
+  '"><div><strong>'+esc(i.name)+'</strong><div class="tag">'+esc(i.type)+' · Lv '+state.knowledge[i.id]+'</div></div></button>'+pinButton(i.id)+'</div>');
+ const relItems=showRel?knownRel.map(r=>'<div class="memory-entry"><button class="memory-item" data-memory="'+r.id+'"><div><strong>'+
+  esc(byId(r.a)?.name)+' × '+esc(byId(r.b)?.name)+'</strong><div class="tag">Relationship · Lv '+state.relations[r.id]+'</div></div></button>'+pinButton(r.id)+'</div>'):[];
  return '<div class="memory-header"><h2 class="heading">Memory</h2><button class="map-close" data-close-memory aria-label="Tutup memory">✕</button></div>'+
   workingSection+filterBar+
   (memoryFilter==="all"?sectionLabel("Information",known):sectionLabel(filterLabel,shown,showRel?knownRel:[]))+
