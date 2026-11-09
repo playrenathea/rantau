@@ -98,7 +98,9 @@ export function finish(world,{farewellEmoji=null}={}){
  const {npcId,session,starting,firstImpression}=active;
  if(farewellEmoji!==null){
   if(typeof farewellEmoji!=='string'||!farewellEmoji)throw Error('Invalid farewell Emoji');
-  resolveBeat(session,[{kind:'emoji',value:farewellEmoji}],undefined,{reactionOnly:true});
+  // An NPC that already left cannot receive another social Reaction.
+  if(session.state.p>0)
+   resolveBeat(session,[{kind:'emoji',value:farewellEmoji}],undefined,{reactionOnly:true});
  }
  const persisted=world.npcs[npcId];
  const affectCap=firstImpression?3:1;
