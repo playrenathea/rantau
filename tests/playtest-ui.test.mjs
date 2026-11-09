@@ -28,6 +28,7 @@ test('existing Explorer and Memory layouts render actual playtest content',()=>{
  assert.match(v.memory(),/Dimas/);
  assert.match(v.memory(),/Kawasan Industri/);
  assert.match(v.memory(),/Relationships/);
+ assert.equal((v.memory().match(/data-memory-filter="Individual"/g)||[]).length,1);
  assert.equal(pages.dimas__kawasan_industri.type,'Relationship');
  assert.equal(information.length+relations.length,Object.keys(pages).length);
 });
@@ -37,6 +38,7 @@ test('map exposes only known location Pages and Ratih appears at Pasar Induk',()
  const map=views(s).explorer();
  assert.match(map,/Pasar Induk/);
  assert.doesNotMatch(map,/Pelabuhan/);
+ assert.doesNotMatch(map,/Kampung Halaman/);
  s.mapOpen=false;
  setPlayerLocation(s.world,'pasar_induk');
  assert.match(views(s).explorer(),/Bu Ratih/);
