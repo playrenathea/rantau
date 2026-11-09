@@ -116,8 +116,10 @@ export function resolveBeat(session,playerTokens,config=MODEL_CONFIG){
  }
  const soft=axis=>sat(sum(raw[axis].filter(x=>x>0)),config.emojiCap)+
   sat(sum(raw[axis].filter(x=>x<0)),config.emojiCap);
- const alignment=emojiInfo.alignments.length?
-  sum(emojiInfo.alignments.map(x=>2*x.similarity-1))/emojiInfo.alignments.length:0;
+ // Use the existing Memory Page Count as a normalized weight (not a second bonus).
+ const alignmentMass=sum(emojiInfo.alignments.map(x=>features.counts[x.topicId]??1));
+ const alignment=alignmentMass?
+  sum(emojiInfo.alignments.map(x=>(2*x.similarity-1)*(features.counts[x.topicId]??1)))/alignmentMass:0;
  const mimicry=emojiInfo.mimicry.length?
   sum(emojiInfo.mimicry.map(x=>2*x.similarity-1))/emojiInfo.mimicry.length:0;
  const active=Object.entries(features.counts).filter(([id])=>session.memory[id]);
@@ -126,7 +128,12 @@ export function resolveBeat(session,playerTokens,config=MODEL_CONFIG){
  for(const [id,count] of active){
   const p=session.memory[id],weight=count/totalCount;
   if(p.gap>=2)deltaD-=config.gapDominance*weight;
-  if(p.gap<=-2)deltaD+=config.gapDominance*weight;
+  // Being less knowledgeable is not automatically boring: ASK, Interest and
+  // positive Topic Alignment can make it a productive conversation.
+  const askingThisPage=asks.some(a=>linked(id,a.id,a.filter));
+  const positiveAlignment=emojiInfo.alignments.some(a=>a.topicId===id&&a.similarity>0.5);
+  if(p.gap<=-2&&!askingThisPage&&!p.interest&&!positiveAlignment)
+   deltaD+=config.gapDominance*weight;
   if(p.contra===true)deltaV-=config.contraValence*weight*
     (emojiInfo.modifiers.some(m=>m.kind==='mitigateDisagreement')?0.5:1);
   if(p.interest)engagement+=config.engagementScale*weight*p.interest.priority/5;
