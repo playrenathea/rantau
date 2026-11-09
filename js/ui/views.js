@@ -23,20 +23,18 @@ function renderTree(parent){
 function locationItem(l){
  const locked=l.access==="limited";
  return '<div class="location-list-row'+(locked?' locked':'')+'">'+
- '<button class="place-tile" data-enter="'+l.id+'" '+(locked?'disabled':'')+' aria-label="Buka '+esc(l.name)+'"><span aria-hidden="true">◇</span></button>'+
  '<button class="location-entry" data-memory-hold="'+l.id+'" data-enter="'+l.id+'" '+(locked?'disabled':'')+'><strong>'+esc(l.name)+'</strong><span>'+esc(l.description)+'</span></button>'+
  '<span class="entry-chevron">'+(locked?lockIcon:'›')+'</span></div>';
 }
 function npcItem(n){
- return '<div class="location-list-row"><button class="person-tile" data-npc="'+n.id+'" aria-label="Bicara dengan '+esc(n.name)+'">'+esc(n.name.charAt(0))+'</button>'+
- '<button class="location-entry" data-memory-hold="npc:'+n.id+'" data-npc="'+n.id+'"><strong>'+esc(n.name)+'</strong><span>'+esc(n.description)+'</span></button><span class="entry-chevron">›</span></div>';
+ return '<div class="location-list-row"><button class="location-entry" data-memory-hold="npc:'+n.id+'" data-npc="'+n.id+'"><strong>'+esc(n.name)+'</strong><span>'+esc(n.description)+'</span></button><span class="entry-chevron">›</span></div>';
 }
 function explorer(){
  const current=loc(state.location)||loc("terminal");
  if(state.mapOpen)return '<div class="explorer-header"><span class="section-label">Peta / Kota</span><button class="map-close" data-close-map aria-label="Tutup peta">✕</button></div>'+
  '<h2 class="heading">Peta Kota</h2><div class="map-tree">'+renderTree(null)+'</div>';
  const parent=current.parent?loc(current.parent):null;
- const children=locations.filter(l=>l.parent===current.id&&l.access!=="secret"&&state.knowledge[l.id]>0);
+ const children=locations.filter(l=>(l.parent===current.id||(current.id==="terminal"&&l.id==="pasar_induk"))&&l.id!==current.id&&l.access!=="secret"&&state.knowledge[l.id]>0);
  const people=npcs.filter(n=>n.location===current.id);
  const levels=[...information.map(i=>state.knowledge[i.id]||0),...relations.map(r=>state.relations[r.id]||0)];
  const unlocked=levels.filter(level=>level>0).length;
@@ -47,7 +45,9 @@ function explorer(){
  (parent?'<button class="location-action parent-action" data-enter="'+parent.id+'" aria-label="Kembali ke '+esc(parent.name)+'"><span aria-hidden="true">‹</span> '+esc(parent.name)+'</button>':'')+'</div>'+
  '<div class="action-group action-right"><button class="location-action" data-tabgo="memory" aria-label="Buka memory, '+unlocked+' halaman terbuka, total '+totalLevels+' level">Memory <span class="memory-progress">'+unlocked+' <span aria-hidden="true">|</span> '+totalLevels+'</span></button>'+
  '<button class="quiet save-shortcut" id="saveMenu" aria-label="Save">⋯</button></div></div>'+
- '<div class="location-list">'+children.map(locationItem).join("")+people.map(npcItem).join("")+
+ '<div class="explore-groups">'+
+ (children.length?'<section class="explore-group" aria-label="Lokasi"><h3 class="explore-group-label">Lokasi</h3><div class="location-list">'+children.map(locationItem).join("")+'</div></section>':'')+
+ (people.length?'<section class="explore-group" aria-label="Orang"><h3 class="explore-group-label">Orang</h3><div class="location-list">'+people.map(npcItem).join("")+'</div></section>':'')+
  (!children.length&&!people.length?'<div class="empty">Tidak ada yang terlihat di sini.</div>':'')+'</div></div>';
 }
 const pageName=id=>{
