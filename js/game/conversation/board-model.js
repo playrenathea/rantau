@@ -9,7 +9,7 @@ import {evaluateEmojiGroups,effectiveOpenness} from './emoji-eval.js';
 import {pages,npcs,playerStart,createInteractionMemory} from '../content/playtest-npcs.js';
 
 export const MODEL_CONFIG={
- decay:0.62,beatCost:0.95,engagementScale:0.65,
+ decay:0.62,repeatCost:0.42,beatCost:0.95,engagementScale:0.65,
  socialCost:3.2,socialResponse:7.5,
  emojiScale:0.27,emojiCap:0.85,stackBackfire:0.27,alignmentScale:0.28,
  mimicryScale:0.16,gapDominance:0.06,contraValence:0.2,
@@ -151,7 +151,10 @@ export function resolveBeat(session,playerTokens,config=MODEL_CONFIG,{reactionOn
  // One shared interpersonal result drives both willingness to stay and
  // expression relevance. Repeat/stacking already affected deltaV above:
  // charging them again here would count the same evidence twice.
- const negativeReaction=Math.max(0,-deltaV);
+ // Repeat remains unpleasant even when a flattering Emoji offsets deltaV.
+ // One beat-local signal feeds BOTH Patience and the response candidates.
+ const socialSignal=deltaV-config.repeatCost*pressure;
+ const negativeReaction=Math.max(0,-socialSignal);
  const patienceCost=Math.max(0,config.beatCost-engagement)+
   config.socialCost*negativeReaction;
  session.state={
@@ -205,13 +208,13 @@ export function resolveBeat(session,playerTokens,config=MODEL_CONFIG,{reactionOn
   // Dominance only selects an existing negative expression.
   // Silence is already a legal output; social pressure can make it preferable
   // to continuing an unrelated Topic when the same negative Emoji cools down.
-  pushCandidate(null,candidates,[],0.03+config.socialResponse*Math.max(0,-deltaV)*1.1,{mode:'silence'});
-  if(deltaV<0)
+  pushCandidate(null,candidates,[],0.03+config.socialResponse*Math.max(0,-socialSignal)*1.1,{mode:'silence'});
+  if(socialSignal<0)
    pushCandidate(null,candidates,[emoji(session.state.d>=5?'😡':'😟')],
-    0.42+config.socialResponse*(-deltaV),{mode:'react'});
-  else if(deltaV>0)
+    0.42+config.socialResponse*(-socialSignal),{mode:'react'});
+  else if(socialSignal>0)
    pushCandidate(null,candidates,[emoji('🙂')],
-    0.42+config.socialResponse*deltaV*0.65,{mode:'react'});
+    0.42+config.socialResponse*socialSignal*0.65,{mode:'react'});
   else if(features.parsed.kind==='EMOJI_ONLY')
    pushCandidate(null,candidates,[emoji('😐')],0.42,{mode:'react'});
  }
