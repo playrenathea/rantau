@@ -20,11 +20,11 @@ test('a completely unknown explicit Topic yields emoji-only confusion',()=>{
  const r=resolveBeat(createSession('ratih'),[T('saman'),E('❓')]);
  assert.deepEqual(says(r),['❓']);
 });
-test('Harun initially favors his Interest but can reveal a Saman relationship later',()=>{
+test('Harun rewards rapport on Perantau and can reveal a Saman relationship',()=>{
  const session=createSession('harun');
- const early=resolveBeat(session,[T('saman'),E('❓')]);
+ const early=resolveBeat(session,[T('perantau'),E('👍')]);
  assert.ok(says(early).includes('perantau'));
- resolveBeat(session,[T('perantau'),E('👍')]);
+ resolveBeat(session,[T('kampung_halaman'),E('🙂')]);
  const later=resolveBeat(session,[T('saman'),E('❓')]);
  assert.ok(says(later).includes('saman'));
  assert.equal(session.memory.saman__narto.pendingPlayerGain,1);
