@@ -49,6 +49,7 @@ export function createWorld({
 }={}){
  if(pages[playerLocation]?.type!=='Location')throw Error('Unknown Player location: '+playerLocation);
  const knowledge=copy(playerKnowledge);
+ if(!(knowledge[playerLocation]>=1))throw Error('Player cannot start in an unknown location: '+playerLocation);
  const errors=validateKnowledge(knowledge);
  if(errors.length)throw Error('Invalid initial Player Knowledge: '+errors.join('; '));
  const npcStates=Object.fromEntries(Object.entries(npcs).map(([id,npc])=>{
@@ -66,6 +67,8 @@ export function createWorld({
 export function begin(world,npcId){
  if(world.active)throw Error('Finish active interaction before beginning another');
  if(!npcs[npcId])throw Error('Unknown NPC: '+npcId);
+ if(world.player.location!==npcs[npcId].location)
+  throw Error('NPC '+npcId+' is at '+npcs[npcId].location+', not '+world.player.location);
  const persisted=world.npcs[npcId];
  const session=createSession(npcId,world.player.knowledge);
  session.state={v:persisted.v,d:persisted.d,p:npcs[npcId].initial.p};
@@ -144,7 +147,8 @@ export function restoreWorld(json){
  const world=typeof json==='string'?JSON.parse(json):copy(json);
  if(world?.version!==WORLD_VERSION||!world.player||!world.npcs||!Array.isArray(world.records))
   throw Error('Invalid playtest world version/shape');
- if(pages[world.player.location]?.type!=='Location')throw Error('Invalid saved Player location');
+ if(pages[world.player.location]?.type!=='Location'||!(world.player.knowledge[world.player.location]>=1))
+  throw Error('Invalid saved Player location');
  const playerErrors=validateKnowledge(world.player.knowledge??{});
  if(playerErrors.length)throw Error('Invalid saved Player Knowledge: '+playerErrors.join('; '));
  for(const id of Object.keys(npcs)){
