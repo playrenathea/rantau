@@ -1,5 +1,5 @@
 import {locations,relations,npcs,byId,emojiDescriptions} from "./playtest-data.js";
-import {createViews} from "./ui/views.js?v=explore-proximity-20261109";
+import {createViews} from "./ui/views.js?v=return-terminal-20261109";
 import {begin,beat,finish,setPlayerLocation} from "./game/conversation/persistent-sim.js";
 import {fresh,load,persist,downloadSave,parseSave,project} from "./playtest-state.js";
 let state=load(),draft=[],picker="info",pickerOpen=false,memoryFilter="all",previousTab="explorer";
