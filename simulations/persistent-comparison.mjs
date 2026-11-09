@@ -26,7 +26,7 @@ const scenarios={
  ratih:{
   spam:()=>[T('dimas'),T('kawasan_industri')],
   listen:()=>[],
-  adaptive:i=>[ [T('dimas'),T('kawasan_industri')],[T('dimas'),E('❓')],
+  adaptive:i=>[ [],[T('dimas'),T('kawasan_industri')],
    [T('pasar_induk'),E('🙂')] ][i%3]
  }
 };
