@@ -34,7 +34,13 @@ function explorer(){
  if(state.mapOpen)return '<div class="explorer-header"><span class="section-label">Peta / Kota</span><button class="map-close" data-close-map aria-label="Tutup peta">✕</button></div>'+
  '<h2 class="heading">Peta Kota</h2><div class="map-tree">'+renderTree(null)+'</div>';
  const parent=current.parent?loc(current.parent):null;
- const children=locations.filter(l=>(l.parent===current.id||(current.id==="terminal"&&l.id==="pasar_induk"))&&l.id!==current.id&&l.access!=="secret"&&state.knowledge[l.id]>0);
+ // Known parent and the already-established Terminal ↔ Pasar Induk route are navigable in both directions.
+ const children=locations.filter(l=>
+  (l.parent===current.id||l.id===current.parent||
+   (current.id==="terminal"&&l.id==="pasar_induk")||
+   (current.id==="pasar_induk"&&l.id==="terminal"))&&
+  l.id!==current.id&&l.access!=="secret"&&state.knowledge[l.id]>0
+ ).sort((a,b)=>Number(b.id===current.parent||current.id==="pasar_induk"&&b.id==="terminal")-Number(a.id===current.parent||current.id==="pasar_induk"&&a.id==="terminal"));
  const people=npcs.filter(n=>n.location===current.id);
  const levels=[...information.map(i=>state.knowledge[i.id]||0),...relations.map(r=>state.relations[r.id]||0)];
  const unlocked=levels.filter(level=>level>0).length;
