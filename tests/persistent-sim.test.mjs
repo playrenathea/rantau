@@ -50,6 +50,8 @@ test('learned Relationship creates the missing base awareness at commit only',()
  assert.equal(world.player.knowledge.ratih__pesan_jali,undefined);
  const committed=finish(world);
  assert.ok(committed.learnedByPlayer.includes('ratih__pesan_jali'));
+ assert.deepEqual(new Set(committed.discoveredByPlayer),new Set(['ratih','pesan_jali']));
+ assert.deepEqual(committed.discoveredByNpc,[]);
  assert.equal(world.player.knowledge.ratih__pesan_jali,1);
  assert.equal(world.player.knowledge.ratih,1);
  assert.equal(world.player.knowledge.pesan_jali,1);
