@@ -87,7 +87,7 @@ export function createSession(npcId,playerKnowledge=playerStart){
  return {npcId,state:{...npcs[npcId].initial},
    memory:createInteractionMemory(npcId,playerKnowledge),history:[]};
 }
-export function resolveBeat(session,playerTokens,config=MODEL_CONFIG){
+export function resolveBeat(session,playerTokens,config=MODEL_CONFIG,{reactionOnly=false}={}){
  const npc=npcs[session.npcId];
  if(!npc)throw Error('Unknown session NPC');
  const oldState={...session.state};
@@ -153,6 +153,13 @@ export function resolveBeat(session,playerTokens,config=MODEL_CONFIG){
   v:clamp(oldState.v+deltaV),d:clamp(oldState.d+deltaD),
   p:clamp(oldState.p-patienceCost)
  };
+ // Farewell applies the identical reaction formula but has no unseen NPC reply.
+ // In particular it cannot create hidden Knowledge gains or NPC Cool Down entries.
+ if(reactionOnly){
+  session.history.push({from:'player',tokens:playerTokens.map(t=>({...t}))});
+  return {tokens:[],ranked:[],state:{...session.state},
+   reaction:{deltaV,deltaD,patienceCost,pressure,engagement,stacking:n},pending:{}};
+ }
  const candidates=new Map();
  if(session.state.p>0){
   for(const [id,p] of Object.entries(session.memory)){
