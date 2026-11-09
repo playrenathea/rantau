@@ -161,7 +161,7 @@ export function resolveBeat(session,playerTokens,config=MODEL_CONFIG){
     start+config.attitudeWeight,{mode:'express'});
    if(interest){
     pushCandidate(id,candidates,[...represented,emoji(interest.emoji)],
-     start+interest.priority*config.interestWeight,{mode:interestQuestion(interest)?'ask':'express'});
+     start+interest.priority*config.interestWeight,{mode:interestQuestion(interest)?'ask':'inform'});
    }
    // Question about a base Page can be answered by a known linked Relationship.
    // A filtered question boosts only eligible relationship answers.
