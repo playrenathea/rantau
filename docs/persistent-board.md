@@ -90,25 +90,30 @@ encounters, Player/NPC Page gains, Patience exhaustion count, and the first
 encounter transcript. Use it to spot where a rule or parameter has unusual
 effects. It is a diagnostic comparison, **not** a proof of general balance.
 
-Observed baseline after the signed Topic Attitude correction and shared
-checkpoint (4 sessions × up to 6 beats; gains include basic Page discovery):
+Current baseline after the unified V/Patience/interpersonal Response simplification
+(4 sessions × up to 6 beats; Page gains include basic awareness):
 
 | NPC | Policy | Player Pages improved | NPC Pages improved | Final V | Final D |
 | --- | --- | ---: | ---: | ---: | ---: |
-| Harun | Spam | 3 | 0 | 0 | 10 |
-| Harun | Listen | 4 | 0 | 0 | 10 |
-| Harun | Adaptive | 3 | 0 | 7.969 | 6.507 |
-| Jali | Spam | 1 | 0 | 1.426 | 10 |
-| Jali | Listen | 4 | 0 | 1.833 | 10 |
-| Jali | Adaptive | 6 | 0 | 5.676 | 8.570 |
-| Ratih | Spam | 0 | 1 | 0 | 6.888 |
-| Ratih | Listen | 0 | 0 | 0 | 7.018 |
-| Ratih | Adaptive | 4 | 1 | 7.546 | 3.347 |
+| Harun | Spam | 0 | 0 | 0 | 8.035 |
+| Harun | Listen | 1 | 0 | 0 | 8.035 |
+| Harun | Adaptive | 5 | 0 | 7.485 | 6.507 |
+| Jali | Spam | 1 | 0 | 1.454 | 9.153 |
+| Jali | Listen | 3 | 0 | 1.454 | 9.153 |
+| Jali | Adaptive | 4 | 0 | 5.156 | 8.517 |
+| Ratih | Spam | 0 | 1 | 0 | 4.093 |
+| Ratih | Listen | 0 | 0 | 0 | 4.153 |
+| Ratih | Adaptive | 4 | 1 | 5.609 | 3.347 |
 
-See `docs/balance-audit.md` for the calculation audit and parameter
-sensitivity tests. Browser Reset restores the test checkpoint; the
-standalone CLI's plain `reset` still represents the story's newcomer
-fixture, while `reset --preset informed` uses the browser checkpoint.
+These are deterministic examples, not general balance proofs. The normal conversation
+target is approximate (~7 beats); Jali remains naturally short with starting P=4.
+Extreme abuse can end in 1–3 beats, while strong rapport can extend sessions.
+The browser/UI save schema and NPC content fixture remain unchanged.
+
+See `docs/balance-audit.md` for the pre-change historical table and the updated
+social stress results. Browser Reset restores the test checkpoint; the standalone
+CLI's plain `reset` represents the story's newcomer fixture, while
+`reset --preset informed` uses the browser checkpoint.
 
 The test is repeatable; changing `MODEL_CONFIG` versus a particular
 NPC's Memory Page data produces different effects with the same scripts.
