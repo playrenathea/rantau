@@ -20,12 +20,15 @@ test('a completely unknown explicit Topic yields emoji-only confusion',()=>{
  const r=resolveBeat(createSession('ratih'),[T('saman'),E('❓')]);
  assert.deepEqual(says(r),['❓']);
 });
-test('Harun answers a relevant sensitive-page question without inventing a scripted action',()=>{
+test('Harun initially favors his Interest but can reveal a Saman relationship later',()=>{
  const session=createSession('harun');
- const r=resolveBeat(session,[T('saman'),E('❓')]);
- assert.deepEqual(says(r),['saman']);
- assert.equal(session.memory.saman.pendingPlayerGain,1);
- assert.equal(npcs.harun.memory.saman.knowledge,5);
+ const early=resolveBeat(session,[T('saman'),E('❓')]);
+ assert.ok(says(early).includes('perantau'));
+ resolveBeat(session,[T('perantau'),E('👍')]);
+ const later=resolveBeat(session,[T('saman'),E('❓')]);
+ assert.ok(says(later).includes('saman'));
+ assert.equal(session.memory.saman__narto.pendingPlayerGain,1);
+ assert.equal(npcs.harun.memory.saman__narto.knowledge,4);
 });
 test('Ratih can initiate a typed question about a known relationship',()=>{
  const r=resolveBeat(createSession('ratih'),[]);
