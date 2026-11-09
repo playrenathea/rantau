@@ -122,7 +122,7 @@ test('invalid or incomplete saved knowledge is rejected',()=>{
  const world=createWorld();
  world.player.knowledge.saman__wira=1;
  assert.throws(()=>restoreWorld(serializeWorld(world)),/missing basic Page/);
- assert.throws(()=>createWorld({playerKnowledge:{saman__wira:1}}),/missing basic Page/);
+ assert.throws(()=>createWorld({playerKnowledge:{terminal:1,saman__wira:1}}),/missing basic Page/);
 });
 test('commit does not modify source NPC or starting Player fixtures',()=>{
  const world=createWorld();
