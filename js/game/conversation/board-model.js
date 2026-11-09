@@ -96,8 +96,11 @@ export function resolveBeat(session,playerTokens,config=MODEL_CONFIG){
  const features=extractFeatures({playerTokens,previousNpcTokens,playerHistory,
   relationId:(a,b)=>Object.entries(pages).find(([,p])=>p.type==='Relationship'&&
    ((p.a===a&&p.b===b)||(p.b===a&&p.a===b)))?.[0]??null});
+ // The authored NPC table uses signed Topic Attitude (-1..1);
+ // the shared Emoji evaluator expects the corresponding 0..10 scale.
  const attitudeTable=Object.fromEntries(Object.entries(session.memory)
-  .filter(([,p])=>p.attitude).map(([id,p])=>[id,p.attitude]));
+  .filter(([,p])=>p.attitude).map(([id,p])=>[id,Object.fromEntries(
+   Object.entries(p.attitude).map(([axis,value])=>[axis,5+5*value]))]));
  const previousEmojis=previousNpcTokens?.filter(t=>t.kind==='emoji').map(t=>t.value)||[];
  const prevTopic=previousNpcTokens?.filter(t=>t.kind==='info').at(-1)?.id;
  const emojiInfo=evaluateEmojiGroups(features.parsed,{npcState:oldState,
