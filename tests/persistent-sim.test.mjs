@@ -68,7 +68,7 @@ test('subsequent session uses persisted Player Knowledge and NPC status',()=>{
 });
 test('NPC knowledge gains remain in that NPC and appear next session',()=>{
  const enhanced={...playerStart,dimas:3,kawasan_industri:3,dimas__kawasan_industri:3};
- const world=createWorld({playerKnowledge:enhanced});
+ const world=createWorld({playerKnowledge:{...enhanced,pasar_induk:1},playerLocation:'pasar_induk'});
  begin(world,'ratih');
  const r=beat(world,[T('dimas'),T('kawasan_industri')]);
  assert.equal(r.pending.dimas__kawasan_industri?.npc,1);
@@ -106,14 +106,17 @@ test('reset is deterministic and independent of any persisted run',()=>{
  assert.equal(reset.npcs.jali.interactions,0);
  assert.equal(reset.player.knowledge.ratih,undefined);
 });
-test('location is simulated state, without inventing route or travel cost',()=>{
+test('NPCs must be encountered at their locations, without inventing travel cost',()=>{
  const world=createWorld();
  assert.throws(()=>setPlayerLocation(world,'pasar_induk'),/not discovered/);
  begin(world,'jali');beat(world,[]);finish(world);
  assert.throws(()=>setPlayerLocation(world,'pasar_induk'),/not discovered/);
  const enhanced=createWorld({playerKnowledge:{...playerStart,pasar_induk:1}});
+ assert.throws(()=>begin(enhanced,'ratih'),/not terminal/);
  assert.equal(setPlayerLocation(enhanced,'pasar_induk'),'pasar_induk');
  assert.equal(enhanced.player.location,'pasar_induk');
+ begin(enhanced,'ratih');
+ assert.equal(enhanced.active.npcId,'ratih');
 });
 test('invalid or incomplete saved knowledge is rejected',()=>{
  const world=createWorld();
