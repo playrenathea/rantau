@@ -35,6 +35,14 @@ test('Ratih can initiate a typed question about a known relationship',()=>{
  assert.deepEqual(says(r),['dimas','kawasan_industri','📍']);
  assert.equal(r.pending.dimas__kawasan_industri,undefined);
 });
+test('NPC interest emphasis can transmit Knowledge; typed question cannot',()=>{
+ const jali=resolveBeat(createSession('jali'),[]);
+ assert.deepEqual(says(jali),['ratih','pesan_jali','❗']);
+ assert.equal(jali.pending.ratih__pesan_jali?.player,1);
+ const ratih=resolveBeat(createSession('ratih'),[]);
+ assert.deepEqual(says(ratih),['dimas','kawasan_industri','📍']);
+ assert.equal(ratih.pending.dimas__kawasan_industri,undefined);
+});
 test('Jali location question can mark a pending Player knowledge gain',()=>{
  const session=createSession('jali');
  const r=resolveBeat(session,[T('kawasan_industri'),E('❓')]);
