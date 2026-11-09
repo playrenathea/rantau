@@ -41,7 +41,7 @@ export function runComparison({
  for(const npcId of Object.keys(npcs)){
   for(const policy of Object.keys(scenarios[npcId])){
    const world=createWorld({playerKnowledge:informedStart,playerLocation:npcs[npcId].location});
-   const initial=structuredClone(world.player.knowledge);
+   const initial={...world.player.knowledge};
    let turns=0,exhausted=0;
    const transcripts=[];
    for(let k=0;k<sessions;k++){
