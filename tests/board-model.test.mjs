@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {repeatKey} from '../js/game/conversation/repetition.js';
 import {npcs,playerStart} from '../js/game/content/playtest-npcs.js';
 import {createSession,resolveBeat,responseKey,recencyPressure} from '../js/game/conversation/board-model.js';
 
@@ -46,8 +47,8 @@ test('higher Player Knowledge on Ratih interested page can mark NPC learning',()
 });
 test('repeat pressure increases with frequency and decays with distance',()=>{
  const hist=[{from:'player',tokens:[T('saman')]},{from:'npc',tokens:[E('🙂')]}];
- const immediate=recencyPressure('topic:saman',hist,'player',0.6);
- const spaced=recencyPressure('topic:saman',[...hist,
+ const immediate=recencyPressure(repeatKey([T('saman')]),hist,'player',0.6);
+ const spaced=recencyPressure(repeatKey([T('saman')]),[...hist,
   {from:'player',tokens:[T('perantau')]}],'player',0.6);
  assert.equal(immediate,1);
  assert.ok(spaced<immediate);
