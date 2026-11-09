@@ -10,7 +10,7 @@ import {pages,npcs,playerStart,createInteractionMemory} from '../content/playtes
 
 export const MODEL_CONFIG={
  decay:0.62,beatCost:0.95,engagementScale:0.65,
- socialCost:3.2,socialResponse:6.5,
+ socialCost:3.2,socialResponse:7.5,
  emojiScale:0.27,emojiCap:0.85,stackBackfire:0.27,alignmentScale:0.28,
  mimicryScale:0.16,gapDominance:0.06,contraValence:0.2,
  warmUp:0.78,coolDown:1.8,opennessWeight:1.0,
@@ -205,7 +205,7 @@ export function resolveBeat(session,playerTokens,config=MODEL_CONFIG,{reactionOn
   // Dominance only selects an existing negative expression.
   // Silence is already a legal output; social pressure can make it preferable
   // to continuing an unrelated Topic when the same negative Emoji cools down.
-  pushCandidate(null,candidates,[],0.03+config.socialResponse*Math.max(0,-deltaV)*0.8,{mode:'silence'});
+  pushCandidate(null,candidates,[],0.03+config.socialResponse*Math.max(0,-deltaV)*1.1,{mode:'silence'});
   if(deltaV<0)
    pushCandidate(null,candidates,[emoji(session.state.d>=5?'😡':'😟')],
     0.42+config.socialResponse*(-deltaV),{mode:'react'});
