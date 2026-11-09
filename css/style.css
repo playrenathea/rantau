@@ -350,3 +350,48 @@ dialog p{color:var(--muted)}
 .memory-entry .memory-item>div{min-width:0}
 .memory-entry .memory-item strong{display:block;line-height:1.35}
 .memory-entry .memory-item .tag{font-family:var(--font-ui);font-size:11px;line-height:1.45;color:var(--muted);margin-top:3px}
+
+/* Working Memory editorial inset — typography like section labels, soft surface separation. */
+.working-memory{
+ margin:24px 0 32px;
+ padding:17px 17px 13px;
+ background:#EBE7DF;
+ border:0;
+ border-radius:7px;
+}
+.working-memory-head{
+ display:flex;align-items:baseline;justify-content:space-between;
+ gap:12px;margin:0 0 11px;
+}
+.working-memory-head h3{
+ margin:0;font-family:var(--font-ui);
+ font-size:11px;font-weight:700;line-height:1.4;
+ letter-spacing:.11em;text-transform:uppercase;color:var(--muted);
+}
+.working-memory-count{
+ font-family:var(--font-ui);font-size:11px;
+ font-weight:400;color:var(--muted);
+}
+.working-memory-list{
+ border:0;border-radius:0;overflow:visible;background:transparent;
+}
+.working-memory-row{
+ display:flex;align-items:center;gap:8px;min-height:39px;
+ padding:0;
+}
+.working-memory-row+.working-memory-row{border-top:0}
+.working-memory-name{
+ font-family:var(--font-content);font-size:16px;font-weight:400;
+ letter-spacing:0;line-height:1.4;
+ padding:7px 0;color:var(--ink);
+}
+.working-memory-row .memory-pin{
+ height:36px;width:36px;margin-right:-5px;
+}
+.working-memory-empty{
+ border:0;border-radius:0;background:transparent;
+ padding:8px 0 4px;margin:0;
+}
+@media(max-width:420px){
+ .working-memory{padding:15px 15px 12px;margin:21px 0 30px}
+}
