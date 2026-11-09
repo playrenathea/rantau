@@ -1,5 +1,5 @@
 import {locations,relations,npcs,byId,emojiDescriptions} from "./playtest-data.js";
-import {createViews} from "./ui/views.js?v=memory-metadata-20261109";
+import {createViews} from "./ui/views.js?v=chat-layout-20261110";
 import {begin,beat,finish,setPlayerLocation} from "./game/conversation/persistent-sim.js";
 import {fresh,load,persist,downloadSave,parseSave,project} from "./playtest-state.js";
 let state=load(),draft=[],picker="info",pickerOpen=false,memoryFilter="all",previousTab="explorer";
@@ -127,6 +127,14 @@ function handleClick(event){
   const scroll=window.scrollY;
   save();render();
   window.scrollTo(0,scroll);
+  return;
+ }
+ if(d.topicPair){
+  const [a,b]=d.topicPair.split("|");
+  const relation=relations.find(r=>(r.a===a&&r.b===b)||(r.a===b&&r.b===a));
+  const known=relation&&(visible().relations[relation.id]||0)>0;
+  if(known)memoryDetail(relation.id);
+  else showModal('<div class="section-label">Relationship</div><h2>'+esc(byId(a)?.name||a)+' × '+esc(byId(b)?.name||b)+'</h2><p>Hubungan kedua topik ini belum diketahui.</p>');
   return;
  }
  if(d.memory){memoryDetail(d.memory);return;}
