@@ -57,7 +57,11 @@ function explorer(){
  '<div class="location-list">'+children.map(locationItem).join("")+people.map(npcItem).join("")+
  (!children.length&&!people.length?'<div class="empty">Tidak ada yang terlihat di sini.</div>':'')+'</div></div>';
 }
-function tokenHtml(t,removable=false,i=0){return '<span class="chip '+(t.kind==="emoji"?"emoji":"")+'" '+(removable?'data-remove="'+i+'" '+(t.kind==="emoji"?'data-emoji-hold="'+esc(t.value)+'"':'') :t.kind==="info"?'data-memory-hold="'+t.id+'"':'data-emoji-hold="'+esc(t.value)+'"')+'>'+esc(t.kind==="emoji"?t.value:(byId(t.id)?.name||t.id))+(removable?' <span class="x">×</span>':"")+'</span>';}
+const pageName=id=>{
+ const rel=relations.find(r=>r.id===id);
+ return byId(id)?.name||(rel?(byId(rel.a)?.name||rel.a)+' × '+(byId(rel.b)?.name||rel.b):id);
+};
+function tokenHtml(t,removable=false,i=0){return '<span class="chip '+(t.kind==="emoji"?"emoji":"")+'" '+(removable?'data-remove="'+i+'" '+(t.kind==="emoji"?'data-emoji-hold="'+esc(t.value)+'"':'') :t.kind==="info"?'data-memory-hold="'+t.id+'"':'data-emoji-hold="'+esc(t.value)+'"')+'>'+esc(t.kind==="emoji"?t.value:pageName(t.id))+(removable?' <span class="x">×</span>':"")+'</span>';}
 function chat(){
  const n=npc(state.activeNpc);
  if(!n)return '<div class="chat-header"><span>Percakapan</span><button class="map-close" data-close-chat aria-label="Akhiri percakapan">✕</button></div>';
