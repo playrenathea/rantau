@@ -33,7 +33,7 @@ are currently unassessed, NPC pruning remains disabled, and the typed
 ASK/knowledge-transfer rules are provisional. This audit does not resolve
 those open design decisions.
 
-## 2. Global parameters: sensitivity check
+## 2. Global parameters: earlier sensitivity check (historical)
 
 Nine deterministic scenarios were run for **Harun, Jali, and Ratih**:
 each with Spam, Listen, and Adaptive scripted Player policies,
@@ -47,7 +47,7 @@ Parameter sweeps examined:
 - Interest strength: 0.22, 0.28, **0.32**, 0.40, 0.50
 - Repeat Patience cost: 0.25, **0.42**, 0.60, 0.85
 
-Bold values are the retained current baseline, **not permanent settings**.
+Bold values were the earlier baseline, **not current social-consequence tuning**.
 After correcting the Alignment scale bug, increasing Alignment further
 increased reputation gains for matching strategies but risked making
 rapport too easy. The current value 0.28 allows substantial differentiation
@@ -56,7 +56,7 @@ maintains Ratih's Topic continuity while varying her response format.
 Interest 0.32 avoids permanently locking Harun to Perantau; higher
 weights suppressed useful Saman-related responses.
 
-### Recomputed baseline after model fixes
+### Historical baseline before social-consequence simplification
 
 | NPC | Player policy | Player Pages improved | NPC Pages improved | Final V | Final D | Sessions with P exhausted |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
@@ -126,3 +126,50 @@ Test files: `tests/board-model.test.mjs`,
 Browser-level visual/interaction automation and complete Node suite
 are **not yet verified**. Direct module/test-harness checks and model
 simulations passed at the time of this audit.
+
+## 4. Latest social-consequence simplification — supersedes the historical baseline
+
+**Model change:** final ΔV (including whole-message Stacking and exponentially
+decayed Repeat) now drives working V, the extra Patience cost from a negative
+reaction, and the relative priority of interpersonal Emoji/Silence candidates.
+No additional emotional state, type of NPC action, or NPC-specific exception.
+A single `score = Base + Warm Up − Cool Down` still chooses the output.
+Duplicate full Interest bonus on Topic-only candidates and gap-derived 💡/💤
+automatic reactions were removed. Farewell has no reaction after P has reached 0.
+
+**Provisional baseline values:** beatCost 0.95, repeatCost contribution 0.42,
+stackBackfire 0.27, socialCost 3.2, socialResponse 7.5. No NPC numbers were
+changed. The earlier sensitivity sweep does not validate these new numbers;
+they are an explicitly provisional playtest checkpoint.
+
+### Latest 4-session comparison, 6-beat cap per session
+
+| NPC | Policy | Player Pages improved | NPC Pages improved | Final V | Final D | Sessions with P exhausted |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| Harun | Spam | 0 | 0 | 0.000 | 8.035 | 4 |
+| Harun | Listen | 1 | 0 | 0.000 | 8.035 | 4 |
+| Harun | Adaptive | 5 | 0 | 7.485 | 6.507 | 0 |
+| Jali | Spam | 1 | 0 | 1.454 | 9.153 | 4 |
+| Jali | Listen | 3 | 0 | 1.454 | 9.153 | 4 |
+| Jali | Adaptive | 4 | 0 | 5.156 | 8.517 | 4 |
+| Ratih | Spam | 0 | 1 | 0.000 | 4.093 | 4 |
+| Ratih | Listen | 0 | 0 | 0.000 | 4.153 | 4 |
+| Ratih | Adaptive | 4 | 1 | 5.609 | 3.347 | 0 |
+
+The comparison policy `adaptive` is a fixed test script; it is not a proof of
+optimality. Jali naturally finishes earlier with initial P=4, so a six-beat
+comparison marks even its adaptive sessions as exhausted.
+
+### Longer uninterrupted representative sessions
+
+| NPC | Abusive insult | Emoji stacking (6) | Neutral rotating Topics | Relevant/engaging rotation |
+| --- | ---: | ---: | ---: | ---: |
+| Harun | 3 beats | 1 beat | 8 beats | Longer than neutral |
+| Jali | 2 beats | 1 beat | About 4 beats | About 6 beats |
+| Ratih | 3 beats | 1 beat | About 7 beats | Longer than neutral |
+
+These are deterministic probes, not strict conversation-length rules. In
+particular Jali is intentionally impatient. The social-response regression
+checks cover personal reaction, early exit, repeated aligned flattery,
+stacking and viable ASK. Unfinished Knowledge branch/contra mechanics are
+intentionally unchanged.
