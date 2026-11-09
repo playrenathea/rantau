@@ -92,10 +92,14 @@ export function beat(world,tokens,config){
    throw Error('Player does not know Page: '+token.id);
  return resolveBeat(world.active.session,tokens,config);
 }
-export function finish(world){
+export function finish(world,{farewellEmoji=null}={}){
  const active=world.active;
  if(!active)throw Error('No active interaction');
  const {npcId,session,starting,firstImpression}=active;
+ if(farewellEmoji!==null){
+  if(typeof farewellEmoji!=='string'||!farewellEmoji)throw Error('Invalid farewell Emoji');
+  resolveBeat(session,[{kind:'emoji',value:farewellEmoji}],undefined,{reactionOnly:true});
+ }
  const persisted=world.npcs[npcId];
  const affectCap=firstImpression?3:1;
  const delta={
