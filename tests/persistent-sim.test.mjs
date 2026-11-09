@@ -72,6 +72,8 @@ test('NPC knowledge gains remain in that NPC and appear next session',()=>{
  const enhanced={...playerStart,dimas:3,kawasan_industri:3,dimas__kawasan_industri:3};
  const world=createWorld({playerKnowledge:{...enhanced,pasar_induk:1},playerLocation:'pasar_induk'});
  begin(world,'ratih');
+ const bare=beat(world,[T('dimas'),T('kawasan_industri')]);
+ assert.equal(bare.pending.dimas__kawasan_industri,undefined);
  const r=beat(world,[T('dimas'),T('kawasan_industri')]);
  assert.equal(r.pending.dimas__kawasan_industri?.npc,1);
  assert.equal(world.npcs.ratih.knowledge.dimas__kawasan_industri,1);
