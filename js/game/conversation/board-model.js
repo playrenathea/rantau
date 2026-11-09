@@ -12,7 +12,7 @@ export const MODEL_CONFIG={
  decay:0.62,repeatCost:0.42,beatCost:0.48,engagementScale:0.65,
  emojiScale:0.27,emojiCap:0.85,stackBackfire:0.12,alignmentScale:0.28,
  mimicryScale:0.16,gapDominance:0.06,contraValence:0.2,
- warmUp:0.78,coolDown:1.25,opennessWeight:1.0,
+ warmUp:0.78,coolDown:1.8,opennessWeight:1.0,
  knowledgeWeight:0.07,interestWeight:0.32,askWeight:1.8,
  attitudeWeight:0.45,confusionWeight:1.0,boringWeight:0.35
 };
