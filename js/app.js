@@ -1,7 +1,7 @@
-import {locations,relations,npcs,byId,emojiDescriptions} from "./data.js";
+import {locations,relations,npcs,byId,emojiDescriptions} from "./playtest-data.js";
 import {createViews} from "./ui/views.js";
-import {npcReply,farewellEffect} from "./engine.js";
-import {fresh,load,persist,downloadSave,parseSave} from "./state.js";
+import {begin,beat,finish,setPlayerLocation} from "./game/conversation/persistent-sim.js";
+import {fresh,load,persist,downloadSave,parseSave,project} from "./playtest-state.js";
 let state=load(),draft=[],picker="info",pickerOpen=false,memoryFilter="all",previousTab="explorer";
 state.mapOpen=false;
 const $=s=>document.querySelector(s);
@@ -10,13 +10,15 @@ const loc=id=>locations.find(x=>x.id===id);
 const npc=id=>npcs.find(x=>x.id===id);
 const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const save=()=>persist(state);
+const visible=()=>project(state);
 function setTab(tab){if(tab==="memory"&&state.tab!=="memory")previousTab=state.tab;state.tab=tab;state.mapOpen=false;render();}
 function showModal(html){$("#modalContent").innerHTML=html;modal.showModal();}
 function memoryDetail(id){
  const person=id.startsWith("npc:")?npc(id.slice(4)):null;
  if(person){showModal('<div class="section-label">Memory · Individu</div><h2>'+esc(person.name)+'</h2><p>'+esc(person.description)+'</p>');return;}
  const item=byId(id)||relations.find(r=>r.id===id),place=loc(id);
- const level=state.knowledge[id]||state.relations[id]||0;
+ const display=visible();
+ const level=display.knowledge[id]||display.relations[id]||0;
  if(!level&&!place)return;
  const facts=item?.facts?.slice(0,Math.max(0,level-1))||[];
  const name=item?(item.name||byId(item.a)?.name+" × "+byId(item.b)?.name):place?.name||id;
@@ -61,12 +63,13 @@ function bindEmojiHold(element,emoji,onHold=emojiDetail){
 function render(){
  view.classList.toggle("location-screen",state.tab==="explorer"&&!state.mapOpen);
  view.classList.toggle("chat-screen",state.tab==="chat");
- const views=createViews({state,draft,picker,pickerOpen,memoryFilter});
+ const views=createViews({state:visible(),draft,picker,pickerOpen,memoryFilter});
  view.innerHTML=state.tab==="chat"?views.chat():state.tab==="memory"?views.memory():views.explorer();
  view.querySelectorAll("[data-emoji-hold]").forEach(el=>bindEmojiHold(el,el.dataset.emojiHold));
  view.querySelectorAll("[data-memory-hold]").forEach(el=>{
   const id=el.dataset.memoryHold;
-  if(id.startsWith("npc:")||state.knowledge[id]>0||state.relations[id]>0||loc(id))bindHold(el,id);
+  const display=visible();
+  if(id.startsWith("npc:")||display.knowledge[id]>0||display.relations[id]>0||loc(id))bindHold(el,id);
  });
 }
 function handleClick(event){
@@ -94,24 +97,18 @@ function handleClick(event){
  }
  if(d.enter){
   const location=loc(d.enter);
-  if(location?.access==="limited")return;
-  state.location=location.id;
+  if(!location||location.access==="limited")return;
+  try{setPlayerLocation(state.world,location.id);}catch(err){alert(err.message);return;}
   state.mapOpen=false;
   save();render();return;
  }
  if(d.npc){
-  pickerOpen=false;
-  const record=state.npcStates[d.npc];
-  if(record.sessionClosed){
-   record.history=[];record.used=[];
-   record.p=npc(d.npc).initial.p;
-   record.exited=false;record.sessionClosed=false;
-   save();
-  }
-  state.activeNpc=d.npc;
-  draft=[];
-  setTab("chat");
-  return;
+  if(!npc(d.npc))return;
+  try{
+   if(!state.world.active)begin(state.world,d.npc);
+   else if(state.world.active.npcId!==d.npc)return;
+  }catch(err){alert(err.message);return;}
+  pickerOpen=false;draft=[];save();setTab("chat");return;
  }
  if(d.memoryNpc){
   const person=npc(d.memoryNpc);
@@ -120,7 +117,8 @@ function handleClick(event){
  }
  if(d.pinMemory){
   const id=d.pinMemory;
-  const allowed=(state.knowledge[id]||0)>0||(state.relations[id]||0)>0;
+  const display=visible();
+  const allowed=(display.knowledge[id]||0)>0||(display.relations[id]||0)>0;
   if(!allowed)return;
   const current=Array.isArray(state.workingMemory)?state.workingMemory:[];
   if(current.includes(id))state.workingMemory=current.filter(x=>x!==id);
@@ -156,7 +154,7 @@ function showFarewellEmojiDetail(emoji){
  overlay.querySelector(".farewell-emoji-back").addEventListener("click",()=>overlay.remove());
 }
 function showFarewell(){
- if(!npc(state.activeNpc))return;
+ if(!npc(state.world.active?.npcId))return;
  showModal('<h2>Akhiri percakapan?</h2><div class="farewell-choices" role="group" aria-label="Pilih kesan terakhir">'+
  '<button data-farewell="🙏" data-emoji-hold="🙏" aria-label="Hormat">🙏</button>'+
  '<button data-farewell="👎" data-emoji-hold="👎" aria-label="Buruk">👎</button>'+
@@ -166,27 +164,29 @@ function showFarewell(){
  modal.querySelectorAll(".farewell-choices [data-emoji-hold]").forEach(el=>
   bindEmojiHold(el,el.dataset.emojiHold,showFarewellEmojiDetail));
 }
-function finishConversation(emoji){
- const n=npc(state.activeNpc);
- if(!n)return;
- const rec=state.npcStates[n.id];
- const reply=farewellEffect(rec,emoji);
- rec.history.push({from:"player",tokens:[{kind:"emoji",value:emoji}]});
- rec.history.push({from:"npc",tokens:[{kind:"emoji",value:reply}]});
- // Archive the completed session while preserving relationship V/D.
- rec.sessions=Array.isArray(rec.sessions)?rec.sessions:[];
- rec.sessions.push({history:rec.history.map(m=>({from:m.from,tokens:m.tokens.map(t=>({...t}))})),lastImpression:emoji});
- rec.sessionClosed=true;
- draft=[];pickerOpen=false;
- state.activeNpc=null;
- save();
- modal.close();
- setTab("explorer");
+function finishConversation(endingEmoji){
+ if(!state.world.active)return;
+ try{
+  if(state.world.active.session.state.p>0)
+   beat(state.world,[{kind:"emoji",value:endingEmoji}]);
+  finish(state.world);
+ }catch(err){alert(err.message);return;}
+ draft=[];pickerOpen=false;state.mapOpen=false;previousTab="explorer";
+ save();modal.close();setTab("explorer");
 }
-function send(){if(!state.activeNpc)return;const n=npc(state.activeNpc),rec=state.npcStates[n.id];if(rec.exited)return;rec.history.push({from:"player",tokens:draft.map(t=>({...t}))});const out=npcReply(n,rec,draft,state.knowledge);rec.history.push({from:"npc",tokens:out.response});rec.exited=out.exited;draft=[];pickerOpen=false;save();render();const messages=view.querySelector(".chat-messages");if(messages)messages.scrollTop=messages.scrollHeight;}
+function send(){
+ if(!state.world.active||state.world.active.session.state.p<=0)return;
+ try{beat(state.world,draft.map(t=>({...t})));}
+ catch(err){alert(err.message);return;}
+ draft=[];pickerOpen=false;save();render();
+ const messages=view.querySelector(".chat-messages");
+ if(messages)messages.scrollTop=messages.scrollHeight;
+}
 $("#closeModal").onclick=()=>modal.close();
-function openSaveMenu(){showModal('<h2>Save</h2><div class="actions"><button class="primary" id="exportButton">Export JSON</button><button class="secondary" id="importButton">Import</button></div><p><button class="secondary full" id="resetButton">Reset</button></p>');}
-modal.addEventListener("click",e=>{const choice=e.target.closest("[data-farewell]");if(choice){finishConversation(choice.dataset.farewell);return;}if(e.target.closest("[data-cancel-farewell]")){modal.close();return;}const id=e.target.id;if(id==="exportButton"){downloadSave(state);modal.close();}if(id==="importButton"){$("#importSave").click();modal.close();}if(id==="resetButton"&&confirm("Hapus semua progres lokal Rantau pada browser ini?")){state=fresh();draft=[];save();modal.close();render();}});
+function openSaveMenu(){
+ showModal('<h2>Save · NPC Playtest</h2><p>Save point: Terminal. Harun dan Jali tersedia; Pasar Induk dan petunjuk Dimas sudah dikenal untuk menguji Ratih.</p><div class="actions"><button class="primary" id="exportButton">Export JSON</button><button class="secondary" id="importButton">Import</button></div><p><button class="secondary full" id="resetButton">Reset ke Save Point</button></p>');
+}
+modal.addEventListener("click",e=>{const choice=e.target.closest("[data-farewell]");if(choice){finishConversation(choice.dataset.farewell);return;}if(e.target.closest("[data-cancel-farewell]")){modal.close();return;}const id=e.target.id;if(id==="exportButton"){downloadSave(state);modal.close();}if(id==="importButton"){$("#importSave").click();modal.close();}if(id==="resetButton"&&confirm("Reset progres NPC Playtest ke Terminal? Save game lama tidak berubah.")){state=fresh();draft=[];pickerOpen=false;memoryFilter="all";previousTab="explorer";save();modal.close();render();}});
 // Prevent accidental text selection/copy menus during press-and-hold gameplay.
 // Not a security boundary: public HTML/JS assets remain inspectable.
 function protectGameSurface(event){
@@ -197,5 +197,5 @@ function protectGameSurface(event){
 for(const type of ["contextmenu","copy","cut","dragstart","selectstart"]){
  document.addEventListener(type,protectGameSurface);
 }
-$("#importSave").addEventListener("change",async e=>{const file=e.target.files[0];if(!file)return;try{state=parseSave(await file.text());draft=[];save();render();alert("Save berhasil diimpor.");}catch(err){alert(err.message);}e.target.value="";});
+$("#importSave").addEventListener("change",async e=>{const file=e.target.files[0];if(!file)return;try{state=parseSave(await file.text());draft=[];pickerOpen=false;previousTab="explorer";save();render();alert("Save NPC Playtest berhasil diimpor.");}catch(err){alert(err.message);}e.target.value="";});
 render();
