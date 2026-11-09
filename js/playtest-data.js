@@ -6,7 +6,8 @@ import {pages,npcs as npcTable} from './game/content/playtest-npcs.js';
 import {EMOJI_VALUES} from './game/conversation/emoji-profiles.js';
 import {emojiDescriptions as legacyDescriptions} from './data.js';
 
-export const locations=Object.entries(pages).filter(([,p])=>p.type==='Location')
+// Kampung Halaman remains a Memory Page, not an instantly traversable city location.
+export const locations=Object.entries(pages).filter(([id,p])=>p.type==='Location'&&id!=='kampung_halaman')
  .map(([id,p])=>({id,name:p.name,parent:null,access:'public',
   description:({
    terminal:'Terminal tempat para pendatang tiba dan mencari kabar.',
