@@ -277,3 +277,49 @@ dialog p{color:var(--muted)}
  .location-entry span{font-size:13px}
  .chat-messages{padding-left:19px;padding-right:19px}
 }
+
+/* Explore proximity hierarchy: tightly bound title/description and list items; deliberate section whitespace. */
+.location-banner{border-bottom:0}
+.location-banner-overlay{padding:37px 25px 18px}
+.location-banner-overlay .location-title{
+ font-size:clamp(38px,8vw,54px);margin:0 0 5px;line-height:1.08;
+}
+.location-banner-overlay .location-description{
+ font-style:normal;font-size:15px;line-height:1.55;margin:0;
+}
+.location-actionbar{
+ min-height:48px;gap:12px;margin:0;border-top:1px solid var(--line);
+ border-bottom:1px solid var(--line);
+}
+.location-content{padding:0 25px}
+.explore-groups{padding:26px 0 36px}
+.explore-group+.explore-group{margin-top:36px}
+.explore-group-label{
+ font-family:var(--font-ui);font-size:11px;font-weight:700;
+ letter-spacing:.11em;text-transform:uppercase;
+ color:var(--muted);margin:0 0 8px;
+}
+.explore-group .location-list{border-top:0}
+.explore-group .location-list-row{
+ min-height:0;gap:12px;padding:13px 0 14px;
+ border-bottom:1px solid var(--line);align-items:center;
+}
+.explore-group .location-list-row:first-child{padding-top:7px}
+.explore-group .location-entry{padding:0;gap:2px}
+.explore-group .location-entry strong{
+ font-family:var(--font-content);font-size:18px;font-weight:700;
+ line-height:1.32;letter-spacing:-.015em;
+}
+.explore-group .location-entry span{
+ font-family:var(--font-content);font-size:13px;line-height:1.43;
+ color:var(--muted);
+}
+.explore-group .entry-chevron{font-size:20px;align-self:center}
+@media(max-width:420px){
+ .location-banner-overlay{padding:31px 20px 17px}
+ .location-banner-overlay .location-title{font-size:clamp(37px,10vw,48px)}
+ .location-banner-overlay .location-description{font-size:14px}
+ .location-content{padding:0 20px}
+ .explore-groups{padding-top:24px}
+ .explore-group+.explore-group{margin-top:30px}
+}
