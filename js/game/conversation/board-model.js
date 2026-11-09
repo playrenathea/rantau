@@ -9,7 +9,8 @@ import {evaluateEmojiGroups,effectiveOpenness} from './emoji-eval.js';
 import {pages,npcs,playerStart,createInteractionMemory} from '../content/playtest-npcs.js';
 
 export const MODEL_CONFIG={
- decay:0.62,repeatCost:0.42,beatCost:0.48,engagementScale:0.65,
+ decay:0.62,beatCost:0.95,engagementScale:0.65,
+ socialCost:3.2,socialResponse:6.5,
  emojiScale:0.27,emojiCap:0.85,stackBackfire:0.12,alignmentScale:0.28,
  mimicryScale:0.16,gapDominance:0.06,contraValence:0.2,
  warmUp:0.78,coolDown:1.8,opennessWeight:1.0,
@@ -147,8 +148,12 @@ export function resolveBeat(session,playerTokens,config=MODEL_CONFIG,{reactionOn
  deltaD+=soft('d');
  deltaV-=0.17*pressure+config.stackBackfire*penalty**2;
  deltaD+=0.11*pressure;
- const annoyance=config.repeatCost*pressure+config.stackBackfire*penalty**2;
- const patienceCost=Math.max(0,config.beatCost+annoyance-engagement);
+ // One shared interpersonal result drives both willingness to stay and
+ // expression relevance. Repeat/stacking already affected deltaV above:
+ // charging them again here would count the same evidence twice.
+ const negativeReaction=Math.max(0,-deltaV);
+ const patienceCost=Math.max(0,config.beatCost-engagement)+
+  config.socialCost*negativeReaction;
  session.state={
   v:clamp(oldState.v+deltaV),d:clamp(oldState.d+deltaD),
   p:clamp(oldState.p-patienceCost)
@@ -171,8 +176,9 @@ export function resolveBeat(session,playerTokens,config=MODEL_CONFIG,{reactionOn
    const openness=disclosure*config.opennessWeight;
    const start=0.18+knowledge+openness;
    const interest=p.interest;
-   const topicOnly=start+(interest?.emoji==='❗'?interest.priority*config.interestWeight:0);
-   pushCandidate(id,candidates,represented,topicOnly,{mode:'inform'});
+   // Interest belongs to its expressed Emoji candidate, not both versions
+   // of exactly the same Page (otherwise Cool Down alternates fake variety).
+   pushCandidate(id,candidates,represented,start,{mode:'inform'});
    const expression=attitudeEmoji(p.attitude);
    if(expression)pushCandidate(id,candidates,[...represented,emoji(expression)],
     start+config.attitudeWeight,{mode:'express'});
@@ -188,24 +194,28 @@ export function resolveBeat(session,playerTokens,config=MODEL_CONFIG,{reactionOn
    const count=features.counts[id]||0;
    if(count&&p.contra===true)pushCandidate(id,candidates,[...represented,emoji('👎')],
     start+0.65,{mode:'express'});
-   if(count&&p.gap<=-2&&!asking.length&&!interest&&!emojiInfo.alignments.some(a=>a.topicId===id&&a.similarity>0.5))
-    pushCandidate(id,candidates,[...represented,emoji('💤')],
-     start+config.boringWeight,{mode:'express'});
-   if(count&&p.gap>=2)
-    pushCandidate(id,candidates,[...represented,emoji('💡')],start+0.45,{mode:'express'});
+   // Knowledge Gap belongs to information eligibility and learning.
+   // Do not invent a boredom or "I learned" expression from gap alone.
   }
   const unknown=Object.entries(features.counts).filter(([id])=>!session.memory[id]).length;
   if(unknown)pushCandidate(null,candidates,[emoji('❓')],
    config.confusionWeight+Math.min(1,unknown*0.25),{mode:'react'});
-  // Silence and an interpersonal expression are ordinary low-base candidates.
+  // Interpersonal expression competes on the SAME score as Topics.
+  // No mood state or special reaction action: the existing deltaV is enough.
+  // Dominance only selects an existing negative expression.
   pushCandidate(null,candidates,[],0.03,{mode:'silence'});
-  if(features.parsed.kind==='EMOJI_ONLY')
-   pushCandidate(null,candidates,[emoji(session.state.v>=5?'🙂':'😐')],
-    0.42,{mode:'react'});
+  if(deltaV<0)
+   pushCandidate(null,candidates,[emoji(session.state.d>=5?'😡':'😟')],
+    0.42+config.socialResponse*(-deltaV),{mode:'react'});
+  else if(deltaV>0)
+   pushCandidate(null,candidates,[emoji('🙂')],
+    0.42+config.socialResponse*deltaV*0.65,{mode:'react'});
+  else if(features.parsed.kind==='EMOJI_ONLY')
+   pushCandidate(null,candidates,[emoji('😐')],0.42,{mode:'react'});
  }
  // If every explicit Player Topic is unknown to this NPC, do not redirect
  // into a confident unrelated Topic. Emoji-only confusion is sufficient.
- if(features.parsed.topics.length && !Object.keys(features.counts).some(id=>session.memory[id])){
+ if(features.parsed.topics.length && !Object.keys(features.counts).some(id=>session.memory[id]) && session.state.p>0){
   candidates.clear();
   pushCandidate(null,candidates,[emoji('❓')],config.confusionWeight+1,{mode:'react'});
   pushCandidate(null,candidates,[],0.03,{mode:'silence'});
