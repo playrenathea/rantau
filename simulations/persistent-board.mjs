@@ -15,7 +15,7 @@
 import {existsSync,readFileSync,writeFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import {resolve,dirname} from 'node:path';
-import {playerStart,pages,npcs} from '../js/game/content/playtest-npcs.js';
+import {pages,npcs,testCheckpointKnowledge} from '../js/game/content/playtest-npcs.js';
 import {
  createWorld,resetWorld,begin,beat,finish,setPlayerLocation,serializeWorld,restoreWorld
 } from '../js/game/conversation/persistent-sim.js';
@@ -56,7 +56,7 @@ switch(command){
  case 'reset':
   if(preset==='newcomer')world=resetWorld();
   else if(preset==='informed')world=createWorld({
-   playerKnowledge:{...playerStart,pasar_induk:1,dimas:3,kawasan_industri:3,dimas__kawasan_industri:3}
+   playerKnowledge:{...testCheckpointKnowledge}
   });
   else throw Error('Unknown preset: '+preset);
   write(world);console.log(JSON.stringify({reset:true,preset,...summary(world)},null,2));break;
