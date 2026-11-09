@@ -51,6 +51,10 @@ export const npcs={
 };
 /** Missing player knowledge defaults to level zero. */
 export const playerStart={terminal:1,perantau:1,kampung_halaman:3,saman:1};
+/** Playtest-only checkpoint, intentionally later than the story's true beginning. */
+export const testCheckpointKnowledge=Object.freeze({
+ ...playerStart,pasar_induk:1,kawasan_industri:3,dimas:3,dimas__kawasan_industri:3
+});
 /**
  * Make one snapshot of the knowledge comparison at interaction start.
  * Null branch/contra status means UNASSESSED, not false.
