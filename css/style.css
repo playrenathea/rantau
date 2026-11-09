@@ -345,3 +345,8 @@ dialog p{color:var(--muted)}
  margin-left:13px;padding-left:15px;
  border-left:1px solid var(--line)
 }
+
+/* Memory type and level share one secondary line. */
+.memory-entry .memory-item>div{min-width:0}
+.memory-entry .memory-item strong{display:block;line-height:1.35}
+.memory-entry .memory-item .tag{font-family:var(--font-ui);font-size:11px;line-height:1.45;color:var(--muted);margin-top:3px}
