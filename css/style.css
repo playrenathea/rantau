@@ -170,3 +170,110 @@ main.chat-screen{padding:0;min-height:100dvh;display:flex;flex-direction:column}
 
 /* Keep used tokens visible while preventing duplicate tokens in a draft. */
 .chat-picker-options button:disabled{opacity:.32;cursor:default;filter:grayscale(.5)}
+
+
+/* Rantau editorial direction: Georgia content, Source Sans 3 utilities, no photography. */
+:root{
+ --bg:#F6F2EA;
+ --paper:#FBF8F2;
+ --ink:#2C2A28;
+ --muted:#6E6962;
+ --line:#DFD8CC;
+ --accent:#426A83;
+ --red:#A24F4B;
+ --orange:#B57747;
+ --soft:#F0EBE2;
+ --font-content:Georgia,"Times New Roman",serif;
+ --font-ui:"Source Sans 3",Arial,sans-serif;
+}
+html,body{font-family:var(--font-content);line-height:1.5}
+button{font-family:var(--font-ui)}
+.section-label,.eyebrow,.tag,.pill,.memory-progress,.memory-filter,
+.location-action,.map-open,.map-close,.chat-person-description,
+.chat-picker-tabs,.working-memory-count,.working-memory-type,
+.chat-ended,.hint,.notice{font-family:var(--font-ui)}
+.heading,.location-title,.location-entry strong,.location-entry span,
+.map-location,.chat-person-name,.chip,.chat-picker-options button,
+.memory-item strong,.working-memory-name,.working-memory-head h3,
+.dialog h2{font-family:var(--font-content)}
+.heading{letter-spacing:-.035em}
+.shell{background:var(--paper)}
+main{padding:30px 25px 64px}
+.location-banner{
+ min-height:0;aspect-ratio:auto;overflow:visible;background:transparent;
+ border-bottom:1px solid var(--line);
+}
+.location-banner::after{content:none}
+.location-banner-overlay{
+ position:static;padding:56px 25px 42px;color:var(--ink);
+}
+.location-banner-overlay .location-title{
+ color:var(--ink);font-size:clamp(38px,8vw,56px);
+ line-height:1.1;letter-spacing:-.05em;
+ margin:0 0 16px;text-shadow:none;font-weight:700;
+}
+.location-banner-overlay .location-description{
+ color:var(--muted);font-size:17px;line-height:1.55;
+ max-width:48ch;font-style:italic;text-shadow:none;margin:0;
+}
+.location-content{padding:0 25px}
+.location-actionbar{min-height:67px}
+.location-list-row{min-height:90px;gap:16px}
+.location-entry{gap:5px}
+.location-entry strong{font-size:19px;font-weight:700;letter-spacing:-.02em}
+.location-entry span{font-size:14px;line-height:1.5}
+.place-tile{
+ width:34px;height:34px;background:transparent;border:1px solid var(--line);
+ border-radius:50%;color:var(--accent);font-size:23px;
+}
+.person-tile{
+ width:34px;height:34px;background:transparent;border:1px solid var(--line);
+ border-radius:50%;color:var(--accent);font-size:17px;
+}
+.entry-chevron{font-size:21px;color:var(--muted)}
+.map-tree-row{border-bottom-color:var(--line)}
+.map-location{font-size:17px}
+.chat-layout,.chat-header{background:var(--paper)}
+.chat-header{padding:13px 22px}
+.chat-avatar{background:var(--soft);color:var(--ink)}
+.chat-person-name{font-size:19px;font-weight:700}
+.chat-person-description{font-size:12px}
+.chat-messages{padding:30px 22px 26px;gap:24px}
+.chat-messages .message{max-width:90%}
+.chat-messages .bubble,.chat-messages .message.player .bubble{
+ background:transparent;border:0;padding:3px 0;border-radius:0;
+ min-height:0;line-height:1.75;
+}
+.chat-messages .chip{
+ font-family:var(--font-content);font-size:17px;background:transparent;
+ border:0;border-radius:0;padding:0 2px;color:var(--ink);
+}
+.chat-messages .chip.emoji{font-size:20px}
+.chat-bottom{background:var(--paper);padding:14px 19px max(17px,env(safe-area-inset-bottom))}
+.chat-draft{background:var(--paper);border-color:var(--line);border-radius:6px}
+.chat-send{background:var(--accent)}
+.chat-picker-options button{font-size:15px;background:transparent;border-color:var(--line)}
+.chat-picker-tabs button{font-size:13px}
+.chip{background:var(--soft);color:var(--ink);border-color:var(--line)}
+.chip.emoji{background:transparent;border-color:var(--line)}
+.memory-header{margin-bottom:26px}
+.memory-header .heading{font-size:38px;font-weight:700}
+.memory-item strong{font-size:17px}
+.memory-item{padding:19px 0}
+.working-memory-head h3{font-size:20px;font-weight:700}
+.working-memory-list{background:transparent;border-radius:3px}
+.working-memory-name{font-size:16px}
+.memory-filter.active{background:var(--soft)}
+.pill{background:var(--soft);color:var(--accent)}
+dialog{background:var(--paper);color:var(--ink)}
+dialog p{color:var(--muted)}
+.map-close{background:var(--soft)}
+@media(max-width:420px){
+ .location-banner-overlay{padding:46px 20px 34px}
+ .location-content{padding:0 20px}
+ .location-banner-overlay .location-title{font-size:clamp(37px,10vw,48px)}
+ .location-banner-overlay .location-description{font-size:16px}
+ .location-entry strong{font-size:18px}
+ .location-entry span{font-size:13px}
+ .chat-messages{padding-left:19px;padding-right:19px}
+}
