@@ -1,6 +1,6 @@
 # Rantau — Board-game NPC Reaction & Response Model (experimental)
 
-**Status:** isolated, playable-engine integration **not performed**. The formula parameters are test hypotheses, not agreed design values. The old `js/game/conversation/response.js` and live `js/engine.js` are intentionally untouched.
+**Status:** active in the three-NPC browser playtest via `js/app.js`, but formula parameters remain provisional. The legacy `js/game/conversation/response.js` and `js/engine.js` are intentionally untouched.
 
 ## Inputs
 
@@ -19,13 +19,13 @@
 4. Form actual message candidates from known NPC Memory Pages, optional attitudes and interests; a Relationship is rendered as its two known endpoint Topics.
 5. Score candidates using Page disclosure, Knowledge, ASK evidence, Warm Up of Player-mentioned Topics, and recency-weighted Cool Down of the precise NPC output combination.
 6. Select the highest-scoring candidate. Fully unknown explicit Player Topics have an emoji-only Confused response; exhausted Patience terminates with 💤.
-7. Mark, but do not commit, potential +1 Knowledge changes. Record both messages.
+7. Mark, but do not commit, potential +1 Knowledge changes. Record both messages. The persistent layer commits gains on farewell/end. Reaction-only farewell has no NPC response and no invisible Knowledge gains.
 
 No classifying Player strategies; no Answer/Ask/Inform/Redirect/Withdraw action ranking; the candidate's `mode` metadata records whether the selected message communicates information or asks a question, solely for the learning trigger.
 
 ### Reaction formula, schematic
 
-`ΔV = saturate(emoji V+) + saturate(emoji V−) + alignment + mimicry − repeat − stackBackfire − contra`
+`ΔV = saturate(emoji V+) + saturate(emoji V−) + normalized Page-Count-weighted alignment + mimicry − repeat − stackBackfire − contra`
 
 `ΔD = saturate(emoji D+) + saturate(emoji D−) + knowledgeGap + repeat`
 
@@ -46,15 +46,15 @@ Each beat uses current V/D. Patience never rises from this formula; highly engag
 
 ## Learning and unresolved scope
 
-`pendingPlayerGain` can be set to 1 when the NPC actually emits an information-bearing Page and a learning trigger exists (ASK, prior repetition, or adjacent Listen), subject to the at-least-two-level gap. `pendingNpcGain` is a preliminary direction-specific mark for a discussed NPC question-interest Page where Player Knowledge is higher by two levels. Neither side's Knowledge level changes mid-session. There is **no commit implementation** in this model.
+`pendingPlayerGain` can be set to 1 when the NPC actually emits an information-bearing Page and a learning trigger exists (ASK, prior repetition, or adjacent Listen), subject to the at-least-two-level gap. `pendingNpcGain` is a preliminary direction-specific mark for a discussed NPC question-interest Page where Player Knowledge is higher by two levels. Neither side's Knowledge level changes mid-session. The persistent layer in `persistent-sim.js` now commits marked gains at interaction end.
 
-These are *provisional triggers* and do not yet cover every branch-discovery/disclosure nuance or every form of Player-to-NPC teaching. The existing `js/game/learning.js` governs the established +1 cap; it will need to be composed with a future session finalizer, without prematurely applying branch pruning to NPCs.
+These are *provisional triggers* and do not yet cover every branch-discovery/disclosure nuance or every form of Player-to-NPC teaching. The persistent finalizer caps gains to +1 per Page per session, maintains Relationship endpoint awareness, and never automatically prunes NPC branches. Fully authored branch discovery is still open.
 
 ## Test
 
 `tests/board-model.test.mjs` verifies three NPCs, known/unknown Topic eligibility, low-openness information, typed question initiative, both Knowledge directions, repeat recency, cooldown key distinction, line-wide Emoji stacking and deterministic selection.
 
-Use `npm test` in a Node environment to run all repository tests. This experimental code is NOT imported by `js/app.js` or `js/data.js`; no UI, UX or save migration is included.
+Use `npm test` in a Node environment to run all repository tests. This model is now imported by `js/app.js` through the persistent layer; the visible Explorer/Chat/Memory layout is reused, with a separate playtest save key and no legacy save migration.
 
 ## Calibration priorities
 
@@ -64,3 +64,16 @@ Use `npm test` in a Node environment to run all repository tests. This experimen
 4. Check whether any single Emoji sequence dominates across all three NPCs, whether repeated Topics exhaust P too quickly, and whether Warm Up / Cool Down cause meaningful rather than cosmetic changes.
 
 No numerical balance claim is made until larger strategy simulations and UI-level checks are performed.
+
+## Topic Attitude scale correction
+
+Authored NPC Topic Attitude values use signed axes (-1..1), with missing
+axes unspecified. The shared Emoji comparator expects 0..10 values before
+normalization. The board-model converts the signed values *once at the
+input boundary* using `5 + 5 × signedValue`. This fixes previously
+inverted Alignment and is tested in
+`tests/balance-calibration.test.mjs`. The calculation otherwise
+continues to use the same Emoji profile effects.
+
+See `docs/balance-audit.md` for the after-fix 3 NPC × 3 policy baseline,
+parameter sensitivity results, and resettable browser checkpoint.
