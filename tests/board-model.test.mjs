@@ -43,6 +43,13 @@ test('NPC interest emphasis can transmit Knowledge; typed question cannot',()=>{
  assert.deepEqual(says(ratih),['dimas','kawasan_industri','📍']);
  assert.equal(ratih.pending.dimas__kawasan_industri,undefined);
 });
+test('Warm Up preserves topic while Cool Down changes Ratih response form',()=>{
+ const session=createSession('ratih');
+ const first=resolveBeat(session,[]);
+ const second=resolveBeat(session,[T('dimas'),T('kawasan_industri')]);
+ assert.deepEqual(says(first),['dimas','kawasan_industri','📍']);
+ assert.deepEqual(says(second),['dimas','kawasan_industri']);
+});
 test('Jali location question can mark a pending Player knowledge gain',()=>{
  const session=createSession('jali');
  const r=resolveBeat(session,[T('kawasan_industri'),E('❓')]);
