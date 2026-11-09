@@ -148,7 +148,10 @@ export function resolveBeat(session,playerTokens,config=MODEL_CONFIG){
   for(const [id,p] of Object.entries(session.memory)){
    const represented=pageTokens(id);
    const knowledge=Math.min(5,p.npcLevel)*config.knowledgeWeight;
-   const openness=effectiveOpenness(p.openness,emojiInfo.modifiers)/10*config.opennessWeight;
+   // Existing relationship V/D modulates Page-specific disclosure, not a new state.
+   const disclosure=clamp(effectiveOpenness(p.openness,emojiInfo.modifiers)+
+    0.6*(session.state.v-5)-0.45*(session.state.d-5))/10;
+   const openness=disclosure*config.opennessWeight;
    const start=0.18+knowledge+openness;
    const interest=p.interest;
    const topicOnly=start+(interest?.emoji==='❗'?interest.priority*config.interestWeight:0);
@@ -164,7 +167,7 @@ export function resolveBeat(session,playerTokens,config=MODEL_CONFIG){
    // A filtered question boosts only eligible relationship answers.
    const asking=asks.filter(a=>linked(id,a.id,a.filter));
    if(asking.length)pushCandidate(id,candidates,represented,
-    start+config.askWeight,{mode:'inform'});
+    start+config.askWeight*(0.25+0.75*disclosure),{mode:'inform'});
    const count=features.counts[id]||0;
    if(count&&p.contra===true)pushCandidate(id,candidates,[...represented,emoji('👎')],
     start+0.65,{mode:'express'});
