@@ -20,15 +20,10 @@ function renderTree(parent){
    (open&&hasChildren?'<div class="tree-indent">'+renderTree(l.id)+'</div>':'');
  }).join("");
 }
-// Temporary art references, shared by the full-sized location image and folder thumbnail.
-const PHOTO_MARKET="https://images.unsplash.com/photo-1753740023014-143ab3536662?auto=format&fit=crop&w=1000&q=75";
-const PHOTO_STREET="https://images.unsplash.com/photo-1558907530-83566904e778?auto=format&fit=crop&w=1000&q=75";
-const locationImage=id=>["pasar","niaga","pertokoan","pasar_gelap"].includes(id)?PHOTO_MARKET:PHOTO_STREET;
-const photo=(id,kind)=>'<img class="'+kind+'" loading="'+(kind==="location-hero"?"eager":"lazy")+'" alt="" src="'+locationImage(id)+'">';
 function locationItem(l){
  const locked=l.access==="limited";
  return '<div class="location-list-row'+(locked?' locked':'')+'">'+
- '<button class="place-tile" data-enter="'+l.id+'" '+(locked?'disabled':'')+' aria-label="Buka '+esc(l.name)+'">'+photo(l.id,"tile-photo")+'</button>'+
+ '<button class="place-tile" data-enter="'+l.id+'" '+(locked?'disabled':'')+' aria-label="Buka '+esc(l.name)+'"><span aria-hidden="true">◇</span></button>'+
  '<button class="location-entry" data-memory-hold="'+l.id+'" data-enter="'+l.id+'" '+(locked?'disabled':'')+'><strong>'+esc(l.name)+'</strong><span>'+esc(l.description)+'</span></button>'+
  '<span class="entry-chevron">'+(locked?lockIcon:'›')+'</span></div>';
 }
@@ -46,9 +41,7 @@ function explorer(){
  const levels=[...information.map(i=>state.knowledge[i.id]||0),...relations.map(r=>state.relations[r.id]||0)];
  const unlocked=levels.filter(level=>level>0).length;
  const totalLevels=levels.reduce((sum,level)=>sum+level,0);
- return '<section class="location-banner">'+
- photo(current.id,"location-hero")+
- '<div class="location-banner-overlay"><h2 class="heading location-title" data-memory-hold="'+current.id+'">'+esc(current.name)+'</h2><p class="location-description">'+esc(current.description)+'</p></div></section>'+
+ return '<section class="location-banner"><div class="location-banner-overlay"><h2 class="heading location-title" data-memory-hold="'+current.id+'">'+esc(current.name)+'</h2><p class="location-description">'+esc(current.description)+'</p></div></section>'+
  '<div class="location-content"><div class="location-actionbar">'+
  '<div class="action-group action-left"><button class="location-action map-action" data-open-map aria-label="Buka peta">'+mapIcon+' Map</button>'+
  (parent?'<button class="location-action parent-action" data-enter="'+parent.id+'" aria-label="Kembali ke '+esc(parent.name)+'"><span aria-hidden="true">‹</span> '+esc(parent.name)+'</button>':'')+'</div>'+
