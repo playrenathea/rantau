@@ -55,7 +55,8 @@ const matchesType=(type,filter)=>!filter||
  (filter==='IndividualOrGroup'?['Individual','Group'].includes(type):type===filter);
 const interestQuestion=e=>e&&['❓','📍','⏳','👥'].includes(e.emoji);
 function askedPages(parsed,emojiInfo,previousNpcTokens){
- const asks=emojiInfo.asks.filter(a=>a.kind!=='suppress')
+ const suppressedGroups=new Set(emojiInfo.asks.filter(a=>a.kind==='suppress').map(a=>a.groupId));
+ const asks=emojiInfo.asks.filter(a=>a.kind!=='suppress'&&!suppressedGroups.has(a.groupId))
   .map(a=>({id:a.topicId,filter:a.type||null}));
  if(parsed.kind==='EMOJI_ONLY'&&previousNpcTokens){
   const prev=[...previousNpcTokens].reverse().find(t=>t.kind==='info')?.id;
