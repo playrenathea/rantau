@@ -1,7 +1,2 @@
-# Infaction
-
-Mobile-first, text-based RPG. Clean foundation for the Enter the City MVP.
-
-Serve the repository with any static HTTP server (for example, `python3 -m http.server 8000`). No build step or external dependencies.
-
-The previous Rantau prototype is preserved on the `legacy-rantau` branch.
+# Infaction — Enter the City MVP
+Static browser prototype. Open index.html or serve via GitHub Pages. Long press reveals alternatives (keyboard: Arrow Up). Local save. Prototype faction and NPC generation uses a reduced vocabulary, not the production generator. Rantau backup: legacy-rantau.
