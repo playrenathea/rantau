@@ -1,0 +1,10 @@
+# Infaction — World Generator v0.3.0
+Single shared implementation: `world-generator.js` (MVP and Colab). Data snapshot from [Faction Master](https://docs.google.com/spreadsheets/d/1L4XqtRhnK55OMpWpdgLijIMuq9xc7Q25908qi7WONII/edit), [Knowledge/Carrier Affinity](https://drive.google.com/file/d/1yHFb1OwrzzUWN9Qd8zRg7Y4K3e3sZHP7/view), [Animal Association vocabulary](https://drive.google.com/file/d/16sv3x_1NjoGehj3WFcmdAgQXq81lG4-i/view).
+## Rules
+Create seven slots. Government F1, Revolutionary F2; Elite/Poor distinct random F2–F6; Outsider random non-full F2–F7. Shuffle remaining eight types, fill empty slots then random single slots without replacement. Drop F7. No Size or Influence. 
+Type affinity f(a,b)=a+sqrt(ab)+b; divide by 3 for dual (ranking invariant), single uses its own score. For knowledge/carrier use f(normalized type affinity, faction base affinity), using 50:50 forward/reverse matrices. Independently rank top six by affinity, randomly permute ranks 1–6, minimize sum, random rank breaks ties. Remaining candidates fallback in affinity order if uniqueness requires; random faction priority handles unique Base and Animal. Equal affinity ties alphabetic. Grammar allowed only; preferred weight 3, others 1. City = Government Animal possessive + uniform sampled associated flavor + City. All associated words included.
+Government first, then max type priority (5 Gov/Religious/Academic; 4 Military/Revolutionary/Conspiracy; 3 Cultural/Clan; 2 Merchant/Criminal/Elite; 1 Outsider/Poor); random ties. Top three signature Knowledge, top two Carrier linked to their own Knowledge. Independent naming, no Carrier×Knowledge matrix and no extra uniqueness constraint for signature bases.
+MVP uses shared generator via script tag; existing gate interactions unchanged; legacy save reset once due to schema change. Signature objects in world state, not automatically learned/owned. 
+## Run
+Node: `node -e "console.log(require('./world-generator.js').generate(42))"`.
+Colab notebook executes the same JS via Node; no divergent Python reimplementation. Seeded testing supported.
