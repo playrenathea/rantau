@@ -1,3 +1,11 @@
+# World Generator v0.4.0 — P8 Tuned (2026-11-19)
+
+Faction naming only: revised animal/base affinity data (205 changed cells), positive-affinity Top 13, weighted random permutation using exponential race key -ln(U)/(score/maxScore)^8. For dual Type a,b use ((a+b)/2 + sqrt((a+10)(b+10)) - 10)/2. Single Type uses original score. Random faction priority, uniqueness, ordered fallback beyond Top 13, grammar weighting, world allocation and signature Knowledge/Carrier naming remain unchanged. Signature naming still uses the previous rank-sum Top 6 and previous type combination formula. Existing saved universes are not explicitly migrated.
+
+Verified 6,000 holdout seeds 30000–35999: 36,000 factions, 3,634 distinct names, 56/56 animals, 84/84 bases, Government Elephant 496, Confederation 697. Matches selected simulation. Editorial fit comparisons are not player-tested.
+
+## Historical v0.3.0 reference (superseded for faction naming)
+
 # Infaction — World Generator v0.3.0
 Single shared implementation: `world-generator.js` (MVP and Colab). Data snapshot from [Faction Master](https://docs.google.com/spreadsheets/d/1L4XqtRhnK55OMpWpdgLijIMuq9xc7Q25908qi7WONII/edit), [Knowledge/Carrier Affinity](https://drive.google.com/file/d/1yHFb1OwrzzUWN9Qd8zRg7Y4K3e3sZHP7/view), [Animal Association vocabulary](https://drive.google.com/file/d/16sv3x_1NjoGehj3WFcmdAgQXq81lG4-i/view).
 ## Rules
