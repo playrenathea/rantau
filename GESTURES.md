@@ -1,0 +1,2 @@
+# Gesture grammar v0.11.1
+Tap/left click selects default; hold/right click selects alternative when provided, otherwise the same default. Shared handler used for generic buttons, menu rows, item/Memory/Record entries, visibility, popup close/confirm, slots, nav and wait controls. Dedicated NPC card and grip retain their own behavior; input controls retain native editing. Eight deterministic handler checks and JS syntax passed; actual browser/device not tested.
