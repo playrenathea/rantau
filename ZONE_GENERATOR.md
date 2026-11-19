@@ -1,3 +1,9 @@
+## v0.3.1 — Secret eligibility
+
+World Generator v0.7.1. Secret means hidden existence/discovery, not access restriction or remoteness. Only 10 Zone templates eligible: Underworld and Underground City 1, Rebel Camp .8, Enclave .4, Stronghold and Monastery .22, Estate and Military Camp .12, Warehouse District .08, Military District .05. All remaining templates zero. Inside/Outside weights, faction modifiers, required coverage, pruning and physical hierarchy unchanged. Secret Sites/Locations/Rooms are future content; access restriction remains Law/Gate. Existing saves retain their generated geography; New Universe applies revised weights.
+
+Paired 2,000 seeds 70000–71999: secret zones 1,622 → 1,446; universes with secret zone 1,362 → 1,265; naturally secret types 1,206 → 1,231; other eligible types 215 after update; public/ineligible secret types 0. All updated universes maintain 5–8 zones, public outside minimum, mandatory inside coverage and government anchor; unchanged city/factions/signatures. See zone-secret-holdout-v0.3.1.json. Browser not tested.
+
 # Zone Framework v0.3.0 — spatial hierarchy
 
 World Generator v0.7.0. Minimum one non-secret Outside Zone, protected during pruning. Outsider gets stronger outside placement and completion preference. Remaining v0.2 policies preserved. Secret generation bucket remains internal; buildSpatialTree projects physical placement, optional host, two geographical regions and mandatory zero-size City Gate. No fabricated Site/Location/Room, travel size or travel gameplay. Existing worlds preserved; use New universe for new guarantee.
