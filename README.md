@@ -1,6 +1,6 @@
-# MVP UI rollback
+## Current MVP — restored UI + unified Place navigation
 
-The live MVP is restored byte-for-byte to the previous UI and its compatible World v0.10.0 runtime (commit 7fdfa66aaf61e7f9524b6f54b05c662d9c8ddc29). Unified Place v0.1 / World v0.11 remains available in `world-place-generator.js`, `place-generator.js` and the pinned Colab. Integration into the restored UI is pending; do not replace its visual design or interaction grammar.
+Original intro, visual styles, gesture grammar, time header and footer tabs retained. The live MVP now uses World v0.11.0 (`world-place-generator.js`) and Place v0.1.0; no Gate or NPCs. Location lists parent, siblings and children; map remains a full-visibility prototype preview, with current location marked. Hidden destinations deliberately exposed for spatial testing. Existing save identity preserved on migration; location, tab and progress persist on reload; obsolete `intro=1` query no longer resets. Inventory tabs retained but empty. Travel duration and hidden discovery out of scope.
 
 # Current navigation MVP — World v0.11.0
 
