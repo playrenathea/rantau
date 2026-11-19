@@ -1,3 +1,7 @@
+# MVP UI rollback
+
+The live MVP is restored byte-for-byte to the previous UI and its compatible World v0.10.0 runtime (commit 7fdfa66aaf61e7f9524b6f54b05c662d9c8ddc29). Unified Place v0.1 / World v0.11 remains available in `world-place-generator.js`, `place-generator.js` and the pinned Colab. Integration into the restored UI is pending; do not replace its visual design or interaction grammar.
+
 # Current navigation MVP — World v0.11.0
 
 [Unified Place specification](PLACE_GENERATOR.md) · [MVP](https://playrenathea.github.io/rantau/) · [Colab v0.11.0](https://colab.research.google.com/github/playrenathea/rantau/blob/main/notebooks/Infaction_World_Generator_v0.11.0.ipynb).

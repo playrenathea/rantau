@@ -1,3 +1,5 @@
+> UI rollback: the live MVP currently uses the restored v0.10.0 UI/runtime. Unified Place generation is retained in `world-place-generator.js` and `place-generator.js`; Colab remains pinned to v0.11.0. Integration into the original UI is pending.
+
 # Infaction — Unified Place Generator v0.1.0 / World v0.11.0
 Active navigation prototype: [GitHub Pages](https://playrenathea.github.io/rantau/). Data snapshot: [Place Master Data v0.1.0](https://docs.google.com/spreadsheets/d/1uxvNhDWZJ5w6jrWJzsT6vr4vvd5wkkIa_TNQMK9x6fI/edit). [Colab](https://colab.research.google.com/github/playrenathea/rantau/blob/main/notebooks/Infaction_World_Generator_v0.11.0.ipynb) shares the exact pinned JS source.
 ## Model
