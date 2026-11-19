@@ -276,6 +276,8 @@ const rest=shuffle(D.types.filter(t=>!["Government","Revolutionary","Elite","Poo
 for(const i of shuffle([0,1,2,3,4,5,6].filter(i=>!slots[i].length)))slots[i].push(rest.pop());
 for(const i of shuffle([0,1,2,3,4,5,6].filter(i=>slots[i].length===1)).slice(0,rest.length))slots[i].push(rest.pop());
 if(rest.length)throw Error("Unallocated types");
+// Keep all five required types within the six playable factions; slot 7 is a staging slot only.
+if(slots[6].includes("Outsider")){const swap=slots.findIndex((types,i)=>i>=2&&i<6&&!types.some(t=>["Government","Revolutionary","Elite","Poor"].includes(t)));if(swap<0)throw Error("No safe outsider slot");[slots[swap],slots[6]]=[slots[6],slots[swap]]}
 const factions=slots.slice(0,6).map((types,i)=>({id:"F"+(i+1),types,type:types[0]}));
 const priority=shuffle(factions);
 function ranked(pool,score){const sorted=pool.map(x=>({x,w:score(x)})).filter(r=>r.w>0).sort((a,b)=>b.w-a.w||((a.x.base||a.x.animal)<(b.x.base||b.x.animal)?-1:1));const top=sorted.slice(0,6),ranks=shuffle(top.map((_,i)=>i+1));return top.map((r,i)=>({...r,total:i+1+ranks[i],random:ranks[i]})).sort((a,b)=>a.total-b.total||a.random-b.random).concat(sorted.slice(6)).map(r=>r.x)}

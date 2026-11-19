@@ -1,20 +1,23 @@
 (function(root){
 "use strict";
-const V="0.1.0-selection", PG=root.InfactionPlaces, WG=root.InfactionWorld;
+const V="0.2.0-selection", PG=root.InfactionPlaces, WG=root.InfactionWorld;
 if(!PG||!WG)throw Error("Place and World generators are required");
 const D=PG.data;
 const FUNCTIONS=["Residence","Commerce","Production","Authority","Security","Culture"];
-const GROUPS=[["Residence"],["Commerce"],["Production","Logistics","Agriculture","Extraction"],["Authority"],["Defense"],["Religion","Knowledge","Culture","Privilege","Poverty","Secrecy","Migration"]];
+const GROUPS=[["Residence","Privilege","Poverty","Migration"],["Commerce"],["Production","Logistics","Agriculture","Extraction"],["Authority"],["Defense"],["Religion","Knowledge","Culture"]];
 const DEMAND=[4,4,2,2,1,2];
-const DEFAULT={weights:[1,0,0,0,0],legacyBiasScale:1,neutralDemand:1,randomAmplitude:1};
+const DEFAULT={weights:[.85,0,0,.15,0],legacyBiasScale:1,neutralDemand:1.5,randomAmplitude:1};
 const idx=Object.fromEntries(D.functions.map((v,i)=>[v,i]));
 const clip=x=>Math.max(0,Math.min(100,x));
 function rngFromSeed(seed){if(seed===undefined)return Math.random;let a=seed>>>0;return()=>{a=(a+0x6D2B79F5)>>>0;let t=a;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296}}
 const sum=a=>a.reduce((s,x)=>s+x,0);
 const dist=a=>{const t=sum(a);return t?a.map(v=>v/t):a.map(()=>1/a.length)};
+const compileCache=new Map();
 function compile(settings={}){
  const cfg={...DEFAULT,...settings};
+ const cacheKey=JSON.stringify(cfg);if(compileCache.has(cacheKey))return compileCache.get(cacheKey);
  const profiles=D.profiles.map(p=>({...p,rawFunction:GROUPS.map(g=>100*Math.max(...g.map(n=>p.functions[idx[n]]||0)))}));
+ for(const p of profiles)if(p.type==="Underworld")p.rawFunction[1]=75; // Illegal commerce is the primary functional analogue.
  const AFunc=profiles.map(p=>p.rawFunction);
  const transform=(a,bias)=>{const total=sum(a),p=total?a.map(v=>100*v/total):a.map(()=>0),d=bias*cfg.legacyBiasScale;return a.map((v,i)=>clip(cfg.weights[0]*v+cfg.weights[1]*v*d+cfg.weights[2]*100*d+cfg.weights[3]*p[i]+cfg.weights[4]*p[i]*d))};
  const BFunc=profiles.map(p=>transform(p.rawFunction,p.bias));
@@ -25,9 +28,9 @@ function compile(settings={}){
  const typeIx=Object.fromEntries(D.factionTypes.map((t,i)=>[t,i])),baseIx=Object.fromEntries(D.bases.map((b,i)=>[b,i]));
  const mix=(types,base,at,ab)=>{const traits=types.map(t=>at[typeIx[t]]||0);traits.push(ab[baseIx[base]]||0);return Math.pow(traits.reduce((x,v)=>x*Math.max(0,v),1),1/traits.length)};
  const compFactions=(factions,which)=>profiles.map((p,i)=>{const T=which==="A"?AType[i]:BType[i],B=which==="A"?ABase[i]:BBase[i];return [...factions.map(f=>mix(f.types,f.base,T,B)),T[D.factionTypes.indexOf("Neutral")]]});
- return {version:V,profiles,functions:FUNCTIONS,demand:DEMAND,cfg,AFunc,BFunc,compFactions};
+ const compiled={version:V,profiles,functions:FUNCTIONS,demand:DEMAND,cfg,AFunc,BFunc,compFactions};compileCache.set(cacheKey,compiled);return compiled;
 }
-function pickNeed(demand,supply,rng){const td=dist(demand),ts=dist(supply);let max=-Infinity,out=[];for(let i=0;i<demand.length;i++){let v=td[i]-ts[i];if(v>max+1e-10){max=v;out=[i]}else if(Math.abs(v-max)<=1e-10)out.push(i)}return out[Math.floor(rng()*out.length)]}
+function pickNeed(demand,supply,rng){const td=dist(demand),ts=dist(supply);let max=-Infinity,out=[];for(let i=0;i<demand.length;i++){let v=(td[i]-ts[i])/Math.max(.01,td[i]);if(v>max+1e-10){max=v;out=[i]}else if(Math.abs(v-max)<=1e-10)out.push(i)}return out[Math.floor(rng()*out.length)]}
 function generate(seed,options={}){
  const rng=rngFromSeed(seed),cfg=options.settings||{},compiled=compile(cfg);
  const factionsData=options.factions&&options.city?{factions:options.factions,city:options.city}:WG.generateFactions(seed);
