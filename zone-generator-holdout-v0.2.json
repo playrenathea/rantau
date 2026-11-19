@@ -1,0 +1,2687 @@
+{
+  "config": {
+    "typeWeight": 0.8,
+    "cityBias": [
+      1,
+      0.22,
+      0.4
+    ],
+    "power": 5,
+    "minZones": 5,
+    "maxZones": 8,
+    "compositeBonus": 1.45,
+    "optionalChance": 0.72,
+    "optionalLimit": 2,
+    "governmentBoost": 2.4,
+    "seedChance": 0.75,
+    "contrastWeight": 1.7,
+    "noveltyWeight": 0.85,
+    "optionalPower": 5,
+    "fitThreshold": 63,
+    "basicSplitPenalty": 0.82,
+    "socialBoost": 1.65,
+    "govAssociationBoost": 1.35
+  },
+  "baseline": {
+    "n": 6000,
+    "zones": 42097,
+    "reg": {
+      "Inside City": 32691,
+      "Secret Zone": 3886,
+      "Outside City": 5520
+    },
+    "counts": {
+      "3": 5,
+      "4": 78,
+      "5": 529,
+      "6": 1543,
+      "7": 1679,
+      "8": 1438,
+      "9": 670,
+      "10": 58
+    },
+    "types": {
+      "Administrative District": 2432,
+      "Enclave": 2171,
+      "Underground City": 1362,
+      "Stronghold": 1870,
+      "Farming Village": 1056,
+      "Citadel": 1755,
+      "Market District": 2101,
+      "Palace District": 3461,
+      "Academy": 793,
+      "Rebel Camp": 1674,
+      "Artisan Quarter": 2849,
+      "Refugee Camp": 607,
+      "Upper Town": 1435,
+      "Cultural District": 1617,
+      "Warehouse District": 660,
+      "Monastery": 2621,
+      "Estate": 851,
+      "Harbor": 924,
+      "Residential District": 2712,
+      "Lower Town": 1999,
+      "Caravan Camp": 404,
+      "Freeport": 1087,
+      "Underworld": 652,
+      "Academic District": 470,
+      "Slum": 1497,
+      "Military District": 373,
+      "Farmland": 81,
+      "Military Camp": 427,
+      "Industrial District": 513,
+      "Mining Settlement": 316,
+      "Noble Quarter": 606,
+      "Temple District": 551,
+      "Foreign Quarter": 159,
+      "Mining Grounds": 11
+    },
+    "weak": 3499,
+    "weakOld": 3499,
+    "oldMean": 3210831.1991845984,
+    "primary": 40341,
+    "red": 2842,
+    "majority": 5912,
+    "govN": 5017,
+    "govCov": 2712,
+    "govAssoc": 1040,
+    "contrast": 2910,
+    "hidden": 3323,
+    "functions": 44294,
+    "rep": 32396,
+    "bad": 0,
+    "legacy": 0,
+    "host": 1547,
+    "hostWeak": 549,
+    "unique": 5867,
+    "gov": {
+      "Academic": {
+        "n": 661,
+        "cov": 206,
+        "assoc": 78
+      },
+      "Clan": {
+        "n": 571,
+        "cov": 571,
+        "assoc": 67
+      },
+      "Military": {
+        "n": 636,
+        "cov": 570,
+        "assoc": 557
+      },
+      "Conspiracy": {
+        "n": 637,
+        "cov": 156,
+        "assoc": 0
+      },
+      "Cultural": {
+        "n": 637,
+        "cov": 172,
+        "assoc": 9
+      },
+      "Criminal": {
+        "n": 594,
+        "cov": 159,
+        "assoc": 3
+      },
+      "Religious": {
+        "n": 640,
+        "cov": 237,
+        "assoc": 39
+      },
+      "Merchant": {
+        "n": 641,
+        "cov": 641,
+        "assoc": 287
+      }
+    },
+    "fn": {
+      "Authority": 6000,
+      "Defense": 3263,
+      "Religion": 2628,
+      "Knowledge": 3185,
+      "Commerce": 6000,
+      "Production": 3333,
+      "Logistics": 2389,
+      "Agriculture": 0,
+      "Extraction": 0,
+      "Residence": 6000,
+      "Privilege": 4713,
+      "Poverty": 3496,
+      "Culture": 1565,
+      "Secrecy": 229,
+      "Migration": 1493
+    },
+    "examples": [
+      {
+        "seed": 50000,
+        "city": "Octopus's Hatchling City",
+        "f": [
+          [
+            "F1",
+            "Octopus Institute",
+            [
+              "Government",
+              "Academic"
+            ]
+          ],
+          [
+            "F2",
+            "Pact of the Wolf",
+            [
+              "Revolutionary",
+              "Clan"
+            ]
+          ],
+          [
+            "F3",
+            "Bat Kindred",
+            [
+              "Outsider",
+              "Conspiracy"
+            ]
+          ],
+          [
+            "F4",
+            "Falcon Dynasty",
+            [
+              "Elite",
+              "Military"
+            ]
+          ],
+          [
+            "F5",
+            "Brotherhood of the Sheep",
+            [
+              "Poor",
+              "Religious"
+            ]
+          ],
+          [
+            "F6",
+            "Hyena's Band",
+            [
+              "Criminal"
+            ]
+          ]
+        ],
+        "z": [
+          [
+            "Administrative District",
+            "Inside City",
+            "F1",
+            69.1,
+            "representation",
+            null
+          ],
+          [
+            "Enclave",
+            "Inside City",
+            "F3",
+            95,
+            "representation",
+            null
+          ],
+          [
+            "Underground City",
+            "Secret Zone",
+            "F6",
+            80,
+            "representation",
+            "Z7"
+          ],
+          [
+            "Stronghold",
+            "Inside City",
+            "F2",
+            95,
+            "representation",
+            null
+          ],
+          [
+            "Farming Village",
+            "Outside City",
+            "F5",
+            69.1,
+            "representation",
+            null
+          ],
+          [
+            "Citadel",
+            "Inside City",
+            "F4",
+            69.1,
+            "representation",
+            null
+          ],
+          [
+            "Market District",
+            "Inside City",
+            "F6",
+            80,
+            "required",
+            null
+          ]
+        ]
+      },
+      {
+        "seed": 50001,
+        "city": "Lion's Growl City",
+        "f": [
+          [
+            "F1",
+            "Lion Kingdom",
+            [
+              "Government"
+            ]
+          ],
+          [
+            "F2",
+            "Swallow Resistance",
+            [
+              "Revolutionary",
+              "Outsider"
+            ]
+          ],
+          [
+            "F3",
+            "Conclave of the Owl",
+            [
+              "Elite",
+              "Conspiracy"
+            ]
+          ],
+          [
+            "F4",
+            "People of the Sheep",
+            [
+              "Poor",
+              "Cultural"
+            ]
+          ],
+          [
+            "F5",
+            "Wolf Mercenaries",
+            [
+              "Military",
+              "Criminal"
+            ]
+          ],
+          [
+            "F6",
+            "Butterfly Institute",
+            [
+              "Academic",
+              "Religious"
+            ]
+          ]
+        ],
+        "z": [
+          [
+            "Palace District",
+            "Inside City",
+            "F1",
+            95,
+            "representation",
+            null
+          ],
+          [
+            "Academy",
+            "Inside City",
+            "F6",
+            84.1,
+            "representation",
+            null
+          ],
+          [
+            "Rebel Camp",
+            "Secret Zone",
+            "F5",
+            84.1,
+            "representation",
+            null
+          ],
+          [
+            "Artisan Quarter",
+            "Inside City",
+            "F4",
+            80,
+            "representation",
+            null
+          ],
+          [
+            "Refugee Camp",
+            "Outside City",
+            "F2",
+            69.1,
+            "representation",
+            null
+          ],
+          [
+            "Upper Town",
+            "Inside City",
+            "F3",
+            69.1,
+            "representation",
+            null
+          ],
+          [
+            "Cultural District",
+            "Inside City",
+            "F6",
+            69.1,
+            "preferred",
+            null
+          ],
+          [
+            "Warehouse District",
+            "Inside City",
+            "F5",
+            69.1,
+            "preferred",
+            null
+          ]
+        ]
+      },
+      {
+        "seed": 50002,
+        "city": "Bear's Grunt City",
+        "f": [
+          [
+            "F1",
+            "Bear's House",
+            [
+              "Government",
+              "Clan"
+            ]
+          ],
+          [
+            "F2",
+            "Boar Militia",
+            [
+              "Revolutionary",
+              "Military"
+            ]
+          ],
+          [
+            "F3",
+            "Scholars of the Turtle",
+            [
+              "Academic",
+              "Cultural"
+            ]
+          ],
+          [
+            "F4",
+            "Conclave of the Swan",
+            [
+              "Elite",
+              "Religious"
+            ]
+          ],
+          [
+            "F5",
+            "Swallow League",
+            [
+              "Outsider",
+              "Merchant"
+            ]
+          ],
+          [
+            "F6",
+            "Brotherhood of the Rat",
+            [
+              "Poor",
+              "Conspiracy"
+            ]
+          ]
+        ],
+        "z": [
+          [
+            "Palace District",
+            "Inside City",
+            "F1",
+            95,
+            "representation",
+            null
+          ],
+          [
+            "Monastery",
+            "Inside City",
+            "F3",
+            84.1,
+            "representation",
+            null
+          ],
+          [
+            "Estate",
+            "Outside City",
+            "F4",
+            69.1,
+            "representation",
+            null
+          ],
+          [
+            "Stronghold",
+            "Secret Zone",
+            "F2",
+            95,
+            "representation",
+            null
+          ],
+          [
+            "Underground City",
+            "Secret Zone",
+            "F6",
+            80,
+            "representation",
+            "Z2"
+          ],
+          [
+            "Harbor",
+            "Inside City",
+            "F5",
+            80,
+            "representation",
+            null
+          ],
+          [
+            "Residential District",
+            "Inside City",
+            "F1",
+            48.8,
+            "required",
+            null
+          ]
+        ]
+      },
+      {
+        "seed": 50003,
+        "city": "Eagle's Nest City",
+        "f": [
+          [
+            "F1",
+            "Eagle Council",
+            [
+              "Government"
+            ]
+          ],
+          [
+            "F2",
+            "Ant Resistance",
+            [
+              "Revolutionary",
+              "Poor"
+            ]
+          ],
+          [
+            "F3",
+            "Keepers of the Moth",
+            [
+              "Cultural",
+              "Conspiracy"
+            ]
+          ],
+          [
+            "F4",
+            "Diaspora of the Butterfly",
+            [
+              "Outsider",
+              "Religious"
+            ]
+          ],
+          [
+            "F5",
+            "Leopard Family",
+            [
+              "Clan",
+              "Criminal"
+            ]
+          ],
+          [
+            "F6",
+            "Owl Chamber",
+            [
+              "Elite",
+              "Academic"
+            ]
+          ]
+        ],
+        "z": [
+          [
+            "Citadel",
+            "Inside City",
+            "F1",
+            95,
+            "representation",
+            null
+          ],
+          [
+            "Enclave",
+            "Inside City",
+            "F4",
+            84.1,
+            "representation",
+            null
+          ],
+          [
+            "Academy",
+            "Inside City",
+            "F6",
+            69.1,
+            "representation",
+            null
+          ],
+          [
+            "Lower Town",
+            "Inside City",
+            "F5",
+            69.1,
+            "representation",
+            null
+          ],
+          [
+            "Rebel Camp",
+            "Secret Zone",
+            "F2",
+            84.1,
+            "representation",
+            null
+          ],
+          [
+            "Market District",
+            "Inside City",
+            "F6",
+            55.6,
+            "required",
+            null
+          ],
+          [
+            "Warehouse District",
+            "Inside City",
+            "F4",
+            48.8,
+            "preferred",
+            null
+          ],
+          [
+            "Palace District",
+            "Inside City",
+            "F1",
+            80,
+            "preferred",
+            null
+          ]
+        ]
+      },
+      {
+        "seed": 50004,
+        "city": "Bear's Roar City",
+        "f": [
+          [
+            "F1",
+            "House of the Bear",
+            [
+              "Government",
+              "Clan"
+            ]
+          ],
+          [
+            "F2",
+            "Phoenix Brotherhood",
+            [
+              "Revolutionary",
+              "Religious"
+            ]
+          ],
+          [
+            "F3",
+            "Dog Guard",
+            [
+              "Military"
+            ]
+          ],
+          [
+            "F4",
+            "Family of the Crocodile",
+            [
+              "Criminal",
+              "Cultural"
+            ]
+          ],
+          [
+            "F5",
+            "Cat Enclave",
+            [
+              "Elite",
+              "Outsider"
+            ]
+          ],
+          [
+            "F6",
+            "Sheep Cooperative",
+            [
+              "Poor",
+              "Merchant"
+            ]
+          ]
+        ],
+        "z": [
+          [
+            "Palace District",
+            "Inside City",
+            "F1",
+            95,
+            "representation",
+            null
+          ],
+          [
+            "Stronghold",
+            "Inside City",
+            "F3",
+            95,
+            "representation",
+            null
+          ],
+          [
+            "Artisan Quarter",
+            "Inside City",
+            "F6",
+            95,
+            "representation",
+            null
+          ],
+          [
+            "Residential District",
+            "Inside City",
+            "F4",
+            63.8,
+            "required",
+            null
+          ]
+        ]
+      },
+      {
+        "seed": 50005,
+        "city": "Swan's Fledgling City",
+        "f": [
+          [
+            "F1",
+            "Council of the Swans",
+            [
+              "Government",
+              "Academic"
+            ]
+          ],
+          [
+            "F2",
+            "Boar Pact",
+            [
+              "Revolutionary",
+              "Clan"
+            ]
+          ],
+          [
+            "F3",
+            "Brotherhood of the Ant",
+            [
+              "Poor",
+              "Conspiracy"
+            ]
+          ],
+          [
+            "F4",
+            "Serpent Cult",
+            [
+              "Religious",
+              "Criminal"
+            ]
+          ],
+          [
+            "F5",
+            "Eagle Kingdom",
+            [
+              "Elite",
+              "Military"
+            ]
+          ],
+          [
+            "F6",
+            "Parrot Caravan",
+            [
+              "Outsider",
+              "Merchant"
+            ]
+          ]
+        ],
+        "z": [
+          [
+            "Administrative District",
+            "Inside City",
+            "F1",
+            84.1,
+            "representation",
+            null
+          ],
+          [
+            "Underground City",
+            "Secret Zone",
+            "F3",
+            80,
+            "representation",
+            null
+          ],
+          [
+            "Stronghold",
+            "Inside City",
+            "F2",
+            95,
+            "representation",
+            null
+          ],
+          [
+            "Citadel",
+            "Inside City",
+            "F5",
+            84.1,
+            "representation",
+            null
+          ],
+          [
+            "Caravan Camp",
+            "Outside City",
+            "F6",
+            95,
+            "representation",
+            null
+          ],
+          [
+            "Market District",
+            "Inside City",
+            "F6",
+            84.1,
+            "required",
+            null
+          ],
+          [
+            "Residential District",
+            "Inside City",
+            "F2",
+            48.8,
+            "required",
+            null
+          ]
+        ]
+      }
+    ],
+    "pairs": {
+      "Academic+Government": {
+        "n": 661,
+        "rep": 661
+      },
+      "Clan+Revolutionary": {
+        "n": 343,
+        "rep": 343
+      },
+      "Conspiracy+Outsider": {
+        "n": 278,
+        "rep": 278
+      },
+      "Elite+Military": {
+        "n": 412,
+        "rep": 412
+      },
+      "Poor+Religious": {
+        "n": 392,
+        "rep": 392
+      },
+      "Criminal": {
+        "n": 270,
+        "rep": 270
+      },
+      "Government": {
+        "n": 983,
+        "rep": 983
+      },
+      "Outsider+Revolutionary": {
+        "n": 580,
+        "rep": 580
+      },
+      "Conspiracy+Elite": {
+        "n": 410,
+        "rep": 409
+      },
+      "Cultural+Poor": {
+        "n": 380,
+        "rep": 379
+      },
+      "Criminal+Military": {
+        "n": 347,
+        "rep": 347
+      },
+      "Academic+Religious": {
+        "n": 332,
+        "rep": 332
+      },
+      "Clan+Government": {
+        "n": 571,
+        "rep": 571
+      },
+      "Military+Revolutionary": {
+        "n": 283,
+        "rep": 283
+      },
+      "Academic+Cultural": {
+        "n": 326,
+        "rep": 326
+      },
+      "Elite+Religious": {
+        "n": 412,
+        "rep": 412
+      },
+      "Merchant+Outsider": {
+        "n": 259,
+        "rep": 259
+      },
+      "Conspiracy+Poor": {
+        "n": 425,
+        "rep": 424
+      },
+      "Poor+Revolutionary": {
+        "n": 1197,
+        "rep": 1197
+      },
+      "Conspiracy+Cultural": {
+        "n": 338,
+        "rep": 149
+      },
+      "Outsider+Religious": {
+        "n": 296,
+        "rep": 296
+      },
+      "Clan+Criminal": {
+        "n": 356,
+        "rep": 356
+      },
+      "Academic+Elite": {
+        "n": 416,
+        "rep": 416
+      },
+      "Religious+Revolutionary": {
+        "n": 328,
+        "rep": 80
+      },
+      "Military": {
+        "n": 247,
+        "rep": 247
+      },
+      "Criminal+Cultural": {
+        "n": 343,
+        "rep": 129
+      },
+      "Elite+Outsider": {
+        "n": 863,
+        "rep": 378
+      },
+      "Merchant+Poor": {
+        "n": 393,
+        "rep": 393
+      },
+      "Criminal+Religious": {
+        "n": 340,
+        "rep": 69
+      },
+      "Conspiracy+Merchant": {
+        "n": 331,
+        "rep": 331
+      },
+      "Outsider+Poor": {
+        "n": 888,
+        "rep": 888
+      },
+      "Government+Military": {
+        "n": 636,
+        "rep": 636
+      },
+      "Elite+Revolutionary": {
+        "n": 1225,
+        "rep": 1002
+      },
+      "Clan+Merchant": {
+        "n": 372,
+        "rep": 372
+      },
+      "Criminal+Poor": {
+        "n": 433,
+        "rep": 433
+      },
+      "Academic+Outsider": {
+        "n": 289,
+        "rep": 289
+      },
+      "Conspiracy+Government": {
+        "n": 637,
+        "rep": 637
+      },
+      "Revolutionary": {
+        "n": 474,
+        "rep": 474
+      },
+      "Merchant+Military": {
+        "n": 365,
+        "rep": 365
+      },
+      "Academic+Clan": {
+        "n": 360,
+        "rep": 360
+      },
+      "Cultural+Revolutionary": {
+        "n": 287,
+        "rep": 283
+      },
+      "Clan+Poor": {
+        "n": 397,
+        "rep": 397
+      },
+      "Academic": {
+        "n": 244,
+        "rep": 244
+      },
+      "Clan+Military": {
+        "n": 348,
+        "rep": 348
+      },
+      "Cultural+Merchant": {
+        "n": 332,
+        "rep": 328
+      },
+      "Cultural+Government": {
+        "n": 637,
+        "rep": 637
+      },
+      "Conspiracy+Military": {
+        "n": 338,
+        "rep": 338
+      },
+      "Criminal+Outsider": {
+        "n": 272,
+        "rep": 272
+      },
+      "Elite+Merchant": {
+        "n": 452,
+        "rep": 452
+      },
+      "Criminal+Government": {
+        "n": 594,
+        "rep": 594
+      },
+      "Merchant+Religious": {
+        "n": 359,
+        "rep": 358
+      },
+      "Academic+Poor": {
+        "n": 424,
+        "rep": 71
+      },
+      "Conspiracy": {
+        "n": 223,
+        "rep": 223
+      },
+      "Cultural+Religious": {
+        "n": 359,
+        "rep": 359
+      },
+      "Government+Religious": {
+        "n": 640,
+        "rep": 640
+      },
+      "Cultural+Elite": {
+        "n": 420,
+        "rep": 420
+      },
+      "Clan": {
+        "n": 243,
+        "rep": 243
+      },
+      "Conspiracy+Criminal": {
+        "n": 379,
+        "rep": 379
+      },
+      "Military+Religious": {
+        "n": 351,
+        "rep": 48
+      },
+      "Elite": {
+        "n": 608,
+        "rep": 608
+      },
+      "Clan+Outsider": {
+        "n": 263,
+        "rep": 263
+      },
+      "Government+Merchant": {
+        "n": 641,
+        "rep": 641
+      },
+      "Military+Poor": {
+        "n": 462,
+        "rep": 462
+      },
+      "Criminal+Merchant": {
+        "n": 325,
+        "rep": 325
+      },
+      "Academic+Conspiracy": {
+        "n": 340,
+        "rep": 340
+      },
+      "Academic+Merchant": {
+        "n": 364,
+        "rep": 169
+      },
+      "Clan+Cultural": {
+        "n": 406,
+        "rep": 406
+      },
+      "Criminal+Revolutionary": {
+        "n": 317,
+        "rep": 317
+      },
+      "Merchant+Revolutionary": {
+        "n": 332,
+        "rep": 324
+      },
+      "Poor": {
+        "n": 609,
+        "rep": 609
+      },
+      "Military+Outsider": {
+        "n": 274,
+        "rep": 274
+      },
+      "Outsider": {
+        "n": 367,
+        "rep": 367
+      },
+      "Criminal+Elite": {
+        "n": 410,
+        "rep": 342
+      },
+      "Academic+Military": {
+        "n": 362,
+        "rep": 48
+      },
+      "Religious": {
+        "n": 245,
+        "rep": 245
+      },
+      "Clan+Elite": {
+        "n": 372,
+        "rep": 372
+      },
+      "Conspiracy+Revolutionary": {
+        "n": 329,
+        "rep": 329
+      },
+      "Cultural+Military": {
+        "n": 353,
+        "rep": 51
+      },
+      "Clan+Conspiracy": {
+        "n": 352,
+        "rep": 352
+      },
+      "Academic+Revolutionary": {
+        "n": 305,
+        "rep": 248
+      },
+      "Cultural+Outsider": {
+        "n": 268,
+        "rep": 229
+      },
+      "Cultural": {
+        "n": 253,
+        "rep": 251
+      },
+      "Academic+Criminal": {
+        "n": 390,
+        "rep": 69
+      },
+      "Clan+Religious": {
+        "n": 343,
+        "rep": 343
+      },
+      "Merchant": {
+        "n": 245,
+        "rep": 245
+      },
+      "Conspiracy+Religious": {
+        "n": 375,
+        "rep": 375
+      }
+    },
+    "reasons": {
+      "representation": 30963,
+      "required": 5178,
+      "preferred": 5956
+    },
+    "noOutside": 1929
+  },
+  "tuned": {
+    "n": 6000,
+    "zones": 40795,
+    "reg": {
+      "Inside City": 31637,
+      "Secret Zone": 5116,
+      "Outside City": 4042
+    },
+    "counts": {
+      "5": 918,
+      "6": 1350,
+      "7": 1751,
+      "8": 1981
+    },
+    "types": {
+      "Citadel": 1699,
+      "Underworld": 1897,
+      "Enclave": 1555,
+      "Noble Quarter": 416,
+      "Residential District": 2823,
+      "Market District": 2419,
+      "Academic District": 1607,
+      "Palace District": 4837,
+      "Slum": 1403,
+      "Rebel Camp": 1561,
+      "Monastery": 2203,
+      "Estate": 749,
+      "Stronghold": 1464,
+      "Underground City": 1366,
+      "Harbor": 985,
+      "Cultural District": 1012,
+      "Industrial District": 364,
+      "Academy": 710,
+      "Freeport": 1015,
+      "Lower Town": 2929,
+      "Mining Settlement": 90,
+      "Administrative District": 475,
+      "Artisan Quarter": 2360,
+      "Refugee Camp": 571,
+      "Military District": 1009,
+      "Foreign Quarter": 922,
+      "Farming Village": 354,
+      "Temple District": 468,
+      "Upper Town": 770,
+      "Military Camp": 306,
+      "Caravan Camp": 241,
+      "Warehouse District": 200,
+      "Farmland": 12,
+      "Mining Grounds": 3
+    },
+    "weak": 2118,
+    "weakOld": 5497,
+    "oldMean": 3015078.469960367,
+    "primary": 39508,
+    "red": 2322,
+    "majority": 5925,
+    "govN": 5017,
+    "govCov": 3299,
+    "govAssoc": 1339,
+    "contrast": 3941,
+    "hidden": 4134,
+    "functions": 44986,
+    "rep": 32021,
+    "bad": 0,
+    "legacy": 0,
+    "host": 1607,
+    "hostWeak": 0,
+    "unique": 5783,
+    "gov": {
+      "Academic": {
+        "n": 661,
+        "cov": 436,
+        "assoc": 227
+      },
+      "Clan": {
+        "n": 571,
+        "cov": 571,
+        "assoc": 85
+      },
+      "Military": {
+        "n": 636,
+        "cov": 629,
+        "assoc": 625
+      },
+      "Conspiracy": {
+        "n": 637,
+        "cov": 352,
+        "assoc": 82
+      },
+      "Cultural": {
+        "n": 637,
+        "cov": 194,
+        "assoc": 0
+      },
+      "Criminal": {
+        "n": 594,
+        "cov": 330,
+        "assoc": 72
+      },
+      "Religious": {
+        "n": 640,
+        "cov": 146,
+        "assoc": 4
+      },
+      "Merchant": {
+        "n": 641,
+        "cov": 641,
+        "assoc": 244
+      }
+    },
+    "fn": {
+      "Authority": 6000,
+      "Defense": 3385,
+      "Religion": 2232,
+      "Knowledge": 3733,
+      "Commerce": 6000,
+      "Production": 2693,
+      "Logistics": 1950,
+      "Agriculture": 0,
+      "Extraction": 0,
+      "Residence": 6000,
+      "Privilege": 5511,
+      "Poverty": 4260,
+      "Culture": 976,
+      "Secrecy": 576,
+      "Migration": 1670
+    },
+    "examples": [
+      {
+        "seed": 50000,
+        "city": "Octopus's Hatchling City",
+        "f": [
+          [
+            "F1",
+            "Octopus Institute",
+            [
+              "Government",
+              "Academic"
+            ]
+          ],
+          [
+            "F2",
+            "Pact of the Wolf",
+            [
+              "Revolutionary",
+              "Clan"
+            ]
+          ],
+          [
+            "F3",
+            "Bat Kindred",
+            [
+              "Outsider",
+              "Conspiracy"
+            ]
+          ],
+          [
+            "F4",
+            "Falcon Dynasty",
+            [
+              "Elite",
+              "Military"
+            ]
+          ],
+          [
+            "F5",
+            "Brotherhood of the Sheep",
+            [
+              "Poor",
+              "Religious"
+            ]
+          ],
+          [
+            "F6",
+            "Hyena's Band",
+            [
+              "Criminal"
+            ]
+          ]
+        ],
+        "z": [
+          [
+            "Citadel",
+            "Inside City",
+            "F1",
+            45.3,
+            "representation",
+            null
+          ],
+          [
+            "Underworld",
+            "Secret Zone",
+            "F6",
+            95,
+            "representation",
+            "Z6"
+          ],
+          [
+            "Enclave",
+            "Inside City",
+            "F2",
+            82.5,
+            "representation",
+            null
+          ],
+          [
+            "Noble Quarter",
+            "Inside City",
+            "F4",
+            70.5,
+            "representation",
+            null
+          ],
+          [
+            "Residential District",
+            "Inside City",
+            "F3",
+            59.7,
+            "required",
+            null
+          ],
+          [
+            "Market District",
+            "Inside City",
+            "F6",
+            81,
+            "required",
+            null
+          ],
+          [
+            "Academic District",
+            "Inside City",
+            "F5",
+            70.5,
+            "preferred",
+            null
+          ]
+        ]
+      },
+      {
+        "seed": 50001,
+        "city": "Lion's Growl City",
+        "f": [
+          [
+            "F1",
+            "Lion Kingdom",
+            [
+              "Government"
+            ]
+          ],
+          [
+            "F2",
+            "Swallow Resistance",
+            [
+              "Revolutionary",
+              "Outsider"
+            ]
+          ],
+          [
+            "F3",
+            "Conclave of the Owl",
+            [
+              "Elite",
+              "Conspiracy"
+            ]
+          ],
+          [
+            "F4",
+            "People of the Sheep",
+            [
+              "Poor",
+              "Cultural"
+            ]
+          ],
+          [
+            "F5",
+            "Wolf Mercenaries",
+            [
+              "Military",
+              "Criminal"
+            ]
+          ],
+          [
+            "F6",
+            "Butterfly Institute",
+            [
+              "Academic",
+              "Religious"
+            ]
+          ]
+        ],
+        "z": [
+          [
+            "Palace District",
+            "Inside City",
+            "F1",
+            95,
+            "representation",
+            null
+          ],
+          [
+            "Slum",
+            "Inside City",
+            "F4",
+            70.5,
+            "representation",
+            null
+          ],
+          [
+            "Rebel Camp",
+            "Secret Zone",
+            "F2",
+            82.5,
+            "representation",
+            null
+          ],
+          [
+            "Market District",
+            "Inside City",
+            "F3",
+            45.7,
+            "required",
+            null
+          ],
+          [
+            "Residential District",
+            "Inside City",
+            "F4",
+            95,
+            "required",
+            null
+          ]
+        ]
+      },
+      {
+        "seed": 50002,
+        "city": "Bear's Grunt City",
+        "f": [
+          [
+            "F1",
+            "Bear's House",
+            [
+              "Government",
+              "Clan"
+            ]
+          ],
+          [
+            "F2",
+            "Boar Militia",
+            [
+              "Revolutionary",
+              "Military"
+            ]
+          ],
+          [
+            "F3",
+            "Scholars of the Turtle",
+            [
+              "Academic",
+              "Cultural"
+            ]
+          ],
+          [
+            "F4",
+            "Conclave of the Swan",
+            [
+              "Elite",
+              "Religious"
+            ]
+          ],
+          [
+            "F5",
+            "Swallow League",
+            [
+              "Outsider",
+              "Merchant"
+            ]
+          ],
+          [
+            "F6",
+            "Brotherhood of the Rat",
+            [
+              "Poor",
+              "Conspiracy"
+            ]
+          ]
+        ],
+        "z": [
+          [
+            "Palace District",
+            "Inside City",
+            "F1",
+            95,
+            "representation",
+            null
+          ],
+          [
+            "Monastery",
+            "Inside City",
+            "F3",
+            82.5,
+            "representation",
+            null
+          ],
+          [
+            "Estate",
+            "Outside City",
+            "F4",
+            68.5,
+            "representation",
+            null
+          ],
+          [
+            "Stronghold",
+            "Inside City",
+            "F2",
+            95,
+            "representation",
+            null
+          ],
+          [
+            "Underground City",
+            "Secret Zone",
+            "F6",
+            81,
+            "representation",
+            null
+          ],
+          [
+            "Harbor",
+            "Inside City",
+            "F5",
+            89,
+            "representation",
+            null
+          ],
+          [
+            "Cultural District",
+            "Inside City",
+            "F4",
+            73.8,
+            "preferred",
+            null
+          ],
+          [
+            "Industrial District",
+            "Inside City",
+            "F6",
+            70.5,
+            "preferred",
+            null
+          ]
+        ]
+      },
+      {
+        "seed": 50003,
+        "city": "Eagle's Nest City",
+        "f": [
+          [
+            "F1",
+            "Eagle Council",
+            [
+              "Government"
+            ]
+          ],
+          [
+            "F2",
+            "Ant Resistance",
+            [
+              "Revolutionary",
+              "Poor"
+            ]
+          ],
+          [
+            "F3",
+            "Keepers of the Moth",
+            [
+              "Cultural",
+              "Conspiracy"
+            ]
+          ],
+          [
+            "F4",
+            "Diaspora of the Butterfly",
+            [
+              "Outsider",
+              "Religious"
+            ]
+          ],
+          [
+            "F5",
+            "Leopard Family",
+            [
+              "Clan",
+              "Criminal"
+            ]
+          ],
+          [
+            "F6",
+            "Owl Chamber",
+            [
+              "Elite",
+              "Academic"
+            ]
+          ]
+        ],
+        "z": [
+          [
+            "Citadel",
+            "Inside City",
+            "F1",
+            95,
+            "representation",
+            null
+          ],
+          [
+            "Academy",
+            "Inside City",
+            "F6",
+            68.5,
+            "representation",
+            null
+          ],
+          [
+            "Academic District",
+            "Inside City",
+            "F3",
+            70.5,
+            "representation",
+            null
+          ],
+          [
+            "Freeport",
+            "Inside City",
+            "F3",
+            35.9,
+            "required",
+            null
+          ],
+          [
+            "Lower Town",
+            "Inside City",
+            "F5",
+            76.5,
+            "required",
+            null
+          ],
+          [
+            "Palace District",
+            "Inside City",
+            "F1",
+            89,
+            "preferred",
+            null
+          ],
+          [
+            "Monastery",
+            "Inside City",
+            "F4",
+            68.5,
+            "preferred",
+            null
+          ]
+        ]
+      },
+      {
+        "seed": 50004,
+        "city": "Bear's Roar City",
+        "f": [
+          [
+            "F1",
+            "House of the Bear",
+            [
+              "Government",
+              "Clan"
+            ]
+          ],
+          [
+            "F2",
+            "Phoenix Brotherhood",
+            [
+              "Revolutionary",
+              "Religious"
+            ]
+          ],
+          [
+            "F3",
+            "Dog Guard",
+            [
+              "Military"
+            ]
+          ],
+          [
+            "F4",
+            "Family of the Crocodile",
+            [
+              "Criminal",
+              "Cultural"
+            ]
+          ],
+          [
+            "F5",
+            "Cat Enclave",
+            [
+              "Elite",
+              "Outsider"
+            ]
+          ],
+          [
+            "F6",
+            "Sheep Cooperative",
+            [
+              "Poor",
+              "Merchant"
+            ]
+          ]
+        ],
+        "z": [
+          [
+            "Palace District",
+            "Inside City",
+            "F1",
+            95,
+            "representation",
+            null
+          ],
+          [
+            "Stronghold",
+            "Outside City",
+            "F3",
+            95,
+            "representation",
+            null
+          ],
+          [
+            "Mining Settlement",
+            "Outside City",
+            "F6",
+            89,
+            "representation",
+            null
+          ],
+          [
+            "Residential District",
+            "Inside City",
+            "F4",
+            76.5,
+            "representation",
+            null
+          ],
+          [
+            "Harbor",
+            "Inside City",
+            "F4",
+            35.9,
+            "required",
+            null
+          ],
+          [
+            "Underground City",
+            "Secret Zone",
+            "F6",
+            76.5,
+            "preferred",
+            null
+          ]
+        ]
+      },
+      {
+        "seed": 50005,
+        "city": "Swan's Fledgling City",
+        "f": [
+          [
+            "F1",
+            "Council of the Swans",
+            [
+              "Government",
+              "Academic"
+            ]
+          ],
+          [
+            "F2",
+            "Boar Pact",
+            [
+              "Revolutionary",
+              "Clan"
+            ]
+          ],
+          [
+            "F3",
+            "Brotherhood of the Ant",
+            [
+              "Poor",
+              "Conspiracy"
+            ]
+          ],
+          [
+            "F4",
+            "Serpent Cult",
+            [
+              "Religious",
+              "Criminal"
+            ]
+          ],
+          [
+            "F5",
+            "Eagle Kingdom",
+            [
+              "Elite",
+              "Military"
+            ]
+          ],
+          [
+            "F6",
+            "Parrot Caravan",
+            [
+              "Outsider",
+              "Merchant"
+            ]
+          ]
+        ],
+        "z": [
+          [
+            "Administrative District",
+            "Inside City",
+            "F1",
+            87.8,
+            "representation",
+            null
+          ],
+          [
+            "Underground City",
+            "Secret Zone",
+            "F3",
+            81,
+            "representation",
+            null
+          ],
+          [
+            "Stronghold",
+            "Inside City",
+            "F2",
+            95,
+            "representation",
+            null
+          ],
+          [
+            "Citadel",
+            "Outside City",
+            "F5",
+            82.5,
+            "representation",
+            null
+          ],
+          [
+            "Harbor",
+            "Inside City",
+            "F6",
+            89,
+            "representation",
+            null
+          ],
+          [
+            "Enclave",
+            "Inside City",
+            "F2",
+            82.5,
+            "required",
+            null
+          ],
+          [
+            "Academy",
+            "Inside City",
+            "F1",
+            76.5,
+            "preferred",
+            null
+          ],
+          [
+            "Noble Quarter",
+            "Inside City",
+            "F5",
+            70.5,
+            "preferred",
+            null
+          ]
+        ]
+      }
+    ],
+    "pairs": {
+      "Academic+Government": {
+        "n": 661,
+        "rep": 661
+      },
+      "Clan+Revolutionary": {
+        "n": 343,
+        "rep": 315
+      },
+      "Conspiracy+Outsider": {
+        "n": 278,
+        "rep": 245
+      },
+      "Elite+Military": {
+        "n": 412,
+        "rep": 340
+      },
+      "Poor+Religious": {
+        "n": 392,
+        "rep": 324
+      },
+      "Criminal": {
+        "n": 270,
+        "rep": 247
+      },
+      "Government": {
+        "n": 983,
+        "rep": 983
+      },
+      "Outsider+Revolutionary": {
+        "n": 580,
+        "rep": 528
+      },
+      "Conspiracy+Elite": {
+        "n": 410,
+        "rep": 330
+      },
+      "Cultural+Poor": {
+        "n": 380,
+        "rep": 358
+      },
+      "Criminal+Military": {
+        "n": 347,
+        "rep": 303
+      },
+      "Academic+Religious": {
+        "n": 332,
+        "rep": 295
+      },
+      "Clan+Government": {
+        "n": 571,
+        "rep": 571
+      },
+      "Military+Revolutionary": {
+        "n": 283,
+        "rep": 249
+      },
+      "Academic+Cultural": {
+        "n": 326,
+        "rep": 285
+      },
+      "Elite+Religious": {
+        "n": 412,
+        "rep": 327
+      },
+      "Merchant+Outsider": {
+        "n": 259,
+        "rep": 251
+      },
+      "Conspiracy+Poor": {
+        "n": 425,
+        "rep": 381
+      },
+      "Poor+Revolutionary": {
+        "n": 1197,
+        "rep": 1125
+      },
+      "Conspiracy+Cultural": {
+        "n": 338,
+        "rep": 256
+      },
+      "Outsider+Religious": {
+        "n": 296,
+        "rep": 239
+      },
+      "Clan+Criminal": {
+        "n": 356,
+        "rep": 324
+      },
+      "Academic+Elite": {
+        "n": 416,
+        "rep": 355
+      },
+      "Religious+Revolutionary": {
+        "n": 328,
+        "rep": 258
+      },
+      "Military": {
+        "n": 247,
+        "rep": 211
+      },
+      "Criminal+Cultural": {
+        "n": 343,
+        "rep": 278
+      },
+      "Elite+Outsider": {
+        "n": 863,
+        "rep": 692
+      },
+      "Merchant+Poor": {
+        "n": 393,
+        "rep": 357
+      },
+      "Criminal+Religious": {
+        "n": 340,
+        "rep": 279
+      },
+      "Conspiracy+Merchant": {
+        "n": 331,
+        "rep": 301
+      },
+      "Outsider+Poor": {
+        "n": 888,
+        "rep": 842
+      },
+      "Government+Military": {
+        "n": 636,
+        "rep": 636
+      },
+      "Elite+Revolutionary": {
+        "n": 1225,
+        "rep": 1037
+      },
+      "Clan+Merchant": {
+        "n": 372,
+        "rep": 321
+      },
+      "Criminal+Poor": {
+        "n": 433,
+        "rep": 414
+      },
+      "Academic+Outsider": {
+        "n": 289,
+        "rep": 225
+      },
+      "Conspiracy+Government": {
+        "n": 637,
+        "rep": 637
+      },
+      "Revolutionary": {
+        "n": 474,
+        "rep": 428
+      },
+      "Merchant+Military": {
+        "n": 365,
+        "rep": 312
+      },
+      "Academic+Clan": {
+        "n": 360,
+        "rep": 299
+      },
+      "Cultural+Revolutionary": {
+        "n": 287,
+        "rep": 247
+      },
+      "Clan+Poor": {
+        "n": 397,
+        "rep": 375
+      },
+      "Academic": {
+        "n": 244,
+        "rep": 213
+      },
+      "Clan+Military": {
+        "n": 348,
+        "rep": 301
+      },
+      "Cultural+Merchant": {
+        "n": 332,
+        "rep": 302
+      },
+      "Cultural+Government": {
+        "n": 637,
+        "rep": 637
+      },
+      "Conspiracy+Military": {
+        "n": 338,
+        "rep": 269
+      },
+      "Criminal+Outsider": {
+        "n": 272,
+        "rep": 242
+      },
+      "Elite+Merchant": {
+        "n": 452,
+        "rep": 399
+      },
+      "Criminal+Government": {
+        "n": 594,
+        "rep": 594
+      },
+      "Merchant+Religious": {
+        "n": 359,
+        "rep": 297
+      },
+      "Academic+Poor": {
+        "n": 424,
+        "rep": 347
+      },
+      "Conspiracy": {
+        "n": 223,
+        "rep": 205
+      },
+      "Cultural+Religious": {
+        "n": 359,
+        "rep": 310
+      },
+      "Government+Religious": {
+        "n": 640,
+        "rep": 640
+      },
+      "Cultural+Elite": {
+        "n": 420,
+        "rep": 367
+      },
+      "Clan": {
+        "n": 243,
+        "rep": 218
+      },
+      "Conspiracy+Criminal": {
+        "n": 379,
+        "rep": 330
+      },
+      "Military+Religious": {
+        "n": 351,
+        "rep": 255
+      },
+      "Elite": {
+        "n": 608,
+        "rep": 524
+      },
+      "Clan+Outsider": {
+        "n": 263,
+        "rep": 227
+      },
+      "Government+Merchant": {
+        "n": 641,
+        "rep": 641
+      },
+      "Military+Poor": {
+        "n": 462,
+        "rep": 386
+      },
+      "Criminal+Merchant": {
+        "n": 325,
+        "rep": 304
+      },
+      "Academic+Conspiracy": {
+        "n": 340,
+        "rep": 296
+      },
+      "Academic+Merchant": {
+        "n": 364,
+        "rep": 308
+      },
+      "Clan+Cultural": {
+        "n": 406,
+        "rep": 348
+      },
+      "Criminal+Revolutionary": {
+        "n": 317,
+        "rep": 291
+      },
+      "Merchant+Revolutionary": {
+        "n": 332,
+        "rep": 290
+      },
+      "Poor": {
+        "n": 609,
+        "rep": 585
+      },
+      "Military+Outsider": {
+        "n": 274,
+        "rep": 230
+      },
+      "Outsider": {
+        "n": 367,
+        "rep": 335
+      },
+      "Criminal+Elite": {
+        "n": 410,
+        "rep": 349
+      },
+      "Academic+Military": {
+        "n": 362,
+        "rep": 268
+      },
+      "Religious": {
+        "n": 245,
+        "rep": 202
+      },
+      "Clan+Elite": {
+        "n": 372,
+        "rep": 326
+      },
+      "Conspiracy+Revolutionary": {
+        "n": 329,
+        "rep": 283
+      },
+      "Cultural+Military": {
+        "n": 353,
+        "rep": 293
+      },
+      "Clan+Conspiracy": {
+        "n": 352,
+        "rep": 307
+      },
+      "Academic+Revolutionary": {
+        "n": 305,
+        "rep": 251
+      },
+      "Cultural+Outsider": {
+        "n": 268,
+        "rep": 219
+      },
+      "Cultural": {
+        "n": 253,
+        "rep": 232
+      },
+      "Academic+Criminal": {
+        "n": 390,
+        "rep": 319
+      },
+      "Clan+Religious": {
+        "n": 343,
+        "rep": 288
+      },
+      "Merchant": {
+        "n": 245,
+        "rep": 227
+      },
+      "Conspiracy+Religious": {
+        "n": 375,
+        "rep": 325
+      }
+    },
+    "reasons": {
+      "representation": 27627,
+      "required": 6191,
+      "preferred": 6723,
+      "expansion": 254
+    },
+    "noOutside": 2700
+  },
+  "experiments": {
+    "M": {
+      "config": {
+        "typeWeight": 0.8,
+        "cityBias": [
+          1,
+          0.22,
+          0.38
+        ],
+        "power": 5,
+        "minZones": 5,
+        "maxZones": 8,
+        "compositeBonus": 1.22,
+        "optionalChance": 0.75,
+        "optionalLimit": 1,
+        "governmentBoost": 2.4,
+        "mode": "D",
+        "seedChance": 0.85,
+        "contrastWeight": 1.7,
+        "noveltyWeight": 0.85,
+        "optionalPower": 5,
+        "fitThreshold": 63,
+        "basicSplitPenalty": 0.88,
+        "socialBoost": 1.25,
+        "govAssociationBoost": 1.35
+      },
+      "metrics": {
+        "n": 1500,
+        "zones": 10229,
+        "mean": 6.819333333333334,
+        "regions": {
+          "Inside City": 7902,
+          "Outside City": 1113,
+          "Secret Zone": 1214
+        },
+        "inside": 0.7725095317235311,
+        "hidden": 0.6773333333333333,
+        "contrast": 0.5213333333333333,
+        "govCov": 0.6485623003194888,
+        "govAssoc": 0.25559105431309903,
+        "functions": 7.408,
+        "rep": 0.9175555555555556,
+        "weak": 0.04878287222602405,
+        "weakOld": 0.13315084563495944,
+        "oldMean": 74.04866252774183,
+        "primary": 0.9703783361032359,
+        "red": 0.05611496724997556,
+        "host": 386,
+        "hostWeak": 0,
+        "types": 34,
+        "unique": 1494,
+        "bad": 0,
+        "legacy": 0,
+        "counts": {
+          "5": 138,
+          "6": 385,
+          "7": 587,
+          "8": 390
+        },
+        "majority": 0.9906666666666667,
+        "noOutside": null
+      }
+    },
+    "N": {
+      "config": {
+        "typeWeight": 0.8,
+        "cityBias": [
+          1,
+          0.22,
+          0.38
+        ],
+        "power": 5,
+        "minZones": 5,
+        "maxZones": 8,
+        "compositeBonus": 1.35,
+        "optionalChance": 0.7,
+        "optionalLimit": 2,
+        "governmentBoost": 2.4,
+        "mode": "D",
+        "seedChance": 0.78,
+        "contrastWeight": 1.7,
+        "noveltyWeight": 0.85,
+        "optionalPower": 5,
+        "fitThreshold": 63,
+        "basicSplitPenalty": 0.78,
+        "socialBoost": 1.5,
+        "govAssociationBoost": 1.35
+      },
+      "metrics": {
+        "n": 1500,
+        "zones": 10350,
+        "mean": 6.9,
+        "regions": {
+          "Inside City": 8061,
+          "Outside City": 1051,
+          "Secret Zone": 1238
+        },
+        "inside": 0.778840579710145,
+        "hidden": 0.6866666666666666,
+        "contrast": 0.6366666666666667,
+        "govCov": 0.6757188498402555,
+        "govAssoc": 0.26996805111821087,
+        "functions": 7.592,
+        "rep": 0.906,
+        "weak": 0.051304347826086956,
+        "weakOld": 0.13159420289855073,
+        "oldMean": 74.04294866282231,
+        "primary": 0.9688888888888889,
+        "red": 0.05545893719806763,
+        "host": 402,
+        "hostWeak": 0,
+        "types": 34,
+        "unique": 1484,
+        "bad": 0,
+        "legacy": 0,
+        "counts": {
+          "5": 186,
+          "6": 315,
+          "7": 462,
+          "8": 537
+        },
+        "majority": 0.9873333333333333,
+        "noOutside": null
+      }
+    },
+    "O": {
+      "config": {
+        "typeWeight": 0.8,
+        "cityBias": [
+          1,
+          0.2,
+          0.32
+        ],
+        "power": 5,
+        "minZones": 5,
+        "maxZones": 8,
+        "compositeBonus": 1.4,
+        "optionalChance": 0.6,
+        "optionalLimit": 2,
+        "governmentBoost": 2.4,
+        "mode": "D",
+        "seedChance": 0.8,
+        "contrastWeight": 1.7,
+        "noveltyWeight": 0.85,
+        "optionalPower": 5,
+        "fitThreshold": 63,
+        "basicSplitPenalty": 0.78,
+        "socialBoost": 1.5,
+        "govAssociationBoost": 1.35
+      },
+      "metrics": {
+        "n": 1500,
+        "zones": 10091,
+        "mean": 6.727333333333333,
+        "regions": {
+          "Inside City": 7895,
+          "Outside City": 1041,
+          "Secret Zone": 1155
+        },
+        "inside": 0.7823803389158657,
+        "hidden": 0.6506666666666666,
+        "contrast": 0.604,
+        "govCov": 0.6541533546325878,
+        "govAssoc": 0.26357827476038337,
+        "functions": 7.526,
+        "rep": 0.904,
+        "weak": 0.05083737984342483,
+        "weakOld": 0.12734119512436826,
+        "oldMean": 74.18569580806528,
+        "primary": 0.9704687345159052,
+        "red": 0.05618868298483797,
+        "host": 355,
+        "hostWeak": 0,
+        "types": 33,
+        "unique": 1488,
+        "bad": 0,
+        "legacy": 0,
+        "counts": {
+          "5": 237,
+          "6": 374,
+          "7": 450,
+          "8": 439
+        },
+        "majority": 0.988,
+        "noOutside": null
+      }
+    },
+    "P": {
+      "config": {
+        "typeWeight": 0.8,
+        "cityBias": [
+          1,
+          0.21,
+          0.34
+        ],
+        "power": 5,
+        "minZones": 5,
+        "maxZones": 8,
+        "compositeBonus": 1.4,
+        "optionalChance": 0.8,
+        "optionalLimit": 1,
+        "governmentBoost": 2.4,
+        "mode": "D",
+        "seedChance": 0.85,
+        "contrastWeight": 1.7,
+        "noveltyWeight": 0.85,
+        "optionalPower": 5,
+        "fitThreshold": 63,
+        "basicSplitPenalty": 0.8,
+        "socialBoost": 1.6,
+        "govAssociationBoost": 1.35
+      },
+      "metrics": {
+        "n": 1500,
+        "zones": 10173,
+        "mean": 6.782,
+        "regions": {
+          "Inside City": 7889,
+          "Outside City": 1116,
+          "Secret Zone": 1168
+        },
+        "inside": 0.7754841246436646,
+        "hidden": 0.654,
+        "contrast": 0.6673333333333333,
+        "govCov": 0.6565495207667732,
+        "govAssoc": 0.25798722044728434,
+        "functions": 7.558,
+        "rep": 0.9181111111111111,
+        "weak": 0.049444608276811165,
+        "weakOld": 0.1249385628624791,
+        "oldMean": 74.38517580336337,
+        "primary": 0.9725744618106753,
+        "red": 0.05760346013958518,
+        "host": 355,
+        "hostWeak": 0,
+        "types": 33,
+        "unique": 1492,
+        "bad": 0,
+        "legacy": 0,
+        "counts": {
+          "5": 133,
+          "6": 402,
+          "7": 624,
+          "8": 341
+        },
+        "majority": 0.99,
+        "noOutside": null
+      }
+    },
+    "Q": {
+      "config": {
+        "typeWeight": 0.8,
+        "cityBias": [
+          1,
+          0.22,
+          0.4
+        ],
+        "power": 5,
+        "minZones": 5,
+        "maxZones": 8,
+        "compositeBonus": 1.45,
+        "optionalChance": 0.72,
+        "optionalLimit": 2,
+        "governmentBoost": 2.4,
+        "seedChance": 0.75,
+        "contrastWeight": 1.7,
+        "noveltyWeight": 0.85,
+        "optionalPower": 5,
+        "fitThreshold": 63,
+        "basicSplitPenalty": 0.82,
+        "socialBoost": 1.65,
+        "govAssociationBoost": 1.35
+      },
+      "metrics": {
+        "n": 1500,
+        "zones": 10266,
+        "mean": 6.844,
+        "regions": {
+          "Inside City": 7998,
+          "Secret Zone": 1258,
+          "Outside City": 1010
+        },
+        "inside": 0.7790765634132086,
+        "hidden": 0.6906666666666667,
+        "contrast": 0.6713333333333333,
+        "govCov": 0.6789137380191693,
+        "govAssoc": 0.2771565495207668,
+        "functions": 7.578666666666667,
+        "rep": 0.8952222222222223,
+        "weak": 0.05133450224040522,
+        "weakOld": 0.13130722774206116,
+        "oldMean": 74.02005507507768,
+        "primary": 0.9687317358270018,
+        "red": 0.05630235729592831,
+        "host": 413,
+        "hostWeak": 0,
+        "types": 33,
+        "unique": 1483,
+        "bad": 0,
+        "legacy": 0,
+        "counts": {
+          "5": 222,
+          "6": 310,
+          "7": 448,
+          "8": 520
+        },
+        "majority": 0.99,
+        "noOutside": null
+      }
+    },
+    "R": {
+      "config": {
+        "typeWeight": 0.8,
+        "cityBias": [
+          1,
+          0.2,
+          0.34
+        ],
+        "power": 5,
+        "minZones": 5,
+        "maxZones": 8,
+        "compositeBonus": 1.32,
+        "optionalChance": 0.65,
+        "optionalLimit": 2,
+        "governmentBoost": 3,
+        "mode": "D",
+        "seedChance": 0.82,
+        "contrastWeight": 1.7,
+        "noveltyWeight": 0.85,
+        "optionalPower": 5,
+        "fitThreshold": 63,
+        "basicSplitPenalty": 0.82,
+        "socialBoost": 1.55,
+        "govAssociationBoost": 1.65
+      },
+      "metrics": {
+        "n": 1500,
+        "zones": 10303,
+        "mean": 6.868666666666667,
+        "regions": {
+          "Inside City": 8074,
+          "Outside City": 1050,
+          "Secret Zone": 1179
+        },
+        "inside": 0.7836552460448413,
+        "hidden": 0.6646666666666666,
+        "contrast": 0.6366666666666667,
+        "govCov": 0.6773162939297125,
+        "govAssoc": 0.28354632587859424,
+        "functions": 7.625333333333334,
+        "rep": 0.9151111111111111,
+        "weak": 0.049694263806658256,
+        "weakOld": 0.1300592060564884,
+        "oldMean": 74.12248037306188,
+        "primary": 0.9720469766087547,
+        "red": 0.058526642725419784,
+        "host": 366,
+        "hostWeak": 0,
+        "types": 33,
+        "unique": 1489,
+        "bad": 0,
+        "legacy": 0,
+        "counts": {
+          "5": 187,
+          "6": 339,
+          "7": 458,
+          "8": 516
+        },
+        "majority": 0.9886666666666667,
+        "noOutside": null
+      }
+    }
+  }
+}

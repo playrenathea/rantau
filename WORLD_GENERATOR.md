@@ -1,3 +1,7 @@
+# World Generator v0.6.0 — Balanced Zones
+
+Faction generation unchanged; see [ZONE_GENERATOR.md](ZONE_GENERATOR.md) for current rules and holdout. Historical notes follow.
+
 # Zone Framework v0.1.0 — World Generator v0.5.0
 
 Extends the existing six-Faction generator without consuming any random draws before City/Faction/Knowledge/Carrier output. 15 Basic functions and 19 Composite types, 3 generation Regions (Inside City, Outside City, Secret Zone). Secret zones have a separate physicalRegion and optional parentId (one level, public host in same physical region). Faction association is not ownership. No forced Outside/Secret quota; City is core. Zone rows are curated editorial seeds, not independently validated reference ratings. Type strong/support/other = 95/65/18; Base strong/other = 95/45; 70:30 blend; dual Type uses existing P8 fit. All 84 canonical bases have 3 explicit strong candidates; all 13 Types have at least 2 strong Basic candidates. 
