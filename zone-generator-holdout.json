@@ -1,0 +1,237 @@
+{
+  "n": 6000,
+  "zones": 42272,
+  "reg": {
+    "Inside City": 32990,
+    "Outside City": 5387,
+    "Secret Zone": 3895
+  },
+  "types": {
+    "Palace District": 3546,
+    "Freeport": 1103,
+    "Stronghold": 1854,
+    "Refugee Camp": 616,
+    "Market District": 2067,
+    "Residential District": 2783,
+    "Slum": 1564,
+    "Temple District": 567,
+    "Rebel Camp": 1651,
+    "Upper Town": 1474,
+    "Foreign Quarter": 184,
+    "Farmland": 66,
+    "Monastery": 2567,
+    "Enclave": 2180,
+    "Farming Village": 1053,
+    "Lower Town": 1964,
+    "Cultural District": 1664,
+    "Administrative District": 2391,
+    "Military District": 444,
+    "Estate": 794,
+    "Mining Settlement": 309,
+    "Harbor": 983,
+    "Academy": 828,
+    "Artisan Quarter": 2915,
+    "Underground City": 1322,
+    "Industrial District": 511,
+    "Citadel": 1787,
+    "Caravan Camp": 403,
+    "Underworld": 622,
+    "Military Camp": 445,
+    "Noble Quarter": 578,
+    "Warehouse District": 623,
+    "Academic District": 405,
+    "Mining Grounds": 9
+  },
+  "count": {
+    "3": 6,
+    "4": 99,
+    "5": 494,
+    "6": 1408,
+    "7": 1751,
+    "8": 1556,
+    "9": 625,
+    "10": 61
+  },
+  "fail": 0,
+  "old": 0,
+  "invalid": 0,
+  "rep": 32404,
+  "weak": 3424,
+  "underHalf": 87,
+  "unique": 5841,
+  "gov": {
+    "Government+Cultural": {
+      "Palace District": 466,
+      "Administrative District": 97
+    },
+    "Government+Religious": {
+      "Palace District": 570,
+      "Administrative District": 62
+    },
+    "Government+Criminal": {
+      "Administrative District": 627
+    },
+    "Government": {
+      "Palace District": 368,
+      "Administrative District": 207,
+      "Citadel": 455
+    },
+    "Government+Conspiracy": {
+      "Administrative District": 48,
+      "Palace District": 616
+    },
+    "Government+Academic": {
+      "Administrative District": 626
+    },
+    "Government+Clan": {
+      "Palace District": 456,
+      "Citadel": 132,
+      "Administrative District": 17
+    },
+    "Government+Merchant": {
+      "Administrative District": 620
+    },
+    "Government+Military": {
+      "Citadel": 546,
+      "Administrative District": 87
+    }
+  },
+  "noneOutside": 2033,
+  "noneSecret": 2689,
+  "secretNested": 1617,
+  "strongCounts": {
+    "Government": 2,
+    "Military": 2,
+    "Religious": 2,
+    "Criminal": 2,
+    "Revolutionary": 3,
+    "Conspiracy": 3,
+    "Merchant": 5,
+    "Clan": 2,
+    "Cultural": 2,
+    "Outsider": 2,
+    "Elite": 2,
+    "Poor": 5,
+    "Academic": 2
+  },
+  "baseCount": 84,
+  "zoneCount": 34,
+  "sample": {
+    "seed": 40001,
+    "city": "Serpent's Venom City",
+    "factions": [
+      [
+        "F1",
+        "Serpent Ministry",
+        [
+          "Government",
+          "Religious"
+        ]
+      ],
+      [
+        "F2",
+        "Ant Resistance",
+        [
+          "Revolutionary",
+          "Poor"
+        ]
+      ],
+      [
+        "F3",
+        "Dolphin Diaspora",
+        [
+          "Outsider",
+          "Cultural"
+        ]
+      ],
+      [
+        "F4",
+        "Swan Parliament",
+        [
+          "Elite"
+        ]
+      ],
+      [
+        "F5",
+        "Crocodile Mercenaries",
+        [
+          "Criminal",
+          "Military"
+        ]
+      ],
+      [
+        "F6",
+        "Parrot Association",
+        [
+          "Merchant",
+          "Academic"
+        ]
+      ]
+    ],
+    "zones": [
+      [
+        "Z1",
+        "Palace District",
+        "Inside City",
+        "F1",
+        null,
+        "Inside City",
+        "representation"
+      ],
+      [
+        "Z2",
+        "Stronghold",
+        "Inside City",
+        "F5",
+        null,
+        "Inside City",
+        "representation"
+      ],
+      [
+        "Z3",
+        "Rebel Camp",
+        "Secret Zone",
+        "F2",
+        "Z2",
+        "Inside City",
+        "representation"
+      ],
+      [
+        "Z4",
+        "Upper Town",
+        "Inside City",
+        "F4",
+        null,
+        "Inside City",
+        "representation"
+      ],
+      [
+        "Z5",
+        "Market District",
+        "Inside City",
+        "F6",
+        null,
+        "Inside City",
+        "required"
+      ],
+      [
+        "Z6",
+        "Foreign Quarter",
+        "Inside City",
+        "F3",
+        null,
+        "Inside City",
+        "representation"
+      ],
+      [
+        "Z7",
+        "Farmland",
+        "Outside City",
+        "F2",
+        null,
+        "Outside City",
+        "preferred"
+      ]
+    ]
+  }
+}
