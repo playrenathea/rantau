@@ -1,3 +1,7 @@
+# World Generator v0.9.0
+
+Location Framework v0.1.0 added; see [LOCATION_GENERATOR.md](LOCATION_GENERATOR.md). Zone v0.4.0 unchanged.
+
 # World Generator v0.8.0 — Locked Zone Framework v0.4.0
 
 See [ZONE_GENERATOR.md](ZONE_GENERATOR.md) for current geography rules. Faction and signature generators unchanged. [Current Colab notebook](notebooks/Infaction_World_Generator_v0.8.0.ipynb).

@@ -1,3 +1,6 @@
+## World Generator v0.9.0
+Location Framework v0.1.0, seeded influence and read-only Map preview. See [LOCATION_GENERATOR.md](LOCATION_GENERATOR.md).
+
 ## Current World Generator v0.8.0
 Locked Zone Framework v0.4.0. [Specification](ZONE_GENERATOR.md) · [Colab](https://colab.research.google.com/github/playrenathea/rantau/blob/main/notebooks/Infaction_World_Generator_v0.8.0.ipynb).
 
