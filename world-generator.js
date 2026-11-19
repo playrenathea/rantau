@@ -12,20 +12,20 @@ const ZF=["Authority","Defense","Religion","Knowledge","Commerce","Production","
 const ZR=["Inside City","Outside City","Secret Zone"];
 const ZROWS=[
 ["Administrative District",{Authority:1},[1,0,0],"Government","Military Elite Academic"],
-["Military District",{Defense:1},[1,0.5,0],"Military Government Revolutionary","Clan","Military Outpost"],
-["Temple District",{Religion:1},[1,0.5,0],"Religious","Cultural Clan Conspiracy","Sacred Grounds"],
+["Military District",{Defense:1},[1,0.5,0],"Military Government Revolutionary","Clan"],
+["Temple District",{Religion:1},[1,0.5,0],"Religious","Cultural Clan Conspiracy"],
 ["Academic District",{Knowledge:1},[1,0,0],"Academic Religious Conspiracy","Government"],
-["Market District",{Commerce:1},[1,0.5,0],"Merchant Criminal","Outsider Elite","Trading Post"],
+["Market District",{Commerce:1},[1,0.5,0],"Merchant Criminal","Outsider Elite"],
 ["Industrial District",{Production:1},[1,0.5,0],"Merchant Poor","Military Cultural Revolutionary"],
 ["Warehouse District",{Logistics:1},[1,0.5,0],"Merchant Outsider Military","Criminal"],
 ["Farmland",{Agriculture:1},[0,1,0],"Poor Clan Merchant","Outsider Religious"],
 ["Mining Grounds",{Extraction:1},[0,1,0],"Poor Merchant","Military Outsider"],
-["Residential District",{Residence:1},[1,0.5,0],"Clan Cultural Poor","Outsider Elite","Village"],
+["Residential District",{Residence:1},[1,0.5,0],"Clan Cultural Poor","Outsider Elite"],
 ["Noble Quarter",{Privilege:1},[1,0,0],"Elite Conspiracy","Government Clan"],
-["Slum",{Poverty:1},[1,0.5,0],"Poor Revolutionary","Criminal Outsider","Shantytown"],
+["Slum",{Poverty:1},[1,0.5,0],"Poor Revolutionary","Criminal Outsider"],
 ["Cultural District",{Culture:1},[1,0,0],"Cultural Elite Academic","Clan Religious Revolutionary"],
-["Underworld",{Secrecy:1},[0.25,0.1,1],"Criminal Conspiracy Revolutionary","Merchant Poor Elite","Hideout"],
-["Foreign Quarter",{Migration:1},[1,0.15,0],"Outsider","Merchant Clan Cultural Poor","Encampment"],
+["Underworld",{Secrecy:1},[0.25,0.1,1],"Criminal Conspiracy Revolutionary","Merchant Poor Elite"],
+["Foreign Quarter",{Migration:1},[1,0.15,0],"Outsider","Merchant Clan Cultural Poor"],
 ["Citadel",{Authority:1,Defense:1},[1,0.5,0],"Government Military","Clan Elite"],
 ["Palace District",{Authority:1,Privilege:1},[1,0,0],"Government Elite Clan","Cultural Religious Conspiracy"],
 ["Stronghold",{Authority:.5,Defense:1,Residence:.5},[0.5,1,0.22],"Military Clan Revolutionary","Government Criminal Outsider"],
@@ -98,7 +98,7 @@ const ZBASEGROUPS=[
 ["Compact","Market District|Enclave|Freeport"]
 ];
 const ZBASE=Object.fromEntries(ZBASEGROUPS.flatMap(([bs,zs])=>bs.split(" ").map(b=>[b,zs.split("|")])));
-const ZONES=ZROWS.map(([type,functions,regions,strong,support,outsideLabel],i)=>({type,functions,regions,strong:strong.split(" "),support:support.split(" "),outsideLabel,composite:i>=15}));
+const ZONES=ZROWS.map(([type,functions,regions,strong,support],i)=>({type,functions,regions,strong:strong.split(" "),support:support.split(" "),composite:i>=15}));
 const ZDEFAULT={"typeWeight":0.8,"cityBias":[1,0.22,0.4],"power":5,"minZones":5,"maxZones":8,"compositeBonus":1.45,"optionalChance":0.72,"optionalLimit":2,"governmentBoost":2.4,"seedChance":0.75,"contrastWeight":1.7,"noveltyWeight":0.85,"optionalPower":5,"fitThreshold":63,"basicSplitPenalty":0.82,"socialBoost":1.65,"govAssociationBoost":1.35};
 const ZBASESUP=Object.fromEntries(D.bases.map(b=>{
  const strong=ZBASE[b.base]||[];
