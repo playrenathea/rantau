@@ -236,10 +236,10 @@ function generateZones(factions,seed=0,options={}){
 
  // Secret Zone is a generation bucket, not a geographical Region.
  // Until size calibration, unknown sizes remain null; Gate is zero.
-function buildSpatialTree(zones){
- const outside={id:"outside",label:"Outside City",kind:"Region",size:null,children:[]};
+function buildSpatialTree(zones,city="Inside City"){
+ const outside={id:"outside",label:"The Lands",kind:"Region",size:null,children:[]};
  const gate={id:"city-gate",label:"City Gate",kind:"Gate",size:0,children:[]};
- const inside={id:"inside",label:"Inside City",kind:"Region",size:null,children:[]};
+ const inside={id:"inside",label:city,kind:"Region",size:null,children:[]};
  outside.children.push(gate);gate.children.push(inside);
  const nodes=new Map((zones||[]).map(z=>[z.id,{id:z.id,label:z.label||z.type,kind:"Zone",size:null,secret:z.region==="Secret Zone"||z.secret===true,children:[]}]));
  const source=new Map((zones||[]).map(z=>[z.id,z]));
@@ -281,7 +281,7 @@ rank.forEach((f,i)=>f.knowledgeRank=i+1);
 for(const f of rank.slice(0,3)){const x=ranked(D.knowledge,x=>combine(typeFit(f.types,t=>D.knowledgeType[t][x.base]),D.knowledgeBase[f.base][x.base]))[0];f.knowledge=name(f,x)}
 for(const f of rank.slice(0,2)){const x=ranked(D.carrier,x=>combine(typeFit(f.types,t=>D.carrierType[t][x.base]),D.carrierBase[f.base][x.base]))[0];f.carrier={...name(f,x),knowledge:f.knowledge.name}}
 const framework=generateZones(factions,Math.floor(rng()*4294967296));
-return {version:VERSION,city:a.possessive+" "+flavor+" City",flavor,factions,zoneVersion:framework.version,zones:framework.zones,zoneCoverage:framework.coverage,spatialTree:buildSpatialTree(framework.zones)};
+return {version:VERSION,city:a.possessive+" "+flavor+" City",flavor,factions,zoneVersion:framework.version,zones:framework.zones,zoneCoverage:framework.coverage,spatialTree:buildSpatialTree(framework.zones,a.possessive+" "+flavor+" City")};
 }
 const api={generate,generateZones,buildSpatialTree,version:VERSION,data:{...D,zoneTypes:ZONES,zoneFunctions:ZF,zoneRegions:ZR,zoneBaseAffinity:ZBASE,zoneBaseSupporting:ZBASESUP,zoneDefaults:ZDEFAULT}};if(typeof module!=="undefined"&&module.exports)module.exports=api;else root.InfactionWorld=api;
 })(typeof globalThis!=="undefined"?globalThis:this);

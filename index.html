@@ -156,7 +156,7 @@ function renderMap(parent){
  const panel=document.createElement('section');panel.className='map-panel';panel.setAttribute('aria-label','Map');
  const title=document.createElement('h2');title.className='map-title';title.textContent='Map';panel.append(title);
  const tree=document.createElement('div');tree.className='map-tree';panel.append(tree);
- const root=InfactionWorld.buildSpatialTree(s.zones||[]);
+ const root=InfactionWorld.buildSpatialTree(s.zones||[],s.city);
  const expanded=s.mapExpanded&&typeof s.mapExpanded==='object'?s.mapExpanded:(s.mapExpanded={});
  function renderNode(node){
   const current=node.id==='city-gate'&&s.stage===2;
