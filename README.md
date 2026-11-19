@@ -1,3 +1,11 @@
+# Current navigation MVP — World v0.11.0
+
+[Unified Place specification](PLACE_GENERATOR.md) · [MVP](https://playrenathea.github.io/rantau/) · [Colab v0.11.0](https://colab.research.google.com/github/playrenathea/rantau/blob/main/notebooks/Infaction_World_Generator_v0.11.0.ipynb).
+
+The material below is historical or future-gameplay reference, not the active navigation MVP. Gate, NPCs, interaction and inventory are not active.
+
+---
+
 # Current — World Generator v0.10.0
 
 Current pinned Colab notebook: [v0.10.0](https://colab.research.google.com/github/playrenathea/rantau/blob/main/notebooks/Infaction_World_Generator_v0.10.0.ipynb) (source commit a4d1193cdc0039e1f1bb840a43f268d7150fd21b; both JS modules). Historical versions below are retained.

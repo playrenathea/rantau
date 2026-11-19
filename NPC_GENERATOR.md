@@ -1,2 +1,10 @@
+# Current navigation MVP — World v0.11.0
+
+[Unified Place specification](PLACE_GENERATOR.md) · [MVP](https://playrenathea.github.io/rantau/) · [Colab v0.11.0](https://colab.research.google.com/github/playrenathea/rantau/blob/main/notebooks/Infaction_World_Generator_v0.11.0.ipynb).
+
+The material below is historical or future-gameplay reference, not the active navigation MVP. Gate, NPCs, interaction and inventory are not active.
+
+---
+
 # Gate NPC Population v0.2.0
 Supersedes v0.1.0 for prototype population. Gate guard count restored to original 2% zero / 70% one / 28% two; guards belong to Government. Other slots use pairwise affinity and sparse boosters with 0.5 diminishing weight per repeated archetype. Count remains uniform 3–5, pinned NPCs retained. Non-guard/non-officer draws have provisional 45% chance of no faction; sample role from weighted pool, then omit affiliation. Neutral labels use deterministic defaults; associated labels choose highest compatible type/base score, with generic only as fallback. Card displays label and single affiliation tag (Faction name, Citizen of city, or Outsider). Archetype and trait remain internal. No timing. Existing NPC population regenerated once on version change; other world state retained. Browser untested.
