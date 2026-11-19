@@ -29,31 +29,26 @@ button:active:not(:disabled){background:#e1e5dc;transform:scale(.98)}
 .map-panel{border-bottom:0;padding:18px 0 4px}.map-title{font-size:16px;font-weight:650;margin:0 0 8px}.map-tree{min-width:0;text-align:left}.map-branch{margin:0}.map-folder{display:flex;align-items:center;gap:8px;width:100%;min-height:42px;text-align:left;background:none;border:0;border-radius:6px;padding:8px 4px;line-height:1.35;font-weight:600}.map-folder:active:not(:disabled),.map-folder:hover{background:#637a6410;transform:none}.map-folder svg,.map-leaf>svg{flex:none;width:17px;height:17px;color:#768171}.map-folder .map-chevron{width:13px;height:13px;color:#8a9187;transition:transform .12s}.map-folder[aria-expanded="true"] .map-chevron{transform:rotate(90deg)}.map-folder .map-count{margin-left:auto;color:#858c82;font-size:11px;font-weight:400}.map-children{margin-left:12px;padding-left:16px;border-left:1px solid #dadfd5}.map-children[hidden]{display:none}.map-leaf{display:flex;align-items:flex-start;gap:9px;min-height:34px;padding:7px 4px;line-height:1.35;overflow-wrap:anywhere}.map-leaf>svg{margin-top:2px}.map-leaf-label{display:block;font-size:14px}.map-leaf small{display:block;font-size:11px;margin-top:2px;color:#777f75}.map-empty{display:block;padding:7px 4px;font-size:12px;color:#8a9187}.map-current .map-leaf-label{font-weight:650;color:#345d3c}.map-current>svg{color:#52775a}.map-secret>svg{color:#82718f}.map-note{display:block;font-size:11px;color:#858c82;margin:10px 0 0}.completion-map{width:100%;text-align:left}.completion-map[hidden]{display:none}.completion-map .map-panel{padding-top:10px}.completion-controls{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}@media(prefers-reduced-motion:reduce){.map-chevron{transition:none}}
 
 .map-folder.map-current{color:#345d3c}.map-folder.map-current svg{color:#52775a}.map-folder.map-secret svg{color:#82718f}.map-folder .map-count{white-space:nowrap}
-</style></head><body><main id="app"></main><script src="place-generator.js?v=0.1.0-nav1"></script><script src="world-place-generator.js?v=0.11.0-nav1"></script><script>
+</style></head><body><main id="app"></main><script src="place-generator.js?v=0.1.0-nav1"></script><script src="world-place-generator.js?v=0.11.0-nav1"></script><script src="selection-generator.js?v=0.1.0-selection2"></script><script>
 const app=document.querySelector('#app'),key='infaction-mvp-01';
 const names=['Mara','Rafael','Dewi','Ken','Aisha','Diego','Pablo','Nadia','Iris','Omar','Soren','Lea'];
 const pick=a=>a[Math.floor(Math.random()*a.length)],shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 function populate(state){state.npcs=[];return state}
-function fresh(){const w=InfactionWorld.generate();return {stage:0,worldVersion:w.version,placeVersion:w.placeVersion,spatialTree:w.spatialTree,zones:w.zones,locations:w.locations,sites:w.sites,city:w.city,f:w.factions,current:'land',hour:17,money:0,pass:false,uniform:false,knowledge:0,errand:0,heat:0,log:'',tab:'gate',outcome:'',npcs:[]}}
-function migrate(state){
- if(!state||!Array.isArray(state.f)||state.f.length!==6||typeof state.city!=='string')return fresh();
- if(state.worldVersion!=='0.11.0'||state.placeVersion!=='0.1.0'||state.spatialTree?.id!=='land'){
-  let seed=2166136261;for(const c of state.city+'|'+state.f.map(f=>f.name).join('|')+'|unified-places')seed=Math.imul(seed^c.charCodeAt(0),16777619)>>>0;
-  const p=InfactionWorld.generatePlaces(state.f,state.city,seed);
-  Object.assign(state,{worldVersion:'0.11.0',placeVersion:p.placeVersion,spatialTree:p.spatialTree,zones:p.zones,locations:p.locations,sites:p.sites,current:'land',mapExpanded:{},stage:Math.min(Number(state.stage)||0,2),tab:state.stage>=2?'location':state.tab,log:'',pass:false,uniform:false,errand:0,money:0,knowledge:0,inventory:null});
- }
- state.npcs=[];if(state.stage===3)state.stage=2;if(!['gate','location','inventory'].includes(state.tab))state.tab='location';if(!Number.isFinite(state.hour))state.hour=17;
- const ids=new Set();(function walk(n){ids.add(n.id);for(const c of n.children)walk(c)})(state.spatialTree);if(!ids.has(state.current))state.current='land';return state;
-}
-let s;try{let stored=null;try{stored=JSON.parse(localStorage.getItem(key))}catch(e){}s=stored?migrate(stored):fresh();
- try{const u=new URL(window.location.href);if(u.searchParams.has('intro')){u.searchParams.delete('intro');history.replaceState(null,'',u.href)}}catch(e){}
+function fresh(){const seed=Math.floor(Math.random()*4294967296),w=InfactionSelection.generate(seed);return {stage:0,selectionVersion:w.version,seed,selection:w,city:w.city,f:w.factions,hour:17,log:'',tab:'location',npcs:[],money:0,pass:false,uniform:false,errand:0,heat:0}}
+let s;
+try{let prev=null;try{prev=JSON.parse(localStorage.getItem(key))}catch(e){}
+ if(prev&&prev.selectionVersion===InfactionSelection.version&&prev.selection&&Number.isFinite(prev.seed))s=prev;
+ else if(prev&&Array.isArray(prev.f)&&prev.f.length===6&&prev.city){
+  const seed=Number.isFinite(prev.seed)?prev.seed:Math.floor(Math.random()*4294967296);
+  const selection=InfactionSelection.generate(seed,{factions:prev.f,city:prev.city});
+  s={...prev,stage:prev.stage===0||prev.stage===1?prev.stage:2,selectionVersion:selection.version,seed,selection,tab:'location',npcs:[],log:'',hour:Number.isFinite(prev.hour)?prev.hour:17};
+ }else s=fresh();
+ s.npcs=[];if(s.stage>2)s.stage=2;if(!['gate','location','inventory'].includes(s.tab))s.tab='location';
  save();
+ try{let u=new URL(location.href);if(u.searchParams.has('intro')){u.searchParams.delete('intro');history.replaceState(null,'',u.href)}}catch(e){}
 }catch(e){console.error(e);s=fresh();save()}
 function save(){try{localStorage.setItem(key,JSON.stringify(s))}catch(e){}}
-function spatialIndex(){const nodes=new Map(),parents=new Map();function walk(n,p){nodes.set(n.id,n);if(p)parents.set(n.id,p.id);for(const c of n.children)walk(c,n)}walk(s.spatialTree,null);return {nodes,parents}}
-function currentPlace(){return spatialIndex().nodes.get(s.current)||s.spatialTree}
-function nearby(){const {nodes,parents}=spatialIndex(),here=nodes.get(s.current)||s.spatialTree,p=nodes.get(parents.get(here.id));return [...(p?[p,...p.children.filter(n=>n.id!==here.id)]:[]),...here.children]}
-function moveTo(id){if(s.current===id)return;const target=nearby().find(n=>n.id===id);if(!target)return feedback('Move through the surrounding places first.');s.current=id;s.log='';save();render()}
+function currentPlace(){return {label:'World Selection'}}
 let menu,anchor,feedbackTimer;function close(){menu?.remove();menu=null;anchor?.classList.remove('menu-anchor');anchor=null}function feedback(msg){clearTimeout(feedbackTimer);document.querySelector('.feedback')?.remove();const el=document.createElement('div');el.className='feedback'+(s.stage<2?' intro-feedback':'');el.setAttribute('role','status');el.setAttribute('aria-live','polite');el.textContent=msg;document.body.append(el);feedbackTimer=setTimeout(()=>el.remove(),3800)}// One gesture grammar for actionable leaves and branches. Native scroll and grip drag remain separate.
 function gesture(el,tap,alternative=null,{closeOnDown=false}={}){
  let timer=null,held=false,cancelled=false,pointer=null,x=0,y=0;
@@ -172,48 +167,48 @@ function mapIcon(kind){
 }
 
 function renderMap(parent){
- const panel=document.createElement('section');panel.className='map-panel';panel.setAttribute('aria-label','Map');
- const title=document.createElement('h2');title.className='map-title';title.textContent='Map';panel.append(title);
- const tree=document.createElement('div');tree.className='map-tree';panel.append(tree);
- const root=s.spatialTree;
- const expanded=s.mapExpanded&&typeof s.mapExpanded==='object'?s.mapExpanded:(s.mapExpanded={});
- function renderNode(node){
-  const current=node.id===s.current&&s.stage===2;
-  const kind=node.secret?'secret':node.role==='Location'?'pin':node.role==='Zone'?'zone':'folder';
-  const branch=document.createElement('div');branch.className='map-branch';
-  const label=document.createElement('span');label.textContent=node.label;
-  if(!node.children.length){
-   const row=document.createElement('div');row.className='map-leaf'+(current?' map-current':'')+(node.secret?' map-secret':'');if(current)row.setAttribute('aria-current','location');
-   const text=document.createElement('div');label.className='map-leaf-label';text.append(label);if(current){const sub=document.createElement('small');sub.textContent='Current location';text.append(sub)}row.append(mapIcon(kind),text);branch.append(row);return branch;
-  }
-  const control=document.createElement('button');control.type='button';control.className='map-folder'+(current?' map-current':'')+(node.secret?' map-secret':'');
-  const chevron=mapIcon('chevron');chevron.classList.add('map-chevron');
-  let folder=mapIcon(kind);const count=document.createElement('span');count.className='map-count';count.textContent=current?'Current location':'';
-  if(current)control.setAttribute('aria-current','location');
-  const children=document.createElement('div');children.className='map-children';children.id='map-node-'+node.id;control.setAttribute('aria-controls',children.id);
-  function sync(){
-   const open=expanded[node.id]!==false;
-   control.setAttribute('aria-expanded',String(open));children.hidden=!open;
-   if(kind==='folder'){const next=mapIcon(open?'open':'folder');folder.replaceWith(next);folder=next;}
-  }
-  control.append(chevron,folder,label,count);
-  gesture(control,()=>{expanded[node.id]=expanded[node.id]===false;sync();save()});
-  for(const child of node.children)children.append(renderNode(child));
-  branch.append(control,children);sync();return branch;
+ const result=s.selection;
+ const overview=document.createElement('section');overview.className='map-panel';
+ const title=document.createElement('h2');title.className='map-title';title.textContent='World Selection';overview.append(title);
+ const summary=document.createElement('small');summary.className='map-note';summary.textContent=result.city+' · '+result.zones.length+' Zones · '+result.locations.length+' Locations · Seed '+s.seed;overview.append(summary);
+ for(const [heading,entries] of [['Zones',result.zones],['Locations',result.locations]]){
+  const h=document.createElement('h2');h.className='map-title';h.textContent=heading+' ('+entries.length+')';overview.append(h);
+  const list=document.createElement('div');list.className='map-tree';overview.append(list);
+  entries.forEach((p,i)=>{
+   const line=document.createElement('div');line.className='map-leaf';const num=document.createElement('span');num.className='map-count';num.textContent=String(i+1).padStart(2,'0');
+   const body=document.createElement('div');body.className='map-leaf-label';const label=document.createElement('strong');label.textContent=p.type;const detail=document.createElement('small');detail.textContent=p.priorityFunction+' · '+p.priorityFaction;body.append(label,detail);line.append(num,body);list.append(line);
+  });
  }
- tree.append(renderNode(root));
- const note=document.createElement('small');note.className='map-note';note.textContent='Full visibility · '+s.zones.length+' zones · '+s.sites.length+' sites · '+s.locations.length+' locations';panel.append(note);
- parent.append(panel);return panel;
+ const note=document.createElement('small');note.className='map-note';note.textContent='Selection only. No Geography, Placement, Site or mandatory Location in this experiment.';overview.append(note);parent.append(overview);
 }
-
-function render(){close();app.className=s.stage===2&&night()?'night':'';if(s.stage<2){app.innerHTML='<div class="intro"><h1></h1><p></p><div id="controls"></div></div>';let h=app.querySelector('h1'),p=app.querySelector('p'),c=app.querySelector('#controls');if(s.stage===0){h.textContent='Infaction is not as it seems.';p.innerHTML=(matchMedia("(hover: hover) and (pointer: fine)").matches?"When nothing is left, try what\u0027s right.":"If you think you can hold, don\u0027t tap.")+"<br><br>Are you ready?";button(c,"I'm not ready",()=>feedback('You are not ready yet.'),[["I'm ready",()=>{s.stage=1;save();render()}]]).dataset.menuTitle='Ready?'}else{h.textContent='Welcome to Infaction';p.textContent='Your journey begins in the land of '+s.city+'.';button(c,"I'm out",()=>{s.stage=0;save();render()},[["I'm in",()=>{s.stage=2;s.tab='location';s.current='land';s.log='';save();render()}],["Change city",()=>{let next=fresh();for(let i=0;i<30&&next.city===s.city;i++)next=fresh();if(next.city===s.city)return feedback('The city remains unchanged. Try again.'); s=next;s.stage=1;save();render()}]]).dataset.menuTitle='Sure?'}return}
-app.innerHTML=(s.tab==='inventory'?'':' <div class="location-header"><div class="location-label"><h1 id="location"></h1><span id="time">'+clock()+' · '+(night()?'Night':'Day')+'</span></div><button id="more" aria-label="Menu">⋯</button></div><section class="log">'+s.log+'</section>')+'<div id="content"></div><nav id="nav" aria-label="Game navigation"></nav>';if(s.tab!=='inventory'){app.querySelector('#location').textContent=currentPlace().label;hold(app.querySelector('#location'),[],()=>feedback('You are at '+currentPlace().label+'.'));hold(app.querySelector('#time'),[['Wait until',waitUntil]],()=>{s.hour=(s.hour+1)%24;update('An hour passes.')});for(let id of ['location','time']){let el=app.querySelector('#'+id);el.tabIndex=0;el.setAttribute('role','button')}gesture(app.querySelector('#more'),()=>show(app.querySelector('#more'),[['Exit',()=>{s.stage=0;save();render()}],['New universe',()=>{if(confirm('Start a new universe?')){s=fresh();save();render()}}]]));}for(let tab of ['gate','location','inventory']){let b=button(app.querySelector('#nav'),({gate:'Interaction',location:'Location',inventory:'Inventory'})[tab],()=>{s.tab=tab;save();render()});const label=b.textContent;const icons={gate:'<path d="M4 5h16v11H9l-5 4z"/>',location:'<path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="2.5"/>',inventory:'<rect x="4" y="7" width="16" height="14" rx="2"/><path d="M9 7V4h6v3M4 12h16"/>'};b.innerHTML='<svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'+icons[tab]+'</svg><span>'+label+'</span>';if(s.tab===tab){b.className='selected';b.setAttribute('aria-current','page')}}let c=app.querySelector('#content');if(s.tab==='factions')s.tab='location';if(s.tab==='location'){
- const sec=document.createElement('section');c.append(sec);const destinations=nearby();
- for(const node of destinations){const dest=button(sec,node.label+(node.secret?' (Hidden)':''),()=>moveTo(node.id));dest.classList.add('destination');dest.style.marginBottom='8px';dest.dataset.menuTitle=node.label;}
- if(!destinations.length){const text=document.createElement('small');text.textContent='No nearby places.';sec.append(text)}
- renderMap(c);return;
-}
-if(s.tab==='inventory'){renderInventory(c);return}
-if(s.tab==='gate'){c.innerHTML='<section><small>No one is here.</small></section>';return}
+function render(){
+ close();app.className='';
+ if(s.stage<2){
+  app.innerHTML='<div class="intro"><h1></h1><p></p><div id="controls"></div></div>';
+  const h=app.querySelector('h1'),p=app.querySelector('p'),c=app.querySelector('#controls');
+  if(s.stage===0){
+   h.textContent='Infaction is not as it seems.';
+   p.innerHTML=(matchMedia("(hover: hover) and (pointer: fine)").matches?"When nothing is left, try what's right.":"If you think you can hold, don't tap.")+'<br><br>Are you ready?';
+   button(c,"I'm not ready",()=>feedback('You are not ready yet.'),[["I'm ready",()=>{s.stage=1;save();render()}]]).dataset.menuTitle='Ready?';
+  }else{
+   h.textContent='Welcome to Infaction';p.textContent='Your journey begins in the land of '+s.city+'.';
+   button(c,"I'm out",()=>{s.stage=0;save();render()},[["I'm in",()=>{s.stage=2;s.tab='location';save();render()}],["Change city",()=>{s=fresh();s.stage=1;save();render()}]]).dataset.menuTitle='Sure?';
+  }return;
+ }
+ app.innerHTML='<div class="location-header"><div class="location-label"><h1 id="location">World Selection</h1><span id="time"></span></div><button id="more" aria-label="Menu">⋯</button></div><div id="content"></div><nav id="nav" aria-label="Game navigation"></nav>';
+ app.querySelector('#time').textContent=s.city;
+ hold(app.querySelector('#location'),[],()=>feedback('Selection experiment — no travel or placement yet.'));
+ const more=app.querySelector('#more');
+ gesture(more,()=>show(more,[['New universe',()=>{s=fresh();s.stage=2;save();render()}],['Return to intro',()=>{s.stage=0;save();render()}]]));
+ for(const tab of ['gate','location','inventory']){
+  const b=button(app.querySelector('#nav'),({gate:'Interaction',location:'Location',inventory:'Inventory'})[tab],()=>{s.tab=tab;save();render()});
+  const icons={gate:'<path d="M4 5h16v11H9l-5 4z"/>',location:'<path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="2.5"/>',inventory:'<rect x="4" y="7" width="16" height="14" rx="2"/><path d="M9 7V4h6v3M4 12h16"/>'};
+  b.innerHTML='<svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'+icons[tab]+'</svg><span>'+b.textContent+'</span>';
+  if(s.tab===tab){b.className='selected';b.setAttribute('aria-current','page')}
+ }
+ const content=app.querySelector('#content');
+ if(s.tab==='location')renderMap(content);
+ else if(s.tab==='gate')content.innerHTML='<section><small>No NPCs. Interaction is intentionally empty.</small></section>';
+ else content.innerHTML='<section><small>Inventory is not part of the selection experiment.</small></section>';
 }document.addEventListener('pointerdown',e=>{if(menu&&!menu.contains(e.target)&&!anchor?.contains(e.target))close()});document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(document.querySelector('.beat-backdrop'))closeBeat();else close()}});window.addEventListener('resize',close);render();
 </script></body></html>

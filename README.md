@@ -1,3 +1,7 @@
+## Active MVP — Selection-only experiment
+
+See [SELECTION_EXPERIMENT.md](SELECTION_EXPERIMENT.md). The previous unified Place and spatial generator are preserved as separate modules.
+
 ## Current MVP — restored UI + unified Place navigation
 
 Original intro, visual styles, gesture grammar, time header and footer tabs retained. The live MVP now uses World v0.11.0 (`world-place-generator.js`) and Place v0.1.0; no Gate or NPCs. Location lists parent, siblings and children; map remains a full-visibility prototype preview, with current location marked. Hidden destinations deliberately exposed for spatial testing. Existing save identity preserved on migration; location, tab and progress persist on reload; obsolete `intro=1` query no longer resets. Inventory tabs retained but empty. Travel duration and hidden discovery out of scope.
