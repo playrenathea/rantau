@@ -1,0 +1,11 @@
+{
+  "n": 200,
+  "zoneMean": 7.44,
+  "locationMean": 25.095,
+  "siteMean": 3.1,
+  "outsideMean": 1.79,
+  "hiddenShare": 0.10888171741265609,
+  "emptyZones": 47,
+  "fallback": 427,
+  "missingOutsider": 40
+}
