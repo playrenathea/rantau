@@ -1,6 +1,7 @@
-## Active MVP — Selection-only experiment
+## Calibrated selection lab (current)
 
-See [SELECTION_EXPERIMENT.md](SELECTION_EXPERIMENT.md). The previous unified Place and spatial generator are preserved as separate modules.
+Active selection-only MVP: [SELECTION_EXPERIMENT.md](SELECTION_EXPERIMENT.md). The holdout summary and current A→B settings are documented there. Original intro and CSS remain unchanged.
+
 
 ## Current MVP — restored UI + unified Place navigation
 
