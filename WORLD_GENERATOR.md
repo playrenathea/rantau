@@ -1,3 +1,7 @@
+# World Generator v0.8.0 — Locked Zone Framework v0.4.0
+
+See [ZONE_GENERATOR.md](ZONE_GENERATOR.md) for current geography rules. Faction and signature generators unchanged. [Current Colab notebook](notebooks/Infaction_World_Generator_v0.8.0.ipynb).
+
 # World Generator v0.6.0 — Balanced Zones
 
 Faction generation unchanged; see [ZONE_GENERATOR.md](ZONE_GENERATOR.md) for current rules and holdout. Historical notes follow.

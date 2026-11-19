@@ -1,3 +1,5 @@
+v0.4.0: unique Zone Types and strict physical Inside majority; Secret hosts use curated compatibility lists. Existing saved geography retained. See ZONE_GENERATOR.md.
+
 Player-facing labels: root `The Lands` (provisional broad-world name), city node uses the actual generated city name. Internal Region identifiers remain Outside City and Inside City; no change to generation or hierarchy.
 
 # Map — physical hierarchy MVP

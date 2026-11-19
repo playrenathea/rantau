@@ -1,3 +1,6 @@
+## Current World Generator v0.8.0
+Locked Zone Framework v0.4.0. [Specification](ZONE_GENERATOR.md) · [Colab](https://colab.research.google.com/github/playrenathea/rantau/blob/main/notebooks/Infaction_World_Generator_v0.8.0.ipynb).
+
 ## World Generator v0.6.0
 Balanced 5–8 zone framework; see [ZONE_GENERATOR.md](ZONE_GENERATOR.md).
 
