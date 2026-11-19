@@ -1,3 +1,11 @@
+# Zone Framework v0.3.0 — spatial hierarchy
+
+World Generator v0.7.0. Minimum one non-secret Outside Zone, protected during pruning. Outsider gets stronger outside placement and completion preference. Remaining v0.2 policies preserved. Secret generation bucket remains internal; buildSpatialTree projects physical placement, optional host, two geographical regions and mandatory zero-size City Gate. No fabricated Site/Location/Room, travel size or travel gameplay. Existing worlds preserved; use New universe for new guarantee.
+
+Holdout seeds 60000–61999: machine-readable report zone-generator-holdout-v0.3.json. Faction/city/signatures unchanged. No structural violations in updated holdout.
+
+## Previous baseline
+
 # Zone Framework v0.2.0 — World Generator v0.6.0
 
 Gameplay priorities: compact city core, distinct government identity, functional diversity, social contrast, hidden opportunities. No equal territory requirement. Unified Basic/Composite selection (composite bonus, single-side basic affinity with penalty); no deferred selection stage. Government anchor remains public full Authority; government secondary function increases functional utility. Type/Base 80:20; Base strong/support/weak 95/65/25, supporting inferred from shared full functions. Adaptive completion selects candidates, not a randomly chosen missing function. Required City coverage unchanged; optional additions depend on fit, novelty and stochastic budget. Shared marginal utility uses functional gain, affinity, region and representation (40/30/20/10), with social contrast weighting; pruning removes lowest marginal value subject to public requirements, expansion fills to five, cap eight. Secret host alignment after balancing; weak host cutoff on both old and new fit, physical compatibility remains heuristic. No new vocabulary or location content. Existing saved v0.5 worlds retained (new universe uses new generator).

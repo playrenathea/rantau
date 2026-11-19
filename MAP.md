@@ -1,5 +1,5 @@
-# Map — MVP preview
+# Map — physical hierarchy MVP
 
-Location tab displays full generated Zone Framework as a compact folder explorer. Inside City, Outside City, Secret Zone are expandable/collapsible; all initially open. Zone labels come from saved framework, one row per Zone. Secret rows show host or physical region, never duplicate into host. City Gate is the existing standalone location, not a generated Zone. No fake sites/locations; map is read-only. Existing guard/destination flow unchanged. Quest-complete screen exposes the same map through a Location toggle. Expansion preferences persist per save, new universe resets them. Reuses gesture grammar. No new gameplay visibility or access rules; full disclosure is MVP preview only.
+Two geographic Regions: Outside City contains City Gate, which contains Inside City. Gate size zero; not a Zone. Generated Secret Zones occur once in their physical Region or under their valid host. All visible in preview; folders expand/collapse, preferences per save. Internal generation bucket Secret Zone retained for scoring and coverage; not a geographical folder. All nodes are conceptually occupiable, but navigation beyond current Gate quest is not implemented. Sizes of regions/zones are null until calibrated. No separate Street/Path object. Existing saves retain their zones, including older worlds with no public Outside Zone; New universe uses updated minimum.
 
-Verification: inline JS parses; renderer tested with DOM double across 1000 generated worlds for region counts, exact zone labels, current Gate, toggle and persistence. Live browser/mobile not tested.
+Verified against 300 actual generated worlds with DOM double; live browser not tested.
