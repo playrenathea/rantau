@@ -103,3 +103,39 @@ Recommendation: hold the score and weights constant pending review of several re
 Important caveats: this fixes an overbroad Culture mapping for **two** places, not the full structural issue of nearly interchangeable Commerce venues. Apothecary increases in frequency from 53.2% to 66.4% because it now supplies fewer Function categories and affects deficit selection differently; Gaming House rises from 55.1% to 60.4%. Scores are measured on the edited raw-A profiles in each variant, so cosine similarity can move just from relabeling the vector. Faction/Zone stay effectively invariant because the two edited Place Types are Location-only. The selection process is deterministic for a fixed seed and has not been made more complex.
 
 **Decision:** Keep, as a small verified semantic improvement. **Next problem (await review):** Are highly frequent near-substitutes within Commerce (Shop, Market, Trading Post, Auction House, etc.) crowding out distinctive Location gameplay roles? If yes, first audit additional A semantics and the Function taxonomy, not dynamic anti-duplication penalties. Stop here pending user's go-ahead.
+
+## Iteration 2 — Commerce Location Differentiation (2026-11-20)
+
+**Root problem:** Multiple commercial venues are scored as Production even though their specific role is trading or logistics rather than producing goods. Under the 6-Function model, their misleading Production contribution makes several commerce profiles artificially interchangeable and can displace genuine production sites. Original 15-Function source confirms Trading Post Logistics=0.5, Black Market Logistics=0.5 (neither has direct Production). There is no new category, column, rule, eligibility constraint, or runtime algorithm.
+
+**Two numeric changes in existing Selection - Function A tab:**
+- Trading Post Production A: **50 → 0** (Commerce remains 100; Residence remains 50).
+- Black Market Production A: **50 → 25** (Commerce remains 100; recognizes minor logistics contribution while no longer treating it as a significant production site).
+All Faction Type and Base affinities unchanged, and existing weight/Bias values unchanged.
+
+**Reasoning from qualitative samples:** Shop, Black Market and Apothecary had identical or very similar Function A vectors while their Faction affinities differed meaningfully; similarly Market and Gaming House shared Function vectors. They should not automatically be penalized as duplicates: faction alignment can make them serve different political contexts. No new runtime co-occurrence penalty was introduced. The raw Function mapping, rather than a general diversity bonus, was the smallest sound lever. Changing Shop Production to zero was rejected because its modeled appearance rose to ~93–95% in preliminary tests. Changing Black Market Production to zero was rejected because its modeled appearance rose to ~67–70% and excessively displaced other venues. We selected a milder correction.
+
+**Holdout: 1,750 fresh seeds 700000–701749, same seed set for baseline and candidate.**
+
+| KPI | Before (Iteration 1 baseline) | After |
+|---|---:|---:|
+| Effective Zone Type diversity | 31.486 | 31.486 |
+| Effective Location Type diversity | 58.022 | **58.762** |
+| Zone Function / Faction TV errors | 0.1375 / 0.0495 | same |
+| Location Function demand TV error | 0.0663 | **0.0639** |
+| Location Faction demand TV error | **0.0338** | 0.0342 |
+| Mean Location Function cosine overlap | 0.3839 | **0.3779** |
+| Strong Function coverage (out of 6) | 6.000 | 5.999 |
+| Strong Production locations per Universe | 4.810 | **5.112** |
+| Commerce-strong locations per Universe | 8.597 | **8.272** |
+| Distinct primary Functions per Universe | 5.498 | 5.510 |
+| Mean effective affinity to prioritized Faction (B 0–100) | 49.81 | 50.03 |
+| Locations with prioritized Faction fit below 50 | 53.00% | 52.49% |
+| Types ever selected | 38 Zone / 74 Location | same |
+| Structural/Outsider/determinism failures | 0 | 0 |
+
+**Frequency (% universes):** Trading Post 60.3→68.6, Black Market 53.3→57.1, Shop 84.0→79.1, Farm 34.3→39.1, Factory 14.0→16.3, Workshop 36.7→40.7, Tavern 73.8→71.9.
+
+**Limitations:** Higher output diversity and lower cosine similarity may partly arise directly from edited Function vectors rather than meaningful gameplay variation. Co-occurrence/placement remains out of scope. Commerce still contains legitimately distinct institutions; do not pursue uniform probability. 53% of Location selections currently have priority Faction affinity below 50, but since this includes Neutral and randomly generated six-way Faction combinations, it is a **diagnostic lead, not a validated defect or target**.
+
+**Decision:** KEEP the two-cell Function A correction. The generator stays unchanged. Next proposed problem, requiring approval before action: **Faction Type + Base Name alignment sensitivity**—test whether actual Type/Base combinations reliably influence selected Place identities without assuming that low absolute affinity itself indicates failure.
