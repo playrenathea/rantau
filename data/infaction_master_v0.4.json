@@ -26165,6 +26165,22 @@
       "location_standalone_city_probability": "0=mandatory outside,1=0.30,2=0.60,3=0.90,4=mandatory inside (not yet implemented)",
       "zone_city_score_0": "mandatory outside except emergency override",
       "zone_city_score_4": "mandatory inside"
+    },
+    "function_score_reference": {
+      "Authority": 66,
+      "Defense": 69,
+      "Religion": 51,
+      "Knowledge": 70,
+      "Commerce": 92,
+      "Production": 63,
+      "Logistics": 67,
+      "Resources": 60,
+      "Residence": 83,
+      "Social": 95,
+      "Covert": 51,
+      "Migration": 40,
+      "Care": 44,
+      "Exploration": 68
     }
   },
   "validation": {
@@ -26182,5 +26198,88 @@
     },
     "location_v042_heldout_max_frequency_percent": 60.667,
     "location_v042_effective_diversity": 68.466
+  },
+  "rules": {
+    "status": "v0.4.x master snapshot: Selection v0.4.2 LOCKED; Zone City v0.4.3 APPROVED EXPERIMENT; Location Placement PENDING",
+    "faction": {
+      "candidate_slots": 7,
+      "final_factions": 6,
+      "sequence": "F1 Government; F2 Revolutionary; Elite and Poor on separate recipient slots; Outsider in F2–F7; fill remaining 13 distinct types across seven slots (one or two types each); discard F7 before naming",
+      "constraints": "Government cannot share Elite, Poor, Revolutionary or Outsider; Elite and Poor never share a slot",
+      "naming": "For F1–F6, rank each Base and Animal separately by AVG(AVG(Type1,Type2),SQRT(Type1*Type2),Random[0,100]); use Type1 twice when only one type; choose highest unused Base and Animal sequentially F1–F6; grammar weighted by each Base's M/O/P/S values from Book1; all 6 Base and all 6 Animal unique",
+      "grammar_key": {
+        "M": "Animal Base",
+        "O": "Base of the Animal",
+        "P": "Base of the Animals",
+        "S": "Animal's Base"
+      }
+    },
+    "zone": {
+      "selection_version": "0.4.1 LOCKED",
+      "count_min": 7,
+      "count_max": 9,
+      "type_count": 36,
+      "selection_order": "F1–F6 each select one unused Zone; 1–3 supplemental unique Zone; no hard mandatory Zone",
+      "faction_score": "AVG(AVG(Type1,Type2,Base),CUBERT(Type1*Type2*Base),Random[0,100]) + function_modifier + zone_modifier",
+      "supplemental_score": "Random[0,100] + function_modifier + zone_modifier",
+      "single_faction_type": "Type2=Type1",
+      "function_modifier": "0.75*SOFT(all candidate affinities of Functions whose current count < min) - SOFT(affinities >=75 when current count >=max) - SOFT(affinities >=75 when current count >max); SOFT(S)=AVG(AVG(S),MAX(S)), 0 for empty",
+      "function_coverage": "after each Zone, +1 for every Function with affinity>=75; update live counts",
+      "modifier_scope": "additive score for both Faction Zone and supplemental Zone selection",
+      "distribution_target": "each Zone type frequency approximately 5%-40% across worlds (soft benchmark, not guarantee)",
+      "faction_extra_bias": "none"
+    },
+    "location": {
+      "selection_version": "0.4.2 LOCKED",
+      "count_min": 20,
+      "count_max": 30,
+      "mean": 25,
+      "sigma": 2.5,
+      "target_sampling": "round and clamp Normal(mean=25,sigma=2.5) to [20,30]; sigma pilot parameter",
+      "type_count": 74,
+      "unique": "global across all Zone, Faction and supplemental picks",
+      "zone_selection": "each Zone in previously generated order selects one unused Location: Place affinity + Random[0,100]*0.20 + location modifier",
+      "faction_selection": "each F1–F6 selects one unused Location: AVG(Type1,Type2,Base) + CUBERT(Type1*Type2*Base) + Random[0,100]*0.60 + location modifier; Type2=Type1 if single Type",
+      "supplemental": "until target: Random[0,100]+function_modifier+R1*AVG(AVG(candidate→selected Location affinities),AVG(candidate→selected Zone affinities))+R2*AVG(arithmetic Faction affinity fit across all six Factions)+location modifier",
+      "r1_r2": "independent Uniform(0,1) per candidate evaluation; R1 for Place consistency, R2 for Faction consistency",
+      "function_modifier": "0.75*SOFT(all candidate affinities of Functions current count <min) - SOFT(affinities >=75 when current count>=max) - SOFT(affinities >=75 when current count>max)",
+      "function_coverage": "increment Functions with affinity>=75 for EVERY selected Location at any stage; quotas are Location-specific",
+      "modifier_scope": "additive score for all three Location selection stages",
+      "distribution_target": "individual Location prevalence approximately <=60% across worlds (soft benchmark, no cap)",
+      "mandatory_location": "none"
+    },
+    "city": {
+      "version": "0.4.3 APPROVED EXPERIMENT (not merged into selection v0.4.2)",
+      "classification": "Zone score 0 strict Outside; 4 strict Inside; scores 1–3 flexible. Overlay changes Caravan Camp, Village, Necropolis, Rebel Camp 0→1",
+      "mandatory_outside": [
+        "Cavern",
+        "Farmland",
+        "Hunting Grounds",
+        "Mining Region",
+        "Mining Settlement",
+        "Wilderness"
+      ],
+      "algorithm": "after Zone selection assign strict statuses; if strict Outside count=0 choose exactly one flexible Zone with lowest Inside City Score, random on ties; if strict Outside count>3 randomly reassign excess to Inside until 3 Outside; all remaining Zone Inside",
+      "outside_goal": "1–2 preferred; 3 emergency maximum",
+      "city_after_location_weighted_average": "not approved or implemented; alternative under discussion",
+      "standalone_location_city": "AFTER Location→Zone matching only; score 0 mandatory Outside, 4 mandatory Inside, scores 1/2/3 represent 30/60/90% Inside; not implemented"
+    },
+    "placement": {
+      "location_zone_matching": "not implemented",
+      "mutual_preferences": "Zone relative preferences and Location relative preferences from symmetric raw Place affinity to be normalized separately; design pending",
+      "faction_alignment": "third signal not specified; do not fabricate",
+      "scale": "child.scale<=parent.scale; Scale not capacity; no arbitrary 3/4 Locations per Zone",
+      "standalone": "allow Locations outside any Zone; distinct Inside/Outside Zone versus Inside/Outside City"
+    }
+  },
+  "meta": {
+    "master_role": "one canonical snapshot with machine-readable rules + raw Book1 data + approved overlays; native Google Sheets is browsable companion; GitHub JSON is Colab loader input",
+    "do_not_overwrite_raw_affinities": true,
+    "unapproved_settings_do_not_affect_locked_generator": true,
+    "notes": [
+      "Function Score is reference data only, NOT implemented as an additional multiplier in v0.4.2",
+      "City overlay is independent from locked Zone/Location selection; no Location→Zone placement yet.",
+      "Changing Google Sheets alone does not automatically update GitHub JSON or embedded generator notebook; cross-surface update required."
+    ]
   }
 }
