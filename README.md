@@ -1,3 +1,13 @@
+## Locked standalone Infaction Zone MVP — v0.4.1 (20 November 2026)
+
+[Run the v0.4.1 notebook in Colab](https://colab.research.google.com/github/playrenathea/rantau/blob/main/notebooks/Infaction_Faction_Naming_Zone_Generator_v0.4.1.ipynb) · [Drive notebook](https://colab.research.google.com/drive/1gPB8RWn2uAs_j3gjxKdoOKv26btMp6qO) · [Current specification](https://docs.google.com/document/d/15AVs2_mh66o-M8YnetGeLZqB2HuXRm04ZqIhNWWHT6s/edit) · [10k held-out QA](https://drive.google.com/file/d/1EO_kOUyt1sFJwOpQ8ZPbaz7SqHfWBN7Z/view).
+
+The **standalone** Infaction Faction/Naming/Zone generator v0.4.1 locks A (penalties only for Function affinity >=75), Soft MAX = mean(mean, max), Function bonus 75%, penalty 100% / 200% when over maximum, and nine per-Type score modifiers: Royal Quarter -7; Entertainment District -4; Rebel Camp -4; Military Base -3; Market District -2; Cultural District -1; Estate +2; Mining Settlement +4; Caravan Camp +7. Historical v0.4.0 is preserved.
+
+Held-out QA (10,000 worlds): Zone appearance 5.33%–38.85% (empirical, not hard guarantees); minimum Function success 99.95%; maximum Function success 100%. The **GitHub Pages Rantau web runtime** continues to use its separate World v0.11.0 model and 39-Zone vocabulary; it has **not** been switched to the standalone Infaction generator. Do not interpret the standalone lock as a deployed change to the live web UI.
+
+---
+
 ## Calibrated selection lab (current)
 
 Active selection-only MVP: [SELECTION_EXPERIMENT.md](SELECTION_EXPERIMENT.md). The holdout summary and current A→B settings are documented there. Original intro and CSS remain unchanged.
