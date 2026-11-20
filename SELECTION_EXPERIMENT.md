@@ -42,3 +42,8 @@ TV error = half the sum of absolute percentage differences between normalized de
 * Current MVP is selection-only. Spatial plausibility, containment, access, hidden discovery, NPC interactions and location travel are not tested here.
 * This is engine/synthetic testing; not a live browser interaction test.
 * Existing saves generated before the Outsider fix can retain their original six factions to preserve continuity; new universes use the corrected generator.
+
+
+## Iteration v0.3.0
+
+Data schema unchanged. Six-function affinity A and Place Bias remain numeric columns in existing Sheets. Static `selection-data.js` is the published snapshot of those two existing ranges (126 rows); no runtime mapping from 15 legacy Functions or per-Place conditions. To publish subsequent tuning from the workbook, regenerate that snapshot. Scoring simplified to `(F + A + R) / 3`. Weights: `[0.75,0.35,0,0.25,0]` (A, A×Bias, Bias, A distribution, distribution×Bias). Values of Bias may be negative for lower prevalence or positive for higher prevalence. Bias affects selection B, not supply A. Normalized A supply profiles are cached per Place, while actual Faction supply profiles are prepared once per Universe. Raw-A semantic corrections: Pawnshop, Auction House, Bank, Monument no longer represent Residence; other six-function A values retained. Selection remains independent Zone/Location, with no Site, placement or mandatory Location. See `Selection - Type Audit` and `Selection - Pair Audit` in the workbook for the prior 1800-seed audit.
