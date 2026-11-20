@@ -51,3 +51,27 @@ Data schema unchanged. Six-function affinity A and Place Bias remain numeric col
 ### Final outlier pass
 
 Six high-frequency Locations (Auction House, Bank, Brothel, Gaming House, Trading Post, Shelter) received small negative Bias adjustments, plus Underworld Zone −0.08. These remain pure database values and do not change the generator. Aggressive corrections were rejected because they displaced the excessive frequency to other Commerce Types. Chosen small adjustments improve effective Location diversity with negligible demand error change in comparison batches. See newer QA stats below once evaluated.
+
+## Final v0.3 holdout — 1,800 fresh seeds (400000–401799)
+
+This section supersedes interim v0.3 tuning notes. Existing database layout is unchanged; only existing numeric columns for Function A, Bias, and five A→B weights were edited. The final published `selection-data.js` is a snapshot of the existing sheet rows, and is explicitly cache-busted in `index.html`.
+
+| KPI | v0.2 | v0.3 final |
+|---|---:|---:|
+| Effective Zone diversity | 29.51 | **31.43** |
+| Effective Location diversity | 51.04 | **57.51** |
+| Zone types covered | 38/38 | 38/38 |
+| Location types covered | 73/74 | **74/74** |
+| Zone Function TV error | 0.1378 | 0.1378 |
+| Location Function TV error | 0.0762 | **0.0753** |
+| Zone Faction TV error | **0.0455** | 0.0473 |
+| Location Faction TV error | **0.0327** | 0.0346 |
+| Structural failures (duplicates/count/anchor/Outsider/Gov) | 0 | 0 |
+
+Frequency examples (% of universes): Bookshop 88.7→53.4, Apothecary 84.1→54.9, Clinic 4.2→16.2, Library 2.9→11.9, Temple 2.8→12.4, Farm 17.7→33.7, Dock 7.3→26.8, Factory 2.9→16.0, Sewer 0→3.1. Tavern remains common at 78.1% and Shop at 84.2%. Government/Authority still receives the opening anchor in each pool.
+
+Implementation: `score=(F+A+R)/3` (R uniform[0,1]); `B=clamp(.75*A+.35*A*Bias+.25*100*A/sum(A),0,100)`; `Bias` is the existing signed numeric `Places` column. Supply uses normalized raw A, not B. Six Function A rows come from the existing `Selection - Function A` tab snapshot, not on-the-fly conversion of the 15 legacy Functions. Current Faction Type/Base A values are unchanged and are transformed with the same B model. Per-Place function supply normalization is precomputed in cached compile(); per-Universe actual Faction supply normalization is precomputed once. Neutral demand stays 1.5 provisional.
+
+Qualitative caveat: Zone/Location relationships are still deliberately independent. Palace District→Palace and University→Library are not mandatory yet; optimizing these needs later placement / mandatory pairing rather than special-case selection. Unconditional co-occurrence changes are not evidence of causality.
+
+Recommendation: hold the score and weights constant pending review of several representative generated worlds. If additional tuning is needed, edit existing numeric A/Bias values rather than adding generation rules. Live Google Sheet edits still require publishing a new `selection-data.js` snapshot.
