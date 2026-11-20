@@ -1,11 +1,11 @@
 (function(root){
 "use strict";
-const V="0.3.0-selection", PG=root.InfactionPlaces, WG=root.InfactionWorld, SD=root.InfactionSelectionData;
+const V="0.3.4-selection", PG=root.InfactionPlaces, WG=root.InfactionWorld, SD=root.InfactionSelectionData;
 if(!PG||!WG||!SD)throw Error("Place, World, and Selection Data are required");
 const D=PG.data;
 const FUNCTIONS=["Residence","Commerce","Production","Authority","Security","Culture"];
 const DEMAND=[4,4,2,2,1,2];
-const DEFAULT={weights:[.75,.35,0,.25,0],legacyBiasScale:1,neutralDemand:1.5,randomAmplitude:1};
+const DEFAULT={weights:[.75,.35,0,.25,0],legacyBiasScale:1,neutralDemand:1.4,randomAmplitude:1};
 const clip=x=>Math.max(0,Math.min(100,x));
 function rngFromSeed(seed){if(seed===undefined)return Math.random;let a=seed>>>0;return()=>{a=(a+0x6D2B79F5)>>>0;let t=a;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296}}
 const sum=a=>a.reduce((s,x)=>s+x,0);

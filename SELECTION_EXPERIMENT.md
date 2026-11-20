@@ -139,3 +139,43 @@ All Faction Type and Base affinities unchanged, and existing weight/Bias values 
 **Limitations:** Higher output diversity and lower cosine similarity may partly arise directly from edited Function vectors rather than meaningful gameplay variation. Co-occurrence/placement remains out of scope. Commerce still contains legitimately distinct institutions; do not pursue uniform probability. 53% of Location selections currently have priority Faction affinity below 50, but since this includes Neutral and randomly generated six-way Faction combinations, it is a **diagnostic lead, not a validated defect or target**.
 
 **Decision:** KEEP the two-cell Function A correction. The generator stays unchanged. Next proposed problem, requiring approval before action: **Faction Type + Base Name alignment sensitivity**—test whether actual Type/Base combinations reliably influence selected Place identities without assuming that low absolute affinity itself indicates failure.
+
+## Iteration 3 — Faction Type × Base Name sensitivity and Neutral calibration (2026-11-20)
+
+Two separate problems investigated **without expanding the production data schema**.
+
+### A. Faction identity diagnostics
+Across 450 unchanged-seed controlled worlds, permuting only the **Base Names** of the six actual generated Factions changed Zone selections in **79.6%** of worlds and Location selections in **100%** (mean Jaccard set distance 0.452 Zone / 0.623 Location); swapping Faction Types among factions 2–6 produced 78.0% / 99.8% changed and mean set distance 0.413 / 0.604. These counterfactuals reuse the same seed and city, and the same six Faction slots; the effects are contextual and propagate through greedy selection. Average absolute B-affinity change for the original selected Place/Faction pairs was 5.15 points (Base swap) and 8.83 points (Type swap). **Interpretation:** Base Names already have a meaningful influence on selection even if Type affects scores more. Do not strengthen Base mechanically without a clear qualitative failure.
+
+The actionable imbalance was **Neutral priority**: v0.3 Neutral target 1.50 made Neutral the prioritized faction in roughly 29.6% of selected Locations even though normalized Neutral supply was only 18.8%; this crowded the opportunities to prioritize the six actual Factions. A lower neutral target improves this mismatch while preserving 6-Faction supply accounting.
+
+**Decision: KEEP neutralDemand=1.40**, via existing Selection - Controls B14 only; engine default synchronized. No other weights, faction mapping, Function A, Bias, or scoring logic changed.
+
+**Independent holdout: 1,500 seeds 1030000–1031499, same seeds for 1.35/1.40/1.50.**
+
+| KPI | v0.3 Neutral 1.50 | KEEP Neutral 1.40 |
+|---|---:|---:|
+| Effective Zone diversity | 31.34 | 31.42 |
+| Effective Location diversity | 58.72 | 59.36 |
+| Zone Function TV error | 0.1395 | 0.1398 |
+| Zone Faction TV error | **0.0484** | 0.0519 |
+| Location Function TV error | 0.0623 | **0.0610** |
+| Location Faction TV error | 0.0346 | **0.0310** |
+| Neutral Location priority frequency | 29.6% | **18.1%** |
+| Neutral Location normalized supply | 18.8% | 18.4% |
+| Distinct actual factions prioritized per world (Location pool) | 4.27 / 6 | **4.50 / 6** |
+| Structural errors | 0 | 0 |
+
+Neutral 1.35 was also tested: Location Faction TV 0.0304, Location diversity 59.56, but Neutral priority dropped to 13.2% while supply was 18.2%; 1.40 keeps the gap small without unnecessarily suppressing Neutral.
+
+### B. Logical close-neighbor co-occurrence diagnostics
+Existing directed `Place - Place` matrix was inspected, not changed. The appropriate existing Zone→Location affinity is already high (**95**) for Harbor→Dock, University→Library, Monastery→Temple, Mining Grounds→Mine, Palace District→Palace, and many other logical pairs. A trial lightweight per-Location additive preference from the currently selected Zones (max, mean, or mean of top-two directed link affinities) was tested across 300 paired worlds at several weights. It increased the share of selected Locations with >=85 mapping to at least one Zone, but **did not consistently improve the important semantic pairs**; e.g., max link weight 0.5 yielded Harbor→Dock 31.6→46.5%, while University→Library 12.8→7.7% and Monastery→Temple 20.9→14.0%. Higher weights also worsened demand balance and/or Type diversity. `max` saturated quickly because many Location types already match at least one of ~7 Zones.
+
+**Decision: REJECT the neighbor-bonus experiment, keep the existing matrix and selection algorithm intact.** Actual physical proximity has not been measured because placement and Site are intentionally out of scope. The next bounded problem is to evaluate a simple Zone→Location conditional selection/mandatory phase *when placement begins*, rather than forcing co-occurrence through generalized probability bonuses.
+
+### Regression checklist
+- Universe variety: Zone and Location effective diversity both stable/improved.
+- Fictional frequency: no additional Type-specific bias changes; distribution retains nonuniformity.
+- Function coverage/overlap: no modifications to Function A; Location function TV slightly improved.
+- Faction Type+Base: validated by paired counterfactuals; Neutral calibration improves actual-Faction opportunities.
+- Logical neighbors: documented that static affinity alone cannot enforce contextual co-occurrence, and the tested shortcut was not reliable.
