@@ -1,3 +1,13 @@
+## Locked standalone Infaction Zone + Location MVP — v0.4.2 (21 November 2026)
+
+[Run v0.4.2 in Colab](https://colab.research.google.com/github/playrenathea/rantau/blob/main/notebooks/Infaction_Faction_Naming_Zone_Location_Generator_v0.4.2.ipynb) · [Drive Colab](https://colab.research.google.com/drive/1dgJIyF-z5abtu0mIbff7Odm2FbJy14aK) · [Current specification](https://docs.google.com/document/d/15AVs2_mh66o-M8YnetGeLZqB2HuXRm04ZqIhNWWHT6s/edit) · [3k Location QA](https://drive.google.com/file/d/1w08_X98XuEKt0a8AaWZhUYQP353sUCV_/view).
+
+This standalone notebook preserves the locked Zone v0.4.1 model and adds Location Selection: 74 unique Scale 1–2 types, 20–30 Locations (mean 25, pilot sigma 2.5), one for each Zone then one for each Faction, followed by context/Function-based supplemental greedy. Random weights Zone 20%, Faction 60%. Location Function Covert 0–3. Location score modifiers Hideout -8, Camp -8, Shelter -2, all others 0. No spatial placement, parenting, visibility, or ownership implemented.
+
+Independent local QA on 3,000 seeds: all location sets unique, effective Location diversity 68.466/74, Function minima 99.833%, maxima 99.833%, maximum individual Location frequency Hideout **60.667%** (slightly exceeds soft 60% aspiration). Historical standalone Zone v0.4.1 remains available. This is **not a deployment of the existing Rantau web UI**; its separate World v0.11.0 engine and vocabulary remain untouched.
+
+---
+
 ## Locked standalone Infaction Zone MVP — v0.4.1 (20 November 2026)
 
 [Run the v0.4.1 notebook in Colab](https://colab.research.google.com/github/playrenathea/rantau/blob/main/notebooks/Infaction_Faction_Naming_Zone_Generator_v0.4.1.ipynb) · [Drive notebook](https://colab.research.google.com/drive/1gPB8RWn2uAs_j3gjxKdoOKv26btMp6qO) · [Current specification](https://docs.google.com/document/d/15AVs2_mh66o-M8YnetGeLZqB2HuXRm04ZqIhNWWHT6s/edit) · [10k held-out QA](https://drive.google.com/file/d/1EO_kOUyt1sFJwOpQ8ZPbaz7SqHfWBN7Z/view).
