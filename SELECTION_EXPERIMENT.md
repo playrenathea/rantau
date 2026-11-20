@@ -75,3 +75,31 @@ Implementation: `score=(F+A+R)/3` (R uniform[0,1]); `B=clamp(.75*A+.35*A*Bias+.2
 Qualitative caveat: Zone/Location relationships are still deliberately independent. Palace District→Palace and University→Library are not mandatory yet; optimizing these needs later placement / mandatory pairing rather than special-case selection. Unconditional co-occurrence changes are not evidence of causality.
 
 Recommendation: hold the score and weights constant pending review of several representative generated worlds. If additional tuning is needed, edit existing numeric A/Bias values rather than adding generation rules. Live Google Sheet edits still require publishing a new `selection-data.js` snapshot.
+
+
+## Iteration 1 — Location functional redundancy (qualitative-first, 2026-11-20)
+
+**Scope:** One diagnosed root problem: several commercial Location profiles incorrectly supplied Culture. No changes to generator algorithm, weighting, Bias, Function demand, or Faction data. Only `Selection - Function A` values: Apothecary Culture **100 → 0**, Gaming House Culture **100 → 50**. The two changes remove an implausibly strong Culture role from a medical retailer and moderate, rather than eliminate, the social-cultural role of a gambling venue. Same values are mirrored in published `selection-data.js` snapshot; schema unchanged.
+
+**Qualitative examples:** In seed 510354, the initial selection had Bookshop, Tavern, Gaming House, Apothecary, Market and Brewery clustered in Commerce/Culture; other seeds likewise showed overlapping venues. The narrower edit targets that specific issue, not all Commerce repetition. Sample held-out worlds were inspected; some individual outcomes changed substantially, and not every world is improved. Do not overinterpret distribution metrics as gameplay-quality judgments.
+
+**Holdout:** 1,800 new seeds **560000–561799**, paired on the same 6 generated Factions per seed. Baseline v0.3 vs two-cell edit:
+
+| Metric | Before | After |
+|---|---:|---:|
+| Effective Location Type diversity | 57.566 | 58.137 |
+| Location Function TV demand error | 0.0745 | 0.0659 |
+| Location Faction TV demand error | 0.0345 | 0.0339 |
+| Mean pairwise Location Function cosine similarity | 0.3896 | 0.3844 |
+| Location pairs with cosine >=0.85 | 8.00% | 7.72% |
+| Commerce+Culture-strong Locations per Universe | 5.582 | 4.856 |
+| Distinct primary Function categories per Universe | 5.442 | 5.497 |
+| Strong Function coverage (>=75 A) | 5.999/6 | 5.999/6 |
+| Zone effective diversity | 31.440 | 31.440 |
+| Zone Function TV / Faction TV | 0.1373 / 0.0491 | same |
+| Location Types sampled | 74/74 | 74/74 |
+| Structural failures | 0 | 0 |
+
+Important caveats: this fixes an overbroad Culture mapping for **two** places, not the full structural issue of nearly interchangeable Commerce venues. Apothecary increases in frequency from 53.2% to 66.4% because it now supplies fewer Function categories and affects deficit selection differently; Gaming House rises from 55.1% to 60.4%. Scores are measured on the edited raw-A profiles in each variant, so cosine similarity can move just from relabeling the vector. Faction/Zone stay effectively invariant because the two edited Place Types are Location-only. The selection process is deterministic for a fixed seed and has not been made more complex.
+
+**Decision:** Keep, as a small verified semantic improvement. **Next problem (await review):** Are highly frequent near-substitutes within Commerce (Shop, Market, Trading Post, Auction House, etc.) crowding out distinctive Location gameplay roles? If yes, first audit additional A semantics and the Function taxonomy, not dynamic anti-duplication penalties. Stop here pending user's go-ahead.
