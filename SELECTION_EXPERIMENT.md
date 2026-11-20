@@ -179,3 +179,42 @@ Existing directed `Place - Place` matrix was inspected, not changed. The appropr
 - Function coverage/overlap: no modifications to Function A; Location function TV slightly improved.
 - Faction Type+Base: validated by paired counterfactuals; Neutral calibration improves actual-Faction opportunities.
 - Logical neighbors: documented that static affinity alone cannot enforce contextual co-occurrence, and the tested shortcut was not reliable.
+
+
+## Iteration 4 — Meaningful Universe Diversity / Faction-Driven World Identity (2026-11-20)
+
+**Question:** Do different Place sets represent materially different functions and faction-political identities, or do they only change names?
+
+**Qualitative examples:** Universe seed 1200003 contained Palace District, Citadel, Academic District, Harbor, and Entertainment Quarter under Government+Religious, Revolutionary+Poor, Academic+Cultural, Outsider+Merchant, Criminal+Conspiracy, and Elite factions. Seed 1200010 instead combined Government Complex, Monastery, Military District, Industrial Complex, and Enclave under a different six-faction composition. Their Zone areas imply different possible power structures, yet many Location lists share a broad commerce/social/service vocabulary. Therefore distinct Type lists are informative but not sufficient as "meaningful" diversity.
+
+### Diagnostic benchmark — 900 worlds, 2,200 sampled world pairs
+Based on seeds **1500000–1500899**. TV = half of summed absolute differences between normalized supply profiles. Faction Type and Base metrics use *static Place affinity profiles*, not player-facing faction ownership or simulated gameplay.
+
+| Metric (inter-Universe) | Zone | Location |
+|---|---:|---:|
+| Mean Place Type-set Jaccard distance | 0.8360 | 0.6936 |
+| Mean six-Function supply TV distance | 0.1441 | 0.0483 |
+| Mean Faction Type (14-dimensional) affinity TV | 0.0946 | 0.0381 |
+| Mean joint Function × Faction Type (6×14) TV | 0.2435 | 0.0857 |
+| Mean Base Name affinity (84-dimensional) TV | 0.0712 | 0.0235 |
+
+**Interpretation:** Zone identity is already more distinct in functional and factional composition than Location identity. Location Type changes are common, but six-function supply remains highly similar because the intended demand balancing is doing its job. Do **not** maximize Function TV or assume low Function TV is a defect. Introduce these separately as candidate QA diagnostics rather than collapsing into one "diversity" score.
+
+### Prioritized-Faction fit (same 900 worlds)
+Exclude Neutral from the ranking. For each selected Place whose selection priority was one of six generated factions, compare its B-affinity to its prioritized faction with B-affinity to all six generated factions:
+
+| Metric | Zone | Location |
+|---|---:|---:|
+| Prioritized Faction is highest-affinity actual Faction | 41.8% | 32.3% |
+| Prioritized Faction exceeds the six-faction mean affinity | 67.9% | 64.8% |
+| Mean prioritized-affinity advantage over six-faction mean | +10.00 B points | +6.67 B points |
+
+Note that 32.3% top-affinity alone does **not** demonstrate a bug: Function need and Random are also intentional selection factors, and factions may have similar static affinities. This gives a focused diagnostic for a future Base/Type specificity audit rather than a new hard requirement.
+
+### Rejected interventions
+1. **Raise Faction coefficient in score, from 1.0 to 1.1** (1,550 new paired seeds 1360000–1361549). Mean Location priority Faction fit rose from 46.68 to 47.50 B points, but Location Function demand TV worsened from 0.0620 to 0.0651, while Location interworld Jaccard stayed essentially flat (0.688→0.688). **REJECT** a global coefficient increase as poorly targeted to meaningful thematic identity.
+2. **Replace 15% of universal Function demand with dynamically derived faction-conditioned Function demand** (380 exploratory seeds 1400000–1400379). Location effective Type diversity rose from 59.27 to 60.99, but interworld Function TV *fell* from 0.0493 to 0.0446 and Location Function demand TV worsened from 0.0613 to 0.0702. Larger replacement ratios degraded the mismatch further. The attempted "world specialization" actually made role distributions more similar. **REJECT.**
+
+**Decision: NO CHANGE to engine, data, selection weights, Bias, or Place mapping.** Preserve v0.3.4. This iteration improved the *evaluation method* by separating Type-set difference, Function difference, Type/Base-profile difference, and prioritized-faction fit. The provisional diagnostic rows are recorded in the existing `Selection - QA` tab; do not promote them to fixed optimization targets without checking against qualitative world reviews.
+
+**Next bounded problem for approval:** Faction-driven *Location specificity*—why only 32.3% of actual-faction-prioritized Location selections have that faction as their highest-affinity actual faction, whether broad Base Name ratings cause indistinct faction places, and whether any data-only A changes improve this without sacrificing 6-Function coverage, realistic Place frequencies, or lightweight runtime. Logical neighbors remain deferred to placement as before.
