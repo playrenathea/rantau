@@ -1,0 +1,449 @@
+{
+  "note": "Proxy reconstruction, not locked Python",
+  "cohort": "8100000–8100999",
+  "count": [
+    {
+      "site": "Mine",
+      "original": 5,
+      "targeted": 0,
+      "containment": 17,
+      "lost": 5
+    },
+    {
+      "site": "Grove",
+      "original": 6,
+      "targeted": 6,
+      "containment": 4,
+      "lost": 0
+    },
+    {
+      "site": "Excavation Site",
+      "original": 6,
+      "targeted": 6,
+      "containment": 3,
+      "lost": 0
+    },
+    {
+      "site": "Cavern",
+      "original": 6,
+      "targeted": 6,
+      "containment": 24,
+      "lost": 0
+    },
+    {
+      "site": "Temple",
+      "original": 18,
+      "targeted": 18,
+      "containment": 36,
+      "lost": 0
+    },
+    {
+      "site": "Necropolis",
+      "original": 20,
+      "targeted": 20,
+      "containment": 53,
+      "lost": 0
+    },
+    {
+      "site": "Inn",
+      "original": 27,
+      "targeted": 22,
+      "containment": 88,
+      "lost": 5
+    },
+    {
+      "site": "Barracks",
+      "original": 25,
+      "targeted": 25,
+      "containment": 37,
+      "lost": 0
+    },
+    {
+      "site": "Cemetery",
+      "original": 26,
+      "targeted": 26,
+      "containment": 53,
+      "lost": 0
+    },
+    {
+      "site": "Ruins",
+      "original": 29,
+      "targeted": 29,
+      "containment": 12,
+      "lost": 0
+    },
+    {
+      "site": "Brewery",
+      "original": 31,
+      "targeted": 29,
+      "containment": 15,
+      "lost": 2
+    },
+    {
+      "site": "Town Hall",
+      "original": 31,
+      "targeted": 31,
+      "containment": 89,
+      "lost": 0
+    },
+    {
+      "site": "Manor",
+      "original": 39,
+      "targeted": 39,
+      "containment": 22,
+      "lost": 0
+    },
+    {
+      "site": "Farm",
+      "original": 40,
+      "targeted": 40,
+      "containment": 42,
+      "lost": 0
+    },
+    {
+      "site": "Hideout",
+      "original": 40,
+      "targeted": 40,
+      "containment": 52,
+      "lost": 0
+    },
+    {
+      "site": "Camp",
+      "original": 55,
+      "targeted": 40,
+      "containment": 23,
+      "lost": 15
+    },
+    {
+      "site": "Arena",
+      "original": 42,
+      "targeted": 42,
+      "containment": 10,
+      "lost": 0
+    },
+    {
+      "site": "Dock",
+      "original": 45,
+      "targeted": 45,
+      "containment": 50,
+      "lost": 0
+    },
+    {
+      "site": "Catacombs",
+      "original": 46,
+      "targeted": 46,
+      "containment": 59,
+      "lost": 0
+    },
+    {
+      "site": "Enclave",
+      "original": 46,
+      "targeted": 46,
+      "containment": 66,
+      "lost": 0
+    },
+    {
+      "site": "Sanctuary",
+      "original": 49,
+      "targeted": 49,
+      "containment": 44,
+      "lost": 0
+    },
+    {
+      "site": "Monastery",
+      "original": 50,
+      "targeted": 50,
+      "containment": 30,
+      "lost": 0
+    },
+    {
+      "site": "Workshop",
+      "original": 58,
+      "targeted": 51,
+      "containment": 36,
+      "lost": 7
+    },
+    {
+      "site": "Rebel Camp",
+      "original": 53,
+      "targeted": 53,
+      "containment": 2,
+      "lost": 0
+    },
+    {
+      "site": "Hunting Grounds",
+      "original": 54,
+      "targeted": 54,
+      "containment": 62,
+      "lost": 0
+    },
+    {
+      "site": "Hospital",
+      "original": 57,
+      "targeted": 57,
+      "containment": 148,
+      "lost": 0
+    },
+    {
+      "site": "Embassy",
+      "original": 66,
+      "targeted": 66,
+      "containment": 11,
+      "lost": 0
+    },
+    {
+      "site": "Outpost",
+      "original": 72,
+      "targeted": 72,
+      "containment": 64,
+      "lost": 0
+    },
+    {
+      "site": "Warehouse",
+      "original": 78,
+      "targeted": 72,
+      "containment": 62,
+      "lost": 6
+    },
+    {
+      "site": "Square",
+      "original": 74,
+      "targeted": 74,
+      "containment": 7,
+      "lost": 0
+    },
+    {
+      "site": "Caravan Camp",
+      "original": 76,
+      "targeted": 76,
+      "containment": 111,
+      "lost": 0
+    },
+    {
+      "site": "Fortress",
+      "original": 79,
+      "targeted": 79,
+      "containment": 169,
+      "lost": 0
+    },
+    {
+      "site": "Factory",
+      "original": 89,
+      "targeted": 89,
+      "containment": 105,
+      "lost": 0
+    },
+    {
+      "site": "Estate",
+      "original": 91,
+      "targeted": 91,
+      "containment": 62,
+      "lost": 0
+    },
+    {
+      "site": "Military Base",
+      "original": 91,
+      "targeted": 91,
+      "containment": 26,
+      "lost": 0
+    },
+    {
+      "site": "Meeting Hall",
+      "original": 95,
+      "targeted": 95,
+      "containment": 12,
+      "lost": 0
+    },
+    {
+      "site": "Shipyard",
+      "original": 128,
+      "targeted": 95,
+      "containment": 155,
+      "lost": 33
+    },
+    {
+      "site": "Refugee Camp",
+      "original": 97,
+      "targeted": 97,
+      "containment": 74,
+      "lost": 0
+    },
+    {
+      "site": "Black Market",
+      "original": 99,
+      "targeted": 99,
+      "containment": 60,
+      "lost": 0
+    },
+    {
+      "site": "Palace",
+      "original": 111,
+      "targeted": 111,
+      "containment": 249,
+      "lost": 0
+    },
+    {
+      "site": "Research Facility",
+      "original": 113,
+      "targeted": 113,
+      "containment": 133,
+      "lost": 0
+    },
+    {
+      "site": "Trading Post",
+      "original": 114,
+      "targeted": 114,
+      "containment": 123,
+      "lost": 0
+    },
+    {
+      "site": "Mining Settlement",
+      "original": 117,
+      "targeted": 117,
+      "containment": 18,
+      "lost": 0
+    },
+    {
+      "site": "Slum",
+      "original": 150,
+      "targeted": 150,
+      "containment": 57,
+      "lost": 0
+    },
+    {
+      "site": "Citadel",
+      "original": 168,
+      "targeted": 168,
+      "containment": 106,
+      "lost": 0
+    },
+    {
+      "site": "University",
+      "original": 177,
+      "targeted": 177,
+      "containment": 129,
+      "lost": 0
+    },
+    {
+      "site": "Festival Grounds",
+      "original": 189,
+      "targeted": 189,
+      "containment": 367,
+      "lost": 0
+    },
+    {
+      "site": "Market",
+      "original": 209,
+      "targeted": 209,
+      "containment": 232,
+      "lost": 0
+    },
+    {
+      "site": "Garden",
+      "original": 225,
+      "targeted": 225,
+      "containment": 32,
+      "lost": 0
+    },
+    {
+      "site": "Village",
+      "original": 248,
+      "targeted": 248,
+      "containment": 118,
+      "lost": 0
+    }
+  ],
+  "cancellation": {
+    "Shipyard": 33,
+    "Camp": 15,
+    "Warehouse": 6,
+    "Inn": 5,
+    "Mine": 5,
+    "Workshop": 7,
+    "Brewery": 2
+  },
+  "missing": [
+    {
+      "site": "Mine",
+      "original": 5,
+      "targeted": 0,
+      "containment": 17,
+      "lost": 5
+    }
+  ],
+  "rare": [
+    {
+      "site": "Mine",
+      "original": 5,
+      "targeted": 0,
+      "containment": 17,
+      "lost": 5
+    },
+    {
+      "site": "Grove",
+      "original": 6,
+      "targeted": 6,
+      "containment": 4,
+      "lost": 0
+    },
+    {
+      "site": "Excavation Site",
+      "original": 6,
+      "targeted": 6,
+      "containment": 3,
+      "lost": 0
+    },
+    {
+      "site": "Cavern",
+      "original": 6,
+      "targeted": 6,
+      "containment": 24,
+      "lost": 0
+    }
+  ],
+  "missingTrace": {
+    "Mine": [
+      {
+        "seed": 8100141,
+        "reason": "children",
+        "children": [
+          "Farm",
+          "Mill"
+        ]
+      },
+      {
+        "seed": 8100493,
+        "reason": "children",
+        "children": [
+          "Farm",
+          "Mill",
+          "Well"
+        ]
+      },
+      {
+        "seed": 8100594,
+        "reason": "children",
+        "children": [
+          "Tunnel",
+          "Farm"
+        ]
+      },
+      {
+        "seed": 8100772,
+        "reason": "children",
+        "children": [
+          "Farm",
+          "Mill"
+        ]
+      },
+      {
+        "seed": 8100833,
+        "reason": "children",
+        "children": [
+          "Tunnel",
+          "Farm"
+        ]
+      }
+    ]
+  }
+}
