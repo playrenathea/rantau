@@ -1,0 +1,169 @@
+{
+  "status": "STATIC_SCENARIO_QA_PASS_NOT_PYTHON_RUNTIME",
+  "pass": 9,
+  "total": 9,
+  "tests": [
+    {
+      "site": "Farm",
+      "zone": "Farmland",
+      "input": [
+        "Mill",
+        "Stable",
+        "Ship"
+      ],
+      "kept": [
+        "Mill",
+        "Stable"
+      ],
+      "restored": [
+        "Ship"
+      ],
+      "canceled": false,
+      "parentP": 100,
+      "qualifyingChildren": 2
+    },
+    {
+      "site": "Farm",
+      "zone": "Farmland",
+      "input": [
+        "Mill",
+        "Garden",
+        "Ship"
+      ],
+      "kept": [],
+      "restored": [
+        "Mill",
+        "Garden",
+        "Ship"
+      ],
+      "canceled": true,
+      "parentP": 100,
+      "qualifyingChildren": 1
+    },
+    {
+      "site": "Dock",
+      "zone": "Harbor",
+      "input": [
+        "Ship",
+        "Farm"
+      ],
+      "kept": [],
+      "restored": [
+        "Ship",
+        "Farm"
+      ],
+      "canceled": true,
+      "parentP": 100,
+      "qualifyingChildren": 1
+    },
+    {
+      "site": "Dock",
+      "zone": "Harbor",
+      "input": [
+        "Ship",
+        "Warehouse",
+        "Farm"
+      ],
+      "kept": [
+        "Ship",
+        "Warehouse"
+      ],
+      "restored": [
+        "Farm"
+      ],
+      "canceled": false,
+      "parentP": 100,
+      "qualifyingChildren": 2
+    },
+    {
+      "site": "Shipyard",
+      "zone": "Caravan Camp",
+      "input": [
+        "Ship",
+        "Dock",
+        "Warehouse"
+      ],
+      "kept": [],
+      "restored": [
+        "Ship",
+        "Dock",
+        "Warehouse"
+      ],
+      "canceled": true,
+      "parentP": 55,
+      "qualifyingChildren": 0
+    },
+    {
+      "site": "Shipyard",
+      "zone": "Harbor",
+      "input": [
+        "Mill",
+        "Tailor",
+        "Dock"
+      ],
+      "kept": [
+        "Mill",
+        "Tailor",
+        "Dock"
+      ],
+      "restored": [],
+      "canceled": false,
+      "parentP": 100,
+      "qualifyingChildren": 3
+    },
+    {
+      "site": "Dock",
+      "zone": "Harbor",
+      "input": [
+        "Camp",
+        "Ship",
+        "Warehouse"
+      ],
+      "kept": [
+        "Camp",
+        "Ship",
+        "Warehouse"
+      ],
+      "restored": [],
+      "canceled": false,
+      "parentP": 100,
+      "qualifyingChildren": 3
+    },
+    {
+      "site": "Inn",
+      "zone": "Harbor",
+      "input": [
+        "Tavern",
+        "Stable",
+        "Ship"
+      ],
+      "kept": [],
+      "restored": [
+        "Tavern",
+        "Stable",
+        "Ship"
+      ],
+      "canceled": true,
+      "parentP": 70,
+      "qualifyingChildren": 1
+    },
+    {
+      "site": "Farm",
+      "zone": "Mining Region",
+      "input": [
+        "Mill",
+        "Stable"
+      ],
+      "kept": [],
+      "restored": [
+        "Mill",
+        "Stable"
+      ],
+      "canceled": true,
+      "parentP": 25,
+      "qualifyingChildren": 0
+    }
+  ],
+  "contract": "Site→Zone P>=45, targeted semantic restrictions, location→Zone P>0 for Farm/Ship/Dock, at least two remaining Site child affinities>=45, restore all removed children. Upstream H2-lowest and gap are preconditions; new Site generation not rerun.",
+  "limitations": "Not canonical full world dynamic test or Python-module execution."
+}
