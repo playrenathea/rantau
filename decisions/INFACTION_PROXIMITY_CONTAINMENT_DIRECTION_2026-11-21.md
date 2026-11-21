@@ -1,6 +1,6 @@
-# Infaction — LOCKED design direction: Proximity vs Directional Containment (2026-11-21)
+# Infaction — Proximity vs Directional Containment Decision History (2026-11-21)
 
-**Status: DESIGN DIRECTION LOCKED; NOT IMPLEMENTED.**
+**Status: HISTORICAL DECISION RECORD. Superseded as the CURRENT baseline by [Infaction v0.4.7 LOCKED specification](../specs/INFACTION_CURRENT_LOCKED_V0.4.7.md).** The architectural decision is part of current v0.4.7; numeric Containment implementation remains unverified.
 This decision follows the accepted 71-Location selection direction, append-only Function repair, political geographic-zero exception, locked Location→Zone placement and locked Inside/Outside City placement, plus the saved Site grouping baseline. It **does not** amend the immutable Book1 source or silently replace historical locked modules, Colab, or MVP.
 
 ## Reason
