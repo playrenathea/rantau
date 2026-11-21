@@ -1,3 +1,6 @@
+> **CURRENT INFAction BASELINE — v0.4.7 LOCKED (2026-11-21)**  
+> [Canonical latest specification](specs/INFACTION_CURRENT_LOCKED_V0.4.7.md). This supersedes older design-direction/experiment statuses below. The complete accepted pipeline and two-affinity semantics are fixed as v0.4.7; the original Book1 and historical checkpoints stay unchanged. **Specification version ≠ deployed runtime version:** existing Colab v0.4.6 and placement module still use the old proximity-only processing; no untested numeric Containment derivation is claimed as implemented. Do not describe an older notebook as the latest v0.4.x specification.
+>
 # Infaction — Active Data & Experiment Workflow (2026-11-21)
 
 **Use this section before running or interpreting any new Infaction world-generation experiment.** It supersedes stale status statements lower in this historical README; it does **not** change locked mechanics, data, the existing MVP, or historical notebooks.
