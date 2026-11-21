@@ -1,0 +1,1188 @@
+{
+  "experiment": "Three-way Site same-seed paired proxy",
+  "worlds": 1000,
+  "seeds": "8100000..8100999",
+  "status": "PROXY_NOT_CANONICAL",
+  "source": {
+    "book1": "data/infaction_master_v0.4.json",
+    "targeted": "experiments/infaction_targeted_farm_ship_site_filter_v2.json",
+    "containment": "data/infaction_geography_proximity_containment_mapping_v0.4.7_refined_v6.json"
+  },
+  "warning": "World selection and placement are approximated, not locked Python. Site grouping and pruning are reconstructed JS, not actual Python run. No dynamic greedy regroup after canceled Site.",
+  "metrics": {
+    "baseline": {
+      "sites": 3860,
+      "worldsWithSites": 997,
+      "locationMemberships": 10695,
+      "types": 50,
+      "effectiveDiversity": 31.96,
+      "siteSize2": 2145,
+      "siteSize4plus": 740,
+      "zeroCandidateContainmentMembers": 4391,
+      "protectedInvalidSiteMembers": 54,
+      "canceled": 0,
+      "removedMemberships": 0,
+      "affectedWorlds": 0,
+      "cancellationBySite": {},
+      "top": [
+        [
+          "Village",
+          248
+        ],
+        [
+          "Garden",
+          225
+        ],
+        [
+          "Market",
+          209
+        ],
+        [
+          "Festival Grounds",
+          189
+        ],
+        [
+          "University",
+          177
+        ],
+        [
+          "Citadel",
+          168
+        ],
+        [
+          "Slum",
+          150
+        ],
+        [
+          "Shipyard",
+          128
+        ],
+        [
+          "Mining Settlement",
+          117
+        ],
+        [
+          "Trading Post",
+          114
+        ]
+      ],
+      "bottom": [
+        [
+          "Trading Post",
+          114
+        ],
+        [
+          "Mining Settlement",
+          117
+        ],
+        [
+          "Shipyard",
+          128
+        ],
+        [
+          "Slum",
+          150
+        ],
+        [
+          "Citadel",
+          168
+        ],
+        [
+          "University",
+          177
+        ],
+        [
+          "Festival Grounds",
+          189
+        ],
+        [
+          "Market",
+          209
+        ],
+        [
+          "Garden",
+          225
+        ],
+        [
+          "Village",
+          248
+        ]
+      ]
+    },
+    "targeted": {
+      "sites": 3787,
+      "worldsWithSites": 997,
+      "locationMemberships": 10474,
+      "types": 49,
+      "effectiveDiversity": 31.49,
+      "siteSize2": 2111,
+      "siteSize4plus": 720,
+      "zeroCandidateContainmentMembers": 4261,
+      "protectedInvalidSiteMembers": 0,
+      "canceled": 73,
+      "removedMemberships": 80,
+      "affectedWorlds": 102,
+      "cancellationBySite": {
+        "Shipyard": 33,
+        "Camp": 15,
+        "Warehouse": 6,
+        "Inn": 5,
+        "Mine": 5,
+        "Workshop": 7,
+        "Brewery": 2
+      },
+      "top": [
+        [
+          "Village",
+          248
+        ],
+        [
+          "Garden",
+          225
+        ],
+        [
+          "Market",
+          209
+        ],
+        [
+          "Festival Grounds",
+          189
+        ],
+        [
+          "University",
+          177
+        ],
+        [
+          "Citadel",
+          168
+        ],
+        [
+          "Slum",
+          150
+        ],
+        [
+          "Mining Settlement",
+          117
+        ],
+        [
+          "Trading Post",
+          114
+        ],
+        [
+          "Research Facility",
+          113
+        ]
+      ],
+      "bottom": [
+        [
+          "Research Facility",
+          113
+        ],
+        [
+          "Trading Post",
+          114
+        ],
+        [
+          "Mining Settlement",
+          117
+        ],
+        [
+          "Slum",
+          150
+        ],
+        [
+          "Citadel",
+          168
+        ],
+        [
+          "University",
+          177
+        ],
+        [
+          "Festival Grounds",
+          189
+        ],
+        [
+          "Market",
+          209
+        ],
+        [
+          "Garden",
+          225
+        ],
+        [
+          "Village",
+          248
+        ]
+      ]
+    },
+    "containment": {
+      "sites": 3559,
+      "worldsWithSites": 999,
+      "locationMemberships": 8824,
+      "types": 50,
+      "effectiveDiversity": 25.41,
+      "siteSize2": 2341,
+      "siteSize4plus": 365,
+      "zeroCandidateContainmentMembers": 0,
+      "protectedInvalidSiteMembers": 0,
+      "canceled": 0,
+      "removedMemberships": 0,
+      "affectedWorlds": 0,
+      "cancellationBySite": {},
+      "top": [
+        [
+          "Festival Grounds",
+          367
+        ],
+        [
+          "Palace",
+          249
+        ],
+        [
+          "Market",
+          232
+        ],
+        [
+          "Fortress",
+          169
+        ],
+        [
+          "Shipyard",
+          155
+        ],
+        [
+          "Hospital",
+          148
+        ],
+        [
+          "Research Facility",
+          133
+        ],
+        [
+          "University",
+          129
+        ],
+        [
+          "Trading Post",
+          123
+        ],
+        [
+          "Village",
+          118
+        ]
+      ],
+      "bottom": [
+        [
+          "Village",
+          118
+        ],
+        [
+          "Trading Post",
+          123
+        ],
+        [
+          "University",
+          129
+        ],
+        [
+          "Research Facility",
+          133
+        ],
+        [
+          "Hospital",
+          148
+        ],
+        [
+          "Shipyard",
+          155
+        ],
+        [
+          "Fortress",
+          169
+        ],
+        [
+          "Market",
+          232
+        ],
+        [
+          "Palace",
+          249
+        ],
+        [
+          "Festival Grounds",
+          367
+        ]
+      ]
+    }
+  },
+  "examples": [
+    {
+      "seed": 8100016,
+      "canceled": [],
+      "removed": [
+        {
+          "site": "Warehouse",
+          "child": "Ship"
+        }
+      ],
+      "base": [
+        {
+          "site": "Refugee Camp",
+          "container": "z:Residential District",
+          "children": [
+            "House",
+            "Inn",
+            "Manor",
+            "Bathhouse"
+          ],
+          "gap": 45
+        },
+        {
+          "site": "Hunting Grounds",
+          "container": "z:Estate",
+          "children": [
+            "Grove",
+            "Farm"
+          ],
+          "gap": 55
+        },
+        {
+          "site": "Garden",
+          "container": "z:Estate",
+          "children": [
+            "Square",
+            "Club"
+          ],
+          "gap": 45
+        }
+      ],
+      "targeted": [
+        {
+          "site": "Refugee Camp",
+          "container": "z:Residential District",
+          "children": [
+            "House",
+            "Inn",
+            "Manor",
+            "Bathhouse"
+          ],
+          "gap": 45
+        },
+        {
+          "site": "Hunting Grounds",
+          "container": "z:Estate",
+          "children": [
+            "Grove",
+            "Farm"
+          ],
+          "gap": 55
+        },
+        {
+          "site": "Garden",
+          "container": "z:Estate",
+          "children": [
+            "Square",
+            "Club"
+          ],
+          "gap": 45
+        }
+      ]
+    },
+    {
+      "seed": 8100017,
+      "canceled": [],
+      "removed": [
+        {
+          "site": "Warehouse",
+          "child": "Ship"
+        }
+      ],
+      "base": [
+        {
+          "site": "Meeting Hall",
+          "container": "z:Government District",
+          "children": [
+            "Town Hall",
+            "Courthouse"
+          ],
+          "gap": 20
+        },
+        {
+          "site": "University",
+          "container": "z:Monastery",
+          "children": [
+            "Observatory",
+            "Museum",
+            "Square"
+          ],
+          "gap": 65
+        },
+        {
+          "site": "Warehouse",
+          "container": "z:Warehouse District",
+          "children": [
+            "Post Office",
+            "Ship",
+            "Tunnel"
+          ],
+          "gap": 35
+        }
+      ],
+      "targeted": [
+        {
+          "site": "Meeting Hall",
+          "container": "z:Government District",
+          "children": [
+            "Town Hall",
+            "Courthouse"
+          ],
+          "gap": 20
+        },
+        {
+          "site": "University",
+          "container": "z:Monastery",
+          "children": [
+            "Observatory",
+            "Museum",
+            "Square"
+          ],
+          "gap": 65
+        },
+        {
+          "site": "Warehouse",
+          "container": "z:Warehouse District",
+          "children": [
+            "Post Office",
+            "Tunnel"
+          ],
+          "gap": 35
+        }
+      ]
+    },
+    {
+      "seed": 8100025,
+      "canceled": [
+        {
+          "site": "Shipyard",
+          "reason": "site_zone",
+          "children": [
+            "Dock",
+            "Warehouse",
+            "Outpost"
+          ]
+        }
+      ],
+      "removed": [],
+      "base": [
+        {
+          "site": "Shipyard",
+          "container": "z:Caravan Camp",
+          "children": [
+            "Dock",
+            "Warehouse",
+            "Outpost"
+          ],
+          "gap": 80
+        },
+        {
+          "site": "Factory",
+          "container": "z:Industrial District",
+          "children": [
+            "Brewery",
+            "Tailor",
+            "Printing House"
+          ],
+          "gap": 35
+        },
+        {
+          "site": "Village",
+          "container": "z:Estate",
+          "children": [
+            "Farm",
+            "Stable"
+          ],
+          "gap": 50
+        }
+      ],
+      "targeted": [
+        {
+          "site": "Factory",
+          "container": "z:Industrial District",
+          "children": [
+            "Brewery",
+            "Tailor",
+            "Printing House"
+          ],
+          "gap": 35
+        },
+        {
+          "site": "Village",
+          "container": "z:Estate",
+          "children": [
+            "Farm",
+            "Stable"
+          ],
+          "gap": 50
+        },
+        {
+          "site": "Square",
+          "container": "z:Government District",
+          "children": [
+            "Monument",
+            "Town Hall"
+          ],
+          "gap": 35
+        }
+      ]
+    },
+    {
+      "seed": 8100058,
+      "canceled": [],
+      "removed": [
+        {
+          "site": "Shipyard",
+          "child": "Brewery"
+        }
+      ],
+      "base": [
+        {
+          "site": "Fortress",
+          "container": "z:Military Base",
+          "children": [
+            "Training Ground",
+            "Tower"
+          ],
+          "gap": 40
+        },
+        {
+          "site": "Garden",
+          "container": "z:Royal Quarter",
+          "children": [
+            "Monument",
+            "Club",
+            "Gallery",
+            "Embassy"
+          ],
+          "gap": 60
+        },
+        {
+          "site": "Shipyard",
+          "container": "z:Artisan Quarter",
+          "children": [
+            "Warehouse",
+            "Workshop",
+            "Brewery"
+          ],
+          "gap": 50
+        }
+      ],
+      "targeted": [
+        {
+          "site": "Fortress",
+          "container": "z:Military Base",
+          "children": [
+            "Training Ground",
+            "Tower"
+          ],
+          "gap": 40
+        },
+        {
+          "site": "Garden",
+          "container": "z:Royal Quarter",
+          "children": [
+            "Monument",
+            "Club",
+            "Gallery",
+            "Embassy"
+          ],
+          "gap": 60
+        },
+        {
+          "site": "Shipyard",
+          "container": "z:Artisan Quarter",
+          "children": [
+            "Warehouse",
+            "Workshop"
+          ],
+          "gap": 50
+        }
+      ]
+    },
+    {
+      "seed": 8100066,
+      "canceled": [
+        {
+          "site": "Shipyard",
+          "reason": "site_zone",
+          "children": [
+            "Dock",
+            "Warehouse",
+            "Ship",
+            "Stable",
+            "Trading Post",
+            "Tunnel"
+          ]
+        }
+      ],
+      "removed": [],
+      "base": [
+        {
+          "site": "Necropolis",
+          "container": "z:Monastery",
+          "children": [
+            "Cemetery",
+            "Shrine"
+          ],
+          "gap": 75
+        },
+        {
+          "site": "Shipyard",
+          "container": "z:Caravan Camp",
+          "children": [
+            "Dock",
+            "Warehouse",
+            "Ship",
+            "Stable",
+            "Trading Post",
+            "Tunnel"
+          ],
+          "gap": 80
+        }
+      ],
+      "targeted": [
+        {
+          "site": "Necropolis",
+          "container": "z:Monastery",
+          "children": [
+            "Cemetery",
+            "Shrine"
+          ],
+          "gap": 75
+        }
+      ]
+    },
+    {
+      "seed": 8100071,
+      "canceled": [
+        {
+          "site": "Camp",
+          "reason": "children_fewer_than_two_valid",
+          "children": [
+            "Dock",
+            "Trading Post"
+          ]
+        }
+      ],
+      "removed": [
+        {
+          "site": "Camp",
+          "child": "Dock"
+        }
+      ],
+      "base": [
+        {
+          "site": "Garden",
+          "container": "z:Enclave",
+          "children": [
+            "Manor",
+            "Embassy"
+          ],
+          "gap": 40
+        },
+        {
+          "site": "Village",
+          "container": "z:Foreign Quarter",
+          "children": [
+            "House",
+            "Market"
+          ],
+          "gap": 55
+        },
+        {
+          "site": "Camp",
+          "container": "z:Foreign Quarter",
+          "children": [
+            "Dock",
+            "Trading Post"
+          ],
+          "gap": 40
+        }
+      ],
+      "targeted": [
+        {
+          "site": "Garden",
+          "container": "z:Enclave",
+          "children": [
+            "Manor",
+            "Embassy"
+          ],
+          "gap": 40
+        },
+        {
+          "site": "Village",
+          "container": "z:Foreign Quarter",
+          "children": [
+            "House",
+            "Market"
+          ],
+          "gap": 55
+        },
+        {
+          "site": "Outpost",
+          "container": "z:Rebel Camp",
+          "children": [
+            "Guardhouse",
+            "Tower"
+          ],
+          "gap": 70
+        }
+      ]
+    },
+    {
+      "seed": 8100094,
+      "canceled": [
+        {
+          "site": "Shipyard",
+          "reason": "site_zone",
+          "children": [
+            "Brewery",
+            "Tunnel"
+          ]
+        }
+      ],
+      "removed": [],
+      "base": [
+        {
+          "site": "Slum",
+          "container": "z:Foreign Quarter",
+          "children": [
+            "Shelter",
+            "Tavern",
+            "House"
+          ],
+          "gap": 80
+        },
+        {
+          "site": "Shipyard",
+          "container": "z:Caravan Camp",
+          "children": [
+            "Brewery",
+            "Tunnel"
+          ],
+          "gap": 25
+        },
+        {
+          "site": "Camp",
+          "container": "z:Enclave",
+          "children": [
+            "Dormitory",
+            "Barracks"
+          ],
+          "gap": 20
+        }
+      ],
+      "targeted": [
+        {
+          "site": "Slum",
+          "container": "z:Foreign Quarter",
+          "children": [
+            "Shelter",
+            "Tavern",
+            "House"
+          ],
+          "gap": 80
+        },
+        {
+          "site": "Camp",
+          "container": "z:Enclave",
+          "children": [
+            "Dormitory",
+            "Barracks"
+          ],
+          "gap": 20
+        },
+        {
+          "site": "Festival Grounds",
+          "container": "inside",
+          "children": [
+            "Theater",
+            "Arena"
+          ],
+          "gap": 70
+        }
+      ]
+    },
+    {
+      "seed": 8100099,
+      "canceled": [
+        {
+          "site": "Warehouse",
+          "reason": "children_fewer_than_two_valid",
+          "children": [
+            "Ship",
+            "Stable"
+          ]
+        }
+      ],
+      "removed": [
+        {
+          "site": "Warehouse",
+          "child": "Ship"
+        }
+      ],
+      "base": [
+        {
+          "site": "Factory",
+          "container": "z:Artisan Quarter",
+          "children": [
+            "Workshop",
+            "Brewery"
+          ],
+          "gap": 40
+        },
+        {
+          "site": "Warehouse",
+          "container": "z:Harbor",
+          "children": [
+            "Ship",
+            "Stable"
+          ],
+          "gap": 40
+        }
+      ],
+      "targeted": [
+        {
+          "site": "Factory",
+          "container": "z:Artisan Quarter",
+          "children": [
+            "Workshop",
+            "Brewery"
+          ],
+          "gap": 40
+        }
+      ]
+    },
+    {
+      "seed": 8100104,
+      "canceled": [
+        {
+          "site": "Warehouse",
+          "reason": "children_fewer_than_two_valid",
+          "children": [
+            "Post Office",
+            "Ship"
+          ]
+        }
+      ],
+      "removed": [
+        {
+          "site": "Warehouse",
+          "child": "Ship"
+        }
+      ],
+      "base": [
+        {
+          "site": "Festival Grounds",
+          "container": "z:Entertainment District",
+          "children": [
+            "Square",
+            "Bathhouse",
+            "Club",
+            "Garden",
+            "Meeting Hall"
+          ],
+          "gap": 30
+        },
+        {
+          "site": "Warehouse",
+          "container": "z:Harbor",
+          "children": [
+            "Post Office",
+            "Ship"
+          ],
+          "gap": 60
+        },
+        {
+          "site": "Inn",
+          "container": "z:Harbor",
+          "children": [
+            "Camp",
+            "Tavern"
+          ],
+          "gap": 35
+        }
+      ],
+      "targeted": [
+        {
+          "site": "Festival Grounds",
+          "container": "z:Entertainment District",
+          "children": [
+            "Square",
+            "Bathhouse",
+            "Club",
+            "Garden",
+            "Meeting Hall"
+          ],
+          "gap": 30
+        },
+        {
+          "site": "Inn",
+          "container": "z:Harbor",
+          "children": [
+            "Camp",
+            "Tavern"
+          ],
+          "gap": 35
+        },
+        {
+          "site": "Village",
+          "container": "z:Slum",
+          "children": [
+            "Well",
+            "Barracks"
+          ],
+          "gap": 45
+        }
+      ]
+    },
+    {
+      "seed": 8100107,
+      "canceled": [
+        {
+          "site": "Inn",
+          "reason": "children_fewer_than_two_valid",
+          "children": [
+            "Dock",
+            "Ship"
+          ]
+        }
+      ],
+      "removed": [
+        {
+          "site": "Inn",
+          "child": "Dock"
+        },
+        {
+          "site": "Inn",
+          "child": "Ship"
+        }
+      ],
+      "base": [
+        {
+          "site": "Market",
+          "container": "z:Artisan Quarter",
+          "children": [
+            "Bank",
+            "Bookshop"
+          ],
+          "gap": 50
+        },
+        {
+          "site": "Inn",
+          "container": "z:Caravan Camp",
+          "children": [
+            "Dock",
+            "Ship"
+          ],
+          "gap": 25
+        },
+        {
+          "site": "Village",
+          "container": "z:Underground City",
+          "children": [
+            "Camp",
+            "Manor",
+            "Barracks",
+            "Square"
+          ],
+          "gap": 65
+        }
+      ],
+      "targeted": [
+        {
+          "site": "Market",
+          "container": "z:Artisan Quarter",
+          "children": [
+            "Bank",
+            "Bookshop"
+          ],
+          "gap": 50
+        },
+        {
+          "site": "Village",
+          "container": "z:Underground City",
+          "children": [
+            "Camp",
+            "Manor",
+            "Barracks",
+            "Square"
+          ],
+          "gap": 65
+        },
+        {
+          "site": "Palace",
+          "container": "inside",
+          "children": [
+            "Treasury",
+            "Office"
+          ],
+          "gap": 70
+        }
+      ]
+    },
+    {
+      "seed": 8100118,
+      "canceled": [
+        {
+          "site": "Warehouse",
+          "reason": "children_fewer_than_two_valid",
+          "children": [
+            "Post Office",
+            "Ship"
+          ]
+        }
+      ],
+      "removed": [
+        {
+          "site": "Warehouse",
+          "child": "Ship"
+        }
+      ],
+      "base": [
+        {
+          "site": "University",
+          "container": "z:Foreign Quarter",
+          "children": [
+            "Bookshop",
+            "Inn"
+          ],
+          "gap": 30
+        },
+        {
+          "site": "Temple",
+          "container": "z:Monastery",
+          "children": [
+            "Shrine",
+            "Library"
+          ],
+          "gap": 40
+        },
+        {
+          "site": "Warehouse",
+          "container": "z:Harbor",
+          "children": [
+            "Post Office",
+            "Ship"
+          ],
+          "gap": 60
+        }
+      ],
+      "targeted": [
+        {
+          "site": "University",
+          "container": "z:Foreign Quarter",
+          "children": [
+            "Bookshop",
+            "Inn"
+          ],
+          "gap": 30
+        },
+        {
+          "site": "Temple",
+          "container": "z:Monastery",
+          "children": [
+            "Shrine",
+            "Library"
+          ],
+          "gap": 40
+        },
+        {
+          "site": "Trading Post",
+          "container": "z:Harbor",
+          "children": [
+            "Bank",
+            "Auction House",
+            "Gambling Den"
+          ],
+          "gap": 25
+        }
+      ]
+    },
+    {
+      "seed": 8100123,
+      "canceled": [
+        {
+          "site": "Shipyard",
+          "reason": "site_zone",
+          "children": [
+            "Warehouse",
+            "Ship"
+          ]
+        }
+      ],
+      "removed": [],
+      "base": [
+        {
+          "site": "Shipyard",
+          "container": "z:Caravan Camp",
+          "children": [
+            "Warehouse",
+            "Ship"
+          ],
+          "gap": 70
+        },
+        {
+          "site": "Slum",
+          "container": "z:Foreign Quarter",
+          "children": [
+            "Tavern",
+            "House"
+          ],
+          "gap": 65
+        },
+        {
+          "site": "Sanctuary",
+          "container": "z:Monastery",
+          "children": [
+            "Shrine",
+            "Temple",
+            "Mortuary"
+          ],
+          "gap": 65
+        }
+      ],
+      "targeted": [
+        {
+          "site": "Slum",
+          "container": "z:Foreign Quarter",
+          "children": [
+            "Tavern",
+            "House"
+          ],
+          "gap": 65
+        },
+        {
+          "site": "Sanctuary",
+          "container": "z:Monastery",
+          "children": [
+            "Shrine",
+            "Temple",
+            "Mortuary"
+          ],
+          "gap": 65
+        },
+        {
+          "site": "Village",
+          "container": "z:Estate",
+          "children": [
+            "Farm",
+            "Manor"
+          ],
+          "gap": 65
+        }
+      ]
+    }
+  ],
+  "worldsDifferent": 71
+}
