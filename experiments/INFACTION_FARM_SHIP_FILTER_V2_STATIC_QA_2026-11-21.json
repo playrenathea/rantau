@@ -1,0 +1,239 @@
+{
+  "status": "PASS_DETERMINISTIC_AND_CATALOG_ONLY_NOT_WORLD_RUN",
+  "rules": "experiments/infaction_targeted_farm_ship_site_filter_v2.json",
+  "scenarios": [
+    {
+      "site": "Farm",
+      "container": "z:Farmland",
+      "surviving": [
+        "Mill",
+        "Stable"
+      ],
+      "restored": [
+        "Ship"
+      ],
+      "canceled": false
+    },
+    {
+      "site": "Dock",
+      "container": "z:Harbor",
+      "surviving": [
+        "Ship",
+        "Warehouse"
+      ],
+      "restored": [
+        "Farm"
+      ],
+      "canceled": false
+    },
+    {
+      "site": "Dock",
+      "container": "z:Harbor",
+      "surviving": [],
+      "restored": [
+        "Ship",
+        "Farm"
+      ],
+      "canceled": true
+    },
+    {
+      "site": "Shipyard",
+      "container": "z:Caravan Camp",
+      "surviving": [],
+      "restored": [
+        "Ship",
+        "Dock",
+        "Warehouse"
+      ],
+      "canceled": true
+    },
+    {
+      "site": "Inn",
+      "container": "z:Harbor",
+      "surviving": [
+        "Tavern",
+        "Stable"
+      ],
+      "restored": [
+        "Ship"
+      ],
+      "canceled": false
+    },
+    {
+      "site": "Shipyard",
+      "container": "z:Harbor",
+      "surviving": [
+        "Mill",
+        "Tailor",
+        "Dock"
+      ],
+      "restored": [],
+      "canceled": false
+    },
+    {
+      "site": "Dock",
+      "container": "z:Harbor",
+      "surviving": [
+        "Camp",
+        "Ship",
+        "Warehouse"
+      ],
+      "restored": [],
+      "canceled": false
+    },
+    {
+      "site": "Farm",
+      "container": "z:Mining Region",
+      "surviving": [],
+      "restored": [
+        "Well",
+        "Stable"
+      ],
+      "canceled": true
+    },
+    {
+      "site": "Market",
+      "container": "inside",
+      "surviving": [
+        "Ship",
+        "Shop",
+        "Bank"
+      ],
+      "restored": [],
+      "canceled": false
+    }
+  ],
+  "siteAudit": {
+    "Farm": {
+      "zoneCandidates": 6,
+      "allowedZone": [
+        "Estate",
+        "Village",
+        "Hunting Grounds",
+        "Monastery",
+        "Farmland",
+        "Wilderness"
+      ],
+      "excludedZone": [],
+      "childCandidates": 8,
+      "allowedChildren": [
+        "House",
+        "Mill",
+        "Stable",
+        "Well",
+        "Brewery",
+        "Grove",
+        "Workshop"
+      ],
+      "excludedChildren": [
+        "Mine"
+      ]
+    },
+    "Dock": {
+      "zoneCandidates": 4,
+      "allowedZone": [
+        "Caravan Camp",
+        "Foreign Quarter",
+        "Harbor",
+        "Warehouse District"
+      ],
+      "excludedZone": [],
+      "childCandidates": 11,
+      "allowedChildren": [
+        "Bridge",
+        "Office",
+        "Post Office",
+        "Ship",
+        "Stable",
+        "Camp",
+        "Inn",
+        "Outpost",
+        "Trading Post",
+        "Warehouse"
+      ],
+      "excludedChildren": [
+        "Tunnel"
+      ]
+    },
+    "Shipyard": {
+      "zoneCandidates": 5,
+      "allowedZone": [
+        "Artisan Quarter",
+        "Harbor",
+        "Industrial District",
+        "Warehouse District"
+      ],
+      "excludedZone": [
+        "Caravan Camp"
+      ],
+      "childCandidates": 16,
+      "allowedChildren": [
+        "Bridge",
+        "Forge",
+        "Mill",
+        "Post Office",
+        "Ship",
+        "Stable",
+        "Tailor",
+        "Dock",
+        "Factory",
+        "Outpost",
+        "Trading Post",
+        "Warehouse",
+        "Workshop"
+      ],
+      "excludedChildren": [
+        "Printing House",
+        "Tunnel",
+        "Brewery"
+      ]
+    }
+  },
+  "locAudit": {
+    "Farm": {
+      "parentSiteCandidates": 8,
+      "allowed": [
+        "Grove",
+        "Estate",
+        "Village",
+        "Hunting Grounds",
+        "Monastery"
+      ],
+      "excluded": [
+        "Brewery",
+        "Mine",
+        "Workshop"
+      ]
+    },
+    "Ship": {
+      "parentSiteCandidates": 8,
+      "allowed": [
+        "Dock",
+        "Outpost",
+        "Trading Post",
+        "Shipyard",
+        "Caravan Camp"
+      ],
+      "excluded": [
+        "Camp",
+        "Inn",
+        "Warehouse"
+      ]
+    },
+    "Dock": {
+      "parentSiteCandidates": 7,
+      "allowed": [
+        "Outpost",
+        "Trading Post",
+        "Warehouse",
+        "Shipyard",
+        "Caravan Camp"
+      ],
+      "excluded": [
+        "Camp",
+        "Inn"
+      ]
+    }
+  },
+  "note": "Market standalone example is a supplied valid record for pruning but would not arise as Ship child under locked affinity threshold; harness validates pruning conservation, not original Site eligibility."
+}
