@@ -34,10 +34,9 @@
 | Harbor → Shipyard | 100 | 94 | Shipyard within harbor |
 | Shipyard → Harbor | 100 | 58 | Huge shipbuilding precinct encloses harbor basin |
 | Hunting Grounds → Farm | 55 | 25 | Rare or expanded-scope exception, not default |
-| Citadel → Military Base | 90? | 92 | Citadel with military installation; check original P in CSV |
-| Military Base → Citadel | 90? | 64 | Larger campus with inner citadel; check original P in CSV |
+| Citadel → Military Base | 75 | 92 | Citadel with military installation |
+| Military Base → Citadel | 75 | 64 | Larger campus with inner citadel |
 
-The last two Proximity values are *not asserted here*; use the canonical source/CSV for exact values.
 
 ## Interpretive reference categories (not numerical source data)
 - **History / medieval manors:** Worcestershire Archive & Archaeology's discussion of manor estates and villages supports variable scope; a manor can encompass several settlements. https://www.explorethepast.co.uk/2014/06/manorial-documents-register-project-june-2014-the-landscape-of-the-manor/
