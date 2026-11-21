@@ -1,6 +1,7 @@
-"""Site grouping checkpoint (original Book1 Proximity). EXPERIMENTAL.
-Runs after Location->Zone and City. This is NOT v0.4.7's still-uncalibrated
-directional Containment implementation. Never mutate locked parent assignments.
+"""Site grouping via original Book1 Proximity.
+Runs after Location->Zone and City. Directional Containment is canceled.
+Farm/Ship family pruning is a separate post-filter, called by companion notebook.
+Never mutate locked parent assignments.
 """
 from __future__ import annotations
 import random
@@ -77,7 +78,7 @@ def group_sites(placement, city, proximity, candidates, city_scores, seed=None):
             assert assigns[loc]["zone"]==site["parent_zone"]
             assert city["location_city"][loc]==site["city"]
     return {"version":VERSION,
-            "status":"EXPERIMENTAL Proximity checkpoint, not v0.4.7 Containment",
+            "status":"Proximity greedy pre-family-filter; Farm/Ship post-filter required",
             "seed":placement.get("seed",seed), "sites":result,
             "initial_containers":initial,
             "direct_locations_by_zone":{z:pool[("zone",z)] for z in zones},
