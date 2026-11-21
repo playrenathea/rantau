@@ -1,3 +1,17 @@
+## Location Placement — LOCKED 2026-11-21 (new independent module)
+
+[Run approved Placement Colab](https://colab.research.google.com/github/playrenathea/rantau/blob/main/notebooks/Infaction_Locked_Placement_v0.4.5.ipynb) · [Python placement engine](infaction_placement_locked.py) · [Native master Sheet, Placement Rules LOCKED tab](https://docs.google.com/spreadsheets/d/1hihvEPBM9FXZxzhjHRTGEqYg9jhCXiuONV8mIKj2pwc/edit) · [Canonical specification](https://docs.google.com/document/d/15AVs2_mh66o-M8YnetGeLZqB2HuXRm04ZqIhNWWHT6s/edit).
+
+After existing Faction/Zone/Location generation, Faction–Place alignment uses Raw=mean(arithmetic mean(T1,T2,Base), geometric mean(T1,T2,Base)); six Factions plus locked static Neutral v2; A normalizes within Place; B normalizes each Faction/Neutral across selected Places and then each Place. Political score=50% A +50% B. Single/Dual labels use specified Zone/Location thresholds (see Sheet and code), no forced category or quotas.
+
+**Stage 1 Political Placement:** exact Single↔Single same Faction or Dual↔Dual same pair first; mixed Single↔Dual or Dual↔Single sharing a Faction second. If multiple eligible Zones, choose a random Zone per Location. Single Location has one parent; Zone capacity unlimited. No general physical threshold, forbidden metric, or exclusions. Unusual politically explained relationships intentionally remain.
+
+**Stage 2 Geographic Affinity Placement:** process only Stage 1 unplaced Locations. Add Outside=100-max(raw geographic affinity across generated Zones). Normalize A by Location; normalize B by Zone (including Outside) and rebase by Location. Final score=70% A +30% B; highest scoring Zone/Outside wins; exact ties are random. Stage 1 assignments are immutable. Empty Zones and Outside Locations are valid.
+
+**Runtime boundaries:** This Python module and its independent Colab are a separate *approved Placement generator*. The legacy GitHub Pages **Rantau MVP runtime and its existing source files remain unchanged**, so the page is **not** currently rendering these new placements. No Vercel deployment. Prior QA reported averages (1k worlds) 3.68 Stage1, 18.21 Stage2 inside, 2.98 Outside / world; repeat QA for the standalone integration before promoting to active MVP.
+
+---
+
 ## Infaction v0.4.x — canonical master, Book1-first
 
 **Source precedence:** original **Book1.xlsx** (immutable source) → documented and approved tuning/overrides → effective locked generator. Earlier pre-v0.4 notebooks must NEVER overwrite Book1. [Native Google Sheets master](https://docs.google.com/spreadsheets/d/1hihvEPBM9FXZxzhjHRTGEqYg9jhCXiuONV8mIKj2pwc/edit) · [master JSON](data/infaction_master_v0.4.json) · [original Book1 JSON](data/infaction_book1_original_unmodified.json) · [unaltered Book1 archive on Drive](https://drive.google.com/file/d/1FF2o-wCyAxdI5DvqiJ-YaMRxuBsTJS4t/view) · [XLSX master on Drive](https://drive.google.com/file/d/1qcCqz0aNTN8NKIjj3phCEtURJMK7kOPC/view) · [Colab master loader](notebooks/Infaction_Master_Data_Loader_v0.4.ipynb).
