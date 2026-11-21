@@ -1,0 +1,203 @@
+{
+  "schema": "infaction-targeted-family-site-filter-experiment-v2",
+  "status": "EXPERIMENT_NOT_LOCKED",
+  "purpose": "Post-selection semantic pruning, never replace Place Affinity with sparse containment matrix",
+  "core_farm": [
+    "Farm",
+    "Farmland"
+  ],
+  "core_port": [
+    "Ship",
+    "Dock",
+    "Shipyard",
+    "Harbor"
+  ],
+  "context_farm": [
+    "House",
+    "Mill",
+    "Stable",
+    "Well",
+    "Garden",
+    "Grove",
+    "Brewery",
+    "Workshop",
+    "Village",
+    "Estate",
+    "Manor",
+    "Hunting Grounds",
+    "Monastery",
+    "Wilderness",
+    "Farmland"
+  ],
+  "context_port": [
+    "Ship",
+    "Dock",
+    "Shipyard",
+    "Harbor",
+    "Warehouse",
+    "Trading Post",
+    "Bridge",
+    "Post Office",
+    "Office",
+    "Guardhouse",
+    "Outpost",
+    "Inn",
+    "Tavern",
+    "Stable",
+    "Workshop",
+    "Forge",
+    "Factory",
+    "Market",
+    "Caravan Camp",
+    "Warehouse District",
+    "Industrial District"
+  ],
+  "site_parent_zone": {
+    "Farm": [
+      "Farmland",
+      "Village",
+      "Estate",
+      "Wilderness",
+      "Hunting Grounds",
+      "Monastery"
+    ],
+    "Dock": [
+      "Harbor",
+      "Warehouse District",
+      "Caravan Camp",
+      "Foreign Quarter"
+    ],
+    "Shipyard": [
+      "Harbor",
+      "Industrial District",
+      "Warehouse District",
+      "Artisan Quarter"
+    ]
+  },
+  "site_children": {
+    "Farm": [
+      "House",
+      "Mill",
+      "Stable",
+      "Well",
+      "Garden",
+      "Grove",
+      "Workshop",
+      "Brewery"
+    ],
+    "Dock": [
+      "Ship",
+      "Bridge",
+      "Warehouse",
+      "Trading Post",
+      "Stable",
+      "Post Office",
+      "Office",
+      "Guardhouse",
+      "Outpost",
+      "Inn",
+      "Tavern",
+      "Camp"
+    ],
+    "Shipyard": [
+      "Ship",
+      "Dock",
+      "Warehouse",
+      "Workshop",
+      "Forge",
+      "Factory",
+      "Stable",
+      "Bridge",
+      "Post Office",
+      "Office",
+      "Outpost",
+      "Trading Post",
+      "Mill",
+      "Tailor"
+    ]
+  },
+  "location_valid_site": {
+    "Farm": [
+      "Village",
+      "Estate",
+      "Manor",
+      "Hunting Grounds",
+      "Monastery",
+      "Grove",
+      "Garden",
+      "Farm",
+      "Farmland"
+    ],
+    "Ship": [
+      "Dock",
+      "Shipyard",
+      "Outpost",
+      "Trading Post",
+      "Market",
+      "Military Base",
+      "Caravan Camp"
+    ],
+    "Dock": [
+      "Shipyard",
+      "Warehouse",
+      "Trading Post",
+      "Outpost",
+      "Market",
+      "Caravan Camp",
+      "Military Base",
+      "Dock"
+    ]
+  },
+  "location_valid_direct_zone": {
+    "Farm": [
+      "Farmland",
+      "Village",
+      "Estate",
+      "Wilderness",
+      "Hunting Grounds",
+      "Monastery"
+    ],
+    "Ship": [
+      "Harbor",
+      "Warehouse District",
+      "Caravan Camp",
+      "Foreign Quarter",
+      "Military District",
+      "Military Base"
+    ],
+    "Dock": [
+      "Harbor",
+      "Warehouse District",
+      "Caravan Camp",
+      "Foreign Quarter",
+      "Military District",
+      "Military Base"
+    ]
+  },
+  "site_types_targeted": [
+    "Farm",
+    "Dock",
+    "Shipyard"
+  ],
+  "location_types_targeted": [
+    "Farm",
+    "Ship",
+    "Dock"
+  ],
+  "zone_types_targeted": [
+    "Farmland",
+    "Harbor"
+  ],
+  "notes": [
+    "Generic other Site↔Zone and Site↔Location relationships stay governed by the original locked symmetric Book1 affinity, not C-v6.",
+    "Filtered child Locations are returned to the exact parent container as direct locations, never silently deleted from the generated world.",
+    "If Site parent Zone compatibility fails, cancel whole Site and return every child direct to original container.",
+    "If Site has fewer than two eligible child Locations after pruning, cancel and restore all children.",
+    "Standalone City pools must retain existing City Score eligibility; these family filters do not change it.",
+    "Filter checks only post-Site grouping; political placement and location selection are NOT modified.",
+    "Dock→Ship accepted as berth adjacency not literal inside-building; allowed site children represent one coherent dock compound.",
+    "Site filters for Farm/Dock/Shipyard are whitelist; core Location filters apply only to Farm/Ship/Dock when they appear under any other Site.",
+    "Direct Location→Zone affinity is intentionally not changed here, except cross-family zeroes already handled in political exception separately.",
+    "Shipyard may contain a sawmill (Mill) for timber and a sailmaking workshop (Tailor); dock compound may host workers Camp. Do not forbid plausible historical craft/logistics facilities merely because they are unusual."
+  ]
+}
