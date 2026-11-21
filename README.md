@@ -1,3 +1,34 @@
+# Infaction — Active Data & Experiment Workflow (2026-11-21)
+
+**Use this section before running or interpreting any new Infaction world-generation experiment.** It supersedes stale status statements lower in this historical README; it does **not** change locked mechanics, data, the existing MVP, or historical notebooks.
+
+## One source per kind of data
+
+| Purpose | Current authoritative input | Rule |
+| --- | --- | --- |
+| Original Book1 Place↔Place affinity and other raw Book1 tables | [Original Book1 JSON](data/infaction_book1_original_unmodified.json), `sheets["Place Affinity"]`; [master native Sheet](https://docs.google.com/spreadsheets/d/1hihvEPBM9FXZxzhjHRTGEqYg9jhCXiuONV8mIKj2pwc/edit), tab `Book1 Place Affinity` | Preserve original values. For Site affinity use the **full 118×118 Place matrix**, not the 74×118 Location subset. Never invent missing affinities or a competing new matrix. |
+| Approved selection/placement behavior | Most recent locked generation notebook plus [Placement module](infaction_placement_locked.py), [City module](infaction_city_locked.py), and [specification](https://docs.google.com/document/d/15AVs2_mh66o-M8YnetGeLZqB2HuXRm04ZqIhNWWHT6s/edit) | Locked algorithms and overlays take precedence over historical experiments. Read the **actual executed code**, not just README claims. |
+| Neutral locked overlay | [Neutral Static v2](data/infaction_neutral_static_v2_locked.json) | Overlay; do not overwrite original Book1. |
+| City Score locked overlay | [Original City Score JSON](data/infaction_city_score_original_locked.json) plus four approved Zone-only overrides in [City module](infaction_city_locked.py) | No alternate City data source. |
+| Colab execution | [City Colab v0.4.6](notebooks/Infaction_Locked_City_Placement_v0.4.6.ipynb), which calls the locked Location→Zone postprocessor after selection | Notebook includes inherited older generation cells; verify versions loaded and run clean start-to-finish before claiming current operational QA. |
+| Historical/experimental sources | Older notebooks, `Location Place Affinity` subset, and existing GitHub Pages runtime | Reference only; not sources for complete Site benchmarks. Do not edit MVP unless specifically requested. |
+
+**Known verification blocker:** `data/infaction_master_v0.4.json` is linked by this README and the historical master-loader notebook, but its content currently returns **zero characters through the connected GitHub file reader** (both UTF-8 and base64 modes). This does **not prove** the GitHub file itself is empty; it means this file's contents are **unverified and must not be silently treated as loaded**. The original Book1 archive JSON *is* readable and contains 9 sheets, including 118×118 Place affinity. Fix/verify master-loader accessibility before switching any experiment to it.
+
+## Mandatory short experiment checklist
+
+1. **Pin inputs:** record source file paths, commit/blob SHAs, current locked code versions, seed range, candidate scope, and every approved overlay. Do not silently switch sources.
+2. **Preflight full input:** assert 118 unique Place row/column labels in the same order, 13,924 finite values within 0–100, diagonal 100, symmetric matrix, and 50 candidate Site types (27 Scale 2, 8 Scale 3, 15 Scale 4). Validate every generated Zone/Location name resolves. If a check fails: **STOP; do not tune**.
+3. **Generate once, compare fairly:** run locked Faction→Zone→Location→Political/Geographic Placement→City. Cache the same worlds in memory for all candidate Site methods; use fixed documented seeds and separate random streams for Site comparisons.
+4. **Separate phases:** (a) base-container eligibility: Zone and standalone Inside/Outside pools with ≥3 direct Locations; (b) Site→container plausibility; (c) Site→Location `H2`, minimum `L`, contrast `G=H2-L`; (d) candidate tuning; (e) actual greedy grouping with no overlapping assignments. Never count a Zone child as standalone.
+5. **Report denominator + quality:** number of worlds, eligible containers, candidate Site types, qualifying candidates, greedy Sites/world, grouping size, ungrouped remainder, semantic anomalies, examples, and runtime. Clearly label measured results vs hypotheses and **partial** experiments.
+6. **No data edits during exploration:** keep tuning and QA local. When the user authorizes lock, change the smallest required files, document source/seed/QA, verify readback, and keep historical files. Never add a new affinity dataset merely because a convenient subset omits rows.
+7. **Completion gate:** no claim of complete/locked end-to-end operation until the Colab notebook runs cleanly from a fresh runtime and all preflight and placement invariants pass.
+
+**Site status:** exploratory; no Site algorithm/cutoff or affinity tuning is locked. Previous 27-site benchmark findings are **partial** and must not be promoted to all 50 candidates. The existing Location→Zone and City decisions remain locked.
+
+---
+
 ## Infaction City Placement — LOCKED (2026-11-21)
 
 City Placement is a **separate, non-mutating postprocessor** after locked Location→Zone placement. [City engine](infaction_city_locked.py), [original Book1 City Score dataset](data/infaction_city_score_original_locked.json) (four Zone-only placement overrides inside engine), and [Colab v0.4.6](notebooks/Infaction_Locked_City_Placement_v0.4.6.ipynb) ([Open in Colab](https://colab.research.google.com/github/playrenathea/rantau/blob/main/notebooks/Infaction_Locked_City_Placement_v0.4.6.ipynb)). All Zones are in or around the **same main City**. Mandatory Zone base score 0 is Outside; an additional lowest-score Zone is placed Outside only according to the approved R/N adaptive rule. The extra candidate uses 60% Zone + 40% mean of its direct child Location City scores. Only standalone Locations get independent Outside rolls for scores 0–4: 100%, 65%, 40%, 15%, 0%; their Inside probabilities are complements. Children inherit their parent's City status; no Locations are discarded or resampled. See Google Drive master specification and sheet tab `City Placement LOCKED`. The historical generator, standalone Placement notebook v0.4.5 and GitHub Pages MVP remain unchanged. **Site Grouping is next, not yet implemented.**
