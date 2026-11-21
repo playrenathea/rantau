@@ -1,5 +1,5 @@
-> **CURRENT INFAction BASELINE — v0.4.7 LOCKED (2026-11-21)**  
-> [Canonical latest specification](specs/INFACTION_CURRENT_LOCKED_V0.4.7.md). This supersedes older design-direction/experiment statuses below. The complete accepted pipeline and two-affinity semantics are fixed as v0.4.7; the original Book1 and historical checkpoints stay unchanged. **Specification version ≠ deployed runtime version:** existing Colab v0.4.6 and placement module still use the old proximity-only processing; no untested numeric Containment derivation is claimed as implemented. Do not describe an older notebook as the latest v0.4.x specification.
+> **CURRENT INFAction BASELINE — v0.4.7 LOCKED, direction corrected (2026-11-21)**  
+> [Canonical latest specification](specs/INFACTION_CURRENT_LOCKED_V0.4.7.md). This supersedes older design-direction/experiment statuses below. The complete accepted pipeline and two-affinity semantics are fixed as v0.4.7; the original Book1 and historical checkpoints stay unchanged. **Specification version ≠ deployed runtime version:** Containment is canceled. Geographic placement and Site grouping use original Proximity, with Farm/Ship family post-filter after Site grouping. The v0.4.6 executable still lacks some v0.4.7 selection/repair changes. Do not describe an older notebook as the latest v0.4.x specification.
 >
 # Infaction — Active Data & Experiment Workflow (2026-11-21)
 
@@ -28,7 +28,7 @@
 6. **No data edits during exploration:** keep tuning and QA local. When the user authorizes lock, change the smallest required files, document source/seed/QA, verify readback, and keep historical files. Never add a new affinity dataset merely because a convenient subset omits rows.
 7. **Completion gate:** static/structural validation, local execution, and live Colab execution are distinct QA levels. Never claim live Colab execution unless observed. Fail fast on absent/empty canonical data or drift; compare current code execution statistics separately from historical experiment distributions.
 
-**Site status:** exploratory; no Site algorithm/cutoff or affinity tuning is locked. Previous 27-site benchmark findings are **partial** and must not be promoted to all 50 candidates. The existing Location→Zone and City decisions remain locked.
+**Site direction:** original Proximity Site greedy + targeted Farm Family / Ship Family post-filter. No directional Containment. [Executable Site companion](notebooks/Infaction_Site_Grouping_Proximity_Checkpoint_Companion.ipynb). v0.4.7 selection/repair integration requires separate validation. Previous 27-site benchmark findings are **partial** and must not be promoted to all 50 candidates. The existing Location→Zone and City decisions remain locked.
 
 ---
 
