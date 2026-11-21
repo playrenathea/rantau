@@ -63843,5 +63843,1272 @@
     "zero_guessing": "164 Zone affinity deviations preserved as historical locked v0.4.1 overrides; individual design approval provenance not independently determined",
     "score_reference_only": "Function Score is exact Book1 number; not an extra multiplier in locked selection algorithm",
     "sync": "Google Sheets and Drive JSON and GitHub JSON and Colab loader must all be updated together on user save/update."
+  },
+  "experimental_neutral_and_rank": {
+    "status": "EXPERIMENTAL, NOT LOCKED, NOT USED IN GENERATOR v0.4.2",
+    "place_neutral_inputs": {
+      "Academic District": {
+        "place_kind": "Zone",
+        "scale": 5,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Apothecary": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Archive": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 3,
+        "accessible_outsider_0_4": 2,
+        "visible_0_100": 75,
+        "accessible_0_100": 50,
+        "openness_arithmetic": 62.5,
+        "openness_geometric": 61.23724356957945
+      },
+      "Arena": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Armoury": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 1,
+        "visible_0_100": 100,
+        "accessible_0_100": 25,
+        "openness_arithmetic": 62.5,
+        "openness_geometric": 50.0
+      },
+      "Artisan Quarter": {
+        "place_kind": "Zone",
+        "scale": 5,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Auction House": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 3,
+        "visible_0_100": 100,
+        "accessible_0_100": 75,
+        "openness_arithmetic": 87.5,
+        "openness_geometric": 86.60254037844386
+      },
+      "Bank": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Barracks": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 1,
+        "visible_0_100": 100,
+        "accessible_0_100": 25,
+        "openness_arithmetic": 62.5,
+        "openness_geometric": 50.0
+      },
+      "Bathhouse": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Black Market": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 1,
+        "accessible_outsider_0_4": 3,
+        "visible_0_100": 25,
+        "accessible_0_100": 75,
+        "openness_arithmetic": 50.0,
+        "openness_geometric": 43.30127018922193
+      },
+      "Bookshop": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Brewery": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 3,
+        "visible_0_100": 100,
+        "accessible_0_100": 75,
+        "openness_arithmetic": 87.5,
+        "openness_geometric": 86.60254037844386
+      },
+      "Bridge": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Brothel": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 2,
+        "accessible_outsider_0_4": 3,
+        "visible_0_100": 50,
+        "accessible_0_100": 75,
+        "openness_arithmetic": 62.5,
+        "openness_geometric": 61.23724356957945
+      },
+      "Camp": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Caravan Camp": {
+        "place_kind": "Zone",
+        "scale": 4,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Cavern": {
+        "place_kind": "Zone",
+        "scale": 4,
+        "visible_0_4": 2,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 50,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 75.0,
+        "openness_geometric": 70.71067811865476
+      },
+      "Cemetery": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Citadel": {
+        "place_kind": "Zone",
+        "scale": 4,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 1,
+        "visible_0_100": 100,
+        "accessible_0_100": 25,
+        "openness_arithmetic": 62.5,
+        "openness_geometric": 50.0
+      },
+      "Clinic": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 3,
+        "visible_0_100": 100,
+        "accessible_0_100": 75,
+        "openness_arithmetic": 87.5,
+        "openness_geometric": 86.60254037844386
+      },
+      "Club": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 3,
+        "accessible_outsider_0_4": 2,
+        "visible_0_100": 75,
+        "accessible_0_100": 50,
+        "openness_arithmetic": 62.5,
+        "openness_geometric": 61.23724356957945
+      },
+      "Courthouse": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Crypt": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 2,
+        "accessible_outsider_0_4": 1,
+        "visible_0_100": 50,
+        "accessible_0_100": 25,
+        "openness_arithmetic": 37.5,
+        "openness_geometric": 35.35533905932738
+      },
+      "Cultural District": {
+        "place_kind": "Zone",
+        "scale": 5,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Dock": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Dormitory": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 1,
+        "visible_0_100": 100,
+        "accessible_0_100": 25,
+        "openness_arithmetic": 62.5,
+        "openness_geometric": 50.0
+      },
+      "Embassy": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 2,
+        "visible_0_100": 100,
+        "accessible_0_100": 50,
+        "openness_arithmetic": 75.0,
+        "openness_geometric": 70.71067811865476
+      },
+      "Enclave": {
+        "place_kind": "Zone",
+        "scale": 4,
+        "visible_0_4": 2,
+        "accessible_outsider_0_4": 2,
+        "visible_0_100": 50,
+        "accessible_0_100": 50,
+        "openness_arithmetic": 50.0,
+        "openness_geometric": 50.0
+      },
+      "Entertainment District": {
+        "place_kind": "Zone",
+        "scale": 5,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Estate": {
+        "place_kind": "Zone",
+        "scale": 4,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 1,
+        "visible_0_100": 100,
+        "accessible_0_100": 25,
+        "openness_arithmetic": 62.5,
+        "openness_geometric": 50.0
+      },
+      "Factory": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 2,
+        "visible_0_100": 100,
+        "accessible_0_100": 50,
+        "openness_arithmetic": 75.0,
+        "openness_geometric": 70.71067811865476
+      },
+      "Farm": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 3,
+        "visible_0_100": 100,
+        "accessible_0_100": 75,
+        "openness_arithmetic": 87.5,
+        "openness_geometric": 86.60254037844386
+      },
+      "Farmland": {
+        "place_kind": "Zone",
+        "scale": 5,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Foreign Quarter": {
+        "place_kind": "Zone",
+        "scale": 5,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Forge": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 3,
+        "visible_0_100": 100,
+        "accessible_0_100": 75,
+        "openness_arithmetic": 87.5,
+        "openness_geometric": 86.60254037844386
+      },
+      "Fortress": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 1,
+        "visible_0_100": 100,
+        "accessible_0_100": 25,
+        "openness_arithmetic": 62.5,
+        "openness_geometric": 50.0
+      },
+      "Gallery": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Gambling Den": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 2,
+        "accessible_outsider_0_4": 2,
+        "visible_0_100": 50,
+        "accessible_0_100": 50,
+        "openness_arithmetic": 50.0,
+        "openness_geometric": 50.0
+      },
+      "Garden": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Government District": {
+        "place_kind": "Zone",
+        "scale": 5,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Grove": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Guardhouse": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 2,
+        "visible_0_100": 100,
+        "accessible_0_100": 50,
+        "openness_arithmetic": 75.0,
+        "openness_geometric": 70.71067811865476
+      },
+      "Harbor": {
+        "place_kind": "Zone",
+        "scale": 5,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Hideout": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 0,
+        "accessible_outsider_0_4": 0,
+        "visible_0_100": 0,
+        "accessible_0_100": 0,
+        "openness_arithmetic": 0.0,
+        "openness_geometric": 0.0
+      },
+      "House": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 2,
+        "visible_0_100": 100,
+        "accessible_0_100": 50,
+        "openness_arithmetic": 75.0,
+        "openness_geometric": 70.71067811865476
+      },
+      "Hunting Grounds": {
+        "place_kind": "Zone",
+        "scale": 4,
+        "visible_0_4": 3,
+        "accessible_outsider_0_4": 3,
+        "visible_0_100": 75,
+        "accessible_0_100": 75,
+        "openness_arithmetic": 75.0,
+        "openness_geometric": 75.0
+      },
+      "Industrial District": {
+        "place_kind": "Zone",
+        "scale": 5,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 3,
+        "visible_0_100": 100,
+        "accessible_0_100": 75,
+        "openness_arithmetic": 87.5,
+        "openness_geometric": 86.60254037844386
+      },
+      "Inn": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Laboratory": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 3,
+        "accessible_outsider_0_4": 1,
+        "visible_0_100": 75,
+        "accessible_0_100": 25,
+        "openness_arithmetic": 50.0,
+        "openness_geometric": 43.30127018922193
+      },
+      "Library": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Manor": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 2,
+        "visible_0_100": 100,
+        "accessible_0_100": 50,
+        "openness_arithmetic": 75.0,
+        "openness_geometric": 70.71067811865476
+      },
+      "Market": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Market District": {
+        "place_kind": "Zone",
+        "scale": 5,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Meeting Hall": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 3,
+        "visible_0_100": 100,
+        "accessible_0_100": 75,
+        "openness_arithmetic": 87.5,
+        "openness_geometric": 86.60254037844386
+      },
+      "Military Base": {
+        "place_kind": "Zone",
+        "scale": 4,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 0,
+        "visible_0_100": 100,
+        "accessible_0_100": 0,
+        "openness_arithmetic": 50.0,
+        "openness_geometric": 0.0
+      },
+      "Military District": {
+        "place_kind": "Zone",
+        "scale": 5,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 2,
+        "visible_0_100": 100,
+        "accessible_0_100": 50,
+        "openness_arithmetic": 75.0,
+        "openness_geometric": 70.71067811865476
+      },
+      "Mill": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 3,
+        "visible_0_100": 100,
+        "accessible_0_100": 75,
+        "openness_arithmetic": 87.5,
+        "openness_geometric": 86.60254037844386
+      },
+      "Mine": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 2,
+        "visible_0_100": 100,
+        "accessible_0_100": 50,
+        "openness_arithmetic": 75.0,
+        "openness_geometric": 70.71067811865476
+      },
+      "Mining Region": {
+        "place_kind": "Zone",
+        "scale": 5,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 3,
+        "visible_0_100": 100,
+        "accessible_0_100": 75,
+        "openness_arithmetic": 87.5,
+        "openness_geometric": 86.60254037844386
+      },
+      "Mining Settlement": {
+        "place_kind": "Zone",
+        "scale": 4,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Monastery": {
+        "place_kind": "Zone",
+        "scale": 4,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 2,
+        "visible_0_100": 100,
+        "accessible_0_100": 50,
+        "openness_arithmetic": 75.0,
+        "openness_geometric": 70.71067811865476
+      },
+      "Monument": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Mortuary": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 3,
+        "accessible_outsider_0_4": 2,
+        "visible_0_100": 75,
+        "accessible_0_100": 50,
+        "openness_arithmetic": 62.5,
+        "openness_geometric": 61.23724356957945
+      },
+      "Museum": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Necropolis": {
+        "place_kind": "Zone",
+        "scale": 4,
+        "visible_0_4": 3,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 75,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 87.5,
+        "openness_geometric": 86.60254037844386
+      },
+      "Noble Quarter": {
+        "place_kind": "Zone",
+        "scale": 5,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 2,
+        "visible_0_100": 100,
+        "accessible_0_100": 50,
+        "openness_arithmetic": 75.0,
+        "openness_geometric": 70.71067811865476
+      },
+      "Observatory": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 3,
+        "visible_0_100": 100,
+        "accessible_0_100": 75,
+        "openness_arithmetic": 87.5,
+        "openness_geometric": 86.60254037844386
+      },
+      "Office": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 3,
+        "visible_0_100": 100,
+        "accessible_0_100": 75,
+        "openness_arithmetic": 87.5,
+        "openness_geometric": 86.60254037844386
+      },
+      "Outpost": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 2,
+        "visible_0_100": 100,
+        "accessible_0_100": 50,
+        "openness_arithmetic": 75.0,
+        "openness_geometric": 70.71067811865476
+      },
+      "Palace": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 1,
+        "visible_0_100": 100,
+        "accessible_0_100": 25,
+        "openness_arithmetic": 62.5,
+        "openness_geometric": 50.0
+      },
+      "Pawnshop": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Post Office": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Printing House": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 3,
+        "visible_0_100": 100,
+        "accessible_0_100": 75,
+        "openness_arithmetic": 87.5,
+        "openness_geometric": 86.60254037844386
+      },
+      "Prison": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 1,
+        "visible_0_100": 100,
+        "accessible_0_100": 25,
+        "openness_arithmetic": 62.5,
+        "openness_geometric": 50.0
+      },
+      "Rebel Camp": {
+        "place_kind": "Zone",
+        "scale": 4,
+        "visible_0_4": 1,
+        "accessible_outsider_0_4": 1,
+        "visible_0_100": 25,
+        "accessible_0_100": 25,
+        "openness_arithmetic": 25.0,
+        "openness_geometric": 25.0
+      },
+      "Refugee Camp": {
+        "place_kind": "Zone",
+        "scale": 4,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Research Facility": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 3,
+        "accessible_outsider_0_4": 2,
+        "visible_0_100": 75,
+        "accessible_0_100": 50,
+        "openness_arithmetic": 62.5,
+        "openness_geometric": 61.23724356957945
+      },
+      "Residential District": {
+        "place_kind": "Zone",
+        "scale": 5,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Royal Quarter": {
+        "place_kind": "Zone",
+        "scale": 5,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 2,
+        "visible_0_100": 100,
+        "accessible_0_100": 50,
+        "openness_arithmetic": 75.0,
+        "openness_geometric": 70.71067811865476
+      },
+      "Ruined Quarter": {
+        "place_kind": "Zone",
+        "scale": 5,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "School": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 3,
+        "visible_0_100": 100,
+        "accessible_0_100": 75,
+        "openness_arithmetic": 87.5,
+        "openness_geometric": 86.60254037844386
+      },
+      "Sewer": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 2,
+        "accessible_outsider_0_4": 3,
+        "visible_0_100": 50,
+        "accessible_0_100": 75,
+        "openness_arithmetic": 62.5,
+        "openness_geometric": 61.23724356957945
+      },
+      "Shelter": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 3,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 75,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 87.5,
+        "openness_geometric": 86.60254037844386
+      },
+      "Ship": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 2,
+        "visible_0_100": 100,
+        "accessible_0_100": 50,
+        "openness_arithmetic": 75.0,
+        "openness_geometric": 70.71067811865476
+      },
+      "Shop": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Shrine": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Slum": {
+        "place_kind": "Zone",
+        "scale": 4,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Square": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Stable": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 3,
+        "visible_0_100": 100,
+        "accessible_0_100": 75,
+        "openness_arithmetic": 87.5,
+        "openness_geometric": 86.60254037844386
+      },
+      "Tailor": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Tavern": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Temple": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Temple District": {
+        "place_kind": "Zone",
+        "scale": 5,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Theater": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Tower": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 2,
+        "visible_0_100": 100,
+        "accessible_0_100": 50,
+        "openness_arithmetic": 75.0,
+        "openness_geometric": 70.71067811865476
+      },
+      "Trading Post": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Training Ground": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 3,
+        "visible_0_100": 100,
+        "accessible_0_100": 75,
+        "openness_arithmetic": 87.5,
+        "openness_geometric": 86.60254037844386
+      },
+      "Treasury": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 3,
+        "accessible_outsider_0_4": 0,
+        "visible_0_100": 75,
+        "accessible_0_100": 0,
+        "openness_arithmetic": 37.5,
+        "openness_geometric": 0.0
+      },
+      "Tunnel": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 2,
+        "accessible_outsider_0_4": 3,
+        "visible_0_100": 50,
+        "accessible_0_100": 75,
+        "openness_arithmetic": 62.5,
+        "openness_geometric": 61.23724356957945
+      },
+      "Underground City": {
+        "place_kind": "Zone",
+        "scale": 5,
+        "visible_0_4": 1,
+        "accessible_outsider_0_4": 2,
+        "visible_0_100": 25,
+        "accessible_0_100": 50,
+        "openness_arithmetic": 37.5,
+        "openness_geometric": 35.35533905932738
+      },
+      "Underworld": {
+        "place_kind": "Zone",
+        "scale": 5,
+        "visible_0_4": 1,
+        "accessible_outsider_0_4": 0,
+        "visible_0_100": 25,
+        "accessible_0_100": 0,
+        "openness_arithmetic": 12.5,
+        "openness_geometric": 0.0
+      },
+      "University": {
+        "place_kind": "Zone",
+        "scale": 4,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Vault": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 2,
+        "accessible_outsider_0_4": 0,
+        "visible_0_100": 50,
+        "accessible_0_100": 0,
+        "openness_arithmetic": 25.0,
+        "openness_geometric": 0.0
+      },
+      "Village": {
+        "place_kind": "Zone",
+        "scale": 4,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Warehouse": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 3,
+        "visible_0_100": 100,
+        "accessible_0_100": 75,
+        "openness_arithmetic": 87.5,
+        "openness_geometric": 86.60254037844386
+      },
+      "Warehouse District": {
+        "place_kind": "Zone",
+        "scale": 5,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 3,
+        "visible_0_100": 100,
+        "accessible_0_100": 75,
+        "openness_arithmetic": 87.5,
+        "openness_geometric": 86.60254037844386
+      },
+      "Well": {
+        "place_kind": "Location",
+        "scale": 1,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Wilderness": {
+        "place_kind": "Zone",
+        "scale": 5,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      },
+      "Workshop": {
+        "place_kind": "Location",
+        "scale": 2,
+        "visible_0_4": 4,
+        "accessible_outsider_0_4": 4,
+        "visible_0_100": 100,
+        "accessible_0_100": 100,
+        "openness_arithmetic": 100.0,
+        "openness_geometric": 100.0
+      }
+    },
+    "place_faction_matrix": "For EACH generated world, for each of the six final Factions, for every selected Zone and Location: A=(Type1+Type2+Base)/3; G=cuberoot(Type1*Type2*Base); Affinity=(A+G)/2, without random. Single-Type factions repeat Type1 as Type2.",
+    "neutral_candidate": "Neutral(place,world) = sqrt(Visible*Accessible) * (0.75 + 0.25*max_FactionAffinity/100); Visible and Accessible scaled 0..100. Neutral reflects openness of a place moderated POSITIVELY by strongest of six Factions, per discussion. Experimental only.",
+    "neutral_candidate_alternatives": {
+      "openness_only": "0.5*Visible+0.5*Accessible",
+      "weighted75_25": "0.75*(Visible+Accessible)/2+0.25*MaxFactionAffinity",
+      "inverse_affinity": "0.75*(Visible+Accessible)/2+0.25*(100-MaxFactionAffinity) — CONTRADICTS user positive-Faction direction",
+      "multiplicative_arithmetic": "(Visible+Accessible)/2*(0.75+0.25*MaxFactionAffinity/100)",
+      "multiplicative_geometric": "sqrt(Visible*Accessible)*(0.75+0.25*MaxFactionAffinity/100) — current preferred experiment, hard zero if either visibility/accessibility zero"
+    },
+    "normalization_candidates": {
+      "raw": "original absolute Place affinity 0..100",
+      "percentile": "100*(# lower + 0.5*(# ties - 1))/(N-1), computed independently per Zone row or Location column among generated available candidates",
+      "max_ratio": "100*Affinity / max(other candidate affinities) in own row/column; 0 if max=0",
+      "minmax": "100*(Affinity-min)/(max-min); 50 if all equal",
+      "zsigmoid": "100/(1+exp(-(Affinity-mean)/stdev))",
+      "softmax20": "100*exp(Affinity/20)/sum(exp(all alternative affinities/20))"
+    },
+    "initial_preference_direction": "Zone→Location and Location→Zone each normalized against different option sets; raw affinities symmetric but normalized directional preferences differ.",
+    "comparison_worlds": 300,
+    "comparison_seed_start": 6200000,
+    "neutral_model_QA": {
+      "openness": {
+        "mean": 80.7,
+        "p10": 50.0,
+        "p90": 100.0,
+        "vlow_mean": 23.4,
+        "very_restricted_mean": 46.7,
+        "vhigh_mean": 96.3,
+        "low_faction_mean": 85.8,
+        "high_faction_mean": 75.6
+      },
+      "open75_fmax25": {
+        "mean": 77.3,
+        "p10": 56.1,
+        "p90": 94.1,
+        "vlow_mean": 36.4,
+        "very_restricted_mean": 53.1,
+        "vhigh_mean": 88.6,
+        "low_faction_mean": 75.7,
+        "high_faction_mean": 78.6
+      },
+      "open50_fmax50": {
+        "mean": 73.9,
+        "p10": 57.3,
+        "p90": 88.3,
+        "vlow_mean": 49.4,
+        "very_restricted_mean": 59.4,
+        "vhigh_mean": 80.9,
+        "low_faction_mean": 65.6,
+        "high_faction_mean": 81.6
+      },
+      "open75_inverse25": {
+        "mean": 68.8,
+        "p10": 45.9,
+        "p90": 86.3,
+        "vlow_mean": 23.7,
+        "very_restricted_mean": 42.1,
+        "vhigh_mean": 80.8,
+        "low_faction_mean": 78.0,
+        "high_faction_mean": 59.8
+      },
+      "min_gate": {
+        "mean": 60.6,
+        "p10": 42.7,
+        "p90": 79.8,
+        "vlow_mean": 23.4,
+        "very_restricted_mean": 45.2,
+        "vhigh_mean": 65.6,
+        "low_faction_mean": 45.0,
+        "high_faction_mean": 70.3
+      },
+      "open_multiplicative": {
+        "mean": 73.9,
+        "p10": 46.8,
+        "p90": 94.1,
+        "vlow_mean": 21.8,
+        "very_restricted_mean": 43.3,
+        "vhigh_mean": 88.0,
+        "low_faction_mean": 74.1,
+        "high_faction_mean": 73.1
+      },
+      "open_geometric": {
+        "mean": 70.9,
+        "p10": 42.8,
+        "p90": 94.1,
+        "vlow_mean": 19.1,
+        "very_restricted_mean": 31.0,
+        "vhigh_mean": 87.8,
+        "low_faction_mean": 72.0,
+        "high_faction_mean": 68.8
+      }
+    },
+    "ranking_QA": {
+      "absolute": {
+        "mean_affinity": 78.35,
+        "weak_affinity_under50_pct": 11.88,
+        "zones_empty_pct": 2.92,
+        "mean_locations_per_zone": 3.13,
+        "p90_zone_load": 5,
+        "maximum_zone_load": 11,
+        "mutual_first_preference_pct": 35.39,
+        "location_mean_raw_rank": 1.0,
+        "mean_combined_score": 78.31
+      },
+      "percentile": {
+        "mean_affinity": 78.26,
+        "weak_affinity_under50_pct": 12.08,
+        "zones_empty_pct": 1.79,
+        "mean_locations_per_zone": 3.13,
+        "p90_zone_load": 5,
+        "maximum_zone_load": 9,
+        "mutual_first_preference_pct": 36.27,
+        "location_mean_raw_rank": 1.01,
+        "mean_combined_score": 95.29
+      },
+      "max_ratio": {
+        "mean_affinity": 78.32,
+        "weak_affinity_under50_pct": 11.88,
+        "zones_empty_pct": 1.0,
+        "mean_locations_per_zone": 3.13,
+        "p90_zone_load": 5,
+        "maximum_zone_load": 11,
+        "mutual_first_preference_pct": 36.31,
+        "location_mean_raw_rank": 1.01,
+        "mean_combined_score": 90.72
+      },
+      "minmax": {
+        "mean_affinity": 78.32,
+        "weak_affinity_under50_pct": 11.88,
+        "zones_empty_pct": 1.0,
+        "mean_locations_per_zone": 3.13,
+        "p90_zone_load": 5,
+        "maximum_zone_load": 11,
+        "mutual_first_preference_pct": 36.31,
+        "location_mean_raw_rank": 1.01,
+        "mean_combined_score": 90.5
+      },
+      "zsigmoid": {
+        "mean_affinity": 78.24,
+        "weak_affinity_under50_pct": 12.03,
+        "zones_empty_pct": 0.96,
+        "mean_locations_per_zone": 3.13,
+        "p90_zone_load": 5,
+        "maximum_zone_load": 9,
+        "mutual_first_preference_pct": 35.94,
+        "location_mean_raw_rank": 1.02,
+        "mean_combined_score": 86.25
+      },
+      "softmax20": {
+        "mean_affinity": 78.34,
+        "weak_affinity_under50_pct": 11.88,
+        "zones_empty_pct": 0.96,
+        "mean_locations_per_zone": 3.13,
+        "p90_zone_load": 5,
+        "maximum_zone_load": 9,
+        "mutual_first_preference_pct": 36.17,
+        "location_mean_raw_rank": 1.0,
+        "mean_combined_score": 41.42
+      }
+    },
+    "limitations": "Force one Zone per Location ONLY as a diagnostic for comparing normalization; does NOT set standalone or City compatibility, and does not combine Faction alignment into placement. These topics remain parked.",
+    "recommendation": "Compare MAX RATIO vs PERCENTILE before locking; retain raw affinity as an absolute quality guard. For neutral, favor multiplicative geometric variant as provisional, not approved."
   }
 }
