@@ -1,0 +1,248 @@
+{
+  "type": "targeted_family_site_filter_static_qa",
+  "status": "passed_static_not_full_world",
+  "tests": [
+    {
+      "case": 1,
+      "pass": true,
+      "kept": 1,
+      "restored": 1,
+      "reason": []
+    },
+    {
+      "case": 2,
+      "pass": true,
+      "kept": 1,
+      "restored": 1,
+      "reason": []
+    },
+    {
+      "case": 3,
+      "pass": true,
+      "kept": 0,
+      "restored": 2,
+      "reason": [
+        "fewer_than_two_children"
+      ]
+    },
+    {
+      "case": 4,
+      "pass": true,
+      "kept": 0,
+      "restored": 3,
+      "reason": [
+        "invalid_site_zone"
+      ]
+    },
+    {
+      "case": 5,
+      "pass": true,
+      "kept": 1,
+      "restored": 1,
+      "reason": []
+    },
+    {
+      "case": 6,
+      "pass": true,
+      "kept": 1,
+      "restored": 1,
+      "reason": []
+    },
+    {
+      "case": 7,
+      "pass": true,
+      "kept": 0,
+      "restored": 2,
+      "reason": [
+        "invalid_site_zone"
+      ]
+    }
+  ],
+  "affinityAudit": {
+    "Farm": {
+      "originalParentZones": [
+        "Estate",
+        "Village",
+        "Hunting Grounds",
+        "Monastery",
+        "Farmland",
+        "Wilderness"
+      ],
+      "permittedParentZones": [
+        "Estate",
+        "Village",
+        "Hunting Grounds",
+        "Monastery",
+        "Farmland",
+        "Wilderness"
+      ],
+      "rejectedParentZones": [],
+      "originalHighAffinityChildren": [
+        "House",
+        "Mill",
+        "Stable",
+        "Well",
+        "Brewery",
+        "Grove",
+        "Mine",
+        "Workshop"
+      ],
+      "permittedHighAffinityChildren": [
+        "House",
+        "Mill",
+        "Stable",
+        "Well",
+        "Brewery",
+        "Grove",
+        "Workshop"
+      ],
+      "rejectedHighAffinityChildren": [
+        "Mine"
+      ]
+    },
+    "Dock": {
+      "originalParentZones": [
+        "Caravan Camp",
+        "Foreign Quarter",
+        "Harbor",
+        "Warehouse District"
+      ],
+      "permittedParentZones": [
+        "Caravan Camp",
+        "Foreign Quarter",
+        "Harbor",
+        "Warehouse District"
+      ],
+      "rejectedParentZones": [],
+      "originalHighAffinityChildren": [
+        "Bridge",
+        "Office",
+        "Post Office",
+        "Ship",
+        "Stable",
+        "Tunnel",
+        "Camp",
+        "Inn",
+        "Outpost",
+        "Trading Post",
+        "Warehouse"
+      ],
+      "permittedHighAffinityChildren": [
+        "Bridge",
+        "Office",
+        "Post Office",
+        "Ship",
+        "Stable",
+        "Inn",
+        "Outpost",
+        "Trading Post",
+        "Warehouse"
+      ],
+      "rejectedHighAffinityChildren": [
+        "Tunnel",
+        "Camp"
+      ]
+    },
+    "Shipyard": {
+      "originalParentZones": [
+        "Caravan Camp",
+        "Artisan Quarter",
+        "Harbor",
+        "Industrial District",
+        "Warehouse District"
+      ],
+      "permittedParentZones": [
+        "Artisan Quarter",
+        "Harbor",
+        "Industrial District",
+        "Warehouse District"
+      ],
+      "rejectedParentZones": [
+        "Caravan Camp"
+      ],
+      "originalHighAffinityChildren": [
+        "Bridge",
+        "Forge",
+        "Mill",
+        "Post Office",
+        "Printing House",
+        "Ship",
+        "Stable",
+        "Tailor",
+        "Tunnel",
+        "Brewery",
+        "Dock",
+        "Factory",
+        "Outpost",
+        "Trading Post",
+        "Warehouse",
+        "Workshop"
+      ],
+      "permittedHighAffinityChildren": [
+        "Bridge",
+        "Forge",
+        "Post Office",
+        "Ship",
+        "Stable",
+        "Dock",
+        "Factory",
+        "Outpost",
+        "Trading Post",
+        "Warehouse",
+        "Workshop"
+      ],
+      "rejectedHighAffinityChildren": [
+        "Mill",
+        "Printing House",
+        "Tailor",
+        "Tunnel",
+        "Brewery"
+      ]
+    },
+    "location:Farm": {
+      "originalEligibleSites": 8,
+      "acceptedSites": [
+        "Grove",
+        "Estate",
+        "Village",
+        "Hunting Grounds",
+        "Monastery"
+      ],
+      "rejectedSites": [
+        "Brewery",
+        "Mine",
+        "Workshop"
+      ]
+    },
+    "location:Ship": {
+      "originalEligibleSites": 8,
+      "acceptedSites": [
+        "Dock",
+        "Outpost",
+        "Trading Post",
+        "Shipyard",
+        "Caravan Camp"
+      ],
+      "rejectedSites": [
+        "Camp",
+        "Inn",
+        "Warehouse"
+      ]
+    },
+    "location:Dock": {
+      "originalEligibleSites": 7,
+      "acceptedSites": [
+        "Outpost",
+        "Trading Post",
+        "Warehouse",
+        "Shipyard",
+        "Caravan Camp"
+      ],
+      "rejectedSites": [
+        "Camp",
+        "Inn"
+      ]
+    }
+  },
+  "warning": "These counts are catalog-level eligibility, not measured Site cancellation rates in generated worlds."
+}
