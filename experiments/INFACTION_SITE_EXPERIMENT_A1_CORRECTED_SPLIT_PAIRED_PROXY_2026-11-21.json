@@ -1,0 +1,784 @@
+{
+  "name": "Site Experiment A1 corrected split constraint",
+  "notes": [
+    "Proxy world sampling, NOT canonical generation",
+    "Correct split k>=high, k<=n-excluded, k<=n-1",
+    "The previous experiment A1 results used erroneous k<=n-1-excluded and are invalid",
+    "Same seeds and same input containers across ranking methods"
+  ],
+  "seedRange": [
+    8100000,
+    8100999
+  ],
+  "methods": [
+    [
+      "P_gap",
+      "P",
+      "gap"
+    ],
+    [
+      "C_gap",
+      "C",
+      "gap"
+    ],
+    [
+      "C_H2",
+      "C",
+      "h2"
+    ],
+    [
+      "C_gap8",
+      "C",
+      "gap8"
+    ],
+    [
+      "C_gap16",
+      "C",
+      "gap16"
+    ],
+    [
+      "C_gap32",
+      "C",
+      "gap32"
+    ],
+    [
+      "C_mass20",
+      "C",
+      "mass20"
+    ],
+    [
+      "C_mass40",
+      "C",
+      "mass40"
+    ],
+    [
+      "C_coverFirst",
+      "C",
+      "coverFirst"
+    ]
+  ],
+  "results": {
+    "P_gap": {
+      "siteTotal": 3860,
+      "worldsWithSites": 997,
+      "types": 50,
+      "effectiveDiversity": 31.96,
+      "childTotal": 10695,
+      "avgSize": 2.77,
+      "size2": 2145,
+      "size3": 975,
+      "size4plus": 740,
+      "strong": 3929,
+      "medium": 2314,
+      "weak": 61,
+      "zero": 4391,
+      "top5": [
+        [
+          "Village",
+          248
+        ],
+        [
+          "Garden",
+          225
+        ],
+        [
+          "Market",
+          209
+        ],
+        [
+          "Festival Grounds",
+          189
+        ],
+        [
+          "University",
+          177
+        ]
+      ],
+      "bottom5": [
+        [
+          "Temple",
+          18
+        ],
+        [
+          "Grove",
+          6
+        ],
+        [
+          "Excavation Site",
+          6
+        ],
+        [
+          "Cavern",
+          6
+        ],
+        [
+          "Mine",
+          5
+        ]
+      ],
+      "example": [
+        {
+          "site": "Fortress",
+          "parent": "z:Military District",
+          "children": [
+            "Guardhouse",
+            "Training Ground",
+            "Outpost"
+          ]
+        },
+        {
+          "site": "Citadel",
+          "parent": "z:Government District",
+          "children": [
+            "Courthouse",
+            "Treasury",
+            "Embassy",
+            "Office",
+            "Archive",
+            "Town Hall"
+          ]
+        }
+      ]
+    },
+    "C_gap": {
+      "siteTotal": 3559,
+      "worldsWithSites": 999,
+      "types": 50,
+      "effectiveDiversity": 25.41,
+      "childTotal": 8824,
+      "avgSize": 2.48,
+      "size2": 2341,
+      "size3": 853,
+      "size4plus": 365,
+      "strong": 5400,
+      "medium": 3387,
+      "weak": 37,
+      "zero": 0,
+      "top5": [
+        [
+          "Festival Grounds",
+          367
+        ],
+        [
+          "Palace",
+          249
+        ],
+        [
+          "Market",
+          232
+        ],
+        [
+          "Fortress",
+          169
+        ],
+        [
+          "Shipyard",
+          155
+        ]
+      ],
+      "bottom5": [
+        [
+          "Arena",
+          10
+        ],
+        [
+          "Square",
+          7
+        ],
+        [
+          "Grove",
+          4
+        ],
+        [
+          "Excavation Site",
+          3
+        ],
+        [
+          "Rebel Camp",
+          2
+        ]
+      ],
+      "example": [
+        {
+          "site": "Fortress",
+          "parent": "z:Military District",
+          "children": [
+            "Guardhouse",
+            "Training Ground",
+            "Outpost"
+          ]
+        },
+        {
+          "site": "Palace",
+          "parent": "z:Government District",
+          "children": [
+            "Treasury",
+            "Office",
+            "Courthouse",
+            "Archive"
+          ]
+        }
+      ]
+    },
+    "C_H2": {
+      "siteTotal": 3558,
+      "worldsWithSites": 999,
+      "types": 50,
+      "effectiveDiversity": 25.34,
+      "childTotal": 8827,
+      "avgSize": 2.48,
+      "size2": 2336,
+      "size3": 856,
+      "size4plus": 366,
+      "strong": 5401,
+      "medium": 3389,
+      "weak": 37,
+      "zero": 0,
+      "top5": [
+        [
+          "Festival Grounds",
+          367
+        ],
+        [
+          "Palace",
+          249
+        ],
+        [
+          "Market",
+          232
+        ],
+        [
+          "Fortress",
+          169
+        ],
+        [
+          "Shipyard",
+          155
+        ]
+      ],
+      "bottom5": [
+        [
+          "Arena",
+          10
+        ],
+        [
+          "Square",
+          7
+        ],
+        [
+          "Grove",
+          4
+        ],
+        [
+          "Excavation Site",
+          3
+        ],
+        [
+          "Rebel Camp",
+          2
+        ]
+      ],
+      "example": [
+        {
+          "site": "Fortress",
+          "parent": "z:Military District",
+          "children": [
+            "Guardhouse",
+            "Training Ground",
+            "Outpost"
+          ]
+        },
+        {
+          "site": "Palace",
+          "parent": "z:Government District",
+          "children": [
+            "Treasury",
+            "Office",
+            "Courthouse",
+            "Archive"
+          ]
+        }
+      ]
+    },
+    "C_gap8": {
+      "siteTotal": 3484,
+      "worldsWithSites": 999,
+      "types": 50,
+      "effectiveDiversity": 25.41,
+      "childTotal": 8861,
+      "avgSize": 2.54,
+      "size2": 2184,
+      "size3": 864,
+      "size4plus": 436,
+      "strong": 5328,
+      "medium": 3487,
+      "weak": 46,
+      "zero": 0,
+      "top5": [
+        [
+          "Festival Grounds",
+          357
+        ],
+        [
+          "Palace",
+          244
+        ],
+        [
+          "Market",
+          226
+        ],
+        [
+          "Fortress",
+          175
+        ],
+        [
+          "Hospital",
+          146
+        ]
+      ],
+      "bottom5": [
+        [
+          "Meeting Hall",
+          8
+        ],
+        [
+          "Square",
+          5
+        ],
+        [
+          "Excavation Site",
+          3
+        ],
+        [
+          "Grove",
+          3
+        ],
+        [
+          "Rebel Camp",
+          2
+        ]
+      ],
+      "example": [
+        {
+          "site": "Fortress",
+          "parent": "z:Military District",
+          "children": [
+            "Guardhouse",
+            "Training Ground",
+            "Outpost"
+          ]
+        },
+        {
+          "site": "Palace",
+          "parent": "z:Government District",
+          "children": [
+            "Treasury",
+            "Office",
+            "Courthouse",
+            "Archive"
+          ]
+        }
+      ]
+    },
+    "C_gap16": {
+      "siteTotal": 3469,
+      "worldsWithSites": 999,
+      "types": 50,
+      "effectiveDiversity": 25.32,
+      "childTotal": 8900,
+      "avgSize": 2.57,
+      "size2": 2115,
+      "size3": 905,
+      "size4plus": 449,
+      "strong": 5284,
+      "medium": 3562,
+      "weak": 54,
+      "zero": 0,
+      "top5": [
+        [
+          "Festival Grounds",
+          357
+        ],
+        [
+          "Palace",
+          243
+        ],
+        [
+          "Market",
+          227
+        ],
+        [
+          "Fortress",
+          173
+        ],
+        [
+          "Hospital",
+          151
+        ]
+      ],
+      "bottom5": [
+        [
+          "Meeting Hall",
+          7
+        ],
+        [
+          "Square",
+          5
+        ],
+        [
+          "Excavation Site",
+          3
+        ],
+        [
+          "Grove",
+          3
+        ],
+        [
+          "Rebel Camp",
+          2
+        ]
+      ],
+      "example": [
+        {
+          "site": "Fortress",
+          "parent": "z:Military District",
+          "children": [
+            "Guardhouse",
+            "Training Ground",
+            "Outpost"
+          ]
+        },
+        {
+          "site": "Palace",
+          "parent": "z:Government District",
+          "children": [
+            "Treasury",
+            "Office",
+            "Courthouse",
+            "Archive"
+          ]
+        }
+      ]
+    },
+    "C_gap32": {
+      "siteTotal": 3450,
+      "worldsWithSites": 999,
+      "types": 50,
+      "effectiveDiversity": 25.28,
+      "childTotal": 8920,
+      "avgSize": 2.59,
+      "size2": 2055,
+      "size3": 930,
+      "size4plus": 465,
+      "strong": 5212,
+      "medium": 3650,
+      "weak": 58,
+      "zero": 0,
+      "top5": [
+        [
+          "Festival Grounds",
+          357
+        ],
+        [
+          "Palace",
+          247
+        ],
+        [
+          "Market",
+          220
+        ],
+        [
+          "Fortress",
+          172
+        ],
+        [
+          "Hospital",
+          154
+        ]
+      ],
+      "bottom5": [
+        [
+          "Meeting Hall",
+          7
+        ],
+        [
+          "Square",
+          5
+        ],
+        [
+          "Excavation Site",
+          3
+        ],
+        [
+          "Rebel Camp",
+          2
+        ],
+        [
+          "Grove",
+          2
+        ]
+      ],
+      "example": [
+        {
+          "site": "Fortress",
+          "parent": "z:Military District",
+          "children": [
+            "Guardhouse",
+            "Training Ground",
+            "Outpost"
+          ]
+        },
+        {
+          "site": "Palace",
+          "parent": "z:Government District",
+          "children": [
+            "Treasury",
+            "Office",
+            "Courthouse",
+            "Archive"
+          ]
+        }
+      ]
+    },
+    "C_mass20": {
+      "siteTotal": 3485,
+      "worldsWithSites": 999,
+      "types": 50,
+      "effectiveDiversity": 25.29,
+      "childTotal": 8867,
+      "avgSize": 2.54,
+      "size2": 2181,
+      "size3": 867,
+      "size4plus": 437,
+      "strong": 5380,
+      "medium": 3444,
+      "weak": 43,
+      "zero": 0,
+      "top5": [
+        [
+          "Festival Grounds",
+          356
+        ],
+        [
+          "Palace",
+          247
+        ],
+        [
+          "Market",
+          227
+        ],
+        [
+          "Fortress",
+          180
+        ],
+        [
+          "Hospital",
+          149
+        ]
+      ],
+      "bottom5": [
+        [
+          "Meeting Hall",
+          8
+        ],
+        [
+          "Square",
+          5
+        ],
+        [
+          "Excavation Site",
+          3
+        ],
+        [
+          "Grove",
+          3
+        ],
+        [
+          "Rebel Camp",
+          2
+        ]
+      ],
+      "example": [
+        {
+          "site": "Fortress",
+          "parent": "z:Military District",
+          "children": [
+            "Guardhouse",
+            "Training Ground",
+            "Outpost"
+          ]
+        },
+        {
+          "site": "Palace",
+          "parent": "z:Government District",
+          "children": [
+            "Treasury",
+            "Office",
+            "Courthouse",
+            "Archive"
+          ]
+        }
+      ]
+    },
+    "C_mass40": {
+      "siteTotal": 3477,
+      "worldsWithSites": 999,
+      "types": 50,
+      "effectiveDiversity": 25.22,
+      "childTotal": 8898,
+      "avgSize": 2.56,
+      "size2": 2136,
+      "size3": 896,
+      "size4plus": 445,
+      "strong": 5360,
+      "medium": 3492,
+      "weak": 46,
+      "zero": 0,
+      "top5": [
+        [
+          "Festival Grounds",
+          355
+        ],
+        [
+          "Palace",
+          248
+        ],
+        [
+          "Market",
+          228
+        ],
+        [
+          "Fortress",
+          178
+        ],
+        [
+          "Hospital",
+          151
+        ]
+      ],
+      "bottom5": [
+        [
+          "Meeting Hall",
+          8
+        ],
+        [
+          "Square",
+          5
+        ],
+        [
+          "Excavation Site",
+          3
+        ],
+        [
+          "Rebel Camp",
+          2
+        ],
+        [
+          "Grove",
+          2
+        ]
+      ],
+      "example": [
+        {
+          "site": "Fortress",
+          "parent": "z:Military District",
+          "children": [
+            "Guardhouse",
+            "Training Ground",
+            "Outpost"
+          ]
+        },
+        {
+          "site": "Palace",
+          "parent": "z:Government District",
+          "children": [
+            "Treasury",
+            "Office",
+            "Courthouse",
+            "Archive"
+          ]
+        }
+      ]
+    },
+    "C_coverFirst": {
+      "siteTotal": 3450,
+      "worldsWithSites": 999,
+      "types": 50,
+      "effectiveDiversity": 25.29,
+      "childTotal": 8926,
+      "avgSize": 2.59,
+      "size2": 2049,
+      "size3": 936,
+      "size4plus": 465,
+      "strong": 5206,
+      "medium": 3661,
+      "weak": 59,
+      "zero": 0,
+      "top5": [
+        [
+          "Festival Grounds",
+          357
+        ],
+        [
+          "Palace",
+          246
+        ],
+        [
+          "Market",
+          220
+        ],
+        [
+          "Fortress",
+          172
+        ],
+        [
+          "Hospital",
+          155
+        ]
+      ],
+      "bottom5": [
+        [
+          "Meeting Hall",
+          7
+        ],
+        [
+          "Square",
+          5
+        ],
+        [
+          "Excavation Site",
+          3
+        ],
+        [
+          "Rebel Camp",
+          2
+        ],
+        [
+          "Grove",
+          2
+        ]
+      ],
+      "example": [
+        {
+          "site": "Fortress",
+          "parent": "z:Military District",
+          "children": [
+            "Guardhouse",
+            "Training Ground",
+            "Outpost"
+          ]
+        },
+        {
+          "site": "Palace",
+          "parent": "z:Government District",
+          "children": [
+            "Treasury",
+            "Office",
+            "Courthouse",
+            "Archive"
+          ]
+        }
+      ]
+    }
+  }
+}
