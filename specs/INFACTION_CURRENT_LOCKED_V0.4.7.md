@@ -29,11 +29,11 @@ This document supersedes older v0.4.x design-direction notes for the purpose of 
 - Active Location score modifiers **replace** legacy three special modifiers: Hideout −9, Camp −8, Tunnel −3, Crypt −2, Shelter −1, Research Facility +9. This changes selection scores, not underlying affinity data.
 - **Function minimum repair**: after initial selection, count 14 Function coverages at raw Function affinity ≥75. For each deficient Function, draw uniformly from unused eligible Location names with that Function affinity ≥75; append (never replace), recalculate, repeat until all minima met. No hard 30 limit after repair; maximum quota stays soft.
 
-### 4. Two geographic-affinity meanings — canonical
-- **Proximity**, `P(A,B)=P(B,A)`: suitability to appear near one another or in the same geographic context. The existing immutable Book1 118×118 Place Affinity is the authoritative raw **Proximity** matrix.
-- **Directional Containment**, `C(parent,child)`: suitability for a child to be located in, form part of, or be grouped into the same geographically coherent complex as its parent. The two directions are distinct; attachments such as Dock→Ship can be valid geographical grouping without literal internal architectural containment. Merely high Proximity does not prove Containment.
-- Implement Containment as a **lightweight directional compatibility overlay informed by Proximity, effective Scale and targeted semantic compatibility** rather than transcribing 13,924 new scores manually. Same-effective-scale grouping can be valid.
-- The **concept and required routing are LOCKED**. The precise derivation formula, hard exception inventory, score calibration and Outside-score adaptation have **not been selected/benchmarked**, so do not substitute made-up coefficients, mark them approved, or claim the new Containment route is operational. These are implementation parameters requiring a tested value, not a reason to downgrade the canonical architecture to a mere proposal.
+### 4. Geographic affinity — Proximity only (direction updated 2026-11-21)
+- **Proximity**, `P(A,B)=P(B,A)`, remains the sole geographic score. Preserve the immutable original Book1 118×118 Place Affinity matrix.
+- **Directional Containment has been canceled** by the user's subsequent decision. It must not be used for Location→Zone or Site grouping, and no numerical Containment overlay should be introduced.
+- Semantic edge cases use **targeted Farm Family and Ship Family rules**, applied after Site grouping. Preserve the existing Proximity-based eligibility, H2/lowest/gap ranking, and City filters for every other Place.
+- The family allowlists and post-filter implementation are versioned at `experiments/infaction_targeted_farm_ship_site_filter_v2.json` and `experiments/infaction_targeted_farm_ship_site_prune_v2.py`. These enforce only explicitly targeted relationships; they do not rewrite Book1 or political/geographic placement.
 
 ### 5. Political alignment and Stage 1 placement
 - Six Faction alignments + static Neutral v2; retain previously locked raw alignment, two-way normalization 50:50 A/B, Single/Dual thresholds and Exact→Mixed matching.
@@ -43,7 +43,7 @@ This document supersedes older v0.4.x design-direction notes for the purpose of 
 ### 6. Stage 2 geographic placement
 - Match only as-yet-unassigned Locations to generated Zone(s) or standalone Outside option.
 - Retain approved A/B normalization (70% A, 30% B), argmax with random exact ties, no arbitrary zone capacity, and no Stage 1 relocation.
-- **The geographic parent-child suitability signal is Directional Containment** instead of symmetric Proximity. The historical expression `Outside = 100 − max(raw Zone–Location proximity)` is a v0.4.6 numeric implementation and must be recalibrated with Containment, not blindly asserted as final v0.4.7 mathematics.
+- Use the original symmetric **Proximity** for Zone–Location fit, including the existing `Outside = 100 − max(raw Zone–Location Proximity)` rule. Do not substitute Containment or recalibrate Outside on that basis.
 - `standalone` means no Zone parent; it does not force Outside City.
 
 ### 7. Inside/Outside City
@@ -54,17 +54,18 @@ This document supersedes older v0.4.x design-direction notes for the purpose of 
 ### 8. Site grouping
 - Site candidate names are all effective Scale 2–4 types (50 types under current changes); exclude any name already used as a selected Zone, Location, or Site in a given world.
 - Site grouping containers: direct children of each Zone, standalone Inside City pool, standalone Outside City pool. A container with fewer than 3 Locations is ineligible.
-- Site→Zone preliminary raw **Containment** signal; historical threshold 45. For standalone containers, a Site's City Score must be ≥2 for Inside, ≤2 for Outside.
-- Per candidate evaluate Site→Location directional **Containment**, sorted high→low; H2=second highest, L=lowest, gap=H2−L. Historical eligibility H2≥45, L≤35, gap≥15. Greedy highest gap; random exact ties; recompute after each Site. Include high-score Locations, exclude low-score, split ambiguous band by maximum allowed adjacent-score drop; Site has ≥2 children and ≥1 original Location remains in container. No fallback or forced Site count.
-- **Greedy structure and semantics are LOCKED**. Numerical thresholds 45/35/15 refer to the historical Proximity-scale baseline and must pass calibration on the new Containment scores before being treated as a completed operational migration.
+- Site→Zone preliminary raw **Proximity** threshold ≥45. For standalone containers, a Site's City Score must be ≥2 for Inside, ≤2 for Outside.
+- Per candidate evaluate raw **Proximity** to each Location, sorted high→low; H2=second highest, L=lowest, gap=H2−L. Eligibility H2≥45, L≤35, gap≥15. Greedy highest gap; random exact ties; recompute after each Site. Include high-score Locations, exclude low-score, split ambiguous band by maximum allowed adjacent-score drop; Site has ≥2 children and ≥1 original Location remains in container. No fallback or forced Site count.
+- **Post-Site Farm Family / Ship Family filter:** apply the existing targeted rules after the regular greedy selection. Site types Farm/Dock/Shipyard must have valid Zone parents and child types; Location types Farm/Ship/Dock must have valid Site types, and when a Zone parent exists their raw Location–Zone Proximity must be >0. After pruning, recheck at least two children and second-highest retained Proximity ≥45. Invalid Sites are canceled and all children restored to their original direct container. Rejected individual children are restored, never deleted. Do not rerun the greedy search or impose a broad filter on other types.
+- Preserve the original one-matrix Site algorithm; the targeted family post-filter is a separate, auditable layer.
 
 ## Quality gates
 - Preserve selected-world diversity, genre-plausible distribution, Function coverage with limited overlap, six Faction representation and affinity with Type+Base, and natural coappearance of close neighbors.
-- Validate 71 Location eligibility, uniqueness, 14 Function hard minima post-repair, parent integrity, city inheritance, full Site type distribution, and directional semantic grouping.
+- Validate 71 Location eligibility, uniqueness, 14 Function hard minima post-repair, parent integrity, city inheritance, full Site type distribution, and targeted Farm/Ship family relationships.
 - Use reproducible fixed seed cohorts and original 118×118 matrix as invariant source; compare against saved Site checkpoint and prior 1,000-world results. Interpret historical results as reference, not as current-v0.4.7 production output.
 - Do not rewrite original Book1 or call an older v0.4.6 notebook the latest release.
 
 ## Version/status clarification
-**v0.4.7 is the latest locked DESIGN SPECIFICATION, not a verified fully integrated executable build.** The old code paths use proximity for geographic placement and Site experiments; v0.4.7's directional overlay has no benchmarked numeric implementation yet. A runtime labeled v0.4.7 must conform to the full specification and pass tests before it is called released or verified. No unapproved numeric value is implied by this lock.
+**v0.4.7 remains the latest locked DESIGN SPECIFICATION, corrected for the user's cancellation of Containment.** Geographic matching and Site grouping retain original Proximity, with the Farm/Ship family post-filter after Site grouping. The selection/repair changes of v0.4.7 have not been verified in the historical v0.4.6 executable. A runtime labeled fully integrated v0.4.7 must still pass end-to-end tests.
 
-References: `decisions/INFACTION_TOWN_HALL_SCALE_2_DIRECTION_2026-11-21.md`, `decisions/INFACTION_PROXIMITY_CONTAINMENT_DIRECTION_2026-11-21.md`, `experiments/INFACTION_LOCATION_DIRECTION_FINAL_REPAIR_PLACEMENT_QA_2026-11-21.md`, `checkpoints/INFACTION_SITE_BASELINE_2026-11-21.md`.
+References: `decisions/INFACTION_TOWN_HALL_SCALE_2_DIRECTION_2026-11-21.md`, `experiments/INFACTION_FARM_SHIP_SITE_FILTER_REVIEW_2026-11-21.md`, `experiments/INFACTION_LOCATION_DIRECTION_FINAL_REPAIR_PLACEMENT_QA_2026-11-21.md`, `checkpoints/INFACTION_SITE_BASELINE_2026-11-21.md`.
