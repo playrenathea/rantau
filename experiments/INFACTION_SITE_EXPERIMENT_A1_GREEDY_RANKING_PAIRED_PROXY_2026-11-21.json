@@ -1,0 +1,674 @@
+{
+  "kind": "Site-only proxy paired cohort ranking sensitivity",
+  "seeds": "8100000..8100999",
+  "worlds": 1000,
+  "warning": "Synthetic world selection and placement; do not compare these figures to canonical Python run",
+  "results": {
+    "P_baseline": {
+      "siteTotal": 1109,
+      "siteWorlds": 748,
+      "childTotal": 3048,
+      "meanChildren": 2.7484220018034264,
+      "siteTypes": 42,
+      "effectiveDiversity": 18.872178489772743,
+      "top5": [
+        [
+          "Market",
+          139
+        ],
+        [
+          "Square",
+          84
+        ],
+        [
+          "Palace",
+          83
+        ],
+        [
+          "Enclave",
+          73
+        ],
+        [
+          "Festival Grounds",
+          64
+        ]
+      ],
+      "bottom5": [
+        [
+          "Village",
+          3
+        ],
+        [
+          "Catacombs",
+          2
+        ],
+        [
+          "Excavation Site",
+          2
+        ],
+        [
+          "Factory",
+          1
+        ],
+        [
+          "Necropolis",
+          1
+        ]
+      ],
+      "size2": 627,
+      "size3": 275,
+      "size4plus": 207,
+      "zeroChildPairs": 1455,
+      "weakChildPairs": 43,
+      "midChildPairs": 705,
+      "strongChildPairs": 845,
+      "meanGap": 42.1190261496844,
+      "meanSiteWorld": 1.109,
+      "sdSiteWorld": 0.8678242909713951,
+      "containerKinds": {
+        "zone": 1042,
+        "inside": 66,
+        "outside": 1
+      },
+      "examples": [
+        {
+          "seed": 8100000,
+          "results": [
+            {
+              "site": "Festival Grounds",
+              "container": "z:Market District",
+              "children": [
+                "Brothel",
+                "Market"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "C_gap": {
+      "siteTotal": 129,
+      "siteWorlds": 121,
+      "childTotal": 313,
+      "meanChildren": 2.4263565891472867,
+      "siteTypes": 18,
+      "effectiveDiversity": 8.698902247778358,
+      "top5": [
+        [
+          "Military Base",
+          30
+        ],
+        [
+          "Estate",
+          15
+        ],
+        [
+          "Factory",
+          14
+        ],
+        [
+          "Necropolis",
+          14
+        ],
+        [
+          "Palace",
+          13
+        ]
+      ],
+      "bottom5": [
+        [
+          "Temple",
+          2
+        ],
+        [
+          "Embassy",
+          1
+        ],
+        [
+          "Slum",
+          1
+        ],
+        [
+          "Monastery",
+          1
+        ],
+        [
+          "Mining Settlement",
+          1
+        ]
+      ],
+      "size2": 88,
+      "size3": 29,
+      "size4plus": 12,
+      "zeroChildPairs": 0,
+      "weakChildPairs": 0,
+      "midChildPairs": 124,
+      "strongChildPairs": 189,
+      "meanGap": 68.88372093023256,
+      "meanSiteWorld": 0.129,
+      "sdSiteWorld": 0.35827224285451265,
+      "containerKinds": {
+        "zone": 118,
+        "inside": 10,
+        "outside": 1
+      },
+      "examples": [
+        {
+          "seed": 8100000,
+          "results": []
+        }
+      ]
+    },
+    "C_h2": {
+      "siteTotal": 129,
+      "siteWorlds": 121,
+      "childTotal": 313,
+      "meanChildren": 2.4263565891472867,
+      "siteTypes": 18,
+      "effectiveDiversity": 8.698902247778358,
+      "top5": [
+        [
+          "Military Base",
+          30
+        ],
+        [
+          "Estate",
+          15
+        ],
+        [
+          "Factory",
+          14
+        ],
+        [
+          "Necropolis",
+          14
+        ],
+        [
+          "Palace",
+          13
+        ]
+      ],
+      "bottom5": [
+        [
+          "Temple",
+          2
+        ],
+        [
+          "Embassy",
+          1
+        ],
+        [
+          "Slum",
+          1
+        ],
+        [
+          "Monastery",
+          1
+        ],
+        [
+          "Mining Settlement",
+          1
+        ]
+      ],
+      "size2": 88,
+      "size3": 29,
+      "size4plus": 12,
+      "zeroChildPairs": 0,
+      "weakChildPairs": 0,
+      "midChildPairs": 124,
+      "strongChildPairs": 189,
+      "meanGap": 68.88372093023256,
+      "meanSiteWorld": 0.129,
+      "sdSiteWorld": 0.35827224285451265,
+      "containerKinds": {
+        "zone": 118,
+        "inside": 10,
+        "outside": 1
+      },
+      "examples": [
+        {
+          "seed": 8100000,
+          "results": []
+        }
+      ]
+    },
+    "C_gap_8": {
+      "siteTotal": 129,
+      "siteWorlds": 121,
+      "childTotal": 313,
+      "meanChildren": 2.4263565891472867,
+      "siteTypes": 18,
+      "effectiveDiversity": 8.698902247778358,
+      "top5": [
+        [
+          "Military Base",
+          30
+        ],
+        [
+          "Estate",
+          15
+        ],
+        [
+          "Factory",
+          14
+        ],
+        [
+          "Necropolis",
+          14
+        ],
+        [
+          "Palace",
+          13
+        ]
+      ],
+      "bottom5": [
+        [
+          "Temple",
+          2
+        ],
+        [
+          "Embassy",
+          1
+        ],
+        [
+          "Slum",
+          1
+        ],
+        [
+          "Monastery",
+          1
+        ],
+        [
+          "Mining Settlement",
+          1
+        ]
+      ],
+      "size2": 88,
+      "size3": 29,
+      "size4plus": 12,
+      "zeroChildPairs": 0,
+      "weakChildPairs": 0,
+      "midChildPairs": 124,
+      "strongChildPairs": 189,
+      "meanGap": 68.88372093023256,
+      "meanSiteWorld": 0.129,
+      "sdSiteWorld": 0.35827224285451265,
+      "containerKinds": {
+        "zone": 118,
+        "inside": 10,
+        "outside": 1
+      },
+      "examples": [
+        {
+          "seed": 8100000,
+          "results": []
+        }
+      ]
+    },
+    "C_gap_16": {
+      "siteTotal": 129,
+      "siteWorlds": 121,
+      "childTotal": 313,
+      "meanChildren": 2.4263565891472867,
+      "siteTypes": 18,
+      "effectiveDiversity": 8.698902247778358,
+      "top5": [
+        [
+          "Military Base",
+          30
+        ],
+        [
+          "Estate",
+          15
+        ],
+        [
+          "Factory",
+          14
+        ],
+        [
+          "Necropolis",
+          14
+        ],
+        [
+          "Palace",
+          13
+        ]
+      ],
+      "bottom5": [
+        [
+          "Temple",
+          2
+        ],
+        [
+          "Embassy",
+          1
+        ],
+        [
+          "Slum",
+          1
+        ],
+        [
+          "Monastery",
+          1
+        ],
+        [
+          "Mining Settlement",
+          1
+        ]
+      ],
+      "size2": 88,
+      "size3": 29,
+      "size4plus": 12,
+      "zeroChildPairs": 0,
+      "weakChildPairs": 0,
+      "midChildPairs": 124,
+      "strongChildPairs": 189,
+      "meanGap": 68.88372093023256,
+      "meanSiteWorld": 0.129,
+      "sdSiteWorld": 0.35827224285451265,
+      "containerKinds": {
+        "zone": 118,
+        "inside": 10,
+        "outside": 1
+      },
+      "examples": [
+        {
+          "seed": 8100000,
+          "results": []
+        }
+      ]
+    },
+    "C_gap_24": {
+      "siteTotal": 129,
+      "siteWorlds": 121,
+      "childTotal": 313,
+      "meanChildren": 2.4263565891472867,
+      "siteTypes": 18,
+      "effectiveDiversity": 8.698902247778358,
+      "top5": [
+        [
+          "Military Base",
+          30
+        ],
+        [
+          "Estate",
+          15
+        ],
+        [
+          "Factory",
+          14
+        ],
+        [
+          "Necropolis",
+          14
+        ],
+        [
+          "Palace",
+          13
+        ]
+      ],
+      "bottom5": [
+        [
+          "Temple",
+          2
+        ],
+        [
+          "Embassy",
+          1
+        ],
+        [
+          "Slum",
+          1
+        ],
+        [
+          "Monastery",
+          1
+        ],
+        [
+          "Mining Settlement",
+          1
+        ]
+      ],
+      "size2": 88,
+      "size3": 29,
+      "size4plus": 12,
+      "zeroChildPairs": 0,
+      "weakChildPairs": 0,
+      "midChildPairs": 124,
+      "strongChildPairs": 189,
+      "meanGap": 68.88372093023256,
+      "meanSiteWorld": 0.129,
+      "sdSiteWorld": 0.35827224285451265,
+      "containerKinds": {
+        "zone": 118,
+        "inside": 10,
+        "outside": 1
+      },
+      "examples": [
+        {
+          "seed": 8100000,
+          "results": []
+        }
+      ]
+    },
+    "C_mass_020": {
+      "siteTotal": 129,
+      "siteWorlds": 121,
+      "childTotal": 313,
+      "meanChildren": 2.4263565891472867,
+      "siteTypes": 18,
+      "effectiveDiversity": 8.800105764145954,
+      "top5": [
+        [
+          "Military Base",
+          30
+        ],
+        [
+          "Estate",
+          15
+        ],
+        [
+          "Factory",
+          14
+        ],
+        [
+          "Necropolis",
+          14
+        ],
+        [
+          "Palace",
+          12
+        ]
+      ],
+      "bottom5": [
+        [
+          "Enclave",
+          2
+        ],
+        [
+          "Temple",
+          2
+        ],
+        [
+          "Slum",
+          1
+        ],
+        [
+          "Monastery",
+          1
+        ],
+        [
+          "Mining Settlement",
+          1
+        ]
+      ],
+      "size2": 88,
+      "size3": 29,
+      "size4plus": 12,
+      "zeroChildPairs": 0,
+      "weakChildPairs": 0,
+      "midChildPairs": 124,
+      "strongChildPairs": 189,
+      "meanGap": 68.87596899224806,
+      "meanSiteWorld": 0.129,
+      "sdSiteWorld": 0.35827224285451265,
+      "containerKinds": {
+        "zone": 118,
+        "inside": 10,
+        "outside": 1
+      },
+      "examples": [
+        {
+          "seed": 8100000,
+          "results": []
+        }
+      ]
+    },
+    "C_mass_035": {
+      "siteTotal": 129,
+      "siteWorlds": 121,
+      "childTotal": 313,
+      "meanChildren": 2.4263565891472867,
+      "siteTypes": 18,
+      "effectiveDiversity": 8.708006279434851,
+      "top5": [
+        [
+          "Military Base",
+          30
+        ],
+        [
+          "Estate",
+          15
+        ],
+        [
+          "Factory",
+          14
+        ],
+        [
+          "Necropolis",
+          14
+        ],
+        [
+          "Palace",
+          13
+        ]
+      ],
+      "bottom5": [
+        [
+          "Enclave",
+          2
+        ],
+        [
+          "Temple",
+          2
+        ],
+        [
+          "Slum",
+          1
+        ],
+        [
+          "Monastery",
+          1
+        ],
+        [
+          "Mining Settlement",
+          1
+        ]
+      ],
+      "size2": 88,
+      "size3": 29,
+      "size4plus": 12,
+      "zeroChildPairs": 0,
+      "weakChildPairs": 0,
+      "midChildPairs": 124,
+      "strongChildPairs": 189,
+      "meanGap": 68.86046511627907,
+      "meanSiteWorld": 0.129,
+      "sdSiteWorld": 0.35827224285451265,
+      "containerKinds": {
+        "zone": 118,
+        "inside": 10,
+        "outside": 1
+      },
+      "examples": [
+        {
+          "seed": 8100000,
+          "results": []
+        }
+      ]
+    },
+    "C_coverage_first": {
+      "siteTotal": 129,
+      "siteWorlds": 121,
+      "childTotal": 313,
+      "meanChildren": 2.4263565891472867,
+      "siteTypes": 18,
+      "effectiveDiversity": 8.698902247778358,
+      "top5": [
+        [
+          "Military Base",
+          30
+        ],
+        [
+          "Estate",
+          15
+        ],
+        [
+          "Factory",
+          14
+        ],
+        [
+          "Necropolis",
+          14
+        ],
+        [
+          "Palace",
+          13
+        ]
+      ],
+      "bottom5": [
+        [
+          "Temple",
+          2
+        ],
+        [
+          "Embassy",
+          1
+        ],
+        [
+          "Slum",
+          1
+        ],
+        [
+          "Monastery",
+          1
+        ],
+        [
+          "Mining Settlement",
+          1
+        ]
+      ],
+      "size2": 88,
+      "size3": 29,
+      "size4plus": 12,
+      "zeroChildPairs": 0,
+      "weakChildPairs": 0,
+      "midChildPairs": 124,
+      "strongChildPairs": 189,
+      "meanGap": 68.88372093023256,
+      "meanSiteWorld": 0.129,
+      "sdSiteWorld": 0.35827224285451265,
+      "containerKinds": {
+        "zone": 118,
+        "inside": 10,
+        "outside": 1
+      },
+      "examples": [
+        {
+          "seed": 8100000,
+          "results": []
+        }
+      ]
+    }
+  }
+}
