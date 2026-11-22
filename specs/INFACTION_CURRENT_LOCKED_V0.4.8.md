@@ -213,3 +213,16 @@ The locked naming dataset remains [Flavor v1 (109)](../data/infaction_animal_pla
 New Flavor/Place Impression Tag cardinality may be **1–6 tags** (all six segments when semantically appropriate); the former editorial 1–3 cap no longer applies to Flavor naming. Weight behavior stays unchanged: 0 when ineligible, 1 no tag overlap, 3 at least one tag overlap, with no extra multiplier for multiple overlaps. Naming source validator now accepts variable vocabulary length and 1–6 Impression Tags; current Colab continues using production v1 data, so probabilities do not change yet.
 
 The original Animal associations and all 109 original Impression Tag arrays remain unchanged. New Animal associations, tag assignments and eligibility are provisional and intentionally **not locked**. QA checks data completeness, valid Animal references, uniqueness, original-entry integrity and multi-tag support. Review imbalance before release (e.g. overly broad Animal mapping to Wolf/Dragon and some abstract word-to-Animal relationships). Duplicate brainstorming word Pride was collapsed to one candidate. **Redundancy/semantic overlap treatment explicitly deferred for the next design discussion**; no synonym suppression or production filtering added. Data inventory is also mirrored to the Master Sheet tab `Flavor v2 CANDIDATES`.
+
+## Naming redundancy decision — LOCKED 2026-11-22
+
+**Post-selection, not candidate filtering.** Use the unchanged Animal/Impression weighting to draw one eligible Flavor first. Then compare that selected word/phrase against the original Place base name using case-insensitive Unicode exact whole-word/phrase tokens, treating punctuation/spacing as token separators. If it occurs, suppress only the selected Flavor. **No reroll.** This is a literal string rule, not a synonym/semantic similarity rule. Singular/plural distinctions intentionally remain (Claw ≠ Claws); rare eccentric combinations remain acceptable. Do not impose any further phrase-quality filters.
+
+- Single political ownership: redundant selected Flavor -> `[Animal]'s [Original Place]` (e.g., Wolf's Den). Always retain Animal prefix, even if no eligible Flavor exists.
+- Dual: redundant selected Flavor -> `[Original Place]` (no Animal prefix); do not replace the Flavor or retry.
+- None: original Place, unchanged.
+- City: same Animal-prefix fallback using the Government Animal (`[Animal]'s City` when Flavor is suppressed).
+- Nonredundant: preserve existing Single / Dual / City naming grammar and 0/1/3 weights. Item-only still ineligible.
+- Log both `selected_flavor` and `redundancy_suppressed` for diagnosis; `flavor` is null and `weight` 0 if suppressed. Count suppressions in naming summary. Naming is idempotent on original base names, without editing Place IDs, geographic parents, ownership, or access node labels.
+
+Implementation: [infaction_place_naming_locked.py](../infaction_place_naming_locked.py). Regression tests: [tests/test_infaction_naming_redundancy.py](../tests/test_infaction_naming_redundancy.py). Active Colab imports this Python module from GitHub at runtime; **Flavor v2 candidate vocabulary remains staged, not production-promoted**. Hosted Colab end-to-end run of this revision remains unverified.
