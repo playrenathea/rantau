@@ -1,7 +1,7 @@
 """Infaction Place naming: six-segment multi-tag dynamic weighted selector.
 
-Original Animal associations from the 109-term vocabulary are preserved.
-Place and Flavor receive 1-3 impression tags; intersection gives weight 3,
+Original Animal associations from the 109-term locked vocabulary are preserved.
+Place and Flavor may receive 1–6 impression tags; intersection gives weight 3,
 no intersection gives 1, Item-only/not-grammatical gives 0.
 Dual ownership requires shared Animal association AND weight 3.
 Original geographic name, IDs, access gates, ownership and topology unchanged.
@@ -48,11 +48,12 @@ def apply(world, vocabulary, impressions):
     records = vocabulary["records"]
     f_tags = impressions["flavor_tags"]
     p_tags = impressions["place_tags"]
-    assert len(records) == 109 and len(f_tags) == 109 and len(p_tags) == 118
+    assert len(records) >= 109 and len(f_tags) == len(records) and len(p_tags) == 118
+    assert len({r["word"] for r in records}) == len(records), "Duplicate Flavor words"
     assert set(f_tags) == {r["word"] for r in records}
     assert set(impressions["segments"]) == SEGMENTS
     assert len(set(p_tags)) == 118
-    assert all(1 <= len(tags) <= 3 and len(tags) == len(set(tags))
+    assert all(1 <= len(tags) <= len(SEGMENTS) and len(tags) == len(set(tags))
                and set(tags).issubset(SEGMENTS)
                for tags in list(f_tags.values()) + list(p_tags.values()))
     assert all(r["suitable_for"] in ("Both", "Location", "Item") for r in records)
