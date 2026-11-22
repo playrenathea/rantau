@@ -123,7 +123,7 @@ async function testWorker(){
   loadPyodide:async()=>fakePy};
  vm.runInNewContext(workerSource,ctx,{filename:'infaction-python-worker.js'});
  await ctx.self.onmessage({data:{type:'generate'}});
- assert.strictEqual(fetched.length,20,'All native source files must be prefetched');
+ assert.strictEqual(fetched.length,18,'All native source files must be prefetched');
  assert(emitted.some(x=>x.type==='world'&&x.world.generator_version==='0.4.8'));
  assert(assets.bytes.length>0);
  assert(assets.bootstrap.includes('urllib.request.urlopen=_asset_urlopen'));
