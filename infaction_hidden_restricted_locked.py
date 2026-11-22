@@ -38,7 +38,7 @@ def _repair(rows,seed,mode,target):
     shortfall=max(0,target-sum(int(r[mode]) for r in rows))
     if not shortfall:return 0
     candidates=[r for r in rows if not r[mode] and r["p_"+mode]>0]
-    candidates.sort(key=lambda r:(-math.log(max(1e-15,roll(seed,r["id"],"repair-"+mode)))/r["p_"+mode],r["id"]))
+    candidates.sort(key=lambda r:(-math.log(max(1e-15,roll(seed,r["name"],"repair-"+mode)))/r["p_"+mode],r["id"]))
     for r in candidates[:shortfall]:
         r[mode]=True;r["reason_"+mode]="eligible_repair"
     return min(shortfall,len(candidates))
@@ -51,7 +51,7 @@ def _strong_fallback(rows,seed,mode,target):
         if mode=="hidden":return r["identity_closed"] and r["activity_closed"]
         return r["activity_closed"] and r["exclusive"]
     candidates=[r for r in rows if not r[mode] and r[key]==4 and qualifies(r)]
-    candidates.sort(key=lambda r:(roll(seed,r["id"],"strong-fallback-"+mode),r["id"]))
+    candidates.sort(key=lambda r:(roll(seed,r["name"],"strong-fallback-"+mode),r["id"]))
     for r in candidates[:shortfall]:
         r[mode]=True;r["reason_"+mode]="strong_faction_fallback"
     return min(shortfall,len(candidates))
@@ -74,7 +74,7 @@ def apply(places,ownership,seed,*,minimum=None,target=None,gate_types=None):
         rscore=4-a+2*int(activity)+int(exclusive)
         ph=1.0 if v==0 else 0.0 if v==4 else probability(hscore)
         pr=1.0 if a==0 else 0.0 if a==4 else probability(rscore)
-        h=roll(seed,pid,"hidden")<ph;r=roll(seed,pid,"restricted")<pr
+        h=roll(seed,place["name"],"hidden")<ph;r=roll(seed,place["name"],"restricted")<pr
         rows.append({"id":pid,"name":place["name"],"parent_id":place.get("parent_id"),
             "visible":v,"accessible_outsider":a,"ownership_kind":kind,
             "identity_closed":identity,"activity_closed":activity,"exclusive":exclusive,
