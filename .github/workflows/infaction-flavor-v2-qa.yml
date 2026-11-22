@@ -4,6 +4,9 @@ on:
     branches: [main]
     paths:
       - 'infaction_place_naming_locked.py'
+      - 'infaction_hidden_restricted_locked.py'
+      - 'tests/test_infaction_naming_rules.py'
+      - 'tests/test_infaction_city_gatehouse.py'
       - 'data/infaction_*flavor*.json'
       - 'data/infaction_place_impression_tags_v2.json'
       - 'notebooks/Infaction_v0.4.8_World_Access_HOTFIX_20261122.ipynb'
@@ -25,6 +28,10 @@ jobs:
         run: python tests/qa_infaction_flavor_v2_candidate.py
       - name: Literal redundancy regressions
         run: python -m unittest discover -s tests -p 'test_infaction_naming_redundancy.py' -v
+      - name: City-only naming and City Gatehouse regression
+        run: |
+          python -m unittest discover -s tests -p 'test_infaction_naming_rules.py' -v
+          python -m unittest discover -s tests -p 'test_infaction_city_gatehouse.py' -v
       - name: Active vocab and mapping invariants
         run: |
           python - <<'PY'
