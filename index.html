@@ -190,6 +190,11 @@ function render(){
    h.textContent='Infaction is not as it seems.';
    p.innerHTML=(matchMedia("(hover: hover) and (pointer: fine)").matches?"When nothing is left, try what's right.":"If you think you can hold, don't tap.")+'<br><br>Are you ready?';
    button(c,"I'm not ready",()=>feedback('You are not ready yet.'),[["I'm ready",()=>{s.stage=1;save();render()}]]).dataset.menuTitle='Ready?';
+   const namingLink=document.createElement('a');
+   namingLink.href='./infaction-flavor-v2-lab.html';
+   namingLink.textContent='Explore Flavor v2 Naming Lab (291 words)';
+   namingLink.style.cssText='display:block;margin-top:18px;font-size:13px;color:#356044;text-align:center';
+   c.append(namingLink);
   }else{
    h.textContent='Welcome to Infaction';p.textContent='Your journey begins in the land of '+s.city+'.';
    button(c,"I'm out",()=>{s.stage=0;save();render()},[["I'm in",()=>{s.stage=2;s.tab='location';save();render()}],["Change city",()=>{s=fresh();s.stage=1;save();render()}]]).dataset.menuTitle='Sure?';
