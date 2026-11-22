@@ -3,6 +3,15 @@
 **Status: CANONICAL DESIGN SPECIFICATION (LOCKED), 2026-11-22.**
 This document supersedes older v0.4.x design-direction notes for the purpose of determining **what Infaction currently specifies**. Earlier Book1, checkpoints and code remain source references, not competing design versions. A spec lock is not proof that a historical notebook, City module or deployed MVP has already been migrated.
 
+## Synced artifact locations
+- Google Drive lock memo (Infaction folder): https://docs.google.com/document/d/1sSb04TJDXixo0vUoyl6nM5qZhdE6yt6c-zD886arJhs/edit
+- MASTER Google Sheet, tab `v0.4.8 LOCK`: https://docs.google.com/spreadsheets/d/1hihvEPBM9FXZxzhjHRTGEqYg9jhCXiuONV8mIKj2pwc/edit
+- Pinned v0.4.8 GitHub Colab source: https://github.com/playrenathea/rantau/blob/main/notebooks/Infaction_Site_Companion_v0.4.8_LOCKED.ipynb
+- Colab-open GitHub URL: https://colab.research.google.com/github/playrenathea/rantau/blob/main/notebooks/Infaction_Site_Companion_v0.4.8_LOCKED.ipynb
+- Drive Colab bootstrap in `Infaction/Generator/Notebooks`: https://drive.google.com/file/d/1oglAA9CloTWDABMJ2Y45Tp5s7xN_UAf2/view
+- Site postprocessor: https://github.com/playrenathea/rantau/blob/main/infaction_site_postprocess_v3.py
+- Original Book1 and historical versions remain untouched.
+
 ## v0.4.8 lock decision (2026-11-22)
 This is a **design lock** consolidating v0.4.7 selection, placement and City decisions with the finalized **Proximity Site postprocessing**. Containment is canceled, not a workstream. Do not replace Book1 affinity.
 
