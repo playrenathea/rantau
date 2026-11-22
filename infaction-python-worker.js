@@ -24,13 +24,15 @@ const PATHS=[
   'infaction_place_naming_locked.py',
   'data/infaction_place_impression_tags_v2.json'
 ];
-let interpreter=null,assetText=null,inFlight=false;
+let interpreter=null,assetText=null,inFlight=false,ready=false;
 const say=(message)=>self.postMessage({type:'status',message});
 async function load(){
-  if(interpreter)return interpreter;
-  say('Loading Python engine');
-  importScripts(PYODIDE_URL);
-  interpreter=await loadPyodide({indexURL:PYODIDE_URL.replace('pyodide.js','')});
+  if(ready)return interpreter;
+  if(!interpreter){
+    say('Loading Python engine');
+    importScripts(PYODIDE_URL);
+    interpreter=await loadPyodide({indexURL:PYODIDE_URL.replace('pyodide.js','')});
+  }
   say('Loading original v0.4.8 generator and Book1');
   const entries=await Promise.all(PATHS.map(async path=>{
     const response=await fetch(ROOT+path,{cache:'no-store'});
@@ -48,6 +50,7 @@ async function load(){
   assetText[historical]=JSON.stringify(nb);
   const bytes=new TextEncoder().encode(JSON.stringify(assetText));
   interpreter.FS.writeFile('/infaction_browser_assets.json',bytes);
+  ready=true;
   return interpreter;
 }
 const BOOTSTRAP=String.raw`
