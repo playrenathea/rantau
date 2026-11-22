@@ -89,7 +89,11 @@ function missing(content){
  box.append(el('p',null,'Load a JSON exported by the Infaction v0.4.8 Colab. The interface will use the generated Factions, ownership, Places and access nodes directly.'));
  const file=el('input');file.type='file';file.accept='.json,application/json';file.setAttribute('aria-label','Import generated world JSON');
  file.addEventListener('change',async()=>{if(!file.files?.length)return;try{const data=validateWorld(JSON.parse(await file.files[0].text()));world=data;try{localStorage.setItem(WORLD_KEY,JSON.stringify(data))}catch(e){}renderApp()}catch(e){loadError=e.message;renderApp()}});
- box.append(file);if(loadError)box.append(el('p',null,loadError));content.append(box);
+ box.append(file);
+ const retry=el('button','light-btn','Check published world');retry.type='button';
+ retry.style.marginTop='12px';retry.addEventListener('click',()=>{loadError=null;loadWorld()});box.append(retry);
+ const source=el('p');const link=el('a',null,'Open Colab generator');link.href='https://colab.research.google.com/github/playrenathea/rantau/blob/main/notebooks/Infaction_v0.4.8_World_Access_HOTFIX_20261122.ipynb';link.target='_blank';link.rel='noopener noreferrer';source.append(link);box.append(source);
+ if(loadError)box.append(el('p',null,loadError));content.append(box);
 }
 function renderApp(){
  const app=$('app');app.replaceChildren();
