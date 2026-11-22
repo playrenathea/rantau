@@ -29,11 +29,11 @@ function createWorld(){
   if(parent)nodes[parent].children_ids.push(id);
  }
  add('land','The Land','root',null);
- add('city',"Wolf's City",'city','land');
- add('zone:North',"Wolf's Fang North",'zone','land',{kind:'single',factions:['F1']});
- add('site:Den','Claw Den','site','zone:North',
+ add('city',"The Wolf's City",'city','land');
+ add('zone:North',"The Wolf's North",'zone','land',{kind:'single',factions:['F1']});
+ add('site:Den','The Den','site','zone:North',
      {kind:'dual',factions:['F1','F2']},{hidden:true,restricted:true});
- add('location:Camp',"Eagle's Wing Camp",'location','site:Den',
+ add('location:Camp',"The Eagle's Camp",'location','site:Den',
      {kind:'single',factions:['F2']});
  return {generator_version:'0.4.8',factions,
   places:{root_id:'land',counts:{all_places:Object.keys(nodes).length},nodes},
@@ -75,13 +75,15 @@ async function testUI(){
  assert(texts.includes('Eagle Faction'));
  assert(texts.some(x=>x.includes('Shared with Eagle Faction')));
  assert.strictEqual(active.app.querySelectorAll('details').length,6);
+ assert(!texts.some(x=>['zone','site','location'].includes(x.toLowerCase())), 'Faction role labels must be hidden');
  let nav=active.app.children.find(x=>x.tagName==='nav');assert(nav);
  nav.children.find(x=>x.textContent==='Explore').fire('click');
  texts=allText(active.app);
- assert(texts.includes("Wolf's City"));
- assert(texts.includes('Claw Den'));
+ assert(texts.includes("The Wolf's City"));
+ assert(texts.includes('The Den'));
  assert(texts.includes('Den Gate'));
  assert(texts.includes('City Gatehouse'));
+ assert(!texts.some(x=>['zone','site','location'].includes(x.toLowerCase())), 'Explore role labels must be hidden');
  const statusIcons=active.app.querySelectorAll('svg');
  assert(statusIcons.length>=3);
  const top=active.app.children.find(x=>x.tagName==='header');
