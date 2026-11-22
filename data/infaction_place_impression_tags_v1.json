@@ -251,7 +251,9 @@
       "Power",
       "Mystery"
     ],
-    "Squawk": [],
+    "Squawk": [
+      "Community"
+    ],
     "Chirp": [
       "Community"
     ],
@@ -546,7 +548,10 @@
       "Community",
       "Prestige"
     ],
-    "Sewer": [],
+    "Sewer": [
+      "Mystery",
+      "Community"
+    ],
     "Shelter": [
       "Nature",
       "Community"
@@ -589,7 +594,10 @@
       "Commerce",
       "Prestige"
     ],
-    "Tunnel": [],
+    "Tunnel": [
+      "Mystery",
+      "Power"
+    ],
     "Vault": [
       "Power",
       "Mystery"
@@ -725,8 +733,7 @@
     "Sanctuary": [
       "Mystery",
       "Nature",
-      "Community",
-      "Prestige"
+      "Community"
     ],
     "Shipyard": [
       "Commerce"
