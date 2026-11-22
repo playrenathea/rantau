@@ -5,7 +5,7 @@ rank cutoffs remain explicit tuneable inputs.
 from __future__ import annotations
 import hashlib,math
 
-VERSION="hidden-restricted-A-strong-faction-fallback-v1-locked"
+VERSION="hidden-restricted-A-city-permanent-gatehouse-2026-11-22"
 PROBABILITY={0:0.,1:.05,2:.15,3:.35,4:.60,5:.80}
 MINIMUM={"hidden":1,"restricted":2}
 TARGET={"hidden":2,"restricted":3}
@@ -92,17 +92,26 @@ def apply(places,ownership,seed,*,minimum=None,target=None,gate_types=None):
         if r["visible"]==4 and r["hidden"]:assert r["reason_hidden"]=="strong_faction_fallback"
         if r["accessible_outsider"]==4 and r["restricted"]:assert r["reason_restricted"]=="strong_faction_fallback"
         label=gates.get(r["name"])
-        if r["restricted"] and label:
+        # City has a permanent structural Gatehouse, independent of its
+        # randomized Restricted state. Other Places retain gated-if-restricted.
+        always_city = r["id"] == "city" and r["name"] == "City"
+        if (always_city or r["restricted"]) and label:
             access_nodes.append({"id":"access:"+r["id"],
                 "name":r["name"]+" "+label,"type":label,
                 "from_parent_id":r["parent_id"],"to_place_id":r["id"],
-                "relation":"access_via"})
+                "relation":"access_via",
+                "permanent":bool(always_city),
+                "locked":bool(r["restricted"])})
     summary={"place_count":len(rows),"hidden":sum(r["hidden"] for r in rows),
              "restricted":sum(r["restricted"] for r in rows),
              "both":sum(r["hidden"] and r["restricted"] for r in rows),
              "access_nodes":len(access_nodes),
+             "city_gatehouse_present":any(g["to_place_id"]=="city" for g in access_nodes),
              "hidden_strong_fallback":sum(r["reason_hidden"]=="strong_faction_fallback" for r in rows),
              "restricted_strong_fallback":sum(r["reason_restricted"]=="strong_faction_fallback" for r in rows)}
+    if any(r["id"] == "city" for r in rows):
+        assert sum(g["to_place_id"] == "city" and g["type"] == "Gatehouse"
+                   for g in access_nodes) == 1, "City must have exactly one Gatehouse"
     summary.update({"hidden_target_met":summary["hidden"]>=target["hidden"],
                     "restricted_target_met":summary["restricted"]>=target["restricted"],
                     "hidden_minimum_met":summary["hidden"]>=minimum["hidden"],
