@@ -1,6 +1,14 @@
 > **CURRENT INFACTION BASELINE — v0.4.8 DESIGN LOCKED (2026-11-22)**  
 > [Canonical v0.4.8 specification](specs/INFACTION_CURRENT_LOCKED_V0.4.8.md). Supersedes the v0.4.7 design direction, while preserving prior checkpoints. The single Book1 symmetric Proximity matrix governs geographic affinity; **Containment is canceled**. Site postprocessing: targeted Farm/Ship family prune, Garden-first/Grounds fallback with 12 flagged child types, optional valid non-family replacement for canceled Sites. [Site postprocessor v3](infaction_site_postprocess_v3.py) · [Pinned v0.4.8 Colab](notebooks/Infaction_Site_Companion_v0.4.8_LOCKED.ipynb). **DESIGN LOCK ≠ full v0.4.8 runtime verification**: the companion still executes historical upstream selection, and live hosted-Colab clean run has not been verified.
 
+## Latest: v0.4.8 World + Access design lock (2026-11-22)
+
+**Try the [World + Access Colab](https://colab.research.google.com/github/playrenathea/rantau/blob/main/notebooks/Infaction_v0.4.8_World_Access_LOCKED.ipynb)** ([Drive notebook](https://drive.google.com/file/d/1oglAA9CloTWDABMJ2Y45Tp5s7xN_UAf2/view)). Runs site-stage companion with **preserve-first political ownership**, **Neutral static v2.1 (118/118)**, **Hidden/Restricted probability + minimum repair + Strong Faction Override**, and optional **Gatehouse/Checkpoint/etc. access nodes**. Final single JSON contains all Factions and geographic Place tree, original spatial relations, political ownership, Hidden/Restricted, and access-node links.
+
+Python: [preserve-first owner + exporter integration](infaction_ownership_hidden_restricted_locked.py) and [Hidden/Restricted postprocessor](infaction_hidden_restricted_locked.py). Full details / QA in [canonical v0.4.8 specification](specs/INFACTION_CURRENT_LOCKED_V0.4.8.md#ownership-preserve-first--hiddenrestricted-access--design-locked-2026-11-22).
+
+**Important:** locked postprocessing direction is not certification of the full v0.4.8 generator runtime. Current notebook uses historical v0.4.6 selection and has not been clean-run on hosted Colab as an integrated current generator. Draft Faction Type rank values and Site thresholds still need independent final approval.
+
 ## Complete World JSON export — v0.4.8 Site companion
 
 - [Open Colab](https://colab.research.google.com/github/playrenathea/rantau/blob/main/notebooks/Infaction_Site_Companion_v0.4.8_LOCKED.ipynb) or [Drive notebook](https://drive.google.com/file/d/1oglAA9CloTWDABMJ2Y45Tp5s7xN_UAf2/view). Run all cells and download `infaction_complete_world_seed_<SEED>_v0.4.8-site.json`.
