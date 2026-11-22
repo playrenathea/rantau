@@ -35,6 +35,19 @@ def main():
     assert set(seeds) == expected_stages
     assert len(set(seeds.values())) == len(seeds)
     assert exported["generation_seeds"] == seeds
+    assert exported["place_naming"]["vocabulary_version"] == "animal-place-flavor-v2-active-2026-11-22"
+    assert exported["place_naming"]["impression_version"] == "impression-tags-v2-active-2026-11-22"
+    assert "redundancy_suppressed" in exported["place_naming"]["summary"]
+    for node in exported["places"]["nodes"].values():
+        naming = node["attributes"].get("naming", {})
+        if naming.get("redundancy_suppressed"):
+            assert naming["flavor"] is None
+            assert naming["weight"] == 0
+            assert naming["selected_flavor"] is not None
+            if node["generation_role"] == "city" or naming["source"] == "single":
+                assert node["display_name"].endswith("'s " + node["base_name"])
+            else:
+                assert node["display_name"] == node["base_name"]
     assert exported["generator_version"] == "0.4.8"
     assert len(exported["factions"]) == 6
     assert len(world["zone_generation"]["zones"]) in (7, 8, 9)
