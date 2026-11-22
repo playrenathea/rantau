@@ -40,6 +40,16 @@ def main():
     assert len(world["zone_generation"]["zones"]) in (7, 8, 9)
     assert world["location_generation"]["effective_pool"] == 71
     assert world["location_generation"]["missing_minimum"] == {}
+    original_city_scores = {
+        place: int(record["inside_city_original"])
+        for place, record in scope["scope"]["MASTER"]["raw"]["place_catalog"].items()
+    }
+    assert len(original_city_scores) == 118
+    assert "Town Hall" in original_city_scores
+    assert (set(placement["zones"]) | set(placement["locations"])) <= set(original_city_scores)
+    assert scope["_site_run_token"] == scope["scope"]["run_token"]
+    assert all(site["parent_zone"] is None or site["parent_zone"] in placement["zones"]
+               for site in sites["sites"])
     locations = placement["locations"]
     assert len(locations) >= world["location_generation"]["target"]
     assert len(locations) == len(set(locations))
