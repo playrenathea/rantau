@@ -38,16 +38,36 @@ def main():
     assert exported["place_naming"]["vocabulary_version"] == "animal-place-flavor-v2-active-2026-11-22"
     assert exported["place_naming"]["impression_version"] == "impression-tags-v2-active-2026-11-22"
     assert "redundancy_suppressed" in exported["place_naming"]["summary"]
-    for node in exported["places"]["nodes"].values():
+    by_id = {f["id"]: f for f in exported["factions"]}
+    government = next(f for f in exported["factions"] if "Government" in f["types"])
+    nodes = exported["places"]["nodes"]
+    for node in nodes.values():
         naming = node["attributes"].get("naming", {})
-        if naming.get("redundancy_suppressed"):
+        base = node["base_name"]
+        role = node["generation_role"]
+        ownership = node["attributes"].get("political_ownership", {"kind": "none", "factions": []})
+        if role == "city":
+            assert node["display_name"].startswith(government["animal"] + "'s ")
+            assert node["display_name"].endswith(" City")
+        elif role in ("root", "land"):
+            assert node["display_name"] == base
+        elif ownership["kind"] == "single":
+            animal = by_id[ownership["factions"][0]]["animal"]
+            assert node["display_name"] == "The " + animal + "'s " + base
             assert naming["flavor"] is None
-            assert naming["weight"] == 0
-            assert naming["selected_flavor"] is not None
-            if node["generation_role"] == "city" or naming["source"] == "single":
-                assert node["display_name"].endswith("'s " + node["base_name"])
-            else:
-                assert node["display_name"] == node["base_name"]
+        elif ownership["kind"] == "dual":
+            assert node["display_name"] == "The " + base
+            assert naming["flavor"] is None
+        else:
+            assert ownership["kind"] == "none"
+            assert node["display_name"] == base
+            assert naming["flavor"] is None
+    city_gate = [gate for gate in exported["access_nodes"]
+                 if gate["to_place_id"] == "city"]
+    assert len(city_gate) == 1
+    assert city_gate[0]["type"] == "Gatehouse"
+    assert city_gate[0]["permanent"] is True
+    assert city_gate[0]["locked"] == nodes["city"]["attributes"]["hidden_restricted"]["restricted"]
     assert exported["generator_version"] == "0.4.8"
     assert len(exported["factions"]) == 6
     assert len(world["zone_generation"]["zones"]) in (7, 8, 9)
