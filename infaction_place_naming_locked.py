@@ -2,14 +2,15 @@
 
 Original Animal associations from the 109-term locked vocabulary are preserved.
 Place and Flavor may receive 1–6 impression tags; intersection gives weight 3,
-no intersection gives 1, Item-only/not-grammatical gives 0.
+no intersection gives 1, Item-only gives 0. Flavor redundancy is checked AFTER weighted selection without reroll.
 Dual ownership requires shared Animal association AND weight 3.
 Original geographic name, IDs, access gates, ownership and topology unchanged.
 """
 from __future__ import annotations
 import hashlib
+import re
 
-VERSION = "animal-place-naming-v2-impression-tags-2026-11-22"
+VERSION = "animal-place-naming-v2-postselection-redundancy-2026-11-22"
 SEGMENTS = frozenset(("Power", "Mystery", "Nature", "Community", "Commerce", "Prestige"))
 CITY_TAGS = ("Power", "Community", "Commerce", "Prestige")
 
@@ -20,9 +21,26 @@ def _unit(seed, place_id, purpose="flavor"):
 def _dynamic_weight(term, base_name, place_tags, flavor_tags):
     if term["suitable_for"] == "Item":
         return 0
-    if term["word"].lower() in base_name.lower().split():
-        return 0
     return 3 if set(flavor_tags[term["word"]]).intersection(place_tags) else 1
+
+def _is_redundant(flavor, base_name):
+    """Case-insensitive exact word/phrase match; plural remains intentionally distinct."""
+    if not flavor:
+        return False
+    tokens = re.findall(r"[^\\W_]+", base_name.casefold(), flags=re.UNICODE)
+    flavor_tokens = re.findall(r"[^\\W_]+", flavor.casefold(), flags=re.UNICODE)
+    return bool(flavor_tokens) and any(
+        tokens[i:i+len(flavor_tokens)] == flavor_tokens
+        for i in range(len(tokens)-len(flavor_tokens)+1)
+    )
+
+
+def _post_selection(flavor, weight, base_name):
+    """Drop a selected redundant Flavor, never reroll or remove the Animal prefix."""
+    if _is_redundant(flavor, base_name):
+        return None, 0, True
+    return flavor, weight, False
+
 
 def _pick(seed, place_id, animal_ids, records, base_name, place_tags, flavor_tags,
           dual=False):
@@ -68,6 +86,7 @@ def apply(world, vocabulary, impressions):
         "dual_without_overlap": 0, "none": 0, "places_named": 0,
         "unmodified": 0, "city_weight_3": 0, "city_weight_1": 0,
         "single_weight_3": 0, "single_weight_1": 0,
+        "redundancy_suppressed": 0,
     }
     for pid, node in geo.items():
         base = node.get("base_name", node["name"])
@@ -79,6 +98,8 @@ def apply(world, vocabulary, impressions):
         flavor = None
         weight = 0
         animals = []
+        redundant = False
+        picked_flavor = None
         place_key = impressions["derived_place_aliases"].get(base, base)
         if role == "city":
             tags = list(CITY_TAGS)
@@ -89,7 +110,9 @@ def apply(world, vocabulary, impressions):
         if role == "city":
             animals = [government["animal"]]
             flavor, weight = _pick(seed, pid, animals, records, base, tags, f_tags)
-            display = animals[0] + "'s " + flavor + " " + base if flavor else base
+            picked_flavor = flavor
+            flavor, weight, redundant = _post_selection(flavor, weight, base)
+            display = animals[0] + "'s " + (flavor + " " if flavor else "") + base
             stats["city"] += 1
             if flavor:
                 stats["city_weight_" + str(weight)] += 1
@@ -100,7 +123,9 @@ def apply(world, vocabulary, impressions):
             assert len(faction_ids) == 1
             animals = [byid[faction_ids[0]]["animal"]]
             flavor, weight = _pick(seed, pid, animals, records, base, tags, f_tags)
-            display = animals[0] + "'s " + flavor + " " + base if flavor else base
+            picked_flavor = flavor
+            flavor, weight, redundant = _post_selection(flavor, weight, base)
+            display = animals[0] + "'s " + (flavor + " " if flavor else "") + base
             stats["single"] += 1
             if flavor:
                 stats["single_weight_" + str(weight)] += 1
@@ -110,6 +135,8 @@ def apply(world, vocabulary, impressions):
             animals = [byid[i]["animal"] for i in faction_ids]
             flavor, weight = _pick(
                 seed, pid, animals, records, base, tags, f_tags, dual=True)
+            picked_flavor = flavor
+            flavor, weight, redundant = _post_selection(flavor, weight, base)
             display = flavor + " " + base if flavor else base
             stats["dual_with_overlap" if flavor else "dual_without_overlap"] += 1
             assert weight in (0, 3)
@@ -117,10 +144,12 @@ def apply(world, vocabulary, impressions):
             assert kind == "none" and not owner["factions"]
             display = base
             stats["none"] += 1
+        stats["redundancy_suppressed"] += int(redundant)
         node["display_name"] = display
         node["attributes"]["naming"] = {
             "version": VERSION, "base_name": base, "display_name": display,
             "flavor": flavor, "weight": weight,
+            "selected_flavor": picked_flavor, "redundancy_suppressed": redundant,
             "impression_tags": list(tags), "animal_ids": animals,
             "source": "government_city" if role == "city" else kind,
         }
