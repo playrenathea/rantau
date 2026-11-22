@@ -1,5 +1,5 @@
 (()=>{"use strict";
-const $=id=>document.getElementById(id),STATE_KEY='infaction-mvp-entered-v1',WORLD_KEY='infaction-mvp-world-json-v1';
+const $=id=>document.getElementById(id),STATE_KEY='infaction-mvp-entered-v1';
 const el=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=String(text);return n};
 const ICON={
 lock:'<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>',
@@ -7,7 +7,7 @@ hidden:'<path d="M3 3l18 18M10.6 5.2A10.8 10.8 0 0 1 12 5c4.4 0 8.3 2.7 10 7-.6 
 gate:'<path d="M5 21V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v17M5 21h14M8 21V8h8v13M13 14h.01"/>'
 };
 function icon(name,label){const span=el('span','');span.title=label;span.setAttribute('aria-label',label);span.innerHTML='<svg class="signal" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'+ICON[name]+'</svg>';return span}
-let world=null,tab='factions',loadError=null;
+let world=null,tab='factions',loadError=null,worker=null,generating=false,progress='';
 function validateWorld(data){
  if(!data||!Array.isArray(data.factions)||data.factions.length!==6)throw Error('Expected six Factions');
  if(!data.places||!data.places.nodes||!data.places.root_id)throw Error('Place tree missing');
@@ -29,7 +29,7 @@ function renderIntro(){
  const triggerText=el('span',null,'Hold to enter');trigger.append(triggerText);
  center.append(h,p,trigger,tip);shell.append(center);app.append(shell);
  let timer=null,started=0;
- const enter=()=>{if(timer!==null){clearTimeout(timer);timer=null}try{sessionStorage.setItem(STATE_KEY,'1')}catch(e){}renderApp();loadWorld()};
+ const enter=()=>{if(timer!==null){clearTimeout(timer);timer=null}try{sessionStorage.setItem(STATE_KEY,'1')}catch(e){}renderApp();generateWorld()};
  const down=e=>{if(e.button!==undefined&&e.button!==0)return;started=Date.now();timer=setTimeout(enter,650)};
  const clear=()=>{if(timer!==null){clearTimeout(timer);timer=null}trigger.style.setProperty('--hold','0')};
  shell.addEventListener('pointerdown',down);shell.addEventListener('pointerup',clear);shell.addEventListener('pointercancel',clear);shell.addEventListener('pointerleave',clear);
@@ -84,34 +84,57 @@ function renderFactions(content){
   card.append(body);
  }
 }
-function missing(content){
- const box=el('div');box.id='missing';box.append(el('h2',null,'World data unavailable'));
- box.append(el('p',null,'Load a JSON exported by the Infaction v0.4.8 Colab. The interface will use the generated Factions, ownership, Places and access nodes directly.'));
- const file=el('input');file.type='file';file.accept='.json,application/json';file.setAttribute('aria-label','Import generated world JSON');
- file.addEventListener('change',async()=>{if(!file.files?.length)return;try{const data=validateWorld(JSON.parse(await file.files[0].text()));world=data;try{localStorage.setItem(WORLD_KEY,JSON.stringify(data))}catch(e){}renderApp()}catch(e){loadError=e.message;renderApp()}});
- box.append(file);
- const retry=el('button','light-btn','Check published world');retry.type='button';
- retry.style.marginTop='12px';retry.addEventListener('click',()=>{loadError=null;loadWorld()});box.append(retry);
- const source=el('p');const link=el('a',null,'Open Colab generator');link.href='https://colab.research.google.com/github/playrenathea/rantau/blob/main/notebooks/Infaction_v0.4.8_World_Access_HOTFIX_20261122.ipynb';link.target='_blank';link.rel='noopener noreferrer';source.append(link);box.append(source);
- if(loadError)box.append(el('p',null,loadError));content.append(box);
+function loading(content){
+ const box=el('section');box.id='missing';
+ const title=el('h2',null,generating?'Generating world':'World generation unavailable');box.append(title);
+ box.append(el('p',null,generating?(progress||'Starting the original v0.4.8 Python generator…'):(loadError||'Generation did not complete.')));
+ if(!generating){
+  const retry=el('button','light-btn','Retry generation');retry.type='button';
+  retry.addEventListener('click',generateWorld);box.append(retry);
+ }
+ content.append(box);
+}
+function generateWorld(){
+ if(generating)return;
+ if(typeof Worker==='undefined'){loadError='This browser does not support Web Workers.';renderApp();return}
+ generating=true;progress='Loading original Python generator';loadError=null;world=null;renderApp();
+ if(!worker){
+  try{worker=new Worker('./infaction-python-worker.js?v=0.5.1')}catch(e){generating=false;loadError=e.message;renderApp();return}
+  worker.onmessage=e=>{
+   const m=e.data||{};
+   if(m.type==='status'){
+    progress=m.message;
+    const box=$('missing');
+    if(box){const p=box.querySelector('p');if(p)p.textContent=progress}
+   }else if(m.type==='world'){
+    try{world=validateWorld(m.world);generating=false;loadError=null;renderApp()}
+    catch(err){generating=false;loadError=err.message;renderApp()}
+   }else if(m.type==='error'){
+    generating=false;loadError=m.message||'Generation failed';
+    console.error('Native Infaction generator:',m.traceback||m.message);renderApp();
+   }
+  };
+  worker.onerror=e=>{generating=false;loadError=e.message||'Python worker failed to start';renderApp()};
+ }
+ worker.postMessage({type:'generate'});
 }
 function renderApp(){
  const app=$('app');app.replaceChildren();
- const top=el('header','top');top.append(el('h1','brand','Infaction'));top.append(el('span','status',world?'World · '+world.factions.length+' Factions':'World'));app.append(top);
+ const top=el('header','top');top.append(el('h1','brand','Infaction'));const actions=el('div','header-actions');
+ const reroll=el('button','light-btn',generating?'Generating…':'↻ Reroll');
+ reroll.type='button';reroll.disabled=generating;reroll.addEventListener('click',generateWorld);
+ actions.append(reroll);
+ actions.append(el('span','status',world?'6 Factions · v0.4.8':(generating?'Generating':'World')));
+ top.append(actions);app.append(top);
  const nav=el('nav','nav');nav.setAttribute('aria-label','Main tabs');
  for(const [key,title] of [['factions','Factions'],['explore','Explore']]){const btn=el('button','tab',title);btn.setAttribute('role','tab');btn.setAttribute('aria-selected',String(tab===key));btn.addEventListener('click',()=>{tab=key;renderApp()});nav.append(btn)}
  app.append(nav);
  const content=el('main');content.id='content';app.append(content);
- if(!world){missing(content);return}
+ if(!world){loading(content);return}
  const count=world.places.counts?.all_places||Object.keys(world.places.nodes).length;
  content.append(el('div','summary',tab==='explore'?count+' Places · expand to explore':world.factions.length+' Factions · Single & Dual ownership'));
  if(tab==='explore')renderExplore(content);else renderFactions(content);
 }
-async function loadWorld(){
- if(world)return;
- try{const cached=localStorage.getItem(WORLD_KEY);if(cached){world=validateWorld(JSON.parse(cached));renderApp();return}}catch(e){}
- try{const res=await fetch('./data/infaction_current_world.json',{cache:'no-store'});if(!res.ok)throw Error('World JSON not published yet ('+res.status+')');world=validateWorld(await res.json());renderApp()}catch(e){loadError=e.message;renderApp()}
-}
 let entered=false;try{entered=sessionStorage.getItem(STATE_KEY)==='1'}catch(e){}
-if(entered){renderApp();loadWorld()}else renderIntro();
+if(entered){renderApp();generateWorld()}else renderIntro();
 })();
