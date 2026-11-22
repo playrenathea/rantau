@@ -226,3 +226,13 @@ The original Animal associations and all 109 original Impression Tag arrays rema
 - Log both `selected_flavor` and `redundancy_suppressed` for diagnosis; `flavor` is null and `weight` 0 if suppressed. Count suppressions in naming summary. Naming is idempotent on original base names, without editing Place IDs, geographic parents, ownership, or access node labels.
 
 Implementation: [infaction_place_naming_locked.py](../infaction_place_naming_locked.py). Regression tests: [tests/test_infaction_naming_redundancy.py](../tests/test_infaction_naming_redundancy.py). Active Colab imports this Python module from GitHub at runtime; **Flavor v2 candidate vocabulary remains staged, not production-promoted**. Hosted Colab end-to-end run of this revision remains unverified.
+
+## Flavor v2 activation — 2026-11-22
+
+At user direction, all **291 staged Flavor words** (109 legacy + 182 new) are now the active naming vocabulary in the canonical Python/Colab pipeline. Source: [active Flavor v2](../data/infaction_animal_place_flavor_v2.json), [active Impression v2](../data/infaction_place_impression_tags_v2.json). The old v1 and v2 candidate sources are retained unchanged as historical rollback inputs. **291 is the active count**, not a declaration that editorial associations are final. Wolf/Dragon and other broadly associated Animals still warrant tuning; review may later reduce to the 200–250 aspirational range.
+
+- Canonical [Colab](../notebooks/Infaction_v0.4.8_World_Access_HOTFIX_20261122.ipynb) final naming stage loads the active v2 files and asserts 291 Flavor records, 291 tag maps and the active version.
+- Current naming engine uses 1–6 Impression Tags, existing 0/1/3 weights and exact-word post-selection redundancy suppression without reroll. Single and City keep their Animal prefix; Dual falls back to the base Place.
+- [Browser naming lab](../infaction-flavor-v2-lab.html) fetches the active JSON and demonstrates Single/Dual/City/None names; [legacy web MVP index](../index.html) links to it. **The old JS world generator remains v0.3.x and does not implement the Python v0.4.8 world pipeline**. The lab is a connected naming preview, not a false claim of full JS engine parity.
+- [CI workflow](../.github/workflows/infaction-flavor-v2-qa.yml) checks vocabulary, redundancy regressions, and headless integrated notebook. This workflow is committed; no completed GitHub Actions run or hosted Colab successful run has yet been confirmed. Static source/data QA and browser script syntax/regex cases have been verified.
+- Master Sheet `v0.4.8 LOCK` contains the activation checkpoint; `Flavor v2 CANDIDATES` remains the curation table. Do not assert JS generator parity or certified end-to-end runtime before observing successful runs.
