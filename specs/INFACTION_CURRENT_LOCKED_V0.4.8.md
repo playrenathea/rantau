@@ -236,3 +236,15 @@ At user direction, all **291 staged Flavor words** (109 legacy + 182 new) are no
 - [Browser naming lab](../infaction-flavor-v2-lab.html) fetches the active JSON and demonstrates Single/Dual/City/None names; [legacy web MVP index](../index.html) links to it. **The old JS world generator remains v0.3.x and does not implement the Python v0.4.8 world pipeline**. The lab is a connected naming preview, not a false claim of full JS engine parity.
 - [CI workflow](../.github/workflows/infaction-flavor-v2-qa.yml) checks vocabulary, redundancy regressions, and headless integrated notebook. This workflow is committed; no completed GitHub Actions run or hosted Colab successful run has yet been confirmed. Static source/data QA and browser script syntax/regex cases have been verified.
 - Master Sheet `v0.4.8 LOCK` contains the activation checkpoint; `Flavor v2 CANDIDATES` remains the curation table. Do not assert JS generator parity or certified end-to-end runtime before observing successful runs.
+
+## Minimal Infaction MVP — 2026-11-22
+
+Frontend entry point is [index.html](../index.html) with [infaction-mvp.js](../infaction-mvp.js) and [infaction-mvp.css](../infaction-mvp.css). The old v0.3.x selection GUI is preserved as [legacy-mvp.html](../legacy-mvp.html); it is no longer the root page. The first interaction is a single hold/long-press (650ms) or right-click of the intro, which directly enters the new MVP. The intro shows once per browser tab session; subsequent refreshes remain in MVP.
+
+**Tabs:**
+- **Explore** (default): expandable/collapsible The Land → City/Zone → Site → Location using the exported Place parent/child graph. Display the final named `display_name`, without generating aliases. Show Gate/Checkpoint as access nodes preceding their corresponding destination Place, and eye-slash and padlock for `hidden` and `restricted` flags.
+- **Factions**: all 6 Factions with their Faction Types, and owned Zones/Sites/Locations; a Dual-owned Place appears under both owners, marked with its other owner. All values derive from the exported `political_ownership` attributes, not a manual ownership reconstruction.
+
+The web viewer loads [data/infaction_current_world.json](../data/infaction_current_world.json) when the publisher successfully commits it; until that file exists it presents a JSON import UI, **not invented/demo data**. [Publishing workflow](../.github/workflows/publish-infaction-world.yml) is committed to generate a v0.4.8 world with v2 naming using `tests/smoke_infaction_v048_colab.py` and commit the output. The generated live file and hosted browser delivery have not yet been observed. JS syntax and a schema-compatible synthetic fixture have been executed and passed (tree, Gate, Shared Dual, intro context menu); fixture results are UI contract tests, not a claimed real generated world.
+
+**Repository slug:** currently `playrenathea/rantau`. A GitHub repo rename to `playrenathea/infaction` is still an external admin operation not supported by the current connected GitHub actions. The user can rename it via repository Settings → General → Repository name. Hardcoded Colab/raw references must be migrated afterward.
