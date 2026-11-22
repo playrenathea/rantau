@@ -13,6 +13,8 @@
 
 **Editable tag mirror:** [MASTER Google Sheet](https://docs.google.com/spreadsheets/d/1hihvEPBM9FXZxzhjHRTGEqYg9jhCXiuONV8mIKj2pwc/edit), tabs `Naming Impression Flavor` (109 rows) and `Naming Impression Place` (118 rows). **Runtime source of truth remains the versioned GitHub JSON**; changes made only in the Google Sheet must be synced to JSON before they affect generator output.
 
+**Naming v2 FINAL LOCK / actual replay QA:** After editorial tag tuning (22 Baby Animal words → Nature; Hiss → Mystery; Underworld → Mystery), 16 archived historical generator seeds were rerun and current tag-based naming replayed for 568 Place rows: Single 3 = 72, Single 1 = 37, Dual 3 = 18, Dual unchanged = 63, None = 378. Actual observed output includes `Lion's Den City`, `Fang Military Base`, `Skull Rebel Camp`, and `Beak Library`; unusual but grammatical names remain acceptable. See [replay QA report](experiments/INFACTION_IMPRESSION_TAG_NAMING_QA_2026-11-22.md). This **does not certify** a hosted clean end-to-end v0.4.8 Colab run.
+
 ## Latest: v0.4.8 World + Access design lock (2026-11-22)
 
 **Try the [World + Access Colab](https://colab.research.google.com/github/playrenathea/rantau/blob/main/notebooks/Infaction_v0.4.8_World_Access_HOTFIX_20261122.ipynb)** ([Drive notebook](https://drive.google.com/file/d/1oglAA9CloTWDABMJ2Y45Tp5s7xN_UAf2/view)). Runs site-stage companion with **preserve-first political ownership**, **Neutral static v2.1 (118/118)**, **Hidden/Restricted probability + minimum repair + Strong Faction Override**, and optional **Gatehouse/Checkpoint/etc. access nodes**. Final single JSON contains all Factions and geographic Place tree, original spatial relations, political ownership, Hidden/Restricted, and access-node links.
