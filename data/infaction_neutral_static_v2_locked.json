@@ -8,7 +8,7 @@
   "formula": "Openness=25*sqrt(Visible_0to4*AccessibleOutsider_0to4); Pressure=.40*max(Type13)+.30*mean(top3(Type13))+.30*mean(all13(Type13)); Neutral=clip(Openness*(1-.55*Pressure/100)+ContextAdjustment,0,100), hard zero if Visible=0 or Access=0",
   "stats": {
     "count": 118,
-    "changed": 48,
+    "changed": 43,
     "neutral_mean": 47.541,
     "neutral_std": 16.668,
     "neutral_min": 0,
@@ -92,7 +92,8 @@
         "min": 10,
         "max": 100
       }
-    ]
+    ],
+    "nonzero_context_adjustment_count": 48
   },
   "records": [
     {
@@ -1418,6 +1419,7 @@
       "Sanctuary": 0,
       "Shipyard": -7
     },
-    "old_110_records_unchanged": true
+    "old_110_records_unchanged": true,
+    "stats_note": "changed=37 historically curated existing records + 6 newly added nonzero adjustments = 43; nonzero_context_adjustment_count=48 from current 118 records"
   }
 }
