@@ -1,16 +1,16 @@
-"""Infaction Place naming: six-segment multi-tag dynamic weighted selector.
+"""Infaction naming v3: city-only Animal Flavor, simple ownership names.
 
-Original Animal associations from the 109-term locked vocabulary are preserved.
-Place and Flavor may receive 1–6 impression tags; intersection gives weight 3,
-no intersection gives 1, Item-only gives 0. Flavor redundancy is checked AFTER weighted selection without reroll.
-Dual ownership requires shared Animal association AND weight 3.
-Original geographic name, IDs, access gates, ownership and topology unchanged.
+City: [Government Animal]'s [Flavor] City; existing weighted Impression
+selection and post-selection exact-word redundancy apply only to City.
+Owned Zone/Site/Location: Single = The [Animal]'s [Place],
+Dual = The [Place], None = [Place]. Root/The Land unchanged.
+All Place IDs, topology, access labels and source names remain unchanged.
 """
 from __future__ import annotations
 import hashlib
 import re
 
-VERSION = "animal-place-naming-v2-postselection-redundancy-2026-11-22"
+VERSION = "infaction-place-naming-v3-city-flavor-2026-11-22"
 SEGMENTS = frozenset(("Power", "Mystery", "Nature", "Community", "Commerce", "Prestige"))
 CITY_TAGS = ("Power", "Community", "Commerce", "Prestige")
 
@@ -122,24 +122,14 @@ def apply(world, vocabulary, impressions):
             faction_ids = owner["factions"]
             assert len(faction_ids) == 1
             animals = [byid[faction_ids[0]]["animal"]]
-            flavor, weight = _pick(seed, pid, animals, records, base, tags, f_tags)
-            picked_flavor = flavor
-            flavor, weight, redundant = _post_selection(flavor, weight, base)
-            display = animals[0] + "'s " + (flavor + " " if flavor else "") + base
+            display = "The " + animals[0] + "'s " + base
             stats["single"] += 1
-            if flavor:
-                stats["single_weight_" + str(weight)] += 1
         elif kind == "dual":
             faction_ids = owner["factions"]
             assert len(faction_ids) == 2 and len(set(faction_ids)) == 2
             animals = [byid[i]["animal"] for i in faction_ids]
-            flavor, weight = _pick(
-                seed, pid, animals, records, base, tags, f_tags, dual=True)
-            picked_flavor = flavor
-            flavor, weight, redundant = _post_selection(flavor, weight, base)
-            display = flavor + " " + base if flavor else base
-            stats["dual_with_overlap" if flavor else "dual_without_overlap"] += 1
-            assert weight in (0, 3)
+            display = "The " + base
+            stats["dual_without_overlap"] += 1
         else:
             assert kind == "none" and not owner["factions"]
             display = base
