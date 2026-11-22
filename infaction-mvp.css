@@ -3,7 +3,7 @@
 #app{max-width:880px;min-height:100dvh;margin:auto;background:#fcfbf8;border-left:1px solid #e5e5df;border-right:1px solid #e5e5df}
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:22px 23px 12px}
 .brand{font-family:Georgia,"Times New Roman",serif;font-size:27px;letter-spacing:-.8px;margin:0;font-weight:500}
-.status{font-size:11px;color:#7a8179;white-space:nowrap}
+.status{font-size:11px;color:#7a8179;white-space:nowrap}.header-actions{display:flex;align-items:center;gap:9px}.header-actions .light-btn{font-size:12px;padding:7px 10px}
 .nav{display:flex;gap:18px;padding:0 23px;border-bottom:1px solid #e1e5dd}
 .tab{appearance:none;border:0;border-bottom:2px solid transparent;color:#7e857c;background:transparent;padding:13px 0 11px;font-weight:600}
 .tab[aria-selected=true]{color:#2b4d39;border-color:#2f6344}
