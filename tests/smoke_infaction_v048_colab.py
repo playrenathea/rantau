@@ -47,8 +47,8 @@ def main():
         role = node["generation_role"]
         ownership = node["attributes"].get("political_ownership", {"kind": "none", "factions": []})
         if role == "city":
-            assert node["display_name"].startswith(government["animal"] + "'s ")
-            assert node["display_name"].endswith(" City")
+            assert node["display_name"] == "The " + government["animal"] + "'s City"
+            assert naming["flavor"] is None
         elif role in ("root", "land"):
             assert node["display_name"] == base
         elif ownership["kind"] == "single":
