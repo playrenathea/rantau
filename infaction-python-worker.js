@@ -20,9 +20,7 @@ const PATHS=[
   'infaction_world_json_export_v048.py',
   'infaction_hidden_restricted_locked.py',
   'infaction_ownership_hidden_restricted_locked.py',
-  'data/infaction_animal_place_flavor_v2.json',
-  'infaction_place_naming_locked.py',
-  'data/infaction_place_impression_tags_v2.json'
+  'infaction_place_naming_locked.py'
 ];
 let interpreter=null,assetText=null,inFlight=false,ready=false;
 const say=(message)=>self.postMessage({type:'status',message});
@@ -74,8 +72,8 @@ with contextlib.redirect_stdout(io.StringIO()) as captured:
         exec(compile(src, 'infaction_v048_browser_cell_'+str(index), 'exec'), run_scope)
 full_world=run_scope['full_world']
 assert len(full_world['factions'])==6
-assert full_world['place_naming']['vocabulary_version']=='animal-place-flavor-v2-active-2026-11-22'
-assert full_world['place_naming']['impression_version']=='impression-tags-v2-active-2026-11-22'
+assert full_world['place_naming']['version']=='infaction-place-naming-v4-no-place-flavor-2026-11-22'
+assert full_world['place_naming']['vocabulary_version'] is None
 assert isinstance(full_world['access_nodes'],list)
 result_json=json.dumps(full_world,ensure_ascii=False,allow_nan=False)
 # Remove temporary Colab export files after serializing, to keep rerolls lightweight.
