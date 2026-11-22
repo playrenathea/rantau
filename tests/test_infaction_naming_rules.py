@@ -41,7 +41,7 @@ class NamingV3Tests(unittest.TestCase):
                 "place_tags":place_tags,
                 "derived_place_aliases":{}}
 
-    def test_grammar_and_city_flavor_only(self):
+    def test_grammar_without_place_flavor(self):
         world=self.make_world()
         data={"version":"test","records":[
              {"word":"Fang","animals":["Wolf"],"suitable_for":"Both"},
@@ -59,14 +59,13 @@ class NamingV3Tests(unittest.TestCase):
             imp["flavor_tags"][word]=["Nature"]
         fixed=naming.apply(world,data,imp)
         nodes=fixed["places"]["nodes"]
-        self.assertTrue(nodes["city"]["display_name"].startswith("Wolf's "))
-        self.assertTrue(nodes["city"]["display_name"].endswith(" City"))
-        self.assertIn(nodes["city"]["attributes"]["naming"]["flavor"],("Fang","Claw"))
+        self.assertEqual(nodes["city"]["display_name"],"The Wolf's City")
+        self.assertIsNone(nodes["city"]["attributes"]["naming"]["flavor"])
         self.assertEqual(nodes["zone:Fortress"]["display_name"],"The Wolf's Fortress")
         self.assertEqual(nodes["site:Market"]["display_name"],"The Market")
         self.assertEqual(nodes["location:Camp"]["display_name"],"Camp")
         self.assertEqual(nodes["land"]["display_name"],"The Land")
-        for id in ("zone:Fortress","site:Market","location:Camp"):
+        for id in ("city","zone:Fortress","site:Market","location:Camp"):
             self.assertIsNone(nodes[id]["attributes"]["naming"]["flavor"])
         self.assertEqual(fixed["place_naming"]["summary"]["city"],1)
         self.assertEqual(fixed["place_naming"]["summary"]["single"],1)
