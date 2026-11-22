@@ -51,7 +51,7 @@ def build_world_export(world, placement, city, site_grouping, place_catalog=None
             if state != city["zones"][z]["city"]: raise ValueError(f"Site City mismatch: {name}")
             parent="zone:"+z
         add("site:"+name,name,"site",parent,
-            {"site_selection":site,"city":state,"catalog":catalog.get(name,{}),
+            {"site_selection":site,"city":state,"catalog":catalog.get("Garden" if name=="Grounds" else name,{}),
              "affinity_profile":"Garden" if name=="Grounds" else name})
         if len(site["children"])<2: raise ValueError(f"Invalid Site size: {name}")
         for loc in site["children"]:
