@@ -27,8 +27,8 @@ def _is_redundant(flavor, base_name):
     """Case-insensitive exact word/phrase match; plural remains intentionally distinct."""
     if not flavor:
         return False
-    tokens = re.findall(r"[^\\W_]+", base_name.casefold(), flags=re.UNICODE)
-    flavor_tokens = re.findall(r"[^\\W_]+", flavor.casefold(), flags=re.UNICODE)
+    tokens = re.findall(r"[^\W_]+", base_name.casefold(), flags=re.UNICODE)
+    flavor_tokens = re.findall(r"[^\W_]+", flavor.casefold(), flags=re.UNICODE)
     return bool(flavor_tokens) and any(
         tokens[i:i+len(flavor_tokens)] == flavor_tokens
         for i in range(len(tokens)-len(flavor_tokens)+1)
