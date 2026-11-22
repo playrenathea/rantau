@@ -120,7 +120,15 @@ def attach_access(full_world, ownership, neutral, master, access_module):
         if pid=="land":continue
         name=node["name"]
         role=node["generation_role"]
-        c={"visible":4,"accessible_outsider":1} if role=="city" else catalog[name]
+        # Grounds is generated from Garden by the locked Site postprocessor.
+        # It intentionally has no independent Book1 catalog row.
+        catalog_name = "Garden" if role=="site" and name=="Grounds" else name
+        if role=="city":
+            c={"visible":4,"accessible_outsider":1}
+        else:
+            if catalog_name not in catalog:
+                raise KeyError(f"Missing Place nature for {name!r} (source {catalog_name!r})")
+            c=catalog[catalog_name]
         places.append({"id":pid,"name":name,"parent_id":node["parent_id"],
                        "visible":int(c["visible"]),"accessible_outsider":int(c["accessible_outsider"])})
         record=ownership["places"].get(name,{"kind":"none","factions":[]})
