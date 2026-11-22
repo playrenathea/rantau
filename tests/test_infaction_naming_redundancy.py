@@ -27,24 +27,27 @@ class RedundancyTests(unittest.TestCase):
         self.assertEqual(naming._dynamic_weight(
             term, "Gambling Den", ["Nature"], {"Den": ["Nature"]}), 3)
 
-    def test_selected_redundant_does_not_pick_next(self):
+    def test_selected_city_redundant_does_not_pick_next(self):
+        # Flavor selection and redundancy fallback now apply only to City.
         records = [
-            {"word": "Den", "suitable_for": "Location", "animals": ["Wolf"]},
+            {"word": "City", "suitable_for": "Location", "animals": ["Wolf"]},
             {"word": "Fang", "suitable_for": "Both", "animals": ["Wolf"]},
         ]
-        tags = {"Den": ["Nature"], "Fang": ["Power"]}
+        tags = {"City": ["Power"], "Fang": ["Mystery"]}
         original = naming._unit
         try:
             naming._unit = lambda *args, **kwargs: 0.0
             picked, weight = naming._pick(
-                13, "site:Den", ["Wolf"], records, "Den", ["Nature"], tags)
+                13, "city", ["Wolf"], records, "City", ["Power"], tags)
         finally:
             naming._unit = original
-        self.assertEqual(picked, "Den")
+        self.assertEqual(picked, "City")
         self.assertEqual(weight, 3)
-        self.assertEqual(naming._post_selection(picked,weight,"Den"),
-                         (None,0,True))
-        self.assertEqual("Wolf's " + "Den", "Wolf's Den")
+        flavor, effective_weight, suppressed = naming._post_selection(
+            picked, weight, "City")
+        self.assertEqual((flavor,effective_weight,suppressed),(None,0,True))
+        self.assertEqual("Wolf's " + (flavor + " " if flavor else "") + "City",
+                         "Wolf's City")
 
     def test_six_tag_overlap_still_weight_three(self):
         term={"word":"Trace","suitable_for":"Both"}
