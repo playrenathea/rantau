@@ -66,6 +66,35 @@ The Land [Place: root]
 - The original `Book1 Place Affinity` has complete 14 Function/13 Type/84 Base/Neutral raw data for all eight; [recovery file](../data/infaction_missing_8_place_affinity_book1_recovered.json) is source-only and original Book1 was not edited. The native Master Sheet `Recovered Scale 3 (8)` records the final values.
 - Faction Type openness/closedness is a **new discussion, not yet locked**: one scalar may mediate identity/status visibility, action visibility, and outsider access, but specific 13 Type values and downstream Hidden/Restricted rules are not specified. Do not conflate Place-visible/accessible data or Neutral with player-level Hidden/Restricted statuses.
 
+## Ownership preserve-first + Hidden/Restricted Access — DESIGN LOCKED 2026-11-22
+
+**Scope:** post-generation overlay. Original Faction generation, selected Places, original Book1 affinity, City, Site and geographic Place parent-child structure are never modified. The Land and City remain Places; access nodes are *additional navigational intermediaries*, **not** original geographic Places.
+
+**Political ownership (Zone + Site + Location):**
+1. Recalculate the pre-extension 50:50 A/B political Single/Dual labels for the original Zone and Location scope. **Preserve any pre-existing Single/Dual owner(s) exactly**.
+2. Calculate political affinity for ALL generated Zone + Site + Location Places together using source Book1 Type/Base and locked Neutral v2.1; A/B each normalized and blended 50:50. For original Faction-selected Zones and Locations ONLY, rebase all seven shares to 95% and add +5 percentage points to that selector Faction before Single/Dual test.
+3. **Only for Places previously `none`**, adopt the newly valid Single or Dual label; otherwise remain `none`. A selected Faction is never automatically made owner. For newly grouped Sites no historical owner exists, so ownership can be established from this calculation.
+4. Zone Single F1≥32%, lead≥7, F1>Neutral; Zone Dual F1≥26%, F2≥19%, top gap≤8, second-third gap≥3, F2>Neutral. Location thresholds Single F1≥28%, Dual F1≥23%, other conditions same. Site uses Location thresholds **provisionally** until the specific Site cutoff is explicitly finalized. City and The Land are excluded from political ownership computation.
+
+**Hidden/Restricted — Algorithm A:**
+- Independent statuses: Original Visible=0 → definitely Hidden, Accessible Outsider=0 → definitely Restricted.
+- Nature 1–3: `hidden_score=4-Visible + ActivityClosed + 2*IdentityClosed`; `restricted_score=4-Accessible + 2*ActivityClosed + Exclusive`. Faction modifiers currently apply to Single ownership only; Dual and None receive no modifiers. Nature 4 is excluded from normal roll.
+- Score-to-probability lookup: score 0→0%, 1→5%, 2→15%, 3→35%, 4→60%, 5→80%, 6+→95%. Stable seeded per-Place rolls; no cap on number of positive results.
+- After rolls, **repair only shortages** with weighted eligible Nature 1–3 candidates: hard minima Hidden≥1, Restricted≥2, and soft targets Hidden≥2, Restricted≥3. Prefer targets whenever enough valid candidates exist; keep all above-target outcomes.
+- If a target remains unmet, examine Nature=4 as **last-resort Strong Faction Override**: Single owner plus IdentityClosed AND ActivityClosed for Hidden; Single owner plus ActivityClosed AND Exclusive for Restricted. If no justified candidate exists, report unmet target rather than fabricating Hidden/Restricted.
+- Current experimental Faction Type rank mapping is explicit in `infaction_hidden_restricted_locked.py`; for double-Type Faction, IdentityClosed if **both** Types identity ranks 10–13, ActivityClosed if **either** Type activity rank 10–13, Exclusive if **either** Type exclusivity rank 1–4. **Rank values/cutoffs are tuneable provisional inputs**, not separately approved as permanent Faction Type worldbuilding facts.
+
+**Gate/Checkpoint/access node:**
+- Only when a Place is Restricted *and* its nature mapping has an access label, insert one navigational access node between its geographic parent and destination, named `[Place] [Gate Name]`. Never modify the destination's original geographic `parent_id`.
+- Current 18 mappings: Prison→Checkpoint, Factory→Entry Yard, Fortress→Gatehouse, Mine→Entry Yard, Outpost→Checkpoint, Palace→Courtyard, Research Facility→Checkpoint, Excavation Site→Entry Yard, Shipyard→Entry Yard, Citadel→Gatehouse, Enclave→Gatehouse, Estate→Gatehouse, Military Base→Checkpoint, Monastery→Reception, Rebel Camp→Checkpoint, Military District→Checkpoint, Royal Quarter→Gatehouse, City→Gatehouse. Restricted Places not in the mapping are direct Restricted without intermediary.
+- Gatehouse / Checkpoint / Courtyard / Reception / Entry Yard are active label options; Passage remains a reserved vocabulary option, not forced into current map.
+
+**QA (historical 2,000-world cohort, not hosted full v0.4.8):** original political Single/Dual decisions preserved 16,732 times (8,521 Single and 8,211 Dual), 7,233 previously None filled (5,031 Single / 2,202 Dual). Hidden mean 2.5105 (1–7); Hidden≥1 in 2,000/2,000 and ≥2 in 1,998/2,000. Restricted mean 6.678 (3–15); Restricted≥3 in 2,000/2,000. Access nodes mean 2.725. Nature=4 fallback passed synthetic positive/negative tests but was not triggered by those 2,000 historical worlds. Do not claim 100% universal guarantees outside tested cohort.
+
+**Canonical artifacts:** `infaction_ownership_hidden_restricted_locked.py`, `infaction_hidden_restricted_locked.py`, and [Colab with complete World JSON](https://colab.research.google.com/github/playrenathea/rantau/blob/main/notebooks/Infaction_v0.4.8_World_Access_LOCKED.ipynb). One JSON includes all six Factions, every original Place, preserve-first ownership, Hidden/Restricted flags with reason, and separate access nodes.
+
+**Runtime caveat:** This is a **design/overlay lock**. Colab's Faction/Zone/Location selection still uses historical v0.4.6 notebook, not the fully integrated current v0.4.8 generator. Full hosted Colab clean-run and complete 71-Location / Function repair / political exception integration remain **uncertified**. Do not silently label it as end-to-end v0.4.8 certified.
+
 ## Source precedence and frozen inputs
 1. Immutable original Book1 data and the canonical `data/infaction_master_v0.4.json` are the reference for original affinity scores, scales, functions, Types, Base Names and Animals.
 2. Approved overlays and mechanics in **this v0.4.8 specification** supersede earlier effective values, including any stale labels in the master Sheet or old Colab.
