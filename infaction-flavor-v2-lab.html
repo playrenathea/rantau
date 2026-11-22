@@ -1,82 +1,29 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Infaction · Naming v3 Lab</title>
-<style>
-:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#efeee9;color:#272b25;font:15px/1.5 system-ui,sans-serif}main{max-width:740px;margin:0 auto;min-height:100vh;padding:32px;background:#fcfbf7}
-a{color:#336347}h1{font:normal 32px Georgia,serif;margin:15px 0 8px}p{margin:8px 0 20px;color:#555f56}
-fieldset{border:1px solid #c5cbbf;border-radius:11px;padding:18px;margin:18px 0}
-legend{font-weight:650;padding:0 6px}
-label{display:block;font-weight:600;margin:12px 0 5px}
-select,input{width:100%;padding:11px;border:1px solid #afb7ac;border-radius:7px;background:#fff;color:#222;font:inherit}
-button{border:1px solid #356044;background:#356044;color:white;border-radius:8px;padding:12px 20px;cursor:pointer;font:inherit}
-button:disabled{opacity:.6;cursor:not-allowed}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.output{padding:20px;border:1px solid #c4cbbe;border-radius:12px;background:#f3f6ef;margin:18px 0}
-.name{font:normal 27px Georgia,serif;overflow-wrap:anywhere}.meta{font-size:13px;color:#536154;margin-top:8px}
-.note{font-size:13px;color:#67736a}code{font-size:13px}ul{padding-left:22px}
-@media(max-width:540px){main{padding:20px}.grid{grid-template-columns:1fr}}
-</style></head>
-<body><main><a href="./index.html">← Infaction MVP</a><h1>Infaction · Naming Lab</h1>
-<p>Place names follow simple ownership grammar. Only City uses the active 291-term Animal Flavor vocabulary and Impression Tags. This is a naming preview; the main MVP generates complete worlds.</p>
-<p id="status">Loading active Flavor v2 datasets…</p>
-<fieldset><legend>Naming inputs</legend>
-<div class="grid"><div><label for="kind">Ownership</label><select id="kind"><option value="single">Single</option><option value="dual">Dual</option><option value="city">City (Government Animal)</option><option value="none">None</option></select></div>
-<div><label for="place">Book1 Place</label><select id="place"></select></div></div>
-<div class="grid"><div><label for="animal1">Animal 1</label><select id="animal1"></select></div>
-<div><label for="animal2">Animal 2 (Dual)</label><select id="animal2"></select></div></div></fieldset>
-<button id="roll" disabled>Generate Name</button>
-<div id="result" class="output" aria-live="polite"><div class="name">—</div><div class="meta">Select inputs and roll.</div></div>
-<p class="note">Only City draws Flavor: 0 = Item-only, 1 = no tag match, 3 = tag match; exact redundant Flavor is suppressed without reroll. Single = The Animal's Place; Dual = The Place; None = Place. This naming preview uses a separate random draw, not Python's per-world seed.</p>
-<p class="note">Data: <a href="./data/infaction_animal_place_flavor_v2.json">active Flavor v2</a> · <a href="./data/infaction_place_impression_tags_v2.json">active Impression Tags v2</a>.</p>
-</main>
-<script>
-(async()=>{
-const el=id=>document.getElementById(id);
-const [voc,imp]=await Promise.all([
- fetch('./data/infaction_animal_place_flavor_v2.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Flavor HTTP '+r.status);return r.json()}),
- fetch('./data/infaction_place_impression_tags_v2.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Impression HTTP '+r.status);return r.json()})
-]);
-if(voc.records.length!==291||Object.keys(imp.flavor_tags).length!==291)throw Error('Incomplete active vocabulary');
-const animals=[...new Set(voc.records.flatMap(r=>r.animals))].sort();
-const places=Object.keys(imp.place_tags).sort();
-const populate=(id,values,preferred)=>{
- const node=el(id);for(const value of values){const o=document.createElement('option');o.value=value;o.textContent=value;node.add(o)}
- node.value=values.includes(preferred)?preferred:values[0];
-};
-populate('animal1',animals,'Wolf');populate('animal2',animals,'Bear');populate('place',places,'Den');
-el('status').textContent='ACTIVE · '+voc.records.length+' Flavor words · '+animals.length+' Animal types · '+places.length+' Book1 Place types';
-el('roll').disabled=false;
-const tokenize=s=>(s.toLocaleLowerCase().match(/[^\W_]+/gu)||[]);
-const redundant=(word,place)=>{
- const w=tokenize(word),p=tokenize(place);
- return w.length>0 && p.some((_,i)=>w.every((part,j)=>p[i+j]===part));
-};
-const view=()=>{const kind=el('kind').value;el('animal2').disabled=kind!=='dual';el('place').disabled=kind==='city';};
-el('kind').addEventListener('change',view);view();
-el('roll').addEventListener('click',()=>{
- const kind=el('kind').value,base=kind==='city'?'City':el('place').value,a1=el('animal1').value,a2=el('animal2').value;
- const tags=kind==='city'?['Power','Community','Commerce','Prestige']:imp.place_tags[base];
- let pool=[];
- if(kind==='city'){
- for(const term of voc.records){
- if(!term.animals.includes(a1))continue;
- if(term.suitable_for==='Item')continue;
- const overlap=imp.flavor_tags[term.word].some(tag=>tags.includes(tag));
- const weight=overlap?3:1;
- pool.push({word:term.word,weight});
- }
- }
- const total=pool.reduce((sum,x)=>sum+x.weight,0);
- let chosen=null;if(total){let target=Math.random()*total;for(const item of pool){target-=item.weight;if(target<0){chosen=item;break}}}
- const suppressed=chosen?redundant(chosen.word,base):false;
- const kept=chosen&&!suppressed?chosen.word:null;
- const display=kind==='none'?base:kind==='dual'?'The '+base:kind==='single'?"The "+a1+"'s "+base:a1+"'s "+(kept?kept+' ':'')+base;
- const result=el('result');result.replaceChildren();
- const n=document.createElement('div');n.className='name';n.textContent=display;result.append(n);
- const meta=document.createElement('div');meta.className='meta';
- meta.textContent='City Flavor: '+(chosen?chosen.word:'not applicable')+
- ' · weight: '+(chosen?chosen.weight:0)+
- ' · '+(suppressed?'REDUNDANT → suppressed, no reroll':'no redundancy')+
- ' · eligible candidates: '+pool.length;result.append(meta);
-});
-})().catch(error=>{document.getElementById('status').textContent='ERROR: '+error.message;});
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Infaction · Naming Lab</title><style>
+*{box-sizing:border-box}body{background:#efeee9;color:#29302a;font:15px/1.5 system-ui;margin:0}
+main{max-width:660px;margin:auto;background:#fcfbf8;min-height:100vh;padding:30px}
+a{color:#385f47}h1{font:normal 32px Georgia,serif}
+p{color:#70796e}label{display:block;margin-top:14px;font-size:13px}
+input,select{width:100%;padding:11px;border:1px solid #ccd4c8;border-radius:7px;background:#fff;font:inherit}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.output{font:normal 27px Georgia,serif;margin:26px 0;border-top:1px solid #dfe5db;padding-top:24px}
+small{color:#8c9788}@media(max-width:480px){.grid{grid-template-columns:1fr}main{padding:22px}}
+</style></head><body><main><a href="./">← Infaction</a>
+<h1>Naming Lab</h1><p>Place names reflect ownership. Flavor is no longer used for any Place, including City.</p>
+<div class="grid"><div><label for="kind">Ownership</label><select id="kind"><option value="single">Single</option><option value="dual">Dual</option><option value="none">None</option><option value="city">City</option></select></div>
+<div><label for="animal">Animal</label><input id="animal" value="Wolf" autocomplete="off"></div></div>
+<label for="place">Place name</label><input id="place" value="Fortress" autocomplete="off">
+<div class="output" id="result" aria-live="polite"></div>
+<small>Single: The Animal's Place · Dual: The Place · None: Place · City: The Animal's City</small>
+</main><script>
+const kind=document.getElementById('kind'),animal=document.getElementById('animal'),place=document.getElementById('place'),result=document.getElementById('result');
+function render(){
+ const a=animal.value.trim()||'Animal',p=place.value.trim()||'Place';
+ const k=kind.value;
+ place.disabled=k==='city';
+ animal.disabled=k==='dual'||k==='none';
+ result.textContent=k==='city'?"The "+a+"'s City":k==='single'?"The "+a+"'s "+p:k==='dual'?"The "+p:p;
+}
+for(const control of [kind,animal,place]){control.addEventListener('input',render);control.addEventListener('change',render)}
+render();
 </script></body></html>
