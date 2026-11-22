@@ -7,7 +7,7 @@ hidden:'<path d="M3 3l18 18M10.6 5.2A10.8 10.8 0 0 1 12 5c4.4 0 8.3 2.7 10 7-.6 
 gate:'<path d="M5 21V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v17M5 21h14M8 21V8h8v13M13 14h.01"/>'
 };
 function icon(name,label){const span=el('span','');span.title=label;span.setAttribute('aria-label',label);span.innerHTML='<svg class="signal" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'+ICON[name]+'</svg>';return span}
-let world=null,tab='explore',loadError=null;
+let world=null,tab='factions',loadError=null;
 function validateWorld(data){
  if(!data||!Array.isArray(data.factions)||data.factions.length!==6)throw Error('Expected six Factions');
  if(!data.places||!data.places.nodes||!data.places.root_id)throw Error('Place tree missing');
@@ -99,7 +99,7 @@ function renderApp(){
  const app=$('app');app.replaceChildren();
  const top=el('header','top');top.append(el('h1','brand','Infaction'));top.append(el('span','status',world?'World · '+world.factions.length+' Factions':'World'));app.append(top);
  const nav=el('nav','nav');nav.setAttribute('aria-label','Main tabs');
- for(const [key,title] of [['explore','Explore'],['factions','Factions']]){const btn=el('button','tab',title);btn.setAttribute('role','tab');btn.setAttribute('aria-selected',String(tab===key));btn.addEventListener('click',()=>{tab=key;renderApp()});nav.append(btn)}
+ for(const [key,title] of [['factions','Factions'],['explore','Explore']]){const btn=el('button','tab',title);btn.setAttribute('role','tab');btn.setAttribute('aria-selected',String(tab===key));btn.addEventListener('click',()=>{tab=key;renderApp()});nav.append(btn)}
  app.append(nav);
  const content=el('main');content.id='content';app.append(content);
  if(!world){missing(content);return}
