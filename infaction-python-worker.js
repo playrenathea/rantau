@@ -78,6 +78,10 @@ assert full_world['place_naming']['vocabulary_version']=='animal-place-flavor-v2
 assert full_world['place_naming']['impression_version']=='impression-tags-v2-active-2026-11-22'
 assert isinstance(full_world['access_nodes'],list)
 result_json=json.dumps(full_world,ensure_ascii=False,allow_nan=False)
+# Remove temporary Colab export files after serializing, to keep rerolls lightweight.
+for _pattern in ('infaction_world_named_seed_*.json','infaction_world_with_sites_experimental_*.json'):
+    for _temp in Path.cwd().glob(_pattern):
+        _temp.unlink(missing_ok=True)
 `;
 self.onmessage=async event=>{
  if(event.data?.type!=='generate'||inFlight)return;
