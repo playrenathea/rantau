@@ -1,7 +1,7 @@
 """Political dominance overlay: Zone + Site + Location, source-backed and auditable.
 
 Does NOT change locked placement. Uses original 50:50 A/B, then Faction-selector
-5 percentage-point contribution with 95% rebasing, BEFORE Single/Dual tests.
+5 percentage-point contribution with 95% rebasing ONLY for Faction-selected Places, BEFORE Single/Dual tests.
 Site threshold is provisional Location thresholds until separately approved.
 No fabricated Type/Base affinities for missing Scale-3 Places.
 """
@@ -85,10 +85,11 @@ def calculate(world, site_grouping, zone_refs, location_refs, neutral_affinity,
     for r,rawrow,arow,brow in zip(eligible,raw,a,b):
         pre=[.5*x+.5*y for x,y in zip(arow,brow)]
         owner=r["selector_bonus_faction"]
-        after=[.95*x for x in pre]
+        after=list(pre)
         if owner:
             if owner not in [f["id"] for f in factions]:
                 raise ValueError("Unknown selection faction: "+str(owner))
+            after=[.95*x for x in pre]
             after[[f["id"] for f in factions].index(owner)]+=5
         if abs(sum(after)-100)>1e-8:raise AssertionError("Affinity sum drift")
         final[r["name"]]={"role":r["role"],"source_place":r["reference_place"],
