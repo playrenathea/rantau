@@ -1,6 +1,10 @@
 > **CURRENT INFACTION BASELINE — v0.4.8 DESIGN LOCKED (2026-11-22)**  
 > [Canonical v0.4.8 specification](specs/INFACTION_CURRENT_LOCKED_V0.4.8.md). Supersedes the v0.4.7 design direction, while preserving prior checkpoints. The single Book1 symmetric Proximity matrix governs geographic affinity; **Containment is canceled**. Site postprocessing: targeted Farm/Ship family prune, Garden-first/Grounds fallback with 12 flagged child types, optional valid non-family replacement for canceled Sites. [Site postprocessor v3](infaction_site_postprocess_v3.py) · [Pinned v0.4.8 Colab](notebooks/Infaction_Site_Companion_v0.4.8_LOCKED.ipynb). **DESIGN LOCK ≠ full v0.4.8 runtime verification**: the companion still executes historical upstream selection, and live hosted-Colab clean run has not been verified.
 
+## Universal Place Hierarchy — LOCKED (2026-11-22)
+
+**All geographic nodes are Places**, including **The Land (root)** and **City**. Inside Zones and standalone Sites/Locations are under City. Outside Zones and standalone Sites/Locations are direct children of The Land. A Site may group standalone Locations **without a Zone parent**. Zone/Site/Location are *generator-only* labels; players see named Places and parent–child navigation. **Hidden and Restricted not yet specified.** See [v0.4.8 Place hierarchy lock](specs/INFACTION_CURRENT_LOCKED_V0.4.8.md#universal-place-hierarchy--locked-2026-11-22-pre-hiddenrestricted).
+
 ## v0.4.8 LOCKED — synced artifacts (2026-11-22)
 
 | Artifact | Location | Verification |
