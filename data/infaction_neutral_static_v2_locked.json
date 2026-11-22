@@ -1,18 +1,18 @@
 {
   "status": "LOCKED",
-  "version": "neutral-static-v2.0",
-  "date": "2026-11-21",
-  "source": "Book1 Place x 13 Faction Type + active Zone historical overrides; qualitative v2 tuning",
+  "version": "neutral-static-v2.1",
+  "date": "2026-11-22",
+  "source": "Book1 Place x 13 Faction Type + active Zone historical overrides; qualitative v2 tuning; eight original Book1 Scale-3 Place records recovered and curated per 2026-11-22 approved adjustments",
   "interpretation": "combined independent/unaffiliated population compatibility and openness to general public, not ownership, NPC count or actual population density",
-  "precedence": "Active locked Neutral static overlay; overrides earlier experimental_neutral_and_rank and Neutral Rules dynamic trial; immutable Book1 remains unchanged",
+  "precedence": "Canonical locked Neutral static v2.1 overlay, 118 Places; supersedes 110-Place v2.0 (preserved in data/archive). Original Book1 unchanged.",
   "formula": "Openness=25*sqrt(Visible_0to4*AccessibleOutsider_0to4); Pressure=.40*max(Type13)+.30*mean(top3(Type13))+.30*mean(all13(Type13)); Neutral=clip(Openness*(1-.55*Pressure/100)+ContextAdjustment,0,100), hard zero if Visible=0 or Access=0",
   "stats": {
-    "count": 110,
-    "changed": 37,
-    "neutral_mean": 47.371,
-    "neutral_std": 16.739,
+    "count": 118,
+    "changed": 48,
+    "neutral_mean": 47.541,
+    "neutral_std": 16.668,
     "neutral_min": 0,
-    "neutral_max": 68.288,
+    "neutral_max": 72.762,
     "faction_type_stats": [
       {
         "type": "Government",
@@ -96,6 +96,17 @@
   },
   "records": [
     {
+      "place": "Academic District",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 4,
+      "openness": 100,
+      "faction_pressure": 73.962,
+      "neutral_base": 59.321,
+      "context_adjustment": 0,
+      "neutral_affinity": 59.321
+    },
+    {
       "place": "Apothecary",
       "kind": "Location",
       "visible": 4,
@@ -138,6 +149,17 @@
       "neutral_base": 30.38,
       "context_adjustment": -6,
       "neutral_affinity": 24.38
+    },
+    {
+      "place": "Artisan Quarter",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 4,
+      "openness": 100,
+      "faction_pressure": 70.346,
+      "neutral_base": 61.31,
+      "context_adjustment": 0,
+      "neutral_affinity": 61.31
     },
     {
       "place": "Auction House",
@@ -250,6 +272,39 @@
       "neutral_affinity": 46.844
     },
     {
+      "place": "Caravan Camp",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 4,
+      "openness": 100,
+      "faction_pressure": 70.5,
+      "neutral_base": 61.225,
+      "context_adjustment": -7,
+      "neutral_affinity": 54.225
+    },
+    {
+      "place": "Catacombs",
+      "kind": "Site",
+      "visible": 2,
+      "access": 2,
+      "openness": 50,
+      "faction_pressure": 51.462,
+      "neutral_base": 35.848,
+      "context_adjustment": -7,
+      "neutral_affinity": 28.848
+    },
+    {
+      "place": "Cavern",
+      "kind": "Zone",
+      "visible": 2,
+      "access": 4,
+      "openness": 70.711,
+      "faction_pressure": 65.192,
+      "neutral_base": 45.357,
+      "context_adjustment": -10,
+      "neutral_affinity": 35.357
+    },
+    {
       "place": "Cemetery",
       "kind": "Location",
       "visible": 4,
@@ -259,6 +314,17 @@
       "neutral_base": 64.165,
       "context_adjustment": -11,
       "neutral_affinity": 53.165
+    },
+    {
+      "place": "Citadel",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 1,
+      "openness": 50,
+      "faction_pressure": 69.231,
+      "neutral_base": 30.962,
+      "context_adjustment": 0,
+      "neutral_affinity": 30.962
     },
     {
       "place": "Clinic",
@@ -305,6 +371,17 @@
       "neutral_affinity": 22.267
     },
     {
+      "place": "Cultural District",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 4,
+      "openness": 100,
+      "faction_pressure": 73.769,
+      "neutral_base": 59.427,
+      "context_adjustment": 0,
+      "neutral_affinity": 59.427
+    },
+    {
       "place": "Dock",
       "kind": "Location",
       "visible": 4,
@@ -338,6 +415,50 @@
       "neutral_affinity": 41.946
     },
     {
+      "place": "Enclave",
+      "kind": "Zone",
+      "visible": 2,
+      "access": 2,
+      "openness": 50,
+      "faction_pressure": 72.885,
+      "neutral_base": 29.957,
+      "context_adjustment": 0,
+      "neutral_affinity": 29.957
+    },
+    {
+      "place": "Entertainment District",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 4,
+      "openness": 100,
+      "faction_pressure": 72.077,
+      "neutral_base": 60.358,
+      "context_adjustment": 0,
+      "neutral_affinity": 60.358
+    },
+    {
+      "place": "Estate",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 1,
+      "openness": 50,
+      "faction_pressure": 57.462,
+      "neutral_base": 34.198,
+      "context_adjustment": 0,
+      "neutral_affinity": 34.198
+    },
+    {
+      "place": "Excavation Site",
+      "kind": "Site",
+      "visible": 4,
+      "access": 2,
+      "openness": 70.711,
+      "faction_pressure": 54.154,
+      "neutral_base": 49.65,
+      "context_adjustment": -7,
+      "neutral_affinity": 42.65
+    },
+    {
       "place": "Factory",
       "kind": "Location",
       "visible": 4,
@@ -358,6 +479,39 @@
       "neutral_base": 55.056,
       "context_adjustment": 0,
       "neutral_affinity": 55.056
+    },
+    {
+      "place": "Farmland",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 4,
+      "openness": 100,
+      "faction_pressure": 57.923,
+      "neutral_base": 68.142,
+      "context_adjustment": -17,
+      "neutral_affinity": 51.142
+    },
+    {
+      "place": "Festival Grounds",
+      "kind": "Site",
+      "visible": 4,
+      "access": 4,
+      "openness": 100,
+      "faction_pressure": 61.308,
+      "neutral_base": 66.281,
+      "context_adjustment": 5,
+      "neutral_affinity": 71.281
+    },
+    {
+      "place": "Foreign Quarter",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 4,
+      "openness": 100,
+      "faction_pressure": 73.731,
+      "neutral_base": 59.448,
+      "context_adjustment": 0,
+      "neutral_affinity": 59.448
     },
     {
       "place": "Forge",
@@ -415,6 +569,17 @@
       "neutral_affinity": 63.404
     },
     {
+      "place": "Government District",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 4,
+      "openness": 100,
+      "faction_pressure": 70.192,
+      "neutral_base": 61.394,
+      "context_adjustment": -7,
+      "neutral_affinity": 54.394
+    },
+    {
       "place": "Grove",
       "kind": "Location",
       "visible": 4,
@@ -437,6 +602,17 @@
       "neutral_affinity": 44.534
     },
     {
+      "place": "Harbor",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 4,
+      "openness": 100,
+      "faction_pressure": 71.885,
+      "neutral_base": 60.463,
+      "context_adjustment": 0,
+      "neutral_affinity": 60.463
+    },
+    {
       "place": "Hideout",
       "kind": "Location",
       "visible": 0,
@@ -448,6 +624,17 @@
       "neutral_affinity": 0
     },
     {
+      "place": "Hospital",
+      "kind": "Site",
+      "visible": 4,
+      "access": 4,
+      "openness": 100,
+      "faction_pressure": 58.615,
+      "neutral_base": 67.762,
+      "context_adjustment": 5,
+      "neutral_affinity": 72.762
+    },
+    {
       "place": "House",
       "kind": "Location",
       "visible": 4,
@@ -457,6 +644,28 @@
       "neutral_base": 41.438,
       "context_adjustment": 0,
       "neutral_affinity": 41.438
+    },
+    {
+      "place": "Hunting Grounds",
+      "kind": "Zone",
+      "visible": 3,
+      "access": 3,
+      "openness": 75,
+      "faction_pressure": 58.692,
+      "neutral_base": 50.789,
+      "context_adjustment": -15,
+      "neutral_affinity": 35.789
+    },
+    {
+      "place": "Industrial District",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 3,
+      "openness": 86.603,
+      "faction_pressure": 61.385,
+      "neutral_base": 57.364,
+      "context_adjustment": -7,
+      "neutral_affinity": 50.364
     },
     {
       "place": "Inn",
@@ -514,6 +723,17 @@
       "neutral_affinity": 65.823
     },
     {
+      "place": "Market District",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 4,
+      "openness": 100,
+      "faction_pressure": 72,
+      "neutral_base": 60.4,
+      "context_adjustment": 5,
+      "neutral_affinity": 65.4
+    },
+    {
       "place": "Meeting Hall",
       "kind": "Location",
       "visible": 4,
@@ -523,6 +743,28 @@
       "neutral_base": 52.693,
       "context_adjustment": 0,
       "neutral_affinity": 52.693
+    },
+    {
+      "place": "Military Base",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 0,
+      "openness": 0,
+      "faction_pressure": 75.115,
+      "neutral_base": 0,
+      "context_adjustment": 0,
+      "neutral_affinity": 0
+    },
+    {
+      "place": "Military District",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 2,
+      "openness": 70.711,
+      "faction_pressure": 69.846,
+      "neutral_base": 43.547,
+      "context_adjustment": -8,
+      "neutral_affinity": 35.547
     },
     {
       "place": "Mill",
@@ -545,6 +787,39 @@
       "neutral_base": 46.434,
       "context_adjustment": -7,
       "neutral_affinity": 39.434
+    },
+    {
+      "place": "Mining Region",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 3,
+      "openness": 86.603,
+      "faction_pressure": 63.192,
+      "neutral_base": 56.503,
+      "context_adjustment": -10,
+      "neutral_affinity": 46.503
+    },
+    {
+      "place": "Mining Settlement",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 4,
+      "openness": 100,
+      "faction_pressure": 65.692,
+      "neutral_base": 63.869,
+      "context_adjustment": -16,
+      "neutral_affinity": 47.869
+    },
+    {
+      "place": "Monastery",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 2,
+      "openness": 70.711,
+      "faction_pressure": 69.962,
+      "neutral_base": 43.502,
+      "context_adjustment": 0,
+      "neutral_affinity": 43.502
     },
     {
       "place": "Monument",
@@ -578,6 +853,28 @@
       "neutral_base": 60.844,
       "context_adjustment": 0,
       "neutral_affinity": 60.844
+    },
+    {
+      "place": "Necropolis",
+      "kind": "Zone",
+      "visible": 3,
+      "access": 4,
+      "openness": 86.603,
+      "faction_pressure": 64.231,
+      "neutral_base": 56.009,
+      "context_adjustment": -17,
+      "neutral_affinity": 39.009
+    },
+    {
+      "place": "Noble Quarter",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 2,
+      "openness": 70.711,
+      "faction_pressure": 71.538,
+      "neutral_base": 42.889,
+      "context_adjustment": 0,
+      "neutral_affinity": 42.889
     },
     {
       "place": "Observatory",
@@ -668,6 +965,28 @@
       "neutral_affinity": 24.111
     },
     {
+      "place": "Rebel Camp",
+      "kind": "Zone",
+      "visible": 1,
+      "access": 1,
+      "openness": 25,
+      "faction_pressure": 76.769,
+      "neutral_base": 14.444,
+      "context_adjustment": 0,
+      "neutral_affinity": 14.444
+    },
+    {
+      "place": "Refugee Camp",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 4,
+      "openness": 100,
+      "faction_pressure": 76.115,
+      "neutral_base": 58.137,
+      "context_adjustment": 5,
+      "neutral_affinity": 63.137
+    },
+    {
       "place": "Research Facility",
       "kind": "Location",
       "visible": 3,
@@ -677,6 +996,61 @@
       "neutral_base": 39.604,
       "context_adjustment": -6,
       "neutral_affinity": 33.604
+    },
+    {
+      "place": "Residential District",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 4,
+      "openness": 100,
+      "faction_pressure": 73.385,
+      "neutral_base": 59.638,
+      "context_adjustment": 5,
+      "neutral_affinity": 64.638
+    },
+    {
+      "place": "Royal Quarter",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 2,
+      "openness": 70.711,
+      "faction_pressure": 75,
+      "neutral_base": 41.543,
+      "context_adjustment": 0,
+      "neutral_affinity": 41.543
+    },
+    {
+      "place": "Ruined Quarter",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 4,
+      "openness": 100,
+      "faction_pressure": 62.077,
+      "neutral_base": 65.858,
+      "context_adjustment": -18,
+      "neutral_affinity": 47.858
+    },
+    {
+      "place": "Ruins",
+      "kind": "Site",
+      "visible": 3,
+      "access": 4,
+      "openness": 86.603,
+      "faction_pressure": 56.615,
+      "neutral_base": 59.636,
+      "context_adjustment": -17,
+      "neutral_affinity": 42.636
+    },
+    {
+      "place": "Sanctuary",
+      "kind": "Site",
+      "visible": 2,
+      "access": 3,
+      "openness": 61.237,
+      "faction_pressure": 64,
+      "neutral_base": 39.682,
+      "context_adjustment": 0,
+      "neutral_affinity": 39.682
     },
     {
       "place": "School",
@@ -723,6 +1097,17 @@
       "neutral_affinity": 43.278
     },
     {
+      "place": "Shipyard",
+      "kind": "Site",
+      "visible": 4,
+      "access": 2,
+      "openness": 70.711,
+      "faction_pressure": 64.154,
+      "neutral_base": 45.761,
+      "context_adjustment": -7,
+      "neutral_affinity": 38.761
+    },
+    {
       "place": "Shop",
       "kind": "Location",
       "visible": 4,
@@ -743,6 +1128,17 @@
       "neutral_base": 62.981,
       "context_adjustment": 0,
       "neutral_affinity": 62.981
+    },
+    {
+      "place": "Slum",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 4,
+      "openness": 100,
+      "faction_pressure": 72.115,
+      "neutral_base": 60.337,
+      "context_adjustment": 3,
+      "neutral_affinity": 63.337
     },
     {
       "place": "Square",
@@ -800,6 +1196,17 @@
       "neutral_affinity": 62.938
     },
     {
+      "place": "Temple District",
+      "kind": "Zone",
+      "visible": 4,
+      "access": 4,
+      "openness": 100,
+      "faction_pressure": 68.846,
+      "neutral_base": 62.135,
+      "context_adjustment": -3,
+      "neutral_affinity": 59.135
+    },
+    {
       "place": "Theater",
       "kind": "Location",
       "visible": 4,
@@ -820,6 +1227,17 @@
       "neutral_base": 44.519,
       "context_adjustment": 0,
       "neutral_affinity": 44.519
+    },
+    {
+      "place": "Town Hall",
+      "kind": "Site",
+      "visible": 4,
+      "access": 4,
+      "openness": 100,
+      "faction_pressure": 68.269,
+      "neutral_base": 62.452,
+      "context_adjustment": 0,
+      "neutral_affinity": 62.452
     },
     {
       "place": "Trading Post",
@@ -866,380 +1284,6 @@
       "neutral_affinity": 40.809
     },
     {
-      "place": "Vault",
-      "kind": "Location",
-      "visible": 2,
-      "access": 0,
-      "openness": 0,
-      "faction_pressure": 69.115,
-      "neutral_base": 0,
-      "context_adjustment": 0,
-      "neutral_affinity": 0
-    },
-    {
-      "place": "Warehouse",
-      "kind": "Location",
-      "visible": 4,
-      "access": 3,
-      "openness": 86.603,
-      "faction_pressure": 67.462,
-      "neutral_base": 54.47,
-      "context_adjustment": 0,
-      "neutral_affinity": 54.47
-    },
-    {
-      "place": "Well",
-      "kind": "Location",
-      "visible": 4,
-      "access": 4,
-      "openness": 100,
-      "faction_pressure": 58.5,
-      "neutral_base": 67.825,
-      "context_adjustment": -9,
-      "neutral_affinity": 58.825
-    },
-    {
-      "place": "Workshop",
-      "kind": "Location",
-      "visible": 4,
-      "access": 4,
-      "openness": 100,
-      "faction_pressure": 63.846,
-      "neutral_base": 64.885,
-      "context_adjustment": 0,
-      "neutral_affinity": 64.885
-    },
-    {
-      "place": "Academic District",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 4,
-      "openness": 100,
-      "faction_pressure": 73.962,
-      "neutral_base": 59.321,
-      "context_adjustment": 0,
-      "neutral_affinity": 59.321
-    },
-    {
-      "place": "Artisan Quarter",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 4,
-      "openness": 100,
-      "faction_pressure": 70.346,
-      "neutral_base": 61.31,
-      "context_adjustment": 0,
-      "neutral_affinity": 61.31
-    },
-    {
-      "place": "Caravan Camp",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 4,
-      "openness": 100,
-      "faction_pressure": 70.5,
-      "neutral_base": 61.225,
-      "context_adjustment": -7,
-      "neutral_affinity": 54.225
-    },
-    {
-      "place": "Cavern",
-      "kind": "Zone",
-      "visible": 2,
-      "access": 4,
-      "openness": 70.711,
-      "faction_pressure": 65.192,
-      "neutral_base": 45.357,
-      "context_adjustment": -10,
-      "neutral_affinity": 35.357
-    },
-    {
-      "place": "Citadel",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 1,
-      "openness": 50,
-      "faction_pressure": 69.231,
-      "neutral_base": 30.962,
-      "context_adjustment": 0,
-      "neutral_affinity": 30.962
-    },
-    {
-      "place": "Cultural District",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 4,
-      "openness": 100,
-      "faction_pressure": 73.769,
-      "neutral_base": 59.427,
-      "context_adjustment": 0,
-      "neutral_affinity": 59.427
-    },
-    {
-      "place": "Enclave",
-      "kind": "Zone",
-      "visible": 2,
-      "access": 2,
-      "openness": 50,
-      "faction_pressure": 72.885,
-      "neutral_base": 29.957,
-      "context_adjustment": 0,
-      "neutral_affinity": 29.957
-    },
-    {
-      "place": "Entertainment District",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 4,
-      "openness": 100,
-      "faction_pressure": 72.077,
-      "neutral_base": 60.358,
-      "context_adjustment": 0,
-      "neutral_affinity": 60.358
-    },
-    {
-      "place": "Estate",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 1,
-      "openness": 50,
-      "faction_pressure": 57.462,
-      "neutral_base": 34.198,
-      "context_adjustment": 0,
-      "neutral_affinity": 34.198
-    },
-    {
-      "place": "Farmland",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 4,
-      "openness": 100,
-      "faction_pressure": 57.923,
-      "neutral_base": 68.142,
-      "context_adjustment": -17,
-      "neutral_affinity": 51.142
-    },
-    {
-      "place": "Foreign Quarter",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 4,
-      "openness": 100,
-      "faction_pressure": 73.731,
-      "neutral_base": 59.448,
-      "context_adjustment": 0,
-      "neutral_affinity": 59.448
-    },
-    {
-      "place": "Government District",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 4,
-      "openness": 100,
-      "faction_pressure": 70.192,
-      "neutral_base": 61.394,
-      "context_adjustment": -7,
-      "neutral_affinity": 54.394
-    },
-    {
-      "place": "Harbor",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 4,
-      "openness": 100,
-      "faction_pressure": 71.885,
-      "neutral_base": 60.463,
-      "context_adjustment": 0,
-      "neutral_affinity": 60.463
-    },
-    {
-      "place": "Hunting Grounds",
-      "kind": "Zone",
-      "visible": 3,
-      "access": 3,
-      "openness": 75,
-      "faction_pressure": 58.692,
-      "neutral_base": 50.789,
-      "context_adjustment": -15,
-      "neutral_affinity": 35.789
-    },
-    {
-      "place": "Industrial District",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 3,
-      "openness": 86.603,
-      "faction_pressure": 61.385,
-      "neutral_base": 57.364,
-      "context_adjustment": -7,
-      "neutral_affinity": 50.364
-    },
-    {
-      "place": "Market District",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 4,
-      "openness": 100,
-      "faction_pressure": 72,
-      "neutral_base": 60.4,
-      "context_adjustment": 5,
-      "neutral_affinity": 65.4
-    },
-    {
-      "place": "Military Base",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 0,
-      "openness": 0,
-      "faction_pressure": 75.115,
-      "neutral_base": 0,
-      "context_adjustment": 0,
-      "neutral_affinity": 0
-    },
-    {
-      "place": "Military District",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 2,
-      "openness": 70.711,
-      "faction_pressure": 69.846,
-      "neutral_base": 43.547,
-      "context_adjustment": -8,
-      "neutral_affinity": 35.547
-    },
-    {
-      "place": "Mining Region",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 3,
-      "openness": 86.603,
-      "faction_pressure": 63.192,
-      "neutral_base": 56.503,
-      "context_adjustment": -10,
-      "neutral_affinity": 46.503
-    },
-    {
-      "place": "Mining Settlement",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 4,
-      "openness": 100,
-      "faction_pressure": 65.692,
-      "neutral_base": 63.869,
-      "context_adjustment": -16,
-      "neutral_affinity": 47.869
-    },
-    {
-      "place": "Monastery",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 2,
-      "openness": 70.711,
-      "faction_pressure": 69.962,
-      "neutral_base": 43.502,
-      "context_adjustment": 0,
-      "neutral_affinity": 43.502
-    },
-    {
-      "place": "Necropolis",
-      "kind": "Zone",
-      "visible": 3,
-      "access": 4,
-      "openness": 86.603,
-      "faction_pressure": 64.231,
-      "neutral_base": 56.009,
-      "context_adjustment": -17,
-      "neutral_affinity": 39.009
-    },
-    {
-      "place": "Noble Quarter",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 2,
-      "openness": 70.711,
-      "faction_pressure": 71.538,
-      "neutral_base": 42.889,
-      "context_adjustment": 0,
-      "neutral_affinity": 42.889
-    },
-    {
-      "place": "Rebel Camp",
-      "kind": "Zone",
-      "visible": 1,
-      "access": 1,
-      "openness": 25,
-      "faction_pressure": 76.769,
-      "neutral_base": 14.444,
-      "context_adjustment": 0,
-      "neutral_affinity": 14.444
-    },
-    {
-      "place": "Refugee Camp",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 4,
-      "openness": 100,
-      "faction_pressure": 76.115,
-      "neutral_base": 58.137,
-      "context_adjustment": 5,
-      "neutral_affinity": 63.137
-    },
-    {
-      "place": "Residential District",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 4,
-      "openness": 100,
-      "faction_pressure": 73.385,
-      "neutral_base": 59.638,
-      "context_adjustment": 5,
-      "neutral_affinity": 64.638
-    },
-    {
-      "place": "Royal Quarter",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 2,
-      "openness": 70.711,
-      "faction_pressure": 75,
-      "neutral_base": 41.543,
-      "context_adjustment": 0,
-      "neutral_affinity": 41.543
-    },
-    {
-      "place": "Ruined Quarter",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 4,
-      "openness": 100,
-      "faction_pressure": 62.077,
-      "neutral_base": 65.858,
-      "context_adjustment": -18,
-      "neutral_affinity": 47.858
-    },
-    {
-      "place": "Slum",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 4,
-      "openness": 100,
-      "faction_pressure": 72.115,
-      "neutral_base": 60.337,
-      "context_adjustment": 3,
-      "neutral_affinity": 63.337
-    },
-    {
-      "place": "Temple District",
-      "kind": "Zone",
-      "visible": 4,
-      "access": 4,
-      "openness": 100,
-      "faction_pressure": 68.846,
-      "neutral_base": 62.135,
-      "context_adjustment": -3,
-      "neutral_affinity": 59.135
-    },
-    {
       "place": "Underground City",
       "kind": "Zone",
       "visible": 1,
@@ -1273,6 +1317,17 @@
       "neutral_affinity": 57.848
     },
     {
+      "place": "Vault",
+      "kind": "Location",
+      "visible": 2,
+      "access": 0,
+      "openness": 0,
+      "faction_pressure": 69.115,
+      "neutral_base": 0,
+      "context_adjustment": 0,
+      "neutral_affinity": 0
+    },
+    {
       "place": "Village",
       "kind": "Zone",
       "visible": 4,
@@ -1282,6 +1337,17 @@
       "neutral_base": 63.002,
       "context_adjustment": 3,
       "neutral_affinity": 66.002
+    },
+    {
+      "place": "Warehouse",
+      "kind": "Location",
+      "visible": 4,
+      "access": 3,
+      "openness": 86.603,
+      "faction_pressure": 67.462,
+      "neutral_base": 54.47,
+      "context_adjustment": 0,
+      "neutral_affinity": 54.47
     },
     {
       "place": "Warehouse District",
@@ -1295,6 +1361,17 @@
       "neutral_affinity": 46.323
     },
     {
+      "place": "Well",
+      "kind": "Location",
+      "visible": 4,
+      "access": 4,
+      "openness": 100,
+      "faction_pressure": 58.5,
+      "neutral_base": 67.825,
+      "context_adjustment": -9,
+      "neutral_affinity": 58.825
+    },
+    {
       "place": "Wilderness",
       "kind": "Zone",
       "visible": 4,
@@ -1304,6 +1381,43 @@
       "neutral_base": 65.985,
       "context_adjustment": -30,
       "neutral_affinity": 35.985
+    },
+    {
+      "place": "Workshop",
+      "kind": "Location",
+      "visible": 4,
+      "access": 4,
+      "openness": 100,
+      "faction_pressure": 63.846,
+      "neutral_base": 64.885,
+      "context_adjustment": 0,
+      "neutral_affinity": 64.885
     }
-  ]
+  ],
+  "extension_v2_1": {
+    "decision": "user approved prior eight recommended values on 2026-11-22",
+    "source_recovery": "data/infaction_missing_8_place_affinity_book1_recovered.json",
+    "archive_v2_0": "data/archive/infaction_neutral_static_v2_0_locked_110_original.json",
+    "added_places": [
+      "Catacombs",
+      "Town Hall",
+      "Excavation Site",
+      "Festival Grounds",
+      "Hospital",
+      "Ruins",
+      "Sanctuary",
+      "Shipyard"
+    ],
+    "approved_adjustments": {
+      "Catacombs": -7,
+      "Town Hall": 0,
+      "Excavation Site": -7,
+      "Festival Grounds": 5,
+      "Hospital": 5,
+      "Ruins": -17,
+      "Sanctuary": 0,
+      "Shipyard": -7
+    },
+    "old_110_records_unchanged": true
+  }
 }
