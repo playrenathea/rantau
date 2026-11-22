@@ -1,16 +1,16 @@
-"""Infaction naming v3: city-only Animal Flavor, simple ownership names.
+"""Infaction naming v4: simple ownership names, no Place Flavors.
 
-City: [Government Animal]'s [Flavor] City; existing weighted Impression
-selection and post-selection exact-word redundancy apply only to City.
+City: The [Government Animal]'s City.
 Owned Zone/Site/Location: Single = The [Animal]'s [Place],
 Dual = The [Place], None = [Place]. Root/The Land unchanged.
+Existing Flavor data remains available as a separate archived resource.
 All Place IDs, topology, access labels and source names remain unchanged.
 """
 from __future__ import annotations
 import hashlib
 import re
 
-VERSION = "infaction-place-naming-v3-city-flavor-2026-11-22"
+VERSION = "infaction-place-naming-v4-no-place-flavor-2026-11-22"
 SEGMENTS = frozenset(("Power", "Mystery", "Nature", "Community", "Commerce", "Prestige"))
 CITY_TAGS = ("Power", "Community", "Commerce", "Prestige")
 
@@ -109,13 +109,8 @@ def apply(world, vocabulary, impressions):
             tags = []
         if role == "city":
             animals = [government["animal"]]
-            flavor, weight = _pick(seed, pid, animals, records, base, tags, f_tags)
-            picked_flavor = flavor
-            flavor, weight, redundant = _post_selection(flavor, weight, base)
-            display = animals[0] + "'s " + (flavor + " " if flavor else "") + base
+            display = "The " + animals[0] + "'s " + base
             stats["city"] += 1
-            if flavor:
-                stats["city_weight_" + str(weight)] += 1
         elif role in ("root", "land"):
             display = base
         elif kind == "single":
