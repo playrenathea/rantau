@@ -16,12 +16,14 @@ def _unit(seed, place_id, purpose="flavor"):
     raw = f"{seed}:{place_id}:{purpose}:naming-v1".encode("utf8")
     return int.from_bytes(hashlib.blake2b(raw, digest_size=8).digest(), "big") / 2**64
 
-def _pick(seed, place_id, animal_ids, terms):
+def _pick(seed, place_id, animal_ids, terms, base_name=""):
     """Deterministic weighted random from intersection of eligible Flavor sets."""
+    base_tokens = set(base_name.lower().split())
     pool = [
         (term["word"], int(term["weight"]))
         for term in terms
         if int(term["weight"]) > 0
+        and term["word"].lower() not in base_tokens
         and all(animal in term["animals"] for animal in animal_ids)
     ]
     pool.sort(key=lambda x: x[0])
@@ -61,7 +63,7 @@ def apply(world, vocabulary):
         if role == "city":
             # Existing City rule: Government Animal possessive + Animal Flavor + City.
             animal_ids = [government["animal"]]
-            flavor = _pick(seed, pid, animal_ids, records)
+            flavor = _pick(seed, pid, animal_ids, records, base)
             display = f"{animal_ids[0]}'s {flavor} {base}" if flavor else base
             stats["city"] += 1
         elif role == "root":
@@ -107,6 +109,4 @@ def apply(world, vocabulary):
     world["place_naming"] = {"version": VERSION,
         "vocabulary_version": vocabulary["version"], "summary": stats}
     assert all(geo[k]["name"] == geo[k]["base_name"] for k in geo)
-    assert all(x in geo for x in world["places"]["spatial_relations"][0].values()
-               if isinstance(x, str) and x in geo) if world["places"]["spatial_relations"] else True
     return world
