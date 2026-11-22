@@ -53,7 +53,6 @@ function renderExplore(content){
   const line=isParent?el('details','tree-group'):el('div','leaf');const summary=isParent?el('summary'):line;
   summary.append(el('span','tree-title',label(n)));
   summary.append(flags(n));
-  if(id!=='land'&&n.generation_role!=='city')summary.append(el('span','tree-kind',n.generation_role));
   if(isParent){line.append(summary);const kids=el('div','tree-children');line.append(kids);if(depth<2)line.open=true;for(const child of n.children_ids)addNode(child,kids,depth+1)}
   else if(!isParent){}parent.append(line);
  }
@@ -73,7 +72,7 @@ function renderFactions(content){
   const body=el('div','holdings');const order={zone:0,site:1,location:2};
   owning.sort((a,b)=>(order[a.generation_role]-order[b.generation_role])||label(a).localeCompare(label(b)));
   for(const n of owning){
-   const o=ownership(n),row=el('div','holding');row.append(el('span','role',n.generation_role));
+   const o=ownership(n),row=el('div','holding');
    const info=el('div','holding-info');info.append(el('span','holding-name',label(n)));
    if(o.kind==='dual'){
     const other=o.factions.filter(id=>id!==f.id).map(id=>byId.get(id)?.name||id);
