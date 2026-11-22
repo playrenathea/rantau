@@ -193,3 +193,15 @@ Finalized the multi-tag naming rule after **actual historical generator replay**
 Global editorial tag refinement before final lock: **22 Baby Animal terms → Nature tag** (avoids inflated Community matches); **Hiss → Mystery**; **Underworld → Mystery**. Individual source Flavor terms may receive multiple tags; these adjustments don't impose ad hoc name vetoes or change the 0/1/3 weight function. Not every weight-3 phrase is conventional (e.g., Beak Club); grammatical unusual names are permitted by design. Current 109 × 118 Flavor×Place table: weight 3 = **4,763**, weight 1 = **7,390**, weight 0 = **709**. [Final QA report](../experiments/INFACTION_IMPRESSION_TAG_NAMING_QA_2026-11-22.md).
 
 **STATUS: DESIGN LOCKED + CODE COMMITTED + TAG TABLE MIRRORED TO DRIVE. Hosted full v0.4.8 integration verification is outstanding.**
+
+## Executable integration checkpoint — 2026-11-22 (source wired, hosted clean-run pending)
+
+The latest [World + Access + Naming Colab](../notebooks/Infaction_v0.4.8_World_Access_HOTFIX_20261122.ipynb) now applies [effective runtime integration](../infaction_v048_integrated_selection.py) before generation. This replaces the historical v0.4.6 upstream *behavior* for the specifically approved Location and Placement changes, without rewriting the archived notebook or source Book1:
+
+- Effective 71 Location candidates = original 74 minus Fortress, Palace, Mine, Factory plus Town Hall recovered from the original Book1 affinity; Meeting Hall remains available.
+- Replace legacy Location modifiers with Hideout -9, Camp -8, Tunnel -3, Crypt -2, Shelter -1, Research Facility +9.
+- After the original three Location selection stages, repair each Function minimum at raw Function affinity >=75 using an unused qualifying Location drawn uniformly. Additional repair Locations may exceed the initial target cap of 30.
+- A political Stage-1 candidate Zone is chosen before testing raw Proximity for Ship, Dock, Farm, Farmland; when that chosen Zone has Proximity 0, the Location moves to Stage 2 without retrying another political Zone.
+- Retain locked City, Site grouping, family prune, Garden/Grounds and canceled-Site replacement, preserve-first ownership, Hidden/Restricted/access and impression-tag naming. The final World JSON adds a ten-stage `generation_seeds` manifest, with independent Site postprocessing and Function repair streams.
+
+**QA level:** committed GitHub notebook/module, source readback and synchronized Google Sheet/Drive memo. A hosted Colab complete clean run and new integrated multi-seed cohort are NOT yet observed. Prior historical QA must not be presented as verification of this new path. GitHub Pages MVP remains an independent browser-JS runtime, not a recipient of this Python integration.
