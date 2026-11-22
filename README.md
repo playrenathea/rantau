@@ -1,5 +1,17 @@
 > **CURRENT INFACTION BASELINE — v0.4.8 DESIGN LOCKED (2026-11-22)**  
-> [Canonical v0.4.8 specification](specs/INFACTION_CURRENT_LOCKED_V0.4.8.md). Supersedes the v0.4.7 design direction, while preserving prior checkpoints. The single Book1 symmetric Proximity matrix governs geographic affinity; **Containment is canceled**. Site postprocessing: targeted Farm/Ship family prune, Garden-first/Grounds fallback with 12 flagged child types, optional valid non-family replacement for canceled Sites. [Site postprocessor v3](infaction_site_postprocess_v3.py) · [Colab Site companion](notebooks/Infaction_Site_Grouping_Proximity_Checkpoint_Companion.ipynb). **DESIGN LOCK ≠ full v0.4.8 runtime verification**: the companion still executes historical upstream selection, and live hosted-Colab clean run has not been verified.
+> [Canonical v0.4.8 specification](specs/INFACTION_CURRENT_LOCKED_V0.4.8.md). Supersedes the v0.4.7 design direction, while preserving prior checkpoints. The single Book1 symmetric Proximity matrix governs geographic affinity; **Containment is canceled**. Site postprocessing: targeted Farm/Ship family prune, Garden-first/Grounds fallback with 12 flagged child types, optional valid non-family replacement for canceled Sites. [Site postprocessor v3](infaction_site_postprocess_v3.py) · [Pinned v0.4.8 Colab](notebooks/Infaction_Site_Companion_v0.4.8_LOCKED.ipynb). **DESIGN LOCK ≠ full v0.4.8 runtime verification**: the companion still executes historical upstream selection, and live hosted-Colab clean run has not been verified.
+
+## v0.4.8 LOCKED — synced artifacts (2026-11-22)
+
+| Artifact | Location | Verification |
+| --- | --- | --- |
+| Design specification | [v0.4.8 canonical spec](specs/INFACTION_CURRENT_LOCKED_V0.4.8.md) | Published on GitHub |
+| Site postprocessor | [Garden-first v3](infaction_site_postprocess_v3.py) | Published on GitHub, regression testing on historical 2,000-world cohort |
+| Colab entrypoint | [Pinned GitHub notebook](notebooks/Infaction_Site_Companion_v0.4.8_LOCKED.ipynb) and [Drive notebook](https://drive.google.com/file/d/1oglAA9CloTWDABMJ2Y45Tp5s7xN_UAf2/view) | Notebook files verified; **hosted clean run NOT verified** |
+| MASTER Google Sheet | [v0.4.x MASTER](https://docs.google.com/spreadsheets/d/1hihvEPBM9FXZxzhjHRTGEqYg9jhCXiuONV8mIKj2pwc/edit) tab `v0.4.8 LOCK` | Native Sheet read back |
+| Drive decision memo | [v0.4.8 lock memo](https://docs.google.com/document/d/1sSb04TJDXixo0vUoyl6nM5qZhdE6yt6c-zD886arJhs/edit) | Created in Infaction folder and read back |
+
+**Scope lock:** original Proximity; no Containment; Farm/Ship family rules; Garden-first/Grounds fallback; non-family replacement for canceled Site. This is a **DESIGN LOCK**, not yet a fully integrated v0.4.8 executable release.
 
 # Infaction — Active Data & Experiment Workflow (2026-11-21)
 
