@@ -58,6 +58,14 @@ The Land [Place: root]
 
 **Change scope:** conceptual/data-model and player-facing terminology lock only; no change to Book1, generation probabilities, Site formation thresholds, or v0.4.8 postprocessor.
 
+## Neutral static v2.1 — 118/118 Place types LOCKED (2026-11-22)
+
+- Canonical data: [`data/infaction_neutral_static_v2_locked.json`](../data/infaction_neutral_static_v2_locked.json), now labeled `neutral-static-v2.1` with **118** complete Place records. The previous **110** record objects remain unchanged.
+- Historical 110-row file archived without edits: [`data/archive/infaction_neutral_static_v2_0_locked_110_original.json`](../data/archive/infaction_neutral_static_v2_0_locked_110_original.json).
+- Eight approved added records (place: context adjustment → resulting Neutral): Catacombs −7 → 28.848; Town Hall 0 → 62.452; Excavation Site −7 → 42.650; Festival Grounds +5 → 71.281; Hospital +5 → 72.762; Ruins −17 → 42.636; Sanctuary 0 → 39.682; Shipyard −7 → 38.761.
+- The original `Book1 Place Affinity` has complete 14 Function/13 Type/84 Base/Neutral raw data for all eight; [recovery file](../data/infaction_missing_8_place_affinity_book1_recovered.json) is source-only and original Book1 was not edited. The native Master Sheet `Recovered Scale 3 (8)` records the final values.
+- Faction Type openness/closedness is a **new discussion, not yet locked**: one scalar may mediate identity/status visibility, action visibility, and outsider access, but specific 13 Type values and downstream Hidden/Restricted rules are not specified. Do not conflate Place-visible/accessible data or Neutral with player-level Hidden/Restricted statuses.
+
 ## Source precedence and frozen inputs
 1. Immutable original Book1 data and the canonical `data/infaction_master_v0.4.json` are the reference for original affinity scores, scales, functions, Types, Base Names and Animals.
 2. Approved overlays and mechanics in **this v0.4.8 specification** supersede earlier effective values, including any stale labels in the master Sheet or old Colab.
