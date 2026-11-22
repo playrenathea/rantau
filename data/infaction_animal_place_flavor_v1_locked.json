@@ -1,0 +1,1250 @@
+{
+  "version": "animal-place-flavor-v1-2026-11-22",
+  "source": "Infaction — Item & Location Vocabulary.xlsx; ANIMAL ASSOCIATION VOCABULARY — TEMPORARY FREEZE v0.1",
+  "source_drive_url": "https://drive.google.com/file/d/16sv3x_1NjoGehj3WFcmdAgQXq81lG4-i/view",
+  "weight_policy": "0=Item-only (ineligible for Place), 1=grammatical eccentric, 3=general use. Manual global weight, never per Place. Every original Animal association preserved.",
+  "status": "DESIGN_LOCKED_FOR_PLACE_NAMING; initial editorial weight calibration",
+  "records": [
+    {
+      "word": "Fang",
+      "category": "Anatomy",
+      "animals": [
+        "Wolf",
+        "Tiger",
+        "Lion",
+        "Serpent",
+        "Shark",
+        "Leopard",
+        "Jaguar",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Tooth",
+      "category": "Anatomy",
+      "animals": [
+        "Shark",
+        "Crocodile",
+        "Rat",
+        "Dog",
+        "Boar"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Claw",
+      "category": "Anatomy",
+      "animals": [
+        "Tiger",
+        "Lion",
+        "Bear",
+        "Cat",
+        "Leopard",
+        "Jaguar",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Paw",
+      "category": "Anatomy",
+      "animals": [
+        "Dog",
+        "Cat",
+        "Bear",
+        "Wolf",
+        "Fox",
+        "Lion",
+        "Tiger"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Talon",
+      "category": "Anatomy",
+      "animals": [
+        "Eagle",
+        "Falcon",
+        "Owl",
+        "Griffin"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Horn",
+      "category": "Anatomy",
+      "animals": [
+        "Bull",
+        "Goat",
+        "Unicorn",
+        "Dragon",
+        "Beetle"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Antler",
+      "category": "Anatomy",
+      "animals": [
+        "Stag"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Tusk",
+      "category": "Anatomy",
+      "animals": [
+        "Elephant",
+        "Boar"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Beak",
+      "category": "Anatomy",
+      "animals": [
+        "Eagle",
+        "Raven",
+        "Owl",
+        "Parrot",
+        "Falcon",
+        "Condor",
+        "Crane",
+        "Griffin"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Eye",
+      "category": "Anatomy",
+      "animals": [
+        "Eagle",
+        "Owl",
+        "Falcon",
+        "Cat",
+        "Peacock",
+        "Raven"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Ear",
+      "category": "Anatomy",
+      "animals": [
+        "Hare",
+        "Fox",
+        "Bat",
+        "Elephant"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Jaw",
+      "category": "Anatomy",
+      "animals": [
+        "Crocodile",
+        "Shark",
+        "Hyena",
+        "Jaguar"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Skull",
+      "category": "Anatomy",
+      "animals": [
+        "Bull",
+        "Wolf",
+        "Boar",
+        "Hyena",
+        "Dog",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Bone",
+      "category": "Anatomy",
+      "animals": [
+        "Dog",
+        "Wolf",
+        "Whale",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Heart",
+      "category": "Anatomy / Symbol",
+      "animals": [
+        "Lion",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Mane",
+      "category": "Anatomy",
+      "animals": [
+        "Lion",
+        "Horse",
+        "Griffin"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Tail",
+      "category": "Anatomy",
+      "animals": [
+        "Fox",
+        "Rat",
+        "Cat",
+        "Dog",
+        "Wolf",
+        "Peacock",
+        "Monkey",
+        "Scorpion",
+        "Lizard"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Wing",
+      "category": "Anatomy",
+      "animals": [
+        "Eagle",
+        "Raven",
+        "Owl",
+        "Falcon",
+        "Condor",
+        "Parrot",
+        "Swan",
+        "Dove",
+        "Swallow",
+        "Peacock",
+        "Bat",
+        "Bee",
+        "Moth",
+        "Butterfly",
+        "Dragon",
+        "Phoenix",
+        "Griffin"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Fin",
+      "category": "Anatomy",
+      "animals": [
+        "Shark",
+        "Dolphin",
+        "Whale"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Hoof",
+      "category": "Anatomy",
+      "animals": [
+        "Horse",
+        "Bull",
+        "Goat",
+        "Sheep",
+        "Stag",
+        "Camel",
+        "Boar",
+        "Unicorn"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Trunk",
+      "category": "Anatomy",
+      "animals": [
+        "Elephant"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Hump",
+      "category": "Anatomy",
+      "animals": [
+        "Camel"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Tentacle",
+      "category": "Anatomy",
+      "animals": [
+        "Octopus"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Pincer",
+      "category": "Anatomy",
+      "animals": [
+        "Scorpion"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Stinger",
+      "category": "Anatomy",
+      "animals": [
+        "Bee",
+        "Scorpion"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Antenna",
+      "category": "Anatomy",
+      "animals": [
+        "Ant",
+        "Bee",
+        "Moth",
+        "Butterfly",
+        "Beetle",
+        "Mantis"
+      ],
+      "suitable_for": "Item",
+      "weight": 0
+    },
+    {
+      "word": "Mandible",
+      "category": "Anatomy",
+      "animals": [
+        "Ant",
+        "Beetle",
+        "Mantis"
+      ],
+      "suitable_for": "Item",
+      "weight": 0
+    },
+    {
+      "word": "Snout",
+      "category": "Anatomy",
+      "animals": [
+        "Boar",
+        "Bear",
+        "Dog"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Whisker",
+      "category": "Anatomy",
+      "animals": [
+        "Cat",
+        "Rat",
+        "Fox"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Shell",
+      "category": "Anatomy / Material",
+      "animals": [
+        "Turtle",
+        "Beetle"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Feather",
+      "category": "Surface / Material",
+      "animals": [
+        "Eagle",
+        "Raven",
+        "Owl",
+        "Falcon",
+        "Peacock",
+        "Dove",
+        "Swan",
+        "Parrot",
+        "Phoenix",
+        "Griffin"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Scale",
+      "category": "Surface / Material",
+      "animals": [
+        "Serpent",
+        "Dragon",
+        "Crocodile",
+        "Lizard"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Stripe",
+      "category": "Marking",
+      "animals": [
+        "Tiger"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Spot",
+      "category": "Marking",
+      "animals": [
+        "Leopard",
+        "Jaguar"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Fur",
+      "category": "Surface / Material",
+      "animals": [
+        "Bear",
+        "Fox",
+        "Wolf",
+        "Cat",
+        "Hare"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Hide",
+      "category": "Surface / Material",
+      "animals": [
+        "Bear",
+        "Bull",
+        "Boar",
+        "Crocodile"
+      ],
+      "suitable_for": "Item",
+      "weight": 0
+    },
+    {
+      "word": "Skin",
+      "category": "Surface / Material",
+      "animals": [
+        "Serpent",
+        "Lizard",
+        "Crocodile"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Wool",
+      "category": "Surface / Material",
+      "animals": [
+        "Sheep"
+      ],
+      "suitable_for": "Item",
+      "weight": 0
+    },
+    {
+      "word": "Silk",
+      "category": "Biological Material",
+      "animals": [
+        "Spider",
+        "Moth"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Ivory",
+      "category": "Biological Material",
+      "animals": [
+        "Elephant"
+      ],
+      "suitable_for": "Item",
+      "weight": 0
+    },
+    {
+      "word": "Venom",
+      "category": "Biological Product",
+      "animals": [
+        "Serpent",
+        "Scorpion",
+        "Spider"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Web",
+      "category": "Biological Product",
+      "animals": [
+        "Spider"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Honey",
+      "category": "Biological Product",
+      "animals": [
+        "Bee"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Wax",
+      "category": "Biological Product",
+      "animals": [
+        "Bee"
+      ],
+      "suitable_for": "Item",
+      "weight": 0
+    },
+    {
+      "word": "Ink",
+      "category": "Biological Product",
+      "animals": [
+        "Octopus"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Blood",
+      "category": "Body / Mythic",
+      "animals": [
+        "Dragon",
+        "Unicorn"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Egg",
+      "category": "Biological Product",
+      "animals": [
+        "Turtle",
+        "Crocodile",
+        "Serpent",
+        "Eagle",
+        "Dove",
+        "Rooster"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Ash",
+      "category": "Mythic",
+      "animals": [
+        "Phoenix"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Flame",
+      "category": "Mythic",
+      "animals": [
+        "Phoenix",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Ember",
+      "category": "Mythic",
+      "animals": [
+        "Phoenix"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Breath",
+      "category": "Mythic",
+      "animals": [
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Roar",
+      "category": "Sound",
+      "animals": [
+        "Lion",
+        "Tiger",
+        "Bear",
+        "Jaguar",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Howl",
+      "category": "Sound",
+      "animals": [
+        "Wolf",
+        "Jackal",
+        "Dog"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Growl",
+      "category": "Sound",
+      "animals": [
+        "Dog",
+        "Wolf",
+        "Bear",
+        "Lion",
+        "Tiger"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Hiss",
+      "category": "Sound",
+      "animals": [
+        "Serpent",
+        "Cat",
+        "Swan",
+        "Crocodile"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Bark",
+      "category": "Sound",
+      "animals": [
+        "Dog",
+        "Fox",
+        "Jackal"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Meow",
+      "category": "Sound",
+      "animals": [
+        "Cat"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Purr",
+      "category": "Sound",
+      "animals": [
+        "Cat"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Caw",
+      "category": "Sound",
+      "animals": [
+        "Raven"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Hoot",
+      "category": "Sound",
+      "animals": [
+        "Owl"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Screech",
+      "category": "Sound",
+      "animals": [
+        "Eagle",
+        "Falcon",
+        "Parrot",
+        "Bat"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Squawk",
+      "category": "Sound",
+      "animals": [
+        "Parrot"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Chirp",
+      "category": "Sound",
+      "animals": [
+        "Swallow",
+        "Dove",
+        "Bee"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Coo",
+      "category": "Sound",
+      "animals": [
+        "Dove"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Crow",
+      "category": "Sound",
+      "animals": [
+        "Rooster"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Bleat",
+      "category": "Sound",
+      "animals": [
+        "Goat",
+        "Sheep"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Neigh",
+      "category": "Sound",
+      "animals": [
+        "Horse",
+        "Unicorn"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Grunt",
+      "category": "Sound",
+      "animals": [
+        "Boar",
+        "Bear",
+        "Camel"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Squeak",
+      "category": "Sound",
+      "animals": [
+        "Rat",
+        "Bat"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Buzz",
+      "category": "Sound",
+      "animals": [
+        "Bee",
+        "Beetle"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Croak",
+      "category": "Sound",
+      "animals": [
+        "Frog",
+        "Raven"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Trumpet",
+      "category": "Sound",
+      "animals": [
+        "Elephant"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Laugh",
+      "category": "Sound / Cultural",
+      "animals": [
+        "Hyena"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Nest",
+      "category": "Habitat",
+      "animals": [
+        "Eagle",
+        "Raven",
+        "Owl",
+        "Swallow",
+        "Dove",
+        "Swan",
+        "Bee"
+      ],
+      "suitable_for": "Location",
+      "weight": 3
+    },
+    {
+      "word": "Den",
+      "category": "Habitat",
+      "animals": [
+        "Wolf",
+        "Fox",
+        "Bear",
+        "Lion",
+        "Hyena"
+      ],
+      "suitable_for": "Location",
+      "weight": 3
+    },
+    {
+      "word": "Burrow",
+      "category": "Habitat",
+      "animals": [
+        "Hare",
+        "Fox",
+        "Rat"
+      ],
+      "suitable_for": "Location",
+      "weight": 3
+    },
+    {
+      "word": "Hive",
+      "category": "Habitat",
+      "animals": [
+        "Bee"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Pack",
+      "category": "Social",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Jackal"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Herd",
+      "category": "Social",
+      "animals": [
+        "Elephant",
+        "Horse",
+        "Bull",
+        "Sheep",
+        "Camel",
+        "Stag"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Flock",
+      "category": "Social",
+      "animals": [
+        "Dove",
+        "Swan",
+        "Crane",
+        "Swallow",
+        "Sheep"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Swarm",
+      "category": "Social",
+      "animals": [
+        "Bee",
+        "Ant",
+        "Beetle"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Colony",
+      "category": "Social",
+      "animals": [
+        "Ant",
+        "Bee",
+        "Bat"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Pounce",
+      "category": "Behavior",
+      "animals": [
+        "Cat",
+        "Tiger",
+        "Lion",
+        "Leopard",
+        "Jaguar"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Charge",
+      "category": "Behavior",
+      "animals": [
+        "Bull",
+        "Boar",
+        "Elephant",
+        "Stag"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Stampede",
+      "category": "Behavior",
+      "animals": [
+        "Bull",
+        "Horse",
+        "Elephant",
+        "Camel"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Leap",
+      "category": "Behavior",
+      "animals": [
+        "Hare",
+        "Frog",
+        "Cat",
+        "Monkey"
+      ],
+      "suitable_for": "Both",
+      "weight": 3
+    },
+    {
+      "word": "Prayer",
+      "category": "Behavior / Cultural",
+      "animals": [
+        "Mantis"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Cub",
+      "category": "Baby Animal",
+      "animals": [
+        "Lion",
+        "Tiger",
+        "Bear",
+        "Leopard",
+        "Jaguar",
+        "Hyena",
+        "Wolf",
+        "Fox"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Pup",
+      "category": "Baby Animal",
+      "animals": [
+        "Dog",
+        "Wolf",
+        "Jackal",
+        "Fox",
+        "Bat",
+        "Rat",
+        "Shark"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Puppy",
+      "category": "Baby Animal",
+      "animals": [
+        "Dog"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Kit",
+      "category": "Baby Animal",
+      "animals": [
+        "Fox",
+        "Cat"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Kitten",
+      "category": "Baby Animal",
+      "animals": [
+        "Cat"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Calf",
+      "category": "Baby Animal",
+      "animals": [
+        "Elephant",
+        "Bull",
+        "Camel",
+        "Whale",
+        "Dolphin"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Chick",
+      "category": "Baby Animal",
+      "animals": [
+        "Eagle",
+        "Raven",
+        "Owl",
+        "Falcon",
+        "Condor",
+        "Parrot",
+        "Swallow",
+        "Swan",
+        "Peacock",
+        "Dove",
+        "Crane",
+        "Rooster",
+        "Phoenix",
+        "Griffin"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Hatchling",
+      "category": "Baby Animal",
+      "animals": [
+        "Serpent",
+        "Crocodile",
+        "Lizard",
+        "Turtle",
+        "Octopus",
+        "Dragon",
+        "Phoenix",
+        "Griffin"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Foal",
+      "category": "Baby Animal",
+      "animals": [
+        "Horse",
+        "Unicorn"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Fawn",
+      "category": "Baby Animal",
+      "animals": [
+        "Stag"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Lamb",
+      "category": "Baby Animal",
+      "animals": [
+        "Sheep"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Kid",
+      "category": "Baby Animal",
+      "animals": [
+        "Goat"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Piglet",
+      "category": "Baby Animal",
+      "animals": [
+        "Boar"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Tadpole",
+      "category": "Baby Animal",
+      "animals": [
+        "Frog"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Caterpillar",
+      "category": "Baby Animal",
+      "animals": [
+        "Moth",
+        "Butterfly"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Larva",
+      "category": "Baby Animal",
+      "animals": [
+        "Bee",
+        "Ant",
+        "Beetle",
+        "Moth",
+        "Butterfly"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Grub",
+      "category": "Baby Animal",
+      "animals": [
+        "Beetle"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Nymph",
+      "category": "Baby Animal",
+      "animals": [
+        "Mantis"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Spiderling",
+      "category": "Baby Animal",
+      "animals": [
+        "Spider"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Eaglet",
+      "category": "Baby Animal",
+      "animals": [
+        "Eagle"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Owlet",
+      "category": "Baby Animal",
+      "animals": [
+        "Owl"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    },
+    {
+      "word": "Fledgling",
+      "category": "Baby Animal",
+      "animals": [
+        "Eagle",
+        "Raven",
+        "Owl",
+        "Falcon",
+        "Condor",
+        "Parrot",
+        "Swallow",
+        "Swan",
+        "Peacock",
+        "Dove",
+        "Crane",
+        "Rooster"
+      ],
+      "suitable_for": "Both",
+      "weight": 1
+    }
+  ]
+}
