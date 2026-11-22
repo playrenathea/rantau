@@ -45,11 +45,13 @@ function createWorld(){
  assert(first.app.children.some(n=>n.tagName==='nav'),'no direct navigation after intro');
  const active=setup(true,createWorld());
  for(let i=0;i<12;i++)await Promise.resolve();
+ let nav=active.app.children.find(x=>x.tagName==='nav');assert(nav);
+ nav.children.find(x=>x.textContent==='Explore').fire('click');
  const explored=text(active.app);
  assert(explored.includes('The Land'));
  assert(explored.includes('Claw Den'));
  assert(explored.includes('Den Gate'));
- let nav=active.app.children.find(x=>x.tagName==='nav');assert(nav);
+ nav=active.app.children.find(x=>x.tagName==='nav');
  nav.children.find(x=>x.textContent==='Factions').fire('click');
  const factions=text(active.app);
  assert(factions.includes('Wolf Faction'));
