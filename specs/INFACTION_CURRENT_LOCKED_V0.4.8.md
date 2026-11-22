@@ -86,7 +86,7 @@ Current postprocessor: `infaction_site_postprocess_v3.py`. Colab companion: `not
 ## Quality gates
 - Preserve selected-world diversity, genre-plausible distribution, Function coverage with limited overlap, six Faction representation and affinity with Type+Base, and natural coappearance of close neighbors.
 - Validate 71 Location eligibility, uniqueness, 14 Function hard minima post-repair, parent integrity, city inheritance, full Site type distribution, and targeted Farm/Ship family relationships.
-- Use reproducible fixed seed cohorts and original 118×118 matrix as invariant source; compare against saved Site checkpoint and prior 1,000-world results. Interpret historical results as reference, not as current-v0.4.7 production output.
+- Use reproducible fixed seed cohorts and original 118×118 matrix as invariant source; compare against saved Site checkpoint and prior 1,000-world results. Interpret historical results as reference, not as current-v0.4.8 production output.
 - Do not rewrite original Book1 or call an older v0.4.6 notebook the latest release.
 
 ## Version/status clarification
