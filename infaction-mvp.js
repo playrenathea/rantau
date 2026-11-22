@@ -99,7 +99,7 @@ function generateWorld(){
  if(typeof Worker==='undefined'){loadError='This browser does not support Web Workers.';renderApp();return}
  generating=true;progress='Loading original Python generator';loadError=null;world=null;renderApp();
  if(!worker){
-  try{worker=new Worker('./infaction-python-worker.js?v=0.5.1')}catch(e){generating=false;loadError=e.message;renderApp();return}
+  try{worker=new Worker('./infaction-python-worker.js?v=0.5.3')}catch(e){generating=false;loadError=e.message;renderApp();return}
   worker.onmessage=e=>{
    const m=e.data||{};
    if(m.type==='status'){
