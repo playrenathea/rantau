@@ -1,0 +1,5780 @@
+{
+  "version": "animal-place-flavor-v2-candidate-2026-11-22",
+  "status": "CANDIDATE_NOT_ACTIVE; redundancy policy pending",
+  "supersedes_candidate_only": "data/infaction_animal_place_flavor_v1_locked.json",
+  "production_default_unchanged": true,
+  "source_vocab_version": "animal-place-flavor-v1-2026-11-22",
+  "legacy_count": 109,
+  "added_count": 182,
+  "total_candidate_count": 291,
+  "association_review": "New associations require editorial validation and redundancy decision; do not silently activate.",
+  "records": [
+    {
+      "word": "Fang",
+      "category": "Anatomy",
+      "animals": [
+        "Wolf",
+        "Tiger",
+        "Lion",
+        "Serpent",
+        "Shark",
+        "Leopard",
+        "Jaguar",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Tooth",
+      "category": "Anatomy",
+      "animals": [
+        "Shark",
+        "Crocodile",
+        "Rat",
+        "Dog",
+        "Boar"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Claw",
+      "category": "Anatomy",
+      "animals": [
+        "Tiger",
+        "Lion",
+        "Bear",
+        "Cat",
+        "Leopard",
+        "Jaguar",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Paw",
+      "category": "Anatomy",
+      "animals": [
+        "Dog",
+        "Cat",
+        "Bear",
+        "Wolf",
+        "Fox",
+        "Lion",
+        "Tiger"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Talon",
+      "category": "Anatomy",
+      "animals": [
+        "Eagle",
+        "Falcon",
+        "Owl",
+        "Griffin"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Horn",
+      "category": "Anatomy",
+      "animals": [
+        "Bull",
+        "Goat",
+        "Unicorn",
+        "Dragon",
+        "Beetle"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Antler",
+      "category": "Anatomy",
+      "animals": [
+        "Stag"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Tusk",
+      "category": "Anatomy",
+      "animals": [
+        "Elephant",
+        "Boar"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Beak",
+      "category": "Anatomy",
+      "animals": [
+        "Eagle",
+        "Raven",
+        "Owl",
+        "Parrot",
+        "Falcon",
+        "Condor",
+        "Crane",
+        "Griffin"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Eye",
+      "category": "Anatomy",
+      "animals": [
+        "Eagle",
+        "Owl",
+        "Falcon",
+        "Cat",
+        "Peacock",
+        "Raven"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Ear",
+      "category": "Anatomy",
+      "animals": [
+        "Hare",
+        "Fox",
+        "Bat",
+        "Elephant"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Jaw",
+      "category": "Anatomy",
+      "animals": [
+        "Crocodile",
+        "Shark",
+        "Hyena",
+        "Jaguar"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Skull",
+      "category": "Anatomy",
+      "animals": [
+        "Bull",
+        "Wolf",
+        "Boar",
+        "Hyena",
+        "Dog",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Bone",
+      "category": "Anatomy",
+      "animals": [
+        "Dog",
+        "Wolf",
+        "Whale",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Heart",
+      "category": "Anatomy / Symbol",
+      "animals": [
+        "Lion",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Mane",
+      "category": "Anatomy",
+      "animals": [
+        "Lion",
+        "Horse",
+        "Griffin"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Tail",
+      "category": "Anatomy",
+      "animals": [
+        "Fox",
+        "Rat",
+        "Cat",
+        "Dog",
+        "Wolf",
+        "Peacock",
+        "Monkey",
+        "Scorpion",
+        "Lizard"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Wing",
+      "category": "Anatomy",
+      "animals": [
+        "Eagle",
+        "Raven",
+        "Owl",
+        "Falcon",
+        "Condor",
+        "Parrot",
+        "Swan",
+        "Dove",
+        "Swallow",
+        "Peacock",
+        "Bat",
+        "Bee",
+        "Moth",
+        "Butterfly",
+        "Dragon",
+        "Phoenix",
+        "Griffin"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Fin",
+      "category": "Anatomy",
+      "animals": [
+        "Shark",
+        "Dolphin",
+        "Whale"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Hoof",
+      "category": "Anatomy",
+      "animals": [
+        "Horse",
+        "Bull",
+        "Goat",
+        "Sheep",
+        "Stag",
+        "Camel",
+        "Boar",
+        "Unicorn"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Trunk",
+      "category": "Anatomy",
+      "animals": [
+        "Elephant"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Hump",
+      "category": "Anatomy",
+      "animals": [
+        "Camel"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Tentacle",
+      "category": "Anatomy",
+      "animals": [
+        "Octopus"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Pincer",
+      "category": "Anatomy",
+      "animals": [
+        "Scorpion"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Stinger",
+      "category": "Anatomy",
+      "animals": [
+        "Bee",
+        "Scorpion"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Antenna",
+      "category": "Anatomy",
+      "animals": [
+        "Ant",
+        "Bee",
+        "Moth",
+        "Butterfly",
+        "Beetle",
+        "Mantis"
+      ],
+      "suitable_for": "Item",
+      "weight": 0,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Mandible",
+      "category": "Anatomy",
+      "animals": [
+        "Ant",
+        "Beetle",
+        "Mantis"
+      ],
+      "suitable_for": "Item",
+      "weight": 0,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Snout",
+      "category": "Anatomy",
+      "animals": [
+        "Boar",
+        "Bear",
+        "Dog"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Whisker",
+      "category": "Anatomy",
+      "animals": [
+        "Cat",
+        "Rat",
+        "Fox"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Shell",
+      "category": "Anatomy / Material",
+      "animals": [
+        "Turtle",
+        "Beetle"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Feather",
+      "category": "Surface / Material",
+      "animals": [
+        "Eagle",
+        "Raven",
+        "Owl",
+        "Falcon",
+        "Peacock",
+        "Dove",
+        "Swan",
+        "Parrot",
+        "Phoenix",
+        "Griffin"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Scale",
+      "category": "Surface / Material",
+      "animals": [
+        "Serpent",
+        "Dragon",
+        "Crocodile",
+        "Lizard"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Stripe",
+      "category": "Marking",
+      "animals": [
+        "Tiger"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Spot",
+      "category": "Marking",
+      "animals": [
+        "Leopard",
+        "Jaguar"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Fur",
+      "category": "Surface / Material",
+      "animals": [
+        "Bear",
+        "Fox",
+        "Wolf",
+        "Cat",
+        "Hare"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Hide",
+      "category": "Surface / Material",
+      "animals": [
+        "Bear",
+        "Bull",
+        "Boar",
+        "Crocodile"
+      ],
+      "suitable_for": "Item",
+      "weight": 0,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Skin",
+      "category": "Surface / Material",
+      "animals": [
+        "Serpent",
+        "Lizard",
+        "Crocodile"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Wool",
+      "category": "Surface / Material",
+      "animals": [
+        "Sheep"
+      ],
+      "suitable_for": "Item",
+      "weight": 0,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Silk",
+      "category": "Biological Material",
+      "animals": [
+        "Spider",
+        "Moth"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Ivory",
+      "category": "Biological Material",
+      "animals": [
+        "Elephant"
+      ],
+      "suitable_for": "Item",
+      "weight": 0,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Venom",
+      "category": "Biological Product",
+      "animals": [
+        "Serpent",
+        "Scorpion",
+        "Spider"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Web",
+      "category": "Biological Product",
+      "animals": [
+        "Spider"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Honey",
+      "category": "Biological Product",
+      "animals": [
+        "Bee"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Wax",
+      "category": "Biological Product",
+      "animals": [
+        "Bee"
+      ],
+      "suitable_for": "Item",
+      "weight": 0,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Ink",
+      "category": "Biological Product",
+      "animals": [
+        "Octopus"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Blood",
+      "category": "Body / Mythic",
+      "animals": [
+        "Dragon",
+        "Unicorn"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Egg",
+      "category": "Biological Product",
+      "animals": [
+        "Turtle",
+        "Crocodile",
+        "Serpent",
+        "Eagle",
+        "Dove",
+        "Rooster"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Ash",
+      "category": "Mythic",
+      "animals": [
+        "Phoenix"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Flame",
+      "category": "Mythic",
+      "animals": [
+        "Phoenix",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Ember",
+      "category": "Mythic",
+      "animals": [
+        "Phoenix"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Breath",
+      "category": "Mythic",
+      "animals": [
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Roar",
+      "category": "Sound",
+      "animals": [
+        "Lion",
+        "Tiger",
+        "Bear",
+        "Jaguar",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Howl",
+      "category": "Sound",
+      "animals": [
+        "Wolf",
+        "Jackal",
+        "Dog"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Growl",
+      "category": "Sound",
+      "animals": [
+        "Dog",
+        "Wolf",
+        "Bear",
+        "Lion",
+        "Tiger"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Hiss",
+      "category": "Sound",
+      "animals": [
+        "Serpent",
+        "Cat",
+        "Swan",
+        "Crocodile"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Bark",
+      "category": "Sound",
+      "animals": [
+        "Dog",
+        "Fox",
+        "Jackal"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Meow",
+      "category": "Sound",
+      "animals": [
+        "Cat"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Purr",
+      "category": "Sound",
+      "animals": [
+        "Cat"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Caw",
+      "category": "Sound",
+      "animals": [
+        "Raven"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Hoot",
+      "category": "Sound",
+      "animals": [
+        "Owl"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Screech",
+      "category": "Sound",
+      "animals": [
+        "Eagle",
+        "Falcon",
+        "Parrot",
+        "Bat"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Squawk",
+      "category": "Sound",
+      "animals": [
+        "Parrot"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Chirp",
+      "category": "Sound",
+      "animals": [
+        "Swallow",
+        "Dove",
+        "Bee"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Coo",
+      "category": "Sound",
+      "animals": [
+        "Dove"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Crow",
+      "category": "Sound",
+      "animals": [
+        "Rooster"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Bleat",
+      "category": "Sound",
+      "animals": [
+        "Goat",
+        "Sheep"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Neigh",
+      "category": "Sound",
+      "animals": [
+        "Horse",
+        "Unicorn"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Grunt",
+      "category": "Sound",
+      "animals": [
+        "Boar",
+        "Bear",
+        "Camel"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Squeak",
+      "category": "Sound",
+      "animals": [
+        "Rat",
+        "Bat"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Buzz",
+      "category": "Sound",
+      "animals": [
+        "Bee",
+        "Beetle"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Croak",
+      "category": "Sound",
+      "animals": [
+        "Frog",
+        "Raven"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Trumpet",
+      "category": "Sound",
+      "animals": [
+        "Elephant"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Laugh",
+      "category": "Sound / Cultural",
+      "animals": [
+        "Hyena"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Nest",
+      "category": "Habitat",
+      "animals": [
+        "Eagle",
+        "Raven",
+        "Owl",
+        "Swallow",
+        "Dove",
+        "Swan",
+        "Bee"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Den",
+      "category": "Habitat",
+      "animals": [
+        "Wolf",
+        "Fox",
+        "Bear",
+        "Lion",
+        "Hyena"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Burrow",
+      "category": "Habitat",
+      "animals": [
+        "Hare",
+        "Fox",
+        "Rat"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Hive",
+      "category": "Habitat",
+      "animals": [
+        "Bee"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Pack",
+      "category": "Social",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Jackal"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Herd",
+      "category": "Social",
+      "animals": [
+        "Elephant",
+        "Horse",
+        "Bull",
+        "Sheep",
+        "Camel",
+        "Stag"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Flock",
+      "category": "Social",
+      "animals": [
+        "Dove",
+        "Swan",
+        "Crane",
+        "Swallow",
+        "Sheep"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Swarm",
+      "category": "Social",
+      "animals": [
+        "Bee",
+        "Ant",
+        "Beetle"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Colony",
+      "category": "Social",
+      "animals": [
+        "Ant",
+        "Bee",
+        "Bat"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Pounce",
+      "category": "Behavior",
+      "animals": [
+        "Cat",
+        "Tiger",
+        "Lion",
+        "Leopard",
+        "Jaguar"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Charge",
+      "category": "Behavior",
+      "animals": [
+        "Bull",
+        "Boar",
+        "Elephant",
+        "Stag"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Stampede",
+      "category": "Behavior",
+      "animals": [
+        "Bull",
+        "Horse",
+        "Elephant",
+        "Camel"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Leap",
+      "category": "Behavior",
+      "animals": [
+        "Hare",
+        "Frog",
+        "Cat",
+        "Monkey"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Prayer",
+      "category": "Behavior / Cultural",
+      "animals": [
+        "Mantis"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Cub",
+      "category": "Baby Animal",
+      "animals": [
+        "Lion",
+        "Tiger",
+        "Bear",
+        "Leopard",
+        "Jaguar",
+        "Hyena",
+        "Wolf",
+        "Fox"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Pup",
+      "category": "Baby Animal",
+      "animals": [
+        "Dog",
+        "Wolf",
+        "Jackal",
+        "Fox",
+        "Bat",
+        "Rat",
+        "Shark"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Puppy",
+      "category": "Baby Animal",
+      "animals": [
+        "Dog"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Kit",
+      "category": "Baby Animal",
+      "animals": [
+        "Fox",
+        "Cat"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Kitten",
+      "category": "Baby Animal",
+      "animals": [
+        "Cat"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Calf",
+      "category": "Baby Animal",
+      "animals": [
+        "Elephant",
+        "Bull",
+        "Camel",
+        "Whale",
+        "Dolphin"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Chick",
+      "category": "Baby Animal",
+      "animals": [
+        "Eagle",
+        "Raven",
+        "Owl",
+        "Falcon",
+        "Condor",
+        "Parrot",
+        "Swallow",
+        "Swan",
+        "Peacock",
+        "Dove",
+        "Crane",
+        "Rooster",
+        "Phoenix",
+        "Griffin"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Hatchling",
+      "category": "Baby Animal",
+      "animals": [
+        "Serpent",
+        "Crocodile",
+        "Lizard",
+        "Turtle",
+        "Octopus",
+        "Dragon",
+        "Phoenix",
+        "Griffin"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Foal",
+      "category": "Baby Animal",
+      "animals": [
+        "Horse",
+        "Unicorn"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Fawn",
+      "category": "Baby Animal",
+      "animals": [
+        "Stag"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Lamb",
+      "category": "Baby Animal",
+      "animals": [
+        "Sheep"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Kid",
+      "category": "Baby Animal",
+      "animals": [
+        "Goat"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Piglet",
+      "category": "Baby Animal",
+      "animals": [
+        "Boar"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Tadpole",
+      "category": "Baby Animal",
+      "animals": [
+        "Frog"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Caterpillar",
+      "category": "Baby Animal",
+      "animals": [
+        "Moth",
+        "Butterfly"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Larva",
+      "category": "Baby Animal",
+      "animals": [
+        "Bee",
+        "Ant",
+        "Beetle",
+        "Moth",
+        "Butterfly"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Grub",
+      "category": "Baby Animal",
+      "animals": [
+        "Beetle"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Nymph",
+      "category": "Baby Animal",
+      "animals": [
+        "Mantis"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Spiderling",
+      "category": "Baby Animal",
+      "animals": [
+        "Spider"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Eaglet",
+      "category": "Baby Animal",
+      "animals": [
+        "Eagle"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Owlet",
+      "category": "Baby Animal",
+      "animals": [
+        "Owl"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Fledgling",
+      "category": "Baby Animal",
+      "animals": [
+        "Eagle",
+        "Raven",
+        "Owl",
+        "Falcon",
+        "Condor",
+        "Parrot",
+        "Swallow",
+        "Swan",
+        "Peacock",
+        "Dove",
+        "Crane",
+        "Rooster"
+      ],
+      "suitable_for": "Both",
+      "weight": 1,
+      "source_version": "legacy-v1",
+      "status": "locked"
+    },
+    {
+      "word": "Grip",
+      "category": "Physical Attack",
+      "animals": [
+        "Bear",
+        "Octopus",
+        "Eagle",
+        "Falcon",
+        "Mantis",
+        "Monkey"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Grasp",
+      "category": "Physical Attack",
+      "animals": [
+        "Octopus",
+        "Monkey",
+        "Mantis",
+        "Bear",
+        "Eagle"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Scratch",
+      "category": "Physical Attack",
+      "animals": [
+        "Cat",
+        "Tiger",
+        "Lion",
+        "Leopard",
+        "Jaguar",
+        "Bear",
+        "Fox"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Slash",
+      "category": "Physical Attack",
+      "animals": [
+        "Tiger",
+        "Lion",
+        "Leopard",
+        "Jaguar",
+        "Eagle",
+        "Falcon",
+        "Mantis"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Bite",
+      "category": "Physical Attack",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Shark",
+        "Crocodile",
+        "Serpent",
+        "Fox",
+        "Rat",
+        "Hyena"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Crush",
+      "category": "Physical Attack",
+      "animals": [
+        "Bear",
+        "Elephant",
+        "Whale",
+        "Crocodile",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Rend",
+      "category": "Physical Attack",
+      "animals": [
+        "Bear",
+        "Tiger",
+        "Lion",
+        "Jaguar",
+        "Leopard",
+        "Octopus",
+        "Mantis",
+        "Scorpion",
+        "Serpent",
+        "Wolf",
+        "Shark",
+        "Eagle",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Strike",
+      "category": "Physical Attack",
+      "animals": [
+        "Bear",
+        "Tiger",
+        "Lion",
+        "Jaguar",
+        "Leopard",
+        "Octopus",
+        "Mantis",
+        "Scorpion",
+        "Serpent",
+        "Wolf",
+        "Shark",
+        "Eagle",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Pierce",
+      "category": "Physical Attack",
+      "animals": [
+        "Bear",
+        "Tiger",
+        "Lion",
+        "Jaguar",
+        "Leopard",
+        "Octopus",
+        "Mantis",
+        "Scorpion",
+        "Serpent",
+        "Wolf",
+        "Shark",
+        "Eagle",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Maul",
+      "category": "Physical Attack",
+      "animals": [
+        "Bear",
+        "Tiger",
+        "Lion",
+        "Jaguar",
+        "Leopard",
+        "Octopus",
+        "Mantis",
+        "Scorpion",
+        "Serpent",
+        "Wolf",
+        "Shark",
+        "Eagle",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Hunt",
+      "category": "Predation",
+      "animals": [
+        "Wolf",
+        "Fox",
+        "Dog",
+        "Jackal",
+        "Tiger",
+        "Lion",
+        "Jaguar",
+        "Leopard",
+        "Crocodile",
+        "Shark",
+        "Eagle",
+        "Falcon",
+        "Serpent",
+        "Spider"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Chase",
+      "category": "Predation",
+      "animals": [
+        "Wolf",
+        "Fox",
+        "Dog",
+        "Jackal",
+        "Tiger",
+        "Lion",
+        "Jaguar",
+        "Leopard",
+        "Crocodile",
+        "Shark",
+        "Eagle",
+        "Falcon",
+        "Serpent",
+        "Spider"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Stalk",
+      "category": "Predation",
+      "animals": [
+        "Wolf",
+        "Fox",
+        "Dog",
+        "Jackal",
+        "Tiger",
+        "Lion",
+        "Jaguar",
+        "Leopard",
+        "Crocodile",
+        "Shark",
+        "Eagle",
+        "Falcon",
+        "Serpent",
+        "Spider"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Prowl",
+      "category": "Predation",
+      "animals": [
+        "Tiger",
+        "Lion",
+        "Cat",
+        "Leopard",
+        "Jaguar",
+        "Fox"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Ambush",
+      "category": "Predation",
+      "animals": [
+        "Wolf",
+        "Fox",
+        "Dog",
+        "Jackal",
+        "Tiger",
+        "Lion",
+        "Jaguar",
+        "Leopard",
+        "Crocodile",
+        "Shark",
+        "Eagle",
+        "Falcon",
+        "Serpent",
+        "Spider"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Lurk",
+      "category": "Predation",
+      "animals": [
+        "Wolf",
+        "Fox",
+        "Dog",
+        "Jackal",
+        "Tiger",
+        "Lion",
+        "Jaguar",
+        "Leopard",
+        "Crocodile",
+        "Shark",
+        "Eagle",
+        "Falcon",
+        "Serpent",
+        "Spider"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Snare",
+      "category": "Predation",
+      "animals": [
+        "Wolf",
+        "Fox",
+        "Dog",
+        "Jackal",
+        "Tiger",
+        "Lion",
+        "Jaguar",
+        "Leopard",
+        "Crocodile",
+        "Shark",
+        "Eagle",
+        "Falcon",
+        "Serpent",
+        "Spider"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Trap",
+      "category": "Predation",
+      "animals": [
+        "Wolf",
+        "Fox",
+        "Dog",
+        "Jackal",
+        "Tiger",
+        "Lion",
+        "Jaguar",
+        "Leopard",
+        "Crocodile",
+        "Shark",
+        "Eagle",
+        "Falcon",
+        "Serpent",
+        "Spider"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Pursuit",
+      "category": "Predation",
+      "animals": [
+        "Wolf",
+        "Fox",
+        "Dog",
+        "Jackal",
+        "Tiger",
+        "Lion",
+        "Jaguar",
+        "Leopard",
+        "Crocodile",
+        "Shark",
+        "Eagle",
+        "Falcon",
+        "Serpent",
+        "Spider"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Prey",
+      "category": "Predation",
+      "animals": [
+        "Wolf",
+        "Fox",
+        "Dog",
+        "Jackal",
+        "Tiger",
+        "Lion",
+        "Jaguar",
+        "Leopard",
+        "Crocodile",
+        "Shark",
+        "Eagle",
+        "Falcon",
+        "Serpent",
+        "Spider"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Swoop",
+      "category": "Movement",
+      "animals": [
+        "Eagle",
+        "Falcon",
+        "Owl",
+        "Condor",
+        "Swallow",
+        "Raven",
+        "Bat",
+        "Butterfly",
+        "Moth",
+        "Serpent",
+        "Lizard",
+        "Octopus",
+        "Monkey",
+        "Shark",
+        "Dolphin",
+        "Whale",
+        "Horse",
+        "Hare"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Dive",
+      "category": "Movement",
+      "animals": [
+        "Eagle",
+        "Falcon",
+        "Owl",
+        "Condor",
+        "Swallow",
+        "Raven",
+        "Bat",
+        "Butterfly",
+        "Moth",
+        "Serpent",
+        "Lizard",
+        "Octopus",
+        "Monkey",
+        "Shark",
+        "Dolphin",
+        "Whale",
+        "Horse",
+        "Hare"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Glide",
+      "category": "Movement",
+      "animals": [
+        "Eagle",
+        "Falcon",
+        "Owl",
+        "Condor",
+        "Swallow",
+        "Raven",
+        "Bat",
+        "Butterfly",
+        "Moth",
+        "Serpent",
+        "Lizard",
+        "Octopus",
+        "Monkey",
+        "Shark",
+        "Dolphin",
+        "Whale",
+        "Horse",
+        "Hare"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Soar",
+      "category": "Movement",
+      "animals": [
+        "Eagle",
+        "Falcon",
+        "Owl",
+        "Condor",
+        "Swallow",
+        "Raven",
+        "Bat",
+        "Butterfly",
+        "Moth",
+        "Serpent",
+        "Lizard",
+        "Octopus",
+        "Monkey",
+        "Shark",
+        "Dolphin",
+        "Whale",
+        "Horse",
+        "Hare"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Flutter",
+      "category": "Movement",
+      "animals": [
+        "Eagle",
+        "Falcon",
+        "Owl",
+        "Condor",
+        "Swallow",
+        "Raven",
+        "Bat",
+        "Butterfly",
+        "Moth",
+        "Serpent",
+        "Lizard",
+        "Octopus",
+        "Monkey",
+        "Shark",
+        "Dolphin",
+        "Whale",
+        "Horse",
+        "Hare"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Slither",
+      "category": "Movement",
+      "animals": [
+        "Eagle",
+        "Falcon",
+        "Owl",
+        "Condor",
+        "Swallow",
+        "Raven",
+        "Bat",
+        "Butterfly",
+        "Moth",
+        "Serpent",
+        "Lizard",
+        "Octopus",
+        "Monkey",
+        "Shark",
+        "Dolphin",
+        "Whale",
+        "Horse",
+        "Hare"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Coil",
+      "category": "Movement",
+      "animals": [
+        "Serpent",
+        "Octopus",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Lunge",
+      "category": "Movement",
+      "animals": [
+        "Eagle",
+        "Falcon",
+        "Owl",
+        "Condor",
+        "Swallow",
+        "Raven",
+        "Bat",
+        "Butterfly",
+        "Moth",
+        "Serpent",
+        "Lizard",
+        "Octopus",
+        "Monkey",
+        "Shark",
+        "Dolphin",
+        "Whale",
+        "Horse",
+        "Hare"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Swing",
+      "category": "Movement",
+      "animals": [
+        "Monkey",
+        "Bat"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Sprint",
+      "category": "Movement",
+      "animals": [
+        "Eagle",
+        "Falcon",
+        "Owl",
+        "Condor",
+        "Swallow",
+        "Raven",
+        "Bat",
+        "Butterfly",
+        "Moth",
+        "Serpent",
+        "Lizard",
+        "Octopus",
+        "Monkey",
+        "Shark",
+        "Dolphin",
+        "Whale",
+        "Horse",
+        "Hare"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Shield",
+      "category": "Protection",
+      "animals": [
+        "Turtle",
+        "Beetle",
+        "Elephant",
+        "Bear",
+        "Dog",
+        "Wolf",
+        "Lion",
+        "Griffin",
+        "Unicorn",
+        "Swan",
+        "Hare",
+        "Octopus",
+        "Crocodile",
+        "Moth",
+        "Boar",
+        "Bull",
+        "Camel",
+        "Horse",
+        "Whale"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Guard",
+      "category": "Protection",
+      "animals": [
+        "Turtle",
+        "Beetle",
+        "Elephant",
+        "Bear",
+        "Dog",
+        "Wolf",
+        "Lion",
+        "Griffin",
+        "Unicorn",
+        "Swan",
+        "Hare",
+        "Octopus",
+        "Crocodile",
+        "Moth",
+        "Boar",
+        "Bull",
+        "Camel",
+        "Horse",
+        "Whale"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Ward",
+      "category": "Protection",
+      "animals": [
+        "Turtle",
+        "Beetle",
+        "Elephant",
+        "Bear",
+        "Dog",
+        "Wolf",
+        "Lion",
+        "Griffin",
+        "Unicorn",
+        "Swan",
+        "Hare",
+        "Octopus",
+        "Crocodile",
+        "Moth",
+        "Boar",
+        "Bull",
+        "Camel",
+        "Horse",
+        "Whale"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Shelter",
+      "category": "Protection",
+      "animals": [
+        "Turtle",
+        "Beetle",
+        "Elephant",
+        "Bear",
+        "Dog",
+        "Wolf",
+        "Lion",
+        "Griffin",
+        "Unicorn",
+        "Swan",
+        "Hare",
+        "Octopus",
+        "Crocodile",
+        "Moth",
+        "Boar",
+        "Bull",
+        "Camel",
+        "Horse",
+        "Whale"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Refuge",
+      "category": "Protection",
+      "animals": [
+        "Turtle",
+        "Beetle",
+        "Elephant",
+        "Bear",
+        "Dog",
+        "Wolf",
+        "Lion",
+        "Griffin",
+        "Unicorn",
+        "Swan",
+        "Hare",
+        "Octopus",
+        "Crocodile",
+        "Moth",
+        "Boar",
+        "Bull",
+        "Camel",
+        "Horse",
+        "Whale"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Retreat",
+      "category": "Protection",
+      "animals": [
+        "Turtle",
+        "Beetle",
+        "Elephant",
+        "Bear",
+        "Dog",
+        "Wolf",
+        "Lion",
+        "Griffin",
+        "Unicorn",
+        "Swan",
+        "Hare",
+        "Octopus",
+        "Crocodile",
+        "Moth",
+        "Boar",
+        "Bull",
+        "Camel",
+        "Horse",
+        "Whale"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Cover",
+      "category": "Protection",
+      "animals": [
+        "Turtle",
+        "Beetle",
+        "Elephant",
+        "Bear",
+        "Dog",
+        "Wolf",
+        "Lion",
+        "Griffin",
+        "Unicorn",
+        "Swan",
+        "Hare",
+        "Octopus",
+        "Crocodile",
+        "Moth",
+        "Boar",
+        "Bull",
+        "Camel",
+        "Horse",
+        "Whale"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Armor",
+      "category": "Protection",
+      "animals": [
+        "Turtle",
+        "Beetle",
+        "Elephant",
+        "Bear",
+        "Dog",
+        "Wolf",
+        "Lion",
+        "Griffin",
+        "Unicorn",
+        "Swan",
+        "Hare",
+        "Octopus",
+        "Crocodile",
+        "Moth",
+        "Boar",
+        "Bull",
+        "Camel",
+        "Horse",
+        "Whale"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Defiance",
+      "category": "Protection",
+      "animals": [
+        "Turtle",
+        "Beetle",
+        "Elephant",
+        "Bear",
+        "Dog",
+        "Wolf",
+        "Lion",
+        "Griffin",
+        "Unicorn",
+        "Swan",
+        "Hare",
+        "Octopus",
+        "Crocodile",
+        "Moth",
+        "Boar",
+        "Bull",
+        "Camel",
+        "Horse",
+        "Whale"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Endurance",
+      "category": "Protection",
+      "animals": [
+        "Turtle",
+        "Beetle",
+        "Elephant",
+        "Bear",
+        "Dog",
+        "Wolf",
+        "Lion",
+        "Griffin",
+        "Unicorn",
+        "Swan",
+        "Hare",
+        "Octopus",
+        "Crocodile",
+        "Moth",
+        "Boar",
+        "Bull",
+        "Camel",
+        "Horse",
+        "Whale"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Scent",
+      "category": "Senses",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Fox",
+        "Bear",
+        "Shark",
+        "Boar",
+        "Rat"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Sight",
+      "category": "Senses",
+      "animals": [
+        "Eagle",
+        "Falcon",
+        "Owl",
+        "Cat",
+        "Tiger",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Gaze",
+      "category": "Senses",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Fox",
+        "Bear",
+        "Boar",
+        "Rat",
+        "Shark",
+        "Eagle",
+        "Falcon",
+        "Owl",
+        "Cat",
+        "Dragon",
+        "Bat",
+        "Dolphin",
+        "Whale",
+        "Elephant",
+        "Spider",
+        "Scorpion"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Glare",
+      "category": "Senses",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Fox",
+        "Bear",
+        "Boar",
+        "Rat",
+        "Shark",
+        "Eagle",
+        "Falcon",
+        "Owl",
+        "Cat",
+        "Dragon",
+        "Bat",
+        "Dolphin",
+        "Whale",
+        "Elephant",
+        "Spider",
+        "Scorpion"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Vigil",
+      "category": "Senses",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Fox",
+        "Bear",
+        "Boar",
+        "Rat",
+        "Shark",
+        "Eagle",
+        "Falcon",
+        "Owl",
+        "Cat",
+        "Dragon",
+        "Bat",
+        "Dolphin",
+        "Whale",
+        "Elephant",
+        "Spider",
+        "Scorpion"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Instinct",
+      "category": "Senses",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Fox",
+        "Bear",
+        "Boar",
+        "Rat",
+        "Shark",
+        "Eagle",
+        "Falcon",
+        "Owl",
+        "Cat",
+        "Dragon",
+        "Bat",
+        "Dolphin",
+        "Whale",
+        "Elephant",
+        "Spider",
+        "Scorpion"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Sense",
+      "category": "Senses",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Fox",
+        "Bear",
+        "Boar",
+        "Rat",
+        "Shark",
+        "Eagle",
+        "Falcon",
+        "Owl",
+        "Cat",
+        "Dragon",
+        "Bat",
+        "Dolphin",
+        "Whale",
+        "Elephant",
+        "Spider",
+        "Scorpion"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Echo",
+      "category": "Senses",
+      "animals": [
+        "Bat",
+        "Dolphin",
+        "Whale"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Pulse",
+      "category": "Senses",
+      "animals": [
+        "Dolphin",
+        "Whale",
+        "Bat",
+        "Shark",
+        "Elephant"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Tremor",
+      "category": "Senses",
+      "animals": [
+        "Elephant",
+        "Spider",
+        "Scorpion",
+        "Serpent"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Scar",
+      "category": "Marks & Remains",
+      "animals": [
+        "Lion",
+        "Tiger",
+        "Bear",
+        "Wolf",
+        "Boar",
+        "Shark"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Gash",
+      "category": "Marks & Remains",
+      "animals": [
+        "Lion",
+        "Tiger",
+        "Bear",
+        "Wolf",
+        "Boar",
+        "Shark",
+        "Dog",
+        "Fox",
+        "Ant",
+        "Horse",
+        "Elephant",
+        "Turtle",
+        "Stag",
+        "Phoenix",
+        "Dragon",
+        "Whale"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Mark",
+      "category": "Marks & Remains",
+      "animals": [
+        "Lion",
+        "Tiger",
+        "Bear",
+        "Wolf",
+        "Boar",
+        "Shark",
+        "Dog",
+        "Fox",
+        "Ant",
+        "Horse",
+        "Elephant",
+        "Turtle",
+        "Stag",
+        "Phoenix",
+        "Dragon",
+        "Whale"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Trace",
+      "category": "Marks & Remains",
+      "animals": [
+        "Lion",
+        "Tiger",
+        "Bear",
+        "Wolf",
+        "Boar",
+        "Shark",
+        "Dog",
+        "Fox",
+        "Ant",
+        "Horse",
+        "Elephant",
+        "Turtle",
+        "Stag",
+        "Phoenix",
+        "Dragon",
+        "Whale"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Trail",
+      "category": "Marks & Remains",
+      "animals": [
+        "Lion",
+        "Tiger",
+        "Bear",
+        "Wolf",
+        "Boar",
+        "Shark",
+        "Dog",
+        "Fox",
+        "Ant",
+        "Horse",
+        "Elephant",
+        "Turtle",
+        "Stag",
+        "Phoenix",
+        "Dragon",
+        "Whale"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Track",
+      "category": "Marks & Remains",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Fox",
+        "Tiger",
+        "Leopard"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Wound",
+      "category": "Marks & Remains",
+      "animals": [
+        "Lion",
+        "Tiger",
+        "Bear",
+        "Wolf",
+        "Boar",
+        "Shark",
+        "Dog",
+        "Fox",
+        "Ant",
+        "Horse",
+        "Elephant",
+        "Turtle",
+        "Stag",
+        "Phoenix",
+        "Dragon",
+        "Whale"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Imprint",
+      "category": "Marks & Remains",
+      "animals": [
+        "Lion",
+        "Tiger",
+        "Bear",
+        "Wolf",
+        "Boar",
+        "Shark",
+        "Dog",
+        "Fox",
+        "Ant",
+        "Horse",
+        "Elephant",
+        "Turtle",
+        "Stag",
+        "Phoenix",
+        "Dragon",
+        "Whale"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Footprint",
+      "category": "Marks & Remains",
+      "animals": [
+        "Lion",
+        "Tiger",
+        "Bear",
+        "Wolf",
+        "Boar",
+        "Shark",
+        "Dog",
+        "Fox",
+        "Ant",
+        "Horse",
+        "Elephant",
+        "Turtle",
+        "Stag",
+        "Phoenix",
+        "Dragon",
+        "Whale"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Remnant",
+      "category": "Marks & Remains",
+      "animals": [
+        "Lion",
+        "Tiger",
+        "Bear",
+        "Wolf",
+        "Boar",
+        "Shark",
+        "Dog",
+        "Fox",
+        "Ant",
+        "Horse",
+        "Elephant",
+        "Turtle",
+        "Stag",
+        "Phoenix",
+        "Dragon",
+        "Whale"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Toxin",
+      "category": "Biological Threat",
+      "animals": [
+        "Scorpion",
+        "Spider",
+        "Serpent",
+        "Frog",
+        "Octopus",
+        "Bee",
+        "Rat",
+        "Bat",
+        "Beetle",
+        "Hyena",
+        "Raven",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Sting",
+      "category": "Biological Threat",
+      "animals": [
+        "Scorpion",
+        "Bee",
+        "Spider"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Poison",
+      "category": "Biological Threat",
+      "animals": [
+        "Scorpion",
+        "Spider",
+        "Serpent",
+        "Frog",
+        "Octopus",
+        "Bee",
+        "Rat",
+        "Bat",
+        "Beetle",
+        "Hyena",
+        "Raven",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Fever",
+      "category": "Biological Threat",
+      "animals": [
+        "Scorpion",
+        "Spider",
+        "Serpent",
+        "Frog",
+        "Octopus",
+        "Bee",
+        "Rat",
+        "Bat",
+        "Beetle",
+        "Hyena",
+        "Raven",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Blight",
+      "category": "Biological Threat",
+      "animals": [
+        "Scorpion",
+        "Spider",
+        "Serpent",
+        "Frog",
+        "Octopus",
+        "Bee",
+        "Rat",
+        "Bat",
+        "Beetle",
+        "Hyena",
+        "Raven",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Rot",
+      "category": "Biological Threat",
+      "animals": [
+        "Scorpion",
+        "Spider",
+        "Serpent",
+        "Frog",
+        "Octopus",
+        "Bee",
+        "Rat",
+        "Bat",
+        "Beetle",
+        "Hyena",
+        "Raven",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Decay",
+      "category": "Biological Threat",
+      "animals": [
+        "Scorpion",
+        "Spider",
+        "Serpent",
+        "Frog",
+        "Octopus",
+        "Bee",
+        "Rat",
+        "Bat",
+        "Beetle",
+        "Hyena",
+        "Raven",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Paralysis",
+      "category": "Biological Threat",
+      "animals": [
+        "Scorpion",
+        "Spider",
+        "Serpent",
+        "Frog",
+        "Octopus",
+        "Bee",
+        "Rat",
+        "Bat",
+        "Beetle",
+        "Hyena",
+        "Raven",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Infection",
+      "category": "Biological Threat",
+      "animals": [
+        "Scorpion",
+        "Spider",
+        "Serpent",
+        "Frog",
+        "Octopus",
+        "Bee",
+        "Rat",
+        "Bat",
+        "Beetle",
+        "Hyena",
+        "Raven",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Corrosion",
+      "category": "Biological Threat",
+      "animals": [
+        "Scorpion",
+        "Spider",
+        "Serpent",
+        "Frog",
+        "Octopus",
+        "Bee",
+        "Rat",
+        "Bat",
+        "Beetle",
+        "Hyena",
+        "Raven",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Camouflage",
+      "category": "Stealth & Deception",
+      "animals": [
+        "Octopus",
+        "Mantis",
+        "Butterfly",
+        "Moth",
+        "Serpent",
+        "Jaguar"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Mimicry",
+      "category": "Stealth & Deception",
+      "animals": [
+        "Octopus",
+        "Parrot",
+        "Moth",
+        "Butterfly"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Disguise",
+      "category": "Stealth & Deception",
+      "animals": [
+        "Octopus",
+        "Mantis",
+        "Butterfly",
+        "Moth",
+        "Serpent",
+        "Jaguar",
+        "Owl",
+        "Bat",
+        "Raven",
+        "Fox",
+        "Monkey",
+        "Parrot",
+        "Cat"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Veil",
+      "category": "Stealth & Deception",
+      "animals": [
+        "Octopus",
+        "Mantis",
+        "Butterfly",
+        "Moth",
+        "Serpent",
+        "Jaguar",
+        "Owl",
+        "Bat",
+        "Raven",
+        "Fox",
+        "Monkey",
+        "Parrot",
+        "Cat"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Shadow",
+      "category": "Stealth & Deception",
+      "animals": [
+        "Octopus",
+        "Mantis",
+        "Butterfly",
+        "Moth",
+        "Serpent",
+        "Jaguar",
+        "Owl",
+        "Bat",
+        "Raven",
+        "Fox",
+        "Monkey",
+        "Parrot",
+        "Cat"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Deception",
+      "category": "Stealth & Deception",
+      "animals": [
+        "Octopus",
+        "Mantis",
+        "Butterfly",
+        "Moth",
+        "Serpent",
+        "Jaguar",
+        "Owl",
+        "Bat",
+        "Raven",
+        "Fox",
+        "Monkey",
+        "Parrot",
+        "Cat"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Trick",
+      "category": "Stealth & Deception",
+      "animals": [
+        "Octopus",
+        "Mantis",
+        "Butterfly",
+        "Moth",
+        "Serpent",
+        "Jaguar",
+        "Owl",
+        "Bat",
+        "Raven",
+        "Fox",
+        "Monkey",
+        "Parrot",
+        "Cat"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Guile",
+      "category": "Stealth & Deception",
+      "animals": [
+        "Octopus",
+        "Mantis",
+        "Butterfly",
+        "Moth",
+        "Serpent",
+        "Jaguar",
+        "Owl",
+        "Bat",
+        "Raven",
+        "Fox",
+        "Monkey",
+        "Parrot",
+        "Cat"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Decoy",
+      "category": "Stealth & Deception",
+      "animals": [
+        "Octopus",
+        "Mantis",
+        "Butterfly",
+        "Moth",
+        "Serpent",
+        "Jaguar",
+        "Owl",
+        "Bat",
+        "Raven",
+        "Fox",
+        "Monkey",
+        "Parrot",
+        "Cat"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Feint",
+      "category": "Stealth & Deception",
+      "animals": [
+        "Octopus",
+        "Mantis",
+        "Butterfly",
+        "Moth",
+        "Serpent",
+        "Jaguar",
+        "Owl",
+        "Bat",
+        "Raven",
+        "Fox",
+        "Monkey",
+        "Parrot",
+        "Cat"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Dominion",
+      "category": "Dominion & Territory",
+      "animals": [
+        "Lion",
+        "Dragon",
+        "Eagle",
+        "Tiger",
+        "Wolf",
+        "Peacock",
+        "Stag",
+        "Unicorn",
+        "Griffin",
+        "Boar"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Reign",
+      "category": "Dominion & Territory",
+      "animals": [
+        "Lion",
+        "Dragon",
+        "Eagle",
+        "Tiger",
+        "Wolf",
+        "Peacock",
+        "Stag",
+        "Unicorn",
+        "Griffin",
+        "Boar"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Claim",
+      "category": "Dominion & Territory",
+      "animals": [
+        "Lion",
+        "Dragon",
+        "Eagle",
+        "Tiger",
+        "Wolf",
+        "Peacock",
+        "Stag",
+        "Unicorn",
+        "Griffin",
+        "Boar"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Territory",
+      "category": "Dominion & Territory",
+      "animals": [
+        "Lion",
+        "Dragon",
+        "Eagle",
+        "Tiger",
+        "Wolf",
+        "Peacock",
+        "Stag",
+        "Unicorn",
+        "Griffin",
+        "Boar"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Domain",
+      "category": "Dominion & Territory",
+      "animals": [
+        "Lion",
+        "Dragon",
+        "Eagle",
+        "Tiger",
+        "Wolf",
+        "Peacock",
+        "Stag",
+        "Unicorn",
+        "Griffin",
+        "Boar"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Conquest",
+      "category": "Dominion & Territory",
+      "animals": [
+        "Lion",
+        "Dragon",
+        "Eagle",
+        "Tiger",
+        "Wolf",
+        "Peacock",
+        "Stag",
+        "Unicorn",
+        "Griffin",
+        "Boar"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Supremacy",
+      "category": "Dominion & Territory",
+      "animals": [
+        "Lion",
+        "Dragon",
+        "Eagle",
+        "Tiger",
+        "Wolf",
+        "Peacock",
+        "Stag",
+        "Unicorn",
+        "Griffin",
+        "Boar"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Ascendancy",
+      "category": "Dominion & Territory",
+      "animals": [
+        "Lion",
+        "Dragon",
+        "Eagle",
+        "Tiger",
+        "Wolf",
+        "Peacock",
+        "Stag",
+        "Unicorn",
+        "Griffin",
+        "Boar"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Throne",
+      "category": "Dominion & Territory",
+      "animals": [
+        "Lion",
+        "Dragon",
+        "Eagle",
+        "Tiger",
+        "Wolf",
+        "Peacock",
+        "Stag",
+        "Unicorn",
+        "Griffin",
+        "Boar"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Crown",
+      "category": "Dominion & Territory",
+      "animals": [
+        "Lion",
+        "Dragon",
+        "Eagle",
+        "Tiger",
+        "Wolf",
+        "Peacock",
+        "Stag",
+        "Unicorn",
+        "Griffin",
+        "Boar"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Pod",
+      "category": "Collective Life",
+      "animals": [
+        "Dolphin",
+        "Whale"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Pride",
+      "category": "Collective Life",
+      "animals": [
+        "Lion",
+        "Peacock"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Troop",
+      "category": "Collective Life",
+      "animals": [
+        "Monkey",
+        "Elephant"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Parliament",
+      "category": "Collective Life",
+      "animals": [
+        "Dolphin",
+        "Whale",
+        "Lion",
+        "Peacock",
+        "Monkey",
+        "Elephant",
+        "Owl",
+        "Raven",
+        "Crane",
+        "Swallow",
+        "Dove",
+        "Swan",
+        "Wolf",
+        "Ant",
+        "Bee",
+        "Rooster",
+        "Spider"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Murmuration",
+      "category": "Collective Life",
+      "animals": [
+        "Swallow",
+        "Raven",
+        "Dove"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Gathering",
+      "category": "Collective Life",
+      "animals": [
+        "Dolphin",
+        "Whale",
+        "Lion",
+        "Peacock",
+        "Monkey",
+        "Elephant",
+        "Owl",
+        "Raven",
+        "Crane",
+        "Swallow",
+        "Dove",
+        "Swan",
+        "Wolf",
+        "Ant",
+        "Bee",
+        "Rooster",
+        "Spider"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Alliance",
+      "category": "Collective Life",
+      "animals": [
+        "Dolphin",
+        "Whale",
+        "Lion",
+        "Peacock",
+        "Monkey",
+        "Elephant",
+        "Owl",
+        "Raven",
+        "Crane",
+        "Swallow",
+        "Dove",
+        "Swan",
+        "Wolf",
+        "Ant",
+        "Bee",
+        "Rooster",
+        "Spider"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Kinship",
+      "category": "Collective Life",
+      "animals": [
+        "Dolphin",
+        "Whale",
+        "Lion",
+        "Peacock",
+        "Monkey",
+        "Elephant",
+        "Owl",
+        "Raven",
+        "Crane",
+        "Swallow",
+        "Dove",
+        "Swan",
+        "Wolf",
+        "Ant",
+        "Bee",
+        "Rooster",
+        "Spider"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Brood",
+      "category": "Collective Life",
+      "animals": [
+        "Dolphin",
+        "Whale",
+        "Lion",
+        "Peacock",
+        "Monkey",
+        "Elephant",
+        "Owl",
+        "Raven",
+        "Crane",
+        "Swallow",
+        "Dove",
+        "Swan",
+        "Wolf",
+        "Ant",
+        "Bee",
+        "Rooster",
+        "Spider"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Congregation",
+      "category": "Collective Life",
+      "animals": [
+        "Dolphin",
+        "Whale",
+        "Lion",
+        "Peacock",
+        "Monkey",
+        "Elephant",
+        "Owl",
+        "Raven",
+        "Crane",
+        "Swallow",
+        "Dove",
+        "Swan",
+        "Wolf",
+        "Ant",
+        "Bee",
+        "Rooster",
+        "Spider"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Courtship",
+      "category": "Life Cycle",
+      "animals": [
+        "Peacock",
+        "Swan",
+        "Crane",
+        "Stag",
+        "Butterfly",
+        "Parrot",
+        "Dolphin",
+        "Bee",
+        "Serpent",
+        "Lizard",
+        "Spider",
+        "Scorpion",
+        "Moth",
+        "Frog",
+        "Shark",
+        "Whale",
+        "Octopus",
+        "Turtle",
+        "Crocodile",
+        "Eagle",
+        "Rooster",
+        "Phoenix",
+        "Dragon"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Display",
+      "category": "Life Cycle",
+      "animals": [
+        "Peacock",
+        "Swan",
+        "Crane",
+        "Stag",
+        "Butterfly",
+        "Parrot",
+        "Dolphin",
+        "Bee",
+        "Serpent",
+        "Lizard",
+        "Spider",
+        "Scorpion",
+        "Moth",
+        "Frog",
+        "Shark",
+        "Whale",
+        "Octopus",
+        "Turtle",
+        "Crocodile",
+        "Eagle",
+        "Rooster",
+        "Phoenix",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Dance",
+      "category": "Life Cycle",
+      "animals": [
+        "Peacock",
+        "Swan",
+        "Crane",
+        "Stag",
+        "Butterfly",
+        "Parrot",
+        "Dolphin",
+        "Bee",
+        "Serpent",
+        "Lizard",
+        "Spider",
+        "Scorpion",
+        "Moth",
+        "Frog",
+        "Shark",
+        "Whale",
+        "Octopus",
+        "Turtle",
+        "Crocodile",
+        "Eagle",
+        "Rooster",
+        "Phoenix",
+        "Dragon"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Ritual",
+      "category": "Life Cycle",
+      "animals": [
+        "Peacock",
+        "Swan",
+        "Crane",
+        "Stag",
+        "Butterfly",
+        "Parrot",
+        "Dolphin",
+        "Bee",
+        "Serpent",
+        "Lizard",
+        "Spider",
+        "Scorpion",
+        "Moth",
+        "Frog",
+        "Shark",
+        "Whale",
+        "Octopus",
+        "Turtle",
+        "Crocodile",
+        "Eagle",
+        "Rooster",
+        "Phoenix",
+        "Dragon"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Molt",
+      "category": "Life Cycle",
+      "animals": [
+        "Serpent",
+        "Lizard",
+        "Crocodile",
+        "Spider",
+        "Scorpion"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Bloom",
+      "category": "Life Cycle",
+      "animals": [
+        "Peacock",
+        "Swan",
+        "Crane",
+        "Stag",
+        "Butterfly",
+        "Parrot",
+        "Dolphin",
+        "Bee",
+        "Serpent",
+        "Lizard",
+        "Spider",
+        "Scorpion",
+        "Moth",
+        "Frog",
+        "Shark",
+        "Whale",
+        "Octopus",
+        "Turtle",
+        "Crocodile",
+        "Eagle",
+        "Rooster",
+        "Phoenix",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Spawn",
+      "category": "Life Cycle",
+      "animals": [
+        "Peacock",
+        "Swan",
+        "Crane",
+        "Stag",
+        "Butterfly",
+        "Parrot",
+        "Dolphin",
+        "Bee",
+        "Serpent",
+        "Lizard",
+        "Spider",
+        "Scorpion",
+        "Moth",
+        "Frog",
+        "Shark",
+        "Whale",
+        "Octopus",
+        "Turtle",
+        "Crocodile",
+        "Eagle",
+        "Rooster",
+        "Phoenix",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Hatch",
+      "category": "Life Cycle",
+      "animals": [
+        "Peacock",
+        "Swan",
+        "Crane",
+        "Stag",
+        "Butterfly",
+        "Parrot",
+        "Dolphin",
+        "Bee",
+        "Serpent",
+        "Lizard",
+        "Spider",
+        "Scorpion",
+        "Moth",
+        "Frog",
+        "Shark",
+        "Whale",
+        "Octopus",
+        "Turtle",
+        "Crocodile",
+        "Eagle",
+        "Rooster",
+        "Phoenix",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Metamorphosis",
+      "category": "Life Cycle",
+      "animals": [
+        "Butterfly",
+        "Moth",
+        "Frog",
+        "Beetle"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Renewal",
+      "category": "Life Cycle",
+      "animals": [
+        "Phoenix",
+        "Butterfly",
+        "Serpent",
+        "Dragon"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Lair",
+      "category": "Habitat",
+      "animals": [
+        "Lion",
+        "Tiger",
+        "Bear",
+        "Dragon",
+        "Hyena"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Roost",
+      "category": "Habitat",
+      "animals": [
+        "Raven",
+        "Owl",
+        "Eagle",
+        "Falcon",
+        "Dove",
+        "Bat"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Warren",
+      "category": "Habitat",
+      "animals": [
+        "Hare",
+        "Rat",
+        "Fox"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Rookery",
+      "category": "Habitat",
+      "animals": [
+        "Raven",
+        "Crane",
+        "Condor",
+        "Swallow",
+        "Swan"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Eyrie",
+      "category": "Habitat",
+      "animals": [
+        "Eagle",
+        "Falcon",
+        "Griffin",
+        "Condor"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Lodge",
+      "category": "Habitat",
+      "animals": [
+        "Lion",
+        "Tiger",
+        "Bear",
+        "Dragon",
+        "Hyena",
+        "Raven",
+        "Owl",
+        "Eagle",
+        "Falcon",
+        "Dove",
+        "Bat",
+        "Hare",
+        "Rat",
+        "Fox",
+        "Crane",
+        "Condor",
+        "Swallow",
+        "Swan",
+        "Ant",
+        "Beetle",
+        "Monkey",
+        "Parrot",
+        "Butterfly",
+        "Boar",
+        "Stag"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Holt",
+      "category": "Habitat",
+      "animals": [
+        "Lion",
+        "Tiger",
+        "Bear",
+        "Dragon",
+        "Hyena",
+        "Raven",
+        "Owl",
+        "Eagle",
+        "Falcon",
+        "Dove",
+        "Bat",
+        "Hare",
+        "Rat",
+        "Fox",
+        "Crane",
+        "Condor",
+        "Swallow",
+        "Swan",
+        "Ant",
+        "Beetle",
+        "Monkey",
+        "Parrot",
+        "Butterfly",
+        "Boar",
+        "Stag"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Mound",
+      "category": "Habitat",
+      "animals": [
+        "Ant",
+        "Beetle"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Canopy",
+      "category": "Habitat",
+      "animals": [
+        "Monkey",
+        "Parrot",
+        "Butterfly",
+        "Swallow"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Thicket",
+      "category": "Habitat",
+      "animals": [
+        "Lion",
+        "Tiger",
+        "Bear",
+        "Dragon",
+        "Hyena",
+        "Raven",
+        "Owl",
+        "Eagle",
+        "Falcon",
+        "Dove",
+        "Bat",
+        "Hare",
+        "Rat",
+        "Fox",
+        "Crane",
+        "Condor",
+        "Swallow",
+        "Swan",
+        "Ant",
+        "Beetle",
+        "Monkey",
+        "Parrot",
+        "Butterfly",
+        "Boar",
+        "Stag"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Tide",
+      "category": "Environment",
+      "animals": [
+        "Whale",
+        "Dolphin",
+        "Shark",
+        "Octopus",
+        "Turtle"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Current",
+      "category": "Environment",
+      "animals": [
+        "Whale",
+        "Dolphin",
+        "Shark",
+        "Octopus",
+        "Turtle",
+        "Wolf",
+        "Fox",
+        "Owl",
+        "Raven",
+        "Stag",
+        "Bear",
+        "Bat",
+        "Moth",
+        "Rooster",
+        "Swallow",
+        "Dove",
+        "Eagle",
+        "Falcon",
+        "Dragon",
+        "Phoenix"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Depth",
+      "category": "Environment",
+      "animals": [
+        "Whale",
+        "Shark",
+        "Octopus",
+        "Dolphin"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Abyss",
+      "category": "Environment",
+      "animals": [
+        "Shark",
+        "Whale",
+        "Octopus",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Mist",
+      "category": "Environment",
+      "animals": [
+        "Whale",
+        "Dolphin",
+        "Shark",
+        "Octopus",
+        "Turtle",
+        "Wolf",
+        "Fox",
+        "Owl",
+        "Raven",
+        "Stag",
+        "Bear",
+        "Bat",
+        "Moth",
+        "Rooster",
+        "Swallow",
+        "Dove",
+        "Eagle",
+        "Falcon",
+        "Dragon",
+        "Phoenix"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Frost",
+      "category": "Environment",
+      "animals": [
+        "Whale",
+        "Dolphin",
+        "Shark",
+        "Octopus",
+        "Turtle",
+        "Wolf",
+        "Fox",
+        "Owl",
+        "Raven",
+        "Stag",
+        "Bear",
+        "Bat",
+        "Moth",
+        "Rooster",
+        "Swallow",
+        "Dove",
+        "Eagle",
+        "Falcon",
+        "Dragon",
+        "Phoenix"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Dusk",
+      "category": "Environment",
+      "animals": [
+        "Owl",
+        "Bat",
+        "Fox",
+        "Wolf",
+        "Moth"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Dawn",
+      "category": "Environment",
+      "animals": [
+        "Rooster",
+        "Swallow",
+        "Dove",
+        "Eagle",
+        "Falcon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Storm",
+      "category": "Environment",
+      "animals": [
+        "Dragon",
+        "Eagle",
+        "Whale",
+        "Shark",
+        "Falcon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Eclipse",
+      "category": "Environment",
+      "animals": [
+        "Whale",
+        "Dolphin",
+        "Shark",
+        "Octopus",
+        "Turtle",
+        "Wolf",
+        "Fox",
+        "Owl",
+        "Raven",
+        "Stag",
+        "Bear",
+        "Bat",
+        "Moth",
+        "Rooster",
+        "Swallow",
+        "Dove",
+        "Eagle",
+        "Falcon",
+        "Dragon",
+        "Phoenix"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Ferocity",
+      "category": "Temperament",
+      "animals": [
+        "Tiger",
+        "Lion",
+        "Wolf",
+        "Boar",
+        "Shark",
+        "Fox",
+        "Raven",
+        "Octopus",
+        "Serpent",
+        "Monkey",
+        "Turtle",
+        "Spider",
+        "Crocodile",
+        "Owl",
+        "Mantis",
+        "Elephant",
+        "Whale",
+        "Dragon",
+        "Bull",
+        "Swan",
+        "Crane",
+        "Dove",
+        "Butterfly",
+        "Dog",
+        "Ant",
+        "Bee",
+        "Cat",
+        "Parrot"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Cunning",
+      "category": "Temperament",
+      "animals": [
+        "Tiger",
+        "Lion",
+        "Wolf",
+        "Boar",
+        "Shark",
+        "Fox",
+        "Raven",
+        "Octopus",
+        "Serpent",
+        "Monkey",
+        "Turtle",
+        "Spider",
+        "Crocodile",
+        "Owl",
+        "Mantis",
+        "Elephant",
+        "Whale",
+        "Dragon",
+        "Bull",
+        "Swan",
+        "Crane",
+        "Dove",
+        "Butterfly",
+        "Dog",
+        "Ant",
+        "Bee",
+        "Cat",
+        "Parrot"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Patience",
+      "category": "Temperament",
+      "animals": [
+        "Turtle",
+        "Spider",
+        "Crocodile",
+        "Owl",
+        "Mantis"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Wisdom",
+      "category": "Temperament",
+      "animals": [
+        "Owl",
+        "Elephant",
+        "Whale",
+        "Dragon"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Fury",
+      "category": "Temperament",
+      "animals": [
+        "Tiger",
+        "Lion",
+        "Wolf",
+        "Boar",
+        "Shark",
+        "Fox",
+        "Raven",
+        "Octopus",
+        "Serpent",
+        "Monkey",
+        "Turtle",
+        "Spider",
+        "Crocodile",
+        "Owl",
+        "Mantis",
+        "Elephant",
+        "Whale",
+        "Dragon",
+        "Bull",
+        "Swan",
+        "Crane",
+        "Dove",
+        "Butterfly",
+        "Dog",
+        "Ant",
+        "Bee",
+        "Cat",
+        "Parrot"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Grace",
+      "category": "Temperament",
+      "animals": [
+        "Tiger",
+        "Lion",
+        "Wolf",
+        "Boar",
+        "Shark",
+        "Fox",
+        "Raven",
+        "Octopus",
+        "Serpent",
+        "Monkey",
+        "Turtle",
+        "Spider",
+        "Crocodile",
+        "Owl",
+        "Mantis",
+        "Elephant",
+        "Whale",
+        "Dragon",
+        "Bull",
+        "Swan",
+        "Crane",
+        "Dove",
+        "Butterfly",
+        "Dog",
+        "Ant",
+        "Bee",
+        "Cat",
+        "Parrot"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Loyalty",
+      "category": "Temperament",
+      "animals": [
+        "Tiger",
+        "Lion",
+        "Wolf",
+        "Boar",
+        "Shark",
+        "Fox",
+        "Raven",
+        "Octopus",
+        "Serpent",
+        "Monkey",
+        "Turtle",
+        "Spider",
+        "Crocodile",
+        "Owl",
+        "Mantis",
+        "Elephant",
+        "Whale",
+        "Dragon",
+        "Bull",
+        "Swan",
+        "Crane",
+        "Dove",
+        "Butterfly",
+        "Dog",
+        "Ant",
+        "Bee",
+        "Cat",
+        "Parrot"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Tenacity",
+      "category": "Temperament",
+      "animals": [
+        "Tiger",
+        "Lion",
+        "Wolf",
+        "Boar",
+        "Shark",
+        "Fox",
+        "Raven",
+        "Octopus",
+        "Serpent",
+        "Monkey",
+        "Turtle",
+        "Spider",
+        "Crocodile",
+        "Owl",
+        "Mantis",
+        "Elephant",
+        "Whale",
+        "Dragon",
+        "Bull",
+        "Swan",
+        "Crane",
+        "Dove",
+        "Butterfly",
+        "Dog",
+        "Ant",
+        "Bee",
+        "Cat",
+        "Parrot"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Mischief",
+      "category": "Temperament",
+      "animals": [
+        "Monkey",
+        "Fox",
+        "Raven",
+        "Cat",
+        "Parrot"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Legacy",
+      "category": "Myth & Legacy",
+      "animals": [
+        "Elephant",
+        "Whale",
+        "Dragon",
+        "Phoenix",
+        "Unicorn"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Omen",
+      "category": "Myth & Legacy",
+      "animals": [
+        "Elephant",
+        "Whale",
+        "Dragon",
+        "Phoenix",
+        "Unicorn",
+        "Raven",
+        "Owl",
+        "Serpent",
+        "Octopus",
+        "Fox",
+        "Dolphin",
+        "Butterfly",
+        "Scorpion",
+        "Dove",
+        "Swan",
+        "Bee",
+        "Ant",
+        "Wolf"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Prophecy",
+      "category": "Myth & Legacy",
+      "animals": [
+        "Elephant",
+        "Whale",
+        "Dragon",
+        "Phoenix",
+        "Unicorn",
+        "Raven",
+        "Owl",
+        "Serpent",
+        "Octopus",
+        "Fox",
+        "Dolphin",
+        "Butterfly",
+        "Scorpion",
+        "Dove",
+        "Swan",
+        "Bee",
+        "Ant",
+        "Wolf"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Secret",
+      "category": "Myth & Legacy",
+      "animals": [
+        "Elephant",
+        "Whale",
+        "Dragon",
+        "Phoenix",
+        "Unicorn",
+        "Raven",
+        "Owl",
+        "Serpent",
+        "Octopus",
+        "Fox",
+        "Dolphin",
+        "Butterfly",
+        "Scorpion",
+        "Dove",
+        "Swan",
+        "Bee",
+        "Ant",
+        "Wolf"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Memory",
+      "category": "Myth & Legacy",
+      "animals": [
+        "Elephant",
+        "Whale",
+        "Raven",
+        "Dog"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Dream",
+      "category": "Myth & Legacy",
+      "animals": [
+        "Elephant",
+        "Whale",
+        "Dragon",
+        "Phoenix",
+        "Unicorn",
+        "Raven",
+        "Owl",
+        "Serpent",
+        "Octopus",
+        "Fox",
+        "Dolphin",
+        "Butterfly",
+        "Scorpion",
+        "Dove",
+        "Swan",
+        "Bee",
+        "Ant",
+        "Wolf"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Curse",
+      "category": "Myth & Legacy",
+      "animals": [
+        "Elephant",
+        "Whale",
+        "Dragon",
+        "Phoenix",
+        "Unicorn",
+        "Raven",
+        "Owl",
+        "Serpent",
+        "Octopus",
+        "Fox",
+        "Dolphin",
+        "Butterfly",
+        "Scorpion",
+        "Dove",
+        "Swan",
+        "Bee",
+        "Ant",
+        "Wolf"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Blessing",
+      "category": "Myth & Legacy",
+      "animals": [
+        "Elephant",
+        "Whale",
+        "Dragon",
+        "Phoenix",
+        "Unicorn",
+        "Raven",
+        "Owl",
+        "Serpent",
+        "Octopus",
+        "Fox",
+        "Dolphin",
+        "Butterfly",
+        "Scorpion",
+        "Dove",
+        "Swan",
+        "Bee",
+        "Ant",
+        "Wolf"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Sacrifice",
+      "category": "Myth & Legacy",
+      "animals": [
+        "Elephant",
+        "Whale",
+        "Dragon",
+        "Phoenix",
+        "Unicorn",
+        "Raven",
+        "Owl",
+        "Serpent",
+        "Octopus",
+        "Fox",
+        "Dolphin",
+        "Butterfly",
+        "Scorpion",
+        "Dove",
+        "Swan",
+        "Bee",
+        "Ant",
+        "Wolf"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Resurrection",
+      "category": "Myth & Legacy",
+      "animals": [
+        "Phoenix",
+        "Dragon",
+        "Butterfly"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Submission",
+      "category": "Dominance & Intimidation",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Monkey",
+        "Horse"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Terror",
+      "category": "Dominance & Intimidation",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Monkey",
+        "Horse",
+        "Tiger",
+        "Lion",
+        "Dragon",
+        "Shark",
+        "Serpent",
+        "Scorpion",
+        "Raven",
+        "Stag",
+        "Bull",
+        "Boar",
+        "Eagle"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Menace",
+      "category": "Dominance & Intimidation",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Monkey",
+        "Horse",
+        "Tiger",
+        "Lion",
+        "Dragon",
+        "Shark",
+        "Serpent",
+        "Scorpion",
+        "Raven",
+        "Stag",
+        "Bull",
+        "Boar",
+        "Eagle"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Dread",
+      "category": "Dominance & Intimidation",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Monkey",
+        "Horse",
+        "Tiger",
+        "Lion",
+        "Dragon",
+        "Shark",
+        "Serpent",
+        "Scorpion",
+        "Raven",
+        "Stag",
+        "Bull",
+        "Boar",
+        "Eagle"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Oppression",
+      "category": "Dominance & Intimidation",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Monkey",
+        "Horse",
+        "Tiger",
+        "Lion",
+        "Dragon",
+        "Shark",
+        "Serpent",
+        "Scorpion",
+        "Raven",
+        "Stag",
+        "Bull",
+        "Boar",
+        "Eagle"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Tyranny",
+      "category": "Dominance & Intimidation",
+      "animals": [
+        "Lion",
+        "Dragon",
+        "Eagle"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Challenge",
+      "category": "Dominance & Intimidation",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Monkey",
+        "Horse",
+        "Tiger",
+        "Lion",
+        "Dragon",
+        "Shark",
+        "Serpent",
+        "Scorpion",
+        "Raven",
+        "Stag",
+        "Bull",
+        "Boar",
+        "Eagle"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Triumph",
+      "category": "Dominance & Intimidation",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Monkey",
+        "Horse",
+        "Tiger",
+        "Lion",
+        "Dragon",
+        "Shark",
+        "Serpent",
+        "Scorpion",
+        "Raven",
+        "Stag",
+        "Bull",
+        "Boar",
+        "Eagle"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Betrayal",
+      "category": "Intrigue",
+      "animals": [
+        "Fox",
+        "Serpent",
+        "Raven",
+        "Jackal",
+        "Octopus",
+        "Monkey",
+        "Owl",
+        "Bat",
+        "Parrot"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Intrigue",
+      "category": "Intrigue",
+      "animals": [
+        "Fox",
+        "Serpent",
+        "Raven",
+        "Jackal",
+        "Octopus",
+        "Monkey",
+        "Owl",
+        "Bat",
+        "Parrot"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Ruse",
+      "category": "Intrigue",
+      "animals": [
+        "Fox",
+        "Serpent",
+        "Raven",
+        "Jackal",
+        "Octopus",
+        "Monkey",
+        "Owl",
+        "Bat",
+        "Parrot"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Conspiracy",
+      "category": "Intrigue",
+      "animals": [
+        "Fox",
+        "Serpent",
+        "Raven",
+        "Jackal",
+        "Octopus",
+        "Monkey",
+        "Owl",
+        "Bat",
+        "Parrot"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Secrecy",
+      "category": "Intrigue",
+      "animals": [
+        "Fox",
+        "Serpent",
+        "Raven",
+        "Jackal",
+        "Octopus",
+        "Monkey",
+        "Owl",
+        "Bat",
+        "Parrot"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Whisper",
+      "category": "Intrigue",
+      "animals": [
+        "Fox",
+        "Serpent",
+        "Raven",
+        "Jackal",
+        "Octopus",
+        "Monkey",
+        "Owl",
+        "Bat",
+        "Parrot"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Silence",
+      "category": "Intrigue",
+      "animals": [
+        "Fox",
+        "Serpent",
+        "Raven",
+        "Jackal",
+        "Octopus",
+        "Monkey",
+        "Owl",
+        "Bat",
+        "Parrot"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Espionage",
+      "category": "Intrigue",
+      "animals": [
+        "Fox",
+        "Serpent",
+        "Raven",
+        "Jackal",
+        "Octopus",
+        "Monkey",
+        "Owl",
+        "Bat",
+        "Parrot"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Hoard",
+      "category": "Resources",
+      "animals": [
+        "Dragon",
+        "Raven",
+        "Rat",
+        "Ant",
+        "Beetle",
+        "Fox",
+        "Wolf",
+        "Shark",
+        "Hyena",
+        "Bee",
+        "Sheep",
+        "Goat",
+        "Elephant",
+        "Bear",
+        "Boar",
+        "Monkey",
+        "Jackal",
+        "Condor",
+        "Lion",
+        "Eagle"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Cache",
+      "category": "Resources",
+      "animals": [
+        "Dragon",
+        "Raven",
+        "Rat",
+        "Ant",
+        "Beetle",
+        "Fox",
+        "Wolf",
+        "Shark",
+        "Hyena",
+        "Bee",
+        "Sheep",
+        "Goat",
+        "Elephant",
+        "Bear",
+        "Boar",
+        "Monkey",
+        "Jackal",
+        "Condor",
+        "Lion",
+        "Eagle"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Plunder",
+      "category": "Resources",
+      "animals": [
+        "Dragon",
+        "Raven",
+        "Rat",
+        "Ant",
+        "Beetle",
+        "Fox",
+        "Wolf",
+        "Shark",
+        "Hyena",
+        "Bee",
+        "Sheep",
+        "Goat",
+        "Elephant",
+        "Bear",
+        "Boar",
+        "Monkey",
+        "Jackal",
+        "Condor",
+        "Lion",
+        "Eagle"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Spoils",
+      "category": "Resources",
+      "animals": [
+        "Dragon",
+        "Raven",
+        "Rat",
+        "Ant",
+        "Beetle",
+        "Fox",
+        "Wolf",
+        "Shark",
+        "Hyena",
+        "Bee",
+        "Sheep",
+        "Goat",
+        "Elephant",
+        "Bear",
+        "Boar",
+        "Monkey",
+        "Jackal",
+        "Condor",
+        "Lion",
+        "Eagle"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Harvest",
+      "category": "Resources",
+      "animals": [
+        "Bee",
+        "Ant",
+        "Sheep",
+        "Goat",
+        "Elephant"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Forage",
+      "category": "Resources",
+      "animals": [
+        "Bear",
+        "Boar",
+        "Ant",
+        "Bee",
+        "Monkey"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Scavenge",
+      "category": "Resources",
+      "animals": [
+        "Hyena",
+        "Jackal",
+        "Raven",
+        "Rat",
+        "Condor"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Bounty",
+      "category": "Resources",
+      "animals": [
+        "Dragon",
+        "Raven",
+        "Rat",
+        "Ant",
+        "Beetle",
+        "Fox",
+        "Wolf",
+        "Shark",
+        "Hyena",
+        "Bee",
+        "Sheep",
+        "Goat",
+        "Elephant",
+        "Bear",
+        "Boar",
+        "Monkey",
+        "Jackal",
+        "Condor",
+        "Lion",
+        "Eagle"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Tribute",
+      "category": "Resources",
+      "animals": [
+        "Lion",
+        "Dragon",
+        "Peacock",
+        "Eagle"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Bond",
+      "category": "Bonds & Allegiance",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Elephant",
+        "Dolphin"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Oath",
+      "category": "Bonds & Allegiance",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Lion",
+        "Elephant"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Devotion",
+      "category": "Bonds & Allegiance",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Elephant",
+        "Dolphin",
+        "Dove",
+        "Swan",
+        "Lion",
+        "Unicorn",
+        "Griffin",
+        "Ant",
+        "Bee"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Covenant",
+      "category": "Bonds & Allegiance",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Elephant",
+        "Dolphin",
+        "Dove",
+        "Swan",
+        "Lion",
+        "Unicorn",
+        "Griffin",
+        "Ant",
+        "Bee"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Guardianship",
+      "category": "Bonds & Allegiance",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Elephant",
+        "Dolphin",
+        "Dove",
+        "Swan",
+        "Lion",
+        "Unicorn",
+        "Griffin",
+        "Ant",
+        "Bee"
+      ],
+      "suitable_for": "Both",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Fellowship",
+      "category": "Bonds & Allegiance",
+      "animals": [
+        "Wolf",
+        "Dog",
+        "Elephant",
+        "Dolphin",
+        "Dove",
+        "Swan",
+        "Lion",
+        "Unicorn",
+        "Griffin",
+        "Ant",
+        "Bee"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Unity",
+      "category": "Bonds & Allegiance",
+      "animals": [
+        "Ant",
+        "Bee",
+        "Elephant",
+        "Wolf",
+        "Dolphin"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    },
+    {
+      "word": "Allegiance",
+      "category": "Bonds & Allegiance",
+      "animals": [
+        "Dog",
+        "Wolf",
+        "Lion",
+        "Elephant"
+      ],
+      "suitable_for": "Location",
+      "weight": 3,
+      "status": "candidate",
+      "association_review": "provisional_v2",
+      "source_version": "expansion-v2-draft-2026-11-22"
+    }
+  ]
+}
