@@ -1,6 +1,12 @@
 > **CURRENT INFACTION BASELINE — v0.4.8 DESIGN LOCKED (2026-11-22)**  
 > [Canonical v0.4.8 specification](specs/INFACTION_CURRENT_LOCKED_V0.4.8.md). Supersedes the v0.4.7 design direction, while preserving prior checkpoints. The single Book1 symmetric Proximity matrix governs geographic affinity; **Containment is canceled**. Site postprocessing: targeted Farm/Ship family prune, Garden-first/Grounds fallback with 12 flagged child types, optional valid non-family replacement for canceled Sites. [Site postprocessor v3](infaction_site_postprocess_v3.py) · [Pinned v0.4.8 Colab](notebooks/Infaction_Site_Companion_v0.4.8_LOCKED.ipynb). **DESIGN LOCK ≠ full v0.4.8 runtime verification**: the companion still executes historical upstream selection, and live hosted-Colab clean run has not been verified.
 
+## Complete World JSON export — v0.4.8 Site companion
+
+- [Open Colab](https://colab.research.google.com/github/playrenathea/rantau/blob/main/notebooks/Infaction_Site_Companion_v0.4.8_LOCKED.ipynb) or [Drive notebook](https://drive.google.com/file/d/1oglAA9CloTWDABMJ2Y45Tp5s7xN_UAf2/view). Run all cells and download `infaction_complete_world_seed_<SEED>_v0.4.8-site.json`.
+- [Lossless world exporter](infaction_world_json_export_v048.py): six full Faction records, all Place nodes (The Land and City included), `parent_id`/`children_ids`, nested `tree`, `spatial_relations`, catalog and generation provenance, original placement/City/Site diagnostics, and integrity assertions.
+- **Not certified end-to-end 0.4.8:** upstream selection remains older v0.4.6 in the currently pinned Site companion; the JSON status explicitly records this. Export shape and parent integrity are validated locally against real historical-world data, not with a hosted Colab full run.
+
 ## Universal Place Hierarchy — LOCKED (2026-11-22)
 
 **All geographic nodes are Places**, including **The Land (root)** and **City**. Inside Zones and standalone Sites/Locations are under City. Outside Zones and standalone Sites/Locations are direct children of The Land. A Site may group standalone Locations **without a Zone parent**. Zone/Site/Location are *generator-only* labels; players see named Places and parent–child navigation. **Hidden and Restricted not yet specified.** See [v0.4.8 Place hierarchy lock](specs/INFACTION_CURRENT_LOCKED_V0.4.8.md#universal-place-hierarchy--locked-2026-11-22-pre-hiddenrestricted).
