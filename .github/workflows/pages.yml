@@ -1,0 +1,53 @@
+name: Deploy Infaction to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'infaction-mvp.js'
+      - 'infaction-mvp.css'
+      - 'infaction-python-worker.js'
+      - 'notebooks/**'
+      - 'data/**'
+      - 'experiments/**'
+      - 'infaction*.py'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify browser JavaScript syntax and UI contract
+        run: |
+          node --check infaction-mvp.js
+          node --check infaction-python-worker.js
+          node tests/test_infaction_mvp.cjs
+      - name: Stage static Infaction app plus original Python/Book1 sources
+        run: |
+          mkdir -p _site
+          cp index.html infaction-mvp.css infaction-mvp.js infaction-python-worker.js _site/
+          cp -R notebooks data experiments _site/
+          cp infaction*.py _site/
+          touch _site/.nojekyll
+          echo "Original Python generator available from same-origin static assets"
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
