@@ -3,7 +3,7 @@
 
 ## Latest: v0.4.8 World + Access design lock (2026-11-22)
 
-**Try the [World + Access Colab](https://colab.research.google.com/github/playrenathea/rantau/blob/main/notebooks/Infaction_v0.4.8_World_Access_LOCKED.ipynb)** ([Drive notebook](https://drive.google.com/file/d/1oglAA9CloTWDABMJ2Y45Tp5s7xN_UAf2/view)). Runs site-stage companion with **preserve-first political ownership**, **Neutral static v2.1 (118/118)**, **Hidden/Restricted probability + minimum repair + Strong Faction Override**, and optional **Gatehouse/Checkpoint/etc. access nodes**. Final single JSON contains all Factions and geographic Place tree, original spatial relations, political ownership, Hidden/Restricted, and access-node links.
+**Try the [World + Access Colab](https://colab.research.google.com/github/playrenathea/rantau/blob/main/notebooks/Infaction_v0.4.8_World_Access_HOTFIX_20261122.ipynb)** ([Drive notebook](https://drive.google.com/file/d/1oglAA9CloTWDABMJ2Y45Tp5s7xN_UAf2/view)). Runs site-stage companion with **preserve-first political ownership**, **Neutral static v2.1 (118/118)**, **Hidden/Restricted probability + minimum repair + Strong Faction Override**, and optional **Gatehouse/Checkpoint/etc. access nodes**. Final single JSON contains all Factions and geographic Place tree, original spatial relations, political ownership, Hidden/Restricted, and access-node links.
 
 Python: [preserve-first owner + exporter integration](infaction_ownership_hidden_restricted_locked.py) and [Hidden/Restricted postprocessor](infaction_hidden_restricted_locked.py). Full details / QA in [canonical v0.4.8 specification](specs/INFACTION_CURRENT_LOCKED_V0.4.8.md#ownership-preserve-first--hiddenrestricted-access--design-locked-2026-11-22).
 
