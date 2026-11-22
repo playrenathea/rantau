@@ -260,3 +260,17 @@ The Web Worker loads Pyodide 0.27.7 (via a public JS CDN), fetches the original 
 **Verification boundary:** Browser UI and Web Worker JavaScript compile and have passed simulated runtime tests (original-source asset prefetch contract, worker world message, right-click intro, Faction Dual, tree/Gate and Reroll). **An actual live GitHub Pages Pyodide→Python notebook→complete world JSON run has NOT been observed;** the hosted Pages deployment status is also not verified. Do not label end-to-end runtime certified until an actual generated export succeeds in-browser. If GitHub Pages is disabled, set repository Pages source to **GitHub Actions**.
 
 Original repo slug remains `playrenathea/rantau`, pending admin rename to `playrenathea/infaction`; relative same-origin asset paths make browser generation portable through the rename.
+
+## Naming v3 + permanent City Gatehouse — latest decision, 2026-11-22
+
+**Active Place display grammar supersedes prior Flavor-at-every-Place instructions:**
+- **City:** `[Government Animal]'s [Flavor] City` (no `The`). Only City continues to select weighted Animal Flavor from the active 291-word v2 vocabulary, with Impression overlap 0/1/3 and postselection exact-word redundancy/no-reroll.
+- **Single** Zone/Site/Location: `The [Owner Animal]'s [Place]` (e.g. `The Wolf's Fortress`). No Flavor selection.
+- **Dual** Zone/Site/Location: `The [Place]` (e.g. `The Fortress`). No Flavor selection.
+- **None** Zone/Site/Location: `[Place]` (e.g. `Fortress`). No `The`, no Flavor.
+- **Root/Land:** original name `The Land`.
+- Geographic base names, Place IDs, containment and political ownership remain unchanged. The Flavor vocabulary remains available and intact for City and possible future non-Place usage.
+
+**City Gatehouse invariant:** The City source has always defined `GATES["City"]="Gatehouse"`, but historically access-node creation incorrectly required `restricted == True`. City nature is `accessible_outsider=1` and (absent special conditions) `restricted` was randomized with probability about 0.35; City Gatehouse thus appeared only intermittently. Fix [infaction_hidden_restricted_locked.py](../infaction_hidden_restricted_locked.py): create exactly **one City Gatehouse for every generated world**, even when City is not Restricted. Do **not** force City Restricted. All other gated Places continue to require Restricted. Each access node now records `permanent` (City only) and `locked` (actual Restricted state) in addition to the original fields; the City Gatehouse remains an access object, not a replacement for City in the Place tree. The Explore tab already renders access nodes before their target Place.
+
+Implemented in [infaction_place_naming_locked.py](../infaction_place_naming_locked.py) and [infaction_hidden_restricted_locked.py](../infaction_hidden_restricted_locked.py); notebook and browser Web Worker dynamically load these modules and therefore follow the updated rules on a new run. Regression tests: [naming grammar](../tests/test_infaction_naming_rules.py), [100-seed City Gatehouse](../tests/test_infaction_city_gatehouse.py), [integrated world smoke](../tests/smoke_infaction_v048_colab.py), and [MVP renderer](../tests/test_infaction_mvp.cjs). [QA workflow](../.github/workflows/infaction-flavor-v2-qa.yml) includes the two new Python tests. These files are committed and source/readback checks pass; a successful hosted end-to-end Python/Pages execution is still not observed. Older naming/City Gate guidance elsewhere in this document is historical and overridden by this section.
