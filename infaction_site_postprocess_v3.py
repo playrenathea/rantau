@@ -60,7 +60,7 @@ def apply_garden_and_replacements(pre_sites, family_result, direct_pools,
         nonlocal grounds_used
         new_records=[]
         for record in records:
-            if record["site"]!="Garden":
+            if record["site"]!="Garden" or record.get("garden_split")=="Garden":
                 new_records.append(record)
                 continue
             container=record["container"]
