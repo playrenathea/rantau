@@ -1,6 +1,6 @@
-> **CURRENT INFAction BASELINE — v0.4.7 LOCKED, direction corrected (2026-11-21)**  
-> [Canonical latest specification](specs/INFACTION_CURRENT_LOCKED_V0.4.7.md). This supersedes older design-direction/experiment statuses below. The complete accepted pipeline and two-affinity semantics are fixed as v0.4.7; the original Book1 and historical checkpoints stay unchanged. **Specification version ≠ deployed runtime version:** Containment is canceled. Geographic placement and Site grouping use original Proximity, with Farm/Ship family post-filter after Site grouping. The v0.4.6 executable still lacks some v0.4.7 selection/repair changes. Do not describe an older notebook as the latest v0.4.x specification.
->
+> **CURRENT INFACTION BASELINE — v0.4.8 DESIGN LOCKED (2026-11-22)**  
+> [Canonical v0.4.8 specification](specs/INFACTION_CURRENT_LOCKED_V0.4.8.md). Supersedes the v0.4.7 design direction, while preserving prior checkpoints. The single Book1 symmetric Proximity matrix governs geographic affinity; **Containment is canceled**. Site postprocessing: targeted Farm/Ship family prune, Garden-first/Grounds fallback with 12 flagged child types, optional valid non-family replacement for canceled Sites. [Site postprocessor v3](infaction_site_postprocess_v3.py) · [Colab Site companion](notebooks/Infaction_Site_Grouping_Proximity_Checkpoint_Companion.ipynb). **DESIGN LOCK ≠ full v0.4.8 runtime verification**: the companion still executes historical upstream selection, and live hosted-Colab clean run has not been verified.
+
 # Infaction — Active Data & Experiment Workflow (2026-11-21)
 
 **Use this section before running or interpreting any new Infaction world-generation experiment.** It supersedes stale status statements lower in this historical README; it does **not** change locked mechanics, data, the existing MVP, or historical notebooks.
