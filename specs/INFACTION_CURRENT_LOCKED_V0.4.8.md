@@ -24,6 +24,40 @@ After Site greedy and targeted Farm/Ship family pruning:
 
 Current postprocessor: `infaction_site_postprocess_v3.py`. Colab companion: `notebooks/Infaction_Site_Grouping_Proximity_Checkpoint_Companion.ipynb` (historical upstream selection).
 
+## Universal Place hierarchy — LOCKED 2026-11-22 (pre-Hidden/Restricted)
+
+**Every geographic node is a Place.** This includes **The Land** (the root), **City**, all generated **Zones**, **Sites**, and **Locations**. Do not model City or The Land as non-Place wrapper objects in the world/player-facing hierarchy.
+
+**Parent/child geography (conceptual tree):**
+```text
+The Land [Place: root]
+├── City [Place]
+│   ├── Inside Zone [Place]
+│   │   ├── Site [Place, optional grouping]
+│   │   │   └── Location(s) [Place]
+│   │   └── direct Location(s) [Place]
+│   ├── standalone Inside Site [Place, optional grouping]
+│   │   └── standalone Inside Location(s) [Place]
+│   └── standalone Inside Location(s) [Place]
+├── Outside Zone [Place]
+│   ├── Site [Place, optional grouping]
+│   │   └── Location(s) [Place]
+│   └── direct Location(s) [Place]
+├── standalone Outside Site [Place, optional grouping]
+│   └── standalone Outside Location(s) [Place]
+└── standalone Outside Location(s) [Place]
+```
+
+- **City is a Place immediately beneath The Land.** All Inside Zones and Inside standalone Places belong under City. There is one City in the current generated world.
+- **Outside is not a separate Place or Zone** in this topology: Outside Zones and Outside standalone Places are immediate children of The Land, alongside City.
+- **Zone, Site, Location are *internal procedural-generation classifications*, not labels the player needs to know.** In the player-facing representation, expose named Places and their containing-place relationships without requiring knowledge of the generation class. The internal classifications can remain as generation provenance/diagnostics.
+- **Sites are optional containers** formed from multiple Locations: when a Site groups direct Zone children, the Site remains under that Zone; when it groups standalone Locations, the Site is placed **directly beneath City (Inside) or The Land (Outside)**, without an intermediate Zone. Remaining ungrouped Locations stay direct children of their original parent.
+- The current generator has a one-parent geographic hierarchy: each Place node (except The Land) has exactly one geographic parent, and no Site is required for a Location to exist. **No generated Site should create an extra phantom Zone.** This describes the existing grouping semantics rather than changing placement or affinity rules.
+- Example player path: `The Land / City / Noble Quarter / Grounds / Palace`; the player only needs the Place names and hierarchy.
+- **Hidden and Restricted remain UNDEFINED.** They are intentionally deferred to the next design discussion. Do not infer visibility, discovery, access control, inheritance, or rule interactions from this hierarchy lock; it provides the universal Place structure on which those separate properties can later be specified.
+
+**Change scope:** conceptual/data-model and player-facing terminology lock only; no change to Book1, generation probabilities, Site formation thresholds, or v0.4.8 postprocessor.
+
 ## Source precedence and frozen inputs
 1. Immutable original Book1 data and the canonical `data/infaction_master_v0.4.json` are the reference for original affinity scores, scales, functions, Types, Base Names and Animals.
 2. Approved overlays and mechanics in **this v0.4.8 specification** supersede earlier effective values, including any stale labels in the master Sheet or old Colab.
