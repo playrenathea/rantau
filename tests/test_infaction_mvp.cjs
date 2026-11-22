@@ -37,7 +37,9 @@ function createWorld(){
      {kind:'single',factions:['F2']});
  return {generator_version:'0.4.8',factions,
   places:{root_id:'land',counts:{all_places:Object.keys(nodes).length},nodes},
-  access_nodes:[{id:'access:site:Den',name:'Den Gate',type:'Gate',
+  access_nodes:[{id:'access:city',name:'City Gatehouse',type:'Gatehouse',
+                 from_parent_id:'land',to_place_id:'city',permanent:true,locked:false},
+                {id:'access:site:Den',name:'Den Gate',type:'Gate',
                  from_parent_id:'zone:North',to_place_id:'site:Den'}]};
 }
 function mount(entered){
@@ -79,6 +81,7 @@ async function testUI(){
  assert(texts.includes("Wolf's City"));
  assert(texts.includes('Claw Den'));
  assert(texts.includes('Den Gate'));
+ assert(texts.includes('City Gatehouse'));
  const statusIcons=active.app.querySelectorAll('svg');
  assert(statusIcons.length>=3);
  const top=active.app.children.find(x=>x.tagName==='header');
@@ -90,7 +93,7 @@ async function testUI(){
  await Promise.resolve();await Promise.resolve();
  assert(!frontend.includes('infaction_current_world.json'));
  assert(!frontend.includes("file.accept="),'Upload fallback must be removed');
- console.log('PASS UI: hold/right-click, direct entry, Faction + Dual, Explore + Gate/flags, native worker reroll');
+ console.log('PASS UI: hold/right-click, Faction + Dual, Explore + City Gatehouse, Gate/flags, native worker reroll');
 }
 async function testWorker(){
  const emitted=[],fetched=[],assets={};
