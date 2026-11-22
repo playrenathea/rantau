@@ -1,0 +1,1564 @@
+{
+  "version": "impression-tags-v2-candidate-2026-11-22",
+  "status": "CANDIDATE_NOT_ACTIVE",
+  "model": "six-segment-multitag-overlap",
+  "segments": [
+    "Power",
+    "Mystery",
+    "Nature",
+    "Community",
+    "Commerce",
+    "Prestige"
+  ],
+  "policy": {
+    "eligibility": "suitable_for Item has weight 0 and is not eligible for Place",
+    "single_city": "weighted random across eligible Animal flavor words; tag overlap weight 3 else 1",
+    "dual": "intersection of both Animal flavor pools, only tag-overlap candidates (weight 3), weighted random; none -> original place",
+    "none": "original place",
+    "gate": "original place name only",
+    "tag_overlap": "Any nonempty intersection gives weight 3; no additive multiplier for more tag matches",
+    "max_tags": "1–6; unlimited up to the six available segments when editorially appropriate; no hard 3-tag cap",
+    "anti_tautology": "reject a Flavor if already a literal word in base Place label",
+    "redundancy": "Deferred to follow-up; do not filter candidates semantically yet."
+  },
+  "flavor_tags": {
+    "Fang": [
+      "Power"
+    ],
+    "Tooth": [
+      "Power",
+      "Commerce"
+    ],
+    "Claw": [
+      "Power"
+    ],
+    "Paw": [
+      "Power",
+      "Nature"
+    ],
+    "Talon": [
+      "Power",
+      "Prestige"
+    ],
+    "Horn": [
+      "Power",
+      "Prestige"
+    ],
+    "Antler": [
+      "Nature",
+      "Prestige"
+    ],
+    "Tusk": [
+      "Power",
+      "Commerce",
+      "Prestige"
+    ],
+    "Beak": [
+      "Nature",
+      "Prestige"
+    ],
+    "Eye": [
+      "Mystery",
+      "Prestige"
+    ],
+    "Ear": [
+      "Mystery",
+      "Nature"
+    ],
+    "Jaw": [
+      "Power"
+    ],
+    "Skull": [
+      "Power",
+      "Mystery"
+    ],
+    "Bone": [
+      "Mystery",
+      "Commerce"
+    ],
+    "Heart": [
+      "Mystery",
+      "Community",
+      "Prestige"
+    ],
+    "Mane": [
+      "Nature",
+      "Prestige"
+    ],
+    "Tail": [
+      "Nature"
+    ],
+    "Wing": [
+      "Nature",
+      "Prestige"
+    ],
+    "Fin": [
+      "Nature"
+    ],
+    "Hoof": [
+      "Nature",
+      "Commerce"
+    ],
+    "Trunk": [
+      "Nature",
+      "Commerce"
+    ],
+    "Hump": [
+      "Nature"
+    ],
+    "Tentacle": [
+      "Mystery"
+    ],
+    "Pincer": [
+      "Mystery",
+      "Commerce"
+    ],
+    "Stinger": [
+      "Power"
+    ],
+    "Antenna": [
+      "Commerce"
+    ],
+    "Mandible": [
+      "Commerce"
+    ],
+    "Snout": [
+      "Nature",
+      "Commerce"
+    ],
+    "Whisker": [
+      "Nature"
+    ],
+    "Shell": [
+      "Mystery",
+      "Nature",
+      "Commerce"
+    ],
+    "Feather": [
+      "Nature",
+      "Commerce",
+      "Prestige"
+    ],
+    "Scale": [
+      "Mystery",
+      "Nature"
+    ],
+    "Stripe": [
+      "Nature",
+      "Prestige"
+    ],
+    "Spot": [
+      "Nature",
+      "Prestige"
+    ],
+    "Fur": [
+      "Nature",
+      "Commerce"
+    ],
+    "Hide": [
+      "Commerce"
+    ],
+    "Skin": [
+      "Nature"
+    ],
+    "Wool": [
+      "Commerce"
+    ],
+    "Silk": [
+      "Nature",
+      "Commerce",
+      "Prestige"
+    ],
+    "Ivory": [
+      "Commerce",
+      "Prestige"
+    ],
+    "Venom": [
+      "Power",
+      "Mystery"
+    ],
+    "Web": [
+      "Mystery",
+      "Commerce"
+    ],
+    "Honey": [
+      "Nature",
+      "Community",
+      "Commerce"
+    ],
+    "Wax": [
+      "Commerce"
+    ],
+    "Ink": [
+      "Mystery",
+      "Commerce"
+    ],
+    "Blood": [
+      "Power",
+      "Mystery"
+    ],
+    "Egg": [
+      "Nature"
+    ],
+    "Ash": [
+      "Mystery",
+      "Nature"
+    ],
+    "Flame": [
+      "Power",
+      "Nature",
+      "Prestige"
+    ],
+    "Ember": [
+      "Mystery",
+      "Nature",
+      "Prestige"
+    ],
+    "Breath": [
+      "Mystery"
+    ],
+    "Roar": [
+      "Power",
+      "Community",
+      "Prestige"
+    ],
+    "Howl": [
+      "Power",
+      "Community"
+    ],
+    "Growl": [
+      "Power"
+    ],
+    "Hiss": [
+      "Mystery"
+    ],
+    "Bark": [
+      "Community"
+    ],
+    "Meow": [
+      "Community"
+    ],
+    "Purr": [
+      "Community"
+    ],
+    "Caw": [
+      "Mystery"
+    ],
+    "Hoot": [
+      "Mystery"
+    ],
+    "Screech": [
+      "Power",
+      "Mystery"
+    ],
+    "Squawk": [
+      "Community"
+    ],
+    "Chirp": [
+      "Community"
+    ],
+    "Coo": [
+      "Community"
+    ],
+    "Crow": [
+      "Community"
+    ],
+    "Bleat": [
+      "Community"
+    ],
+    "Neigh": [
+      "Community"
+    ],
+    "Grunt": [
+      "Community"
+    ],
+    "Squeak": [
+      "Community"
+    ],
+    "Buzz": [
+      "Community",
+      "Commerce"
+    ],
+    "Croak": [
+      "Mystery"
+    ],
+    "Trumpet": [
+      "Community",
+      "Prestige"
+    ],
+    "Laugh": [
+      "Mystery",
+      "Community"
+    ],
+    "Nest": [
+      "Mystery",
+      "Nature",
+      "Community"
+    ],
+    "Den": [
+      "Mystery",
+      "Nature",
+      "Community"
+    ],
+    "Burrow": [
+      "Mystery",
+      "Nature",
+      "Community"
+    ],
+    "Hive": [
+      "Nature",
+      "Community"
+    ],
+    "Pack": [
+      "Community"
+    ],
+    "Herd": [
+      "Nature",
+      "Community"
+    ],
+    "Flock": [
+      "Nature",
+      "Community"
+    ],
+    "Swarm": [
+      "Community",
+      "Commerce"
+    ],
+    "Colony": [
+      "Community",
+      "Commerce"
+    ],
+    "Pounce": [
+      "Power"
+    ],
+    "Charge": [
+      "Power",
+      "Commerce"
+    ],
+    "Stampede": [
+      "Power"
+    ],
+    "Leap": [
+      "Nature"
+    ],
+    "Prayer": [
+      "Mystery",
+      "Prestige"
+    ],
+    "Cub": [
+      "Nature"
+    ],
+    "Pup": [
+      "Nature"
+    ],
+    "Puppy": [
+      "Nature"
+    ],
+    "Kit": [
+      "Nature"
+    ],
+    "Kitten": [
+      "Nature"
+    ],
+    "Calf": [
+      "Nature"
+    ],
+    "Chick": [
+      "Nature"
+    ],
+    "Hatchling": [
+      "Nature"
+    ],
+    "Foal": [
+      "Nature"
+    ],
+    "Fawn": [
+      "Nature"
+    ],
+    "Lamb": [
+      "Nature"
+    ],
+    "Kid": [
+      "Nature"
+    ],
+    "Piglet": [
+      "Nature"
+    ],
+    "Tadpole": [
+      "Nature"
+    ],
+    "Caterpillar": [
+      "Nature"
+    ],
+    "Larva": [
+      "Nature"
+    ],
+    "Grub": [
+      "Nature"
+    ],
+    "Nymph": [
+      "Nature"
+    ],
+    "Spiderling": [
+      "Nature"
+    ],
+    "Eaglet": [
+      "Nature"
+    ],
+    "Owlet": [
+      "Nature"
+    ],
+    "Fledgling": [
+      "Nature"
+    ],
+    "Grip": [
+      "Power"
+    ],
+    "Grasp": [
+      "Power"
+    ],
+    "Scratch": [
+      "Power"
+    ],
+    "Slash": [
+      "Power"
+    ],
+    "Bite": [
+      "Power"
+    ],
+    "Crush": [
+      "Power"
+    ],
+    "Rend": [
+      "Power"
+    ],
+    "Strike": [
+      "Power"
+    ],
+    "Pierce": [
+      "Power"
+    ],
+    "Maul": [
+      "Power"
+    ],
+    "Hunt": [
+      "Power",
+      "Mystery"
+    ],
+    "Chase": [
+      "Power",
+      "Mystery"
+    ],
+    "Stalk": [
+      "Power",
+      "Mystery"
+    ],
+    "Prowl": [
+      "Power",
+      "Mystery"
+    ],
+    "Ambush": [
+      "Power",
+      "Mystery"
+    ],
+    "Lurk": [
+      "Power",
+      "Mystery"
+    ],
+    "Snare": [
+      "Power",
+      "Mystery"
+    ],
+    "Trap": [
+      "Power",
+      "Mystery"
+    ],
+    "Pursuit": [
+      "Power",
+      "Mystery"
+    ],
+    "Prey": [
+      "Power",
+      "Mystery"
+    ],
+    "Swoop": [
+      "Nature",
+      "Power"
+    ],
+    "Dive": [
+      "Nature",
+      "Power"
+    ],
+    "Glide": [
+      "Nature",
+      "Power"
+    ],
+    "Soar": [
+      "Nature",
+      "Power"
+    ],
+    "Flutter": [
+      "Nature",
+      "Power"
+    ],
+    "Slither": [
+      "Nature",
+      "Power"
+    ],
+    "Coil": [
+      "Nature",
+      "Power"
+    ],
+    "Lunge": [
+      "Nature",
+      "Power"
+    ],
+    "Swing": [
+      "Nature",
+      "Power"
+    ],
+    "Sprint": [
+      "Nature",
+      "Power"
+    ],
+    "Shield": [
+      "Power",
+      "Community"
+    ],
+    "Guard": [
+      "Power",
+      "Community"
+    ],
+    "Ward": [
+      "Power",
+      "Community"
+    ],
+    "Shelter": [
+      "Power",
+      "Community"
+    ],
+    "Refuge": [
+      "Power",
+      "Community"
+    ],
+    "Retreat": [
+      "Power",
+      "Community"
+    ],
+    "Cover": [
+      "Power",
+      "Community"
+    ],
+    "Armor": [
+      "Power",
+      "Community"
+    ],
+    "Defiance": [
+      "Power",
+      "Community"
+    ],
+    "Endurance": [
+      "Power",
+      "Community"
+    ],
+    "Scent": [
+      "Mystery",
+      "Nature"
+    ],
+    "Sight": [
+      "Mystery",
+      "Nature"
+    ],
+    "Gaze": [
+      "Mystery",
+      "Nature"
+    ],
+    "Glare": [
+      "Mystery",
+      "Nature"
+    ],
+    "Vigil": [
+      "Mystery",
+      "Nature"
+    ],
+    "Instinct": [
+      "Mystery",
+      "Nature"
+    ],
+    "Sense": [
+      "Mystery",
+      "Nature"
+    ],
+    "Echo": [
+      "Mystery",
+      "Nature"
+    ],
+    "Pulse": [
+      "Mystery",
+      "Nature"
+    ],
+    "Tremor": [
+      "Mystery",
+      "Nature"
+    ],
+    "Scar": [
+      "Mystery",
+      "Power"
+    ],
+    "Gash": [
+      "Mystery",
+      "Power"
+    ],
+    "Mark": [
+      "Mystery",
+      "Power"
+    ],
+    "Trace": [
+      "Mystery",
+      "Power"
+    ],
+    "Trail": [
+      "Mystery",
+      "Power"
+    ],
+    "Track": [
+      "Mystery",
+      "Power"
+    ],
+    "Wound": [
+      "Mystery",
+      "Power"
+    ],
+    "Imprint": [
+      "Mystery",
+      "Power"
+    ],
+    "Footprint": [
+      "Mystery",
+      "Power"
+    ],
+    "Remnant": [
+      "Mystery",
+      "Power"
+    ],
+    "Toxin": [
+      "Power",
+      "Mystery"
+    ],
+    "Sting": [
+      "Power",
+      "Mystery"
+    ],
+    "Poison": [
+      "Power",
+      "Mystery"
+    ],
+    "Fever": [
+      "Power",
+      "Mystery"
+    ],
+    "Blight": [
+      "Power",
+      "Mystery"
+    ],
+    "Rot": [
+      "Power",
+      "Mystery"
+    ],
+    "Decay": [
+      "Power",
+      "Mystery"
+    ],
+    "Paralysis": [
+      "Power",
+      "Mystery"
+    ],
+    "Infection": [
+      "Power",
+      "Mystery"
+    ],
+    "Corrosion": [
+      "Power",
+      "Mystery"
+    ],
+    "Camouflage": [
+      "Mystery"
+    ],
+    "Mimicry": [
+      "Mystery"
+    ],
+    "Disguise": [
+      "Mystery"
+    ],
+    "Veil": [
+      "Mystery"
+    ],
+    "Shadow": [
+      "Mystery"
+    ],
+    "Deception": [
+      "Mystery"
+    ],
+    "Trick": [
+      "Mystery"
+    ],
+    "Guile": [
+      "Mystery"
+    ],
+    "Decoy": [
+      "Mystery"
+    ],
+    "Feint": [
+      "Mystery"
+    ],
+    "Dominion": [
+      "Power",
+      "Prestige"
+    ],
+    "Reign": [
+      "Power",
+      "Prestige"
+    ],
+    "Claim": [
+      "Power",
+      "Prestige"
+    ],
+    "Territory": [
+      "Power",
+      "Prestige"
+    ],
+    "Domain": [
+      "Power",
+      "Prestige"
+    ],
+    "Conquest": [
+      "Power",
+      "Prestige"
+    ],
+    "Supremacy": [
+      "Power",
+      "Prestige"
+    ],
+    "Ascendancy": [
+      "Power",
+      "Prestige"
+    ],
+    "Throne": [
+      "Power",
+      "Prestige"
+    ],
+    "Crown": [
+      "Power",
+      "Prestige"
+    ],
+    "Pod": [
+      "Community"
+    ],
+    "Pride": [
+      "Community"
+    ],
+    "Troop": [
+      "Community"
+    ],
+    "Parliament": [
+      "Community"
+    ],
+    "Murmuration": [
+      "Community"
+    ],
+    "Gathering": [
+      "Power",
+      "Nature",
+      "Community",
+      "Commerce",
+      "Prestige"
+    ],
+    "Alliance": [
+      "Power",
+      "Mystery",
+      "Community",
+      "Commerce",
+      "Prestige"
+    ],
+    "Kinship": [
+      "Power",
+      "Nature",
+      "Community",
+      "Prestige"
+    ],
+    "Brood": [
+      "Community"
+    ],
+    "Congregation": [
+      "Community"
+    ],
+    "Courtship": [
+      "Nature",
+      "Community"
+    ],
+    "Display": [
+      "Nature",
+      "Community"
+    ],
+    "Dance": [
+      "Nature",
+      "Community"
+    ],
+    "Ritual": [
+      "Power",
+      "Mystery",
+      "Nature",
+      "Community",
+      "Prestige"
+    ],
+    "Molt": [
+      "Nature",
+      "Community"
+    ],
+    "Bloom": [
+      "Nature",
+      "Community"
+    ],
+    "Spawn": [
+      "Nature",
+      "Community"
+    ],
+    "Hatch": [
+      "Nature",
+      "Community"
+    ],
+    "Metamorphosis": [
+      "Nature",
+      "Community"
+    ],
+    "Renewal": [
+      "Mystery",
+      "Nature",
+      "Community",
+      "Prestige"
+    ],
+    "Lair": [
+      "Nature"
+    ],
+    "Roost": [
+      "Nature"
+    ],
+    "Warren": [
+      "Nature"
+    ],
+    "Rookery": [
+      "Nature"
+    ],
+    "Eyrie": [
+      "Nature"
+    ],
+    "Lodge": [
+      "Nature"
+    ],
+    "Holt": [
+      "Nature"
+    ],
+    "Mound": [
+      "Nature"
+    ],
+    "Canopy": [
+      "Nature"
+    ],
+    "Thicket": [
+      "Nature"
+    ],
+    "Tide": [
+      "Nature",
+      "Mystery"
+    ],
+    "Current": [
+      "Nature",
+      "Mystery"
+    ],
+    "Depth": [
+      "Nature",
+      "Mystery"
+    ],
+    "Abyss": [
+      "Nature",
+      "Mystery"
+    ],
+    "Mist": [
+      "Nature",
+      "Mystery"
+    ],
+    "Frost": [
+      "Nature",
+      "Mystery"
+    ],
+    "Dusk": [
+      "Nature",
+      "Mystery"
+    ],
+    "Dawn": [
+      "Nature",
+      "Mystery"
+    ],
+    "Storm": [
+      "Nature",
+      "Mystery"
+    ],
+    "Eclipse": [
+      "Nature",
+      "Mystery"
+    ],
+    "Ferocity": [
+      "Power",
+      "Prestige"
+    ],
+    "Cunning": [
+      "Power",
+      "Prestige"
+    ],
+    "Patience": [
+      "Power",
+      "Prestige"
+    ],
+    "Wisdom": [
+      "Power",
+      "Prestige"
+    ],
+    "Fury": [
+      "Power",
+      "Prestige"
+    ],
+    "Grace": [
+      "Mystery",
+      "Nature",
+      "Community",
+      "Prestige"
+    ],
+    "Loyalty": [
+      "Power",
+      "Prestige"
+    ],
+    "Tenacity": [
+      "Power",
+      "Prestige"
+    ],
+    "Mischief": [
+      "Power",
+      "Prestige"
+    ],
+    "Legacy": [
+      "Power",
+      "Mystery",
+      "Nature",
+      "Community",
+      "Prestige"
+    ],
+    "Omen": [
+      "Mystery",
+      "Prestige"
+    ],
+    "Prophecy": [
+      "Mystery",
+      "Prestige"
+    ],
+    "Secret": [
+      "Mystery",
+      "Prestige"
+    ],
+    "Memory": [
+      "Mystery",
+      "Nature",
+      "Community",
+      "Prestige"
+    ],
+    "Dream": [
+      "Mystery",
+      "Nature",
+      "Community",
+      "Prestige"
+    ],
+    "Curse": [
+      "Mystery",
+      "Prestige"
+    ],
+    "Blessing": [
+      "Mystery",
+      "Prestige"
+    ],
+    "Sacrifice": [
+      "Mystery",
+      "Prestige"
+    ],
+    "Resurrection": [
+      "Mystery",
+      "Prestige"
+    ],
+    "Submission": [
+      "Power",
+      "Mystery"
+    ],
+    "Terror": [
+      "Power",
+      "Mystery"
+    ],
+    "Menace": [
+      "Power",
+      "Mystery"
+    ],
+    "Dread": [
+      "Power",
+      "Mystery"
+    ],
+    "Oppression": [
+      "Power",
+      "Mystery"
+    ],
+    "Tyranny": [
+      "Power",
+      "Mystery"
+    ],
+    "Challenge": [
+      "Power",
+      "Mystery"
+    ],
+    "Triumph": [
+      "Power",
+      "Mystery"
+    ],
+    "Betrayal": [
+      "Mystery"
+    ],
+    "Intrigue": [
+      "Mystery"
+    ],
+    "Ruse": [
+      "Mystery"
+    ],
+    "Conspiracy": [
+      "Mystery"
+    ],
+    "Secrecy": [
+      "Mystery"
+    ],
+    "Whisper": [
+      "Mystery"
+    ],
+    "Silence": [
+      "Mystery"
+    ],
+    "Espionage": [
+      "Mystery"
+    ],
+    "Hoard": [
+      "Commerce"
+    ],
+    "Cache": [
+      "Commerce"
+    ],
+    "Plunder": [
+      "Commerce"
+    ],
+    "Spoils": [
+      "Commerce"
+    ],
+    "Harvest": [
+      "Nature",
+      "Community",
+      "Commerce",
+      "Prestige"
+    ],
+    "Forage": [
+      "Commerce"
+    ],
+    "Scavenge": [
+      "Commerce"
+    ],
+    "Bounty": [
+      "Commerce"
+    ],
+    "Tribute": [
+      "Commerce"
+    ],
+    "Bond": [
+      "Power",
+      "Nature",
+      "Community",
+      "Prestige"
+    ],
+    "Oath": [
+      "Community",
+      "Prestige"
+    ],
+    "Devotion": [
+      "Community",
+      "Prestige"
+    ],
+    "Covenant": [
+      "Power",
+      "Mystery",
+      "Community",
+      "Prestige"
+    ],
+    "Guardianship": [
+      "Power",
+      "Mystery",
+      "Community",
+      "Prestige"
+    ],
+    "Fellowship": [
+      "Power",
+      "Nature",
+      "Community",
+      "Prestige"
+    ],
+    "Unity": [
+      "Power",
+      "Nature",
+      "Community",
+      "Commerce",
+      "Prestige"
+    ],
+    "Allegiance": [
+      "Community",
+      "Prestige"
+    ]
+  },
+  "place_tags": {
+    "Apothecary": [
+      "Mystery",
+      "Commerce"
+    ],
+    "Archive": [
+      "Mystery",
+      "Prestige"
+    ],
+    "Armoury": [
+      "Power",
+      "Prestige"
+    ],
+    "Auction House": [
+      "Commerce"
+    ],
+    "Bank": [
+      "Commerce",
+      "Prestige"
+    ],
+    "Bathhouse": [
+      "Community",
+      "Prestige"
+    ],
+    "Bookshop": [
+      "Mystery",
+      "Commerce",
+      "Prestige"
+    ],
+    "Brothel": [
+      "Community"
+    ],
+    "Clinic": [
+      "Community"
+    ],
+    "Club": [
+      "Community",
+      "Prestige"
+    ],
+    "Courthouse": [
+      "Power",
+      "Mystery",
+      "Prestige"
+    ],
+    "Bridge": [
+      "Nature"
+    ],
+    "Crypt": [
+      "Mystery"
+    ],
+    "Dormitory": [
+      "Community"
+    ],
+    "Forge": [
+      "Commerce"
+    ],
+    "Gallery": [
+      "Community",
+      "Prestige"
+    ],
+    "Gambling Den": [
+      "Community"
+    ],
+    "House": [
+      "Community",
+      "Prestige"
+    ],
+    "Laboratory": [
+      "Mystery",
+      "Commerce"
+    ],
+    "Library": [
+      "Mystery",
+      "Community",
+      "Prestige"
+    ],
+    "Mill": [
+      "Commerce"
+    ],
+    "Monument": [
+      "Power",
+      "Mystery",
+      "Prestige"
+    ],
+    "Mortuary": [
+      "Mystery"
+    ],
+    "Museum": [
+      "Mystery",
+      "Prestige"
+    ],
+    "Observatory": [
+      "Mystery",
+      "Prestige"
+    ],
+    "Office": [
+      "Commerce",
+      "Prestige"
+    ],
+    "Pawnshop": [
+      "Commerce"
+    ],
+    "Post Office": [
+      "Commerce"
+    ],
+    "Printing House": [
+      "Commerce"
+    ],
+    "Prison": [
+      "Power",
+      "Mystery"
+    ],
+    "School": [
+      "Community",
+      "Prestige"
+    ],
+    "Sewer": [
+      "Mystery",
+      "Community"
+    ],
+    "Shelter": [
+      "Nature",
+      "Community"
+    ],
+    "Ship": [
+      "Nature",
+      "Commerce"
+    ],
+    "Shop": [
+      "Community",
+      "Commerce"
+    ],
+    "Shrine": [
+      "Mystery",
+      "Prestige"
+    ],
+    "Stable": [
+      "Nature"
+    ],
+    "Tailor": [
+      "Commerce"
+    ],
+    "Tavern": [
+      "Community",
+      "Commerce"
+    ],
+    "Theater": [
+      "Community",
+      "Prestige"
+    ],
+    "Tower": [
+      "Power",
+      "Prestige"
+    ],
+    "Training Ground": [
+      "Power"
+    ],
+    "Treasury": [
+      "Power",
+      "Commerce",
+      "Prestige"
+    ],
+    "Tunnel": [
+      "Mystery",
+      "Power"
+    ],
+    "Vault": [
+      "Power",
+      "Mystery"
+    ],
+    "Guardhouse": [
+      "Power"
+    ],
+    "Well": [
+      "Nature",
+      "Commerce"
+    ],
+    "Arena": [
+      "Power",
+      "Community",
+      "Prestige"
+    ],
+    "Barracks": [
+      "Power"
+    ],
+    "Black Market": [
+      "Commerce"
+    ],
+    "Brewery": [
+      "Commerce"
+    ],
+    "Camp": [
+      "Nature",
+      "Community"
+    ],
+    "Cemetery": [
+      "Mystery",
+      "Nature"
+    ],
+    "Dock": [
+      "Nature",
+      "Commerce"
+    ],
+    "Embassy": [
+      "Community",
+      "Prestige"
+    ],
+    "Factory": [
+      "Commerce"
+    ],
+    "Farm": [
+      "Nature",
+      "Commerce"
+    ],
+    "Fortress": [
+      "Power"
+    ],
+    "Garden": [
+      "Nature",
+      "Community"
+    ],
+    "Grove": [
+      "Nature",
+      "Community"
+    ],
+    "Meeting Hall": [
+      "Community"
+    ],
+    "Hideout": [
+      "Mystery"
+    ],
+    "Inn": [
+      "Community",
+      "Commerce"
+    ],
+    "Manor": [
+      "Prestige"
+    ],
+    "Market": [
+      "Community",
+      "Commerce"
+    ],
+    "Mine": [
+      "Nature",
+      "Commerce"
+    ],
+    "Outpost": [
+      "Power"
+    ],
+    "Palace": [
+      "Power",
+      "Prestige"
+    ],
+    "Research Facility": [
+      "Mystery",
+      "Commerce"
+    ],
+    "Square": [
+      "Community",
+      "Prestige"
+    ],
+    "Temple": [
+      "Mystery",
+      "Community",
+      "Prestige"
+    ],
+    "Trading Post": [
+      "Commerce"
+    ],
+    "Warehouse": [
+      "Commerce"
+    ],
+    "Workshop": [
+      "Commerce"
+    ],
+    "Catacombs": [
+      "Mystery"
+    ],
+    "Town Hall": [
+      "Community",
+      "Prestige"
+    ],
+    "Excavation Site": [
+      "Mystery",
+      "Nature"
+    ],
+    "Festival Grounds": [
+      "Community"
+    ],
+    "Hospital": [
+      "Community",
+      "Commerce"
+    ],
+    "Ruins": [
+      "Mystery",
+      "Nature"
+    ],
+    "Sanctuary": [
+      "Mystery",
+      "Nature",
+      "Community"
+    ],
+    "Shipyard": [
+      "Commerce"
+    ],
+    "Caravan Camp": [
+      "Nature",
+      "Community"
+    ],
+    "Cavern": [
+      "Mystery",
+      "Nature"
+    ],
+    "Citadel": [
+      "Power",
+      "Prestige"
+    ],
+    "Enclave": [
+      "Nature",
+      "Community"
+    ],
+    "Estate": [
+      "Commerce",
+      "Prestige"
+    ],
+    "Village": [
+      "Community"
+    ],
+    "Hunting Grounds": [
+      "Nature"
+    ],
+    "Military Base": [
+      "Power"
+    ],
+    "Mining Settlement": [
+      "Nature",
+      "Commerce"
+    ],
+    "Monastery": [
+      "Mystery",
+      "Community",
+      "Prestige"
+    ],
+    "Necropolis": [
+      "Mystery"
+    ],
+    "Rebel Camp": [
+      "Power",
+      "Community"
+    ],
+    "Refugee Camp": [
+      "Nature",
+      "Community"
+    ],
+    "Slum": [
+      "Community"
+    ],
+    "University": [
+      "Mystery",
+      "Community",
+      "Prestige"
+    ],
+    "Academic District": [
+      "Community",
+      "Prestige"
+    ],
+    "Government District": [
+      "Power",
+      "Prestige"
+    ],
+    "Artisan Quarter": [
+      "Community",
+      "Commerce"
+    ],
+    "Cultural District": [
+      "Community",
+      "Prestige"
+    ],
+    "Entertainment District": [
+      "Community"
+    ],
+    "Farmland": [
+      "Nature"
+    ],
+    "Foreign Quarter": [
+      "Community",
+      "Commerce"
+    ],
+    "Wilderness": [
+      "Nature"
+    ],
+    "Harbor": [
+      "Nature",
+      "Commerce"
+    ],
+    "Industrial District": [
+      "Commerce"
+    ],
+    "Market District": [
+      "Commerce"
+    ],
+    "Military District": [
+      "Power"
+    ],
+    "Mining Region": [
+      "Nature",
+      "Commerce"
+    ],
+    "Noble Quarter": [
+      "Prestige"
+    ],
+    "Royal Quarter": [
+      "Power",
+      "Prestige"
+    ],
+    "Residential District": [
+      "Community"
+    ],
+    "Ruined Quarter": [
+      "Community"
+    ],
+    "Temple District": [
+      "Community",
+      "Prestige"
+    ],
+    "Underground City": [
+      "Mystery",
+      "Community"
+    ],
+    "Underworld": [
+      "Mystery"
+    ],
+    "Warehouse District": [
+      "Commerce"
+    ]
+  },
+  "derived_place_aliases": {
+    "Grounds": "Garden"
+  }
+}
