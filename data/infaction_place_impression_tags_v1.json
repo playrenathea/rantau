@@ -228,7 +228,6 @@
       "Power"
     ],
     "Hiss": [
-      "Power",
       "Mystery"
     ],
     "Bark": [
@@ -345,56 +344,43 @@
       "Prestige"
     ],
     "Cub": [
-      "Nature",
-      "Community"
+      "Nature"
     ],
     "Pup": [
-      "Nature",
-      "Community"
+      "Nature"
     ],
     "Puppy": [
-      "Nature",
-      "Community"
+      "Nature"
     ],
     "Kit": [
-      "Nature",
-      "Community"
+      "Nature"
     ],
     "Kitten": [
-      "Nature",
-      "Community"
+      "Nature"
     ],
     "Calf": [
-      "Nature",
-      "Community"
+      "Nature"
     ],
     "Chick": [
-      "Nature",
-      "Community"
+      "Nature"
     ],
     "Hatchling": [
-      "Nature",
-      "Community"
+      "Nature"
     ],
     "Foal": [
-      "Nature",
-      "Community"
+      "Nature"
     ],
     "Fawn": [
-      "Nature",
-      "Community"
+      "Nature"
     ],
     "Lamb": [
-      "Nature",
-      "Community"
+      "Nature"
     ],
     "Kid": [
-      "Nature",
-      "Community"
+      "Nature"
     ],
     "Piglet": [
-      "Nature",
-      "Community"
+      "Nature"
     ],
     "Tadpole": [
       "Nature"
@@ -415,18 +401,13 @@
       "Nature"
     ],
     "Eaglet": [
-      "Nature",
-      "Community",
-      "Prestige"
+      "Nature"
     ],
     "Owlet": [
-      "Nature",
-      "Community",
-      "Prestige"
+      "Nature"
     ],
     "Fledgling": [
-      "Nature",
-      "Community"
+      "Nature"
     ]
   },
   "place_tags": {
@@ -860,7 +841,7 @@
     ],
     "Underworld": [
       "Mystery",
-      "Community"
+      "Commerce"
     ],
     "Warehouse District": [
       "Commerce"
