@@ -114,7 +114,7 @@ function generateWorld(){
     console.error('Native Infaction generator:',m.traceback||m.message);renderApp();
    }
   };
-  worker.onerror=e=>{generating=false;loadError=e.message||'Python worker failed to start';renderApp()};
+  worker.onerror=e=>{generating=false;loadError=e.message||'Python worker failed to start';worker.terminate();worker=null;renderApp()};
  }
  worker.postMessage({type:'generate'});
 }
