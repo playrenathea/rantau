@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Infaction · Flavor v2 Naming Lab</title>
+<style>
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#efeee9;color:#272b25;font:15px/1.5 system-ui,sans-serif}main{max-width:740px;margin:0 auto;min-height:100vh;padding:32px;background:#fcfbf7}
+a{color:#336347}h1{font:normal 32px Georgia,serif;margin:15px 0 8px}p{margin:8px 0 20px;color:#555f56}
+fieldset{border:1px solid #c5cbbf;border-radius:11px;padding:18px;margin:18px 0}
+legend{font-weight:650;padding:0 6px}
+label{display:block;font-weight:600;margin:12px 0 5px}
+select,input{width:100%;padding:11px;border:1px solid #afb7ac;border-radius:7px;background:#fff;color:#222;font:inherit}
+button{border:1px solid #356044;background:#356044;color:white;border-radius:8px;padding:12px 20px;cursor:pointer;font:inherit}
+button:disabled{opacity:.6;cursor:not-allowed}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.output{padding:20px;border:1px solid #c4cbbe;border-radius:12px;background:#f3f6ef;margin:18px 0}
+.name{font:normal 27px Georgia,serif;overflow-wrap:anywhere}.meta{font-size:13px;color:#536154;margin-top:8px}
+.note{font-size:13px;color:#67736a}code{font-size:13px}ul{padding-left:22px}
+@media(max-width:540px){main{padding:20px}.grid{grid-template-columns:1fr}}
+</style></head>
+<body><main><a href="./index.html">← Infaction MVP</a><h1>Flavor v2 · Naming Lab</h1>
+<p>Live preview of the active 291-term Flavor vocabulary and 1–6 Impression Tags. This is the naming subsystem, not a replacement for the legacy v0.3.x world generator.</p>
+<p id="status">Loading active Flavor v2 datasets…</p>
+<fieldset><legend>Naming inputs</legend>
+<div class="grid"><div><label for="kind">Ownership</label><select id="kind"><option value="single">Single</option><option value="dual">Dual</option><option value="city">City (Government Animal)</option><option value="none">None</option></select></div>
+<div><label for="place">Book1 Place</label><select id="place"></select></div></div>
+<div class="grid"><div><label for="animal1">Animal 1</label><select id="animal1"></select></div>
+<div><label for="animal2">Animal 2 (Dual)</label><select id="animal2"></select></div></div></fieldset>
+<button id="roll" disabled>Roll Flavor</button>
+<div id="result" class="output" aria-live="polite"><div class="name">—</div><div class="meta">Select inputs and roll.</div></div>
+<p class="note">Selection weights: 0 = Item-only, 1 = no tag intersection, 3 = at least one tag intersection. Dual allows only shared Flavor with weight 3. After selection, a case-insensitive whole-word match suppresses the Flavor without a reroll. Singular/plural differences are intentional. This web lab uses a separate random draw; it does not reproduce Python's per-world seeded roll.</p>
+<p class="note">Data: <a href="./data/infaction_animal_place_flavor_v2.json">active Flavor v2</a> · <a href="./data/infaction_place_impression_tags_v2.json">active Impression Tags v2</a>.</p>
+</main>
+<script>
+(async()=>{
+const el=id=>document.getElementById(id);
+const [voc,imp]=await Promise.all([
+ fetch('./data/infaction_animal_place_flavor_v2.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Flavor HTTP '+r.status);return r.json()}),
+ fetch('./data/infaction_place_impression_tags_v2.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Impression HTTP '+r.status);return r.json()})
+]);
+if(voc.records.length!==291||Object.keys(imp.flavor_tags).length!==291)throw Error('Incomplete active vocabulary');
+const animals=[...new Set(voc.records.flatMap(r=>r.animals))].sort();
+const places=Object.keys(imp.place_tags).sort();
+const populate=(id,values,preferred)=>{
+ const node=el(id);for(const value of values){const o=document.createElement('option');o.value=value;o.textContent=value;node.add(o)}
+ node.value=values.includes(preferred)?preferred:values[0];
+};
+populate('animal1',animals,'Wolf');populate('animal2',animals,'Bear');populate('place',places,'Den');
+el('status').textContent='ACTIVE · '+voc.records.length+' Flavor words · '+animals.length+' Animal types · '+places.length+' Book1 Place types';
+el('roll').disabled=false;
+const tokenize=s=>(s.toLocaleLowerCase().match(/[^\W_]+/gu)||[]);
+const redundant=(word,place)=>{
+ const w=tokenize(word),p=tokenize(place);
+ return w.length>0 && p.some((_,i)=>w.every((part,j)=>p[i+j]===part));
+};
+const view=()=>{const dual=el('kind').value==='dual';el('animal2').disabled=!dual;};
+el('kind').addEventListener('change',view);view();
+el('roll').addEventListener('click',()=>{
+ const kind=el('kind').value,base=el('place').value,a1=el('animal1').value,a2=el('animal2').value;
+ const tags=kind==='city'?['Power','Community','Commerce','Prestige']:imp.place_tags[base];
+ let pool=[];
+ if(kind!=='none'){
+ for(const term of voc.records){
+ if(kind==='dual'&&a1===a2)continue;
+ if(!term.animals.includes(a1)||(kind==='dual'&&!term.animals.includes(a2)))continue;
+ if(term.suitable_for==='Item')continue;
+ const overlap=imp.flavor_tags[term.word].some(tag=>tags.includes(tag));
+ const weight=overlap?3:1;
+ if(kind==='dual'&&weight!==3)continue;
+ pool.push({word:term.word,weight});
+ }
+ }
+ const total=pool.reduce((sum,x)=>sum+x.weight,0);
+ let chosen=null;if(total){let target=Math.random()*total;for(const item of pool){target-=item.weight;if(target<0){chosen=item;break}}}
+ const suppressed=chosen?redundant(chosen.word,base):false;
+ const kept=chosen&&!suppressed?chosen.word:null;
+ const display=kind==='none'?base:kind==='dual'?(kept?kept+' '+base:base):
+ a1+"'s "+(kept?kept+' ':'')+base;
+ const result=el('result');result.replaceChildren();
+ const n=document.createElement('div');n.className='name';n.textContent=display;result.append(n);
+ const meta=document.createElement('div');meta.className='meta';
+ meta.textContent='Selected Flavor: '+(chosen?chosen.word:'none')+
+ ' · weight: '+(chosen?chosen.weight:0)+
+ ' · '+(suppressed?'REDUNDANT → suppressed, no reroll':'no redundancy')+
+ ' · eligible candidates: '+pool.length;result.append(meta);
+});
+})().catch(error=>{document.getElementById('status').textContent='ERROR: '+error.message;});
+</script></body></html>
