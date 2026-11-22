@@ -35,9 +35,9 @@ def main():
     assert set(seeds) == expected_stages
     assert len(set(seeds.values())) == len(seeds)
     assert exported["generation_seeds"] == seeds
-    assert exported["place_naming"]["vocabulary_version"] == "animal-place-flavor-v2-active-2026-11-22"
-    assert exported["place_naming"]["impression_version"] == "impression-tags-v2-active-2026-11-22"
-    assert "redundancy_suppressed" in exported["place_naming"]["summary"]
+    assert exported["place_naming"]["version"] == "infaction-place-naming-v4-no-place-flavor-2026-11-22"
+    assert exported["place_naming"]["vocabulary_version"] is None
+    assert exported["place_naming"]["impression_version"] is None
     by_id = {f["id"]: f for f in exported["factions"]}
     government = next(f for f in exported["factions"] if "Government" in f["types"])
     nodes = exported["places"]["nodes"]
